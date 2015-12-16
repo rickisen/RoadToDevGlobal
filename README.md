@@ -1,3 +1,3 @@
 # RoadToDevGlobal
 
-CS:GO Matchmaking enhanced
+CS:GO Matchmaking improved
