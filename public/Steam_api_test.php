@@ -1,7 +1,12 @@
 <?php
-
+session_start();
 require 'includes/lightopenid/openid.php';
 $_STEAMAPI = "EC3378BE4E67D544BEA9E6D9B32B5B57";
+
+
+// If user is not logged in
+if(!isset($_SESSION['steamId'])) {
+
 try
 {
     $openid = new LightOpenID('http://192.168.33.10/apitest.php');
@@ -13,9 +18,11 @@ try
             header('Location: ' . $openid->authUrl());
         }
 ?>
+
 <form action="?login" method="post">
     <input type="image" src="http://cdn.steamcommunity.com/public/images/signinthroughsteam/sits_small.png">
 </form>
+
 <?php
 
     }
@@ -25,6 +32,8 @@ try
     }
     else
     {
+
+
         if($openid->validate())
         {
                 $id = $openid->identity;
@@ -32,6 +41,8 @@ try
                 // we only care about the unique account ID at the end of the URL.
                 $ptn = "/^http:\/\/steamcommunity\.com\/openid\/id\/(7[0-9]{15,25}+)$/";
                 preg_match($ptn, $id, $matches);
+                $_SESSION['steamId'] = $matches[1];
+
                 echo "User is logged in (steamID: $matches[1])\n";
 
                 $url = "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=$_STEAMAPI&steamids=$matches[1]";
@@ -71,16 +82,20 @@ try
                   echo '<br>';
                   echo 'Total bombs planted: ' .$total_planted_bombs;
 
-        }
-        else
-        {
-                echo "User is not logged in.\n";
-                echo '<a href="http://192.168.33.10/apitest.php">try again</a>';
-        }
+        } else echo "<a href='http://192.168.33.10/apitest.php'>Try again</a>";
     }
 }
+
 catch(ErrorException $e)
 {
     echo $e->getMessage();
 }
+
+}
+
+// If user is logged in
+else {
+  echo "You are logged in!";
+}
+
 ?>
