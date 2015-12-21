@@ -1,9 +1,9 @@
 <?php
-session_start();
 require 'includes/lightopenid/openid.php';
+
+session_start();
+
 $_STEAMAPI = "EC3378BE4E67D544BEA9E6D9B32B5B57";
-
-
 // If user is not logged in
 if(!isset($_SESSION['steamId'])) {
 
@@ -19,6 +19,7 @@ try
         }
 ?>
 
+<!--Move this to "header.twig" when we've figured out how it should be implemented-->
 <form action="?login" method="post">
     <input type="image" src="http://cdn.steamcommunity.com/public/images/signinthroughsteam/sits_small.png">
 </form>
@@ -32,8 +33,6 @@ try
     }
     else
     {
-
-
         if($openid->validate())
         {
                 $id = $openid->identity;
