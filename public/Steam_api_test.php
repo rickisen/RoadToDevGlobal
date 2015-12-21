@@ -9,7 +9,7 @@ if(!isset($_SESSION['steamId'])) {
 
 try
 {
-    $openid = new LightOpenID('http://192.168.33.10/apitest.php');
+    $openid = new LightOpenID('http://192.168.13.37/Steam_api_test.php');
     if(!$openid->mode)
     {
         if(isset($_GET['login']))
