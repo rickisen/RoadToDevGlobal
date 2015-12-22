@@ -7,7 +7,7 @@ class DB{
 
 	public static function getInstance(){
 		if(!self::$instance){
-			self::$instance = new mysqli("localhost","root","","phlogger");
+			self::$instance = new mysqli("localhost","root","root","devglobal");
 			return self::$instance;
 		}else{
 			return self::$instance;

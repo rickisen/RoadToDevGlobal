@@ -1,6 +1,7 @@
 <?php
 
 require_once 'LoginRedirect.class.php';
+require_once 'User.class.php';
 
 //fix two different user classes "ME" & "THEM"
 class UserLanding{
@@ -21,11 +22,11 @@ class UserLanding{
 		// then we update the info on thatuser with what is saved in steams servers...
 
 		// get what we need from steam api version 1
-	    $url = "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=".self::steamApiKey."&steamids=".$_SESSION['steamId'];
+	    $url = "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=".self::$steamApiKey."&steamids=".$_SESSION['steamId'];
 	    $api_1_decoded = json_decode(file_get_contents($url));
 
 	    // get what we need from steam api version 2
-		$url2 = "http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=730&key=".self::steamApiKey."&steamid=".$_SESSION['steamId'];
+		$url2 = "http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=730&key=".self::$steamApiKey."&steamid=".$_SESSION['steamId'];
 	  	$api_2_decoded = json_decode(file_get_contents($url2), true);
 
 	  	// make a clearer assoc array from the api 2 responce
