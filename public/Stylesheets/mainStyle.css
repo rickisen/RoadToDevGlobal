@@ -1,0 +1,14 @@
+.navbar-default, .navbar {
+  background: none;
+  border: 0;
+  box-shadow: none;
+}
+
+a, a:hover {
+  text-decoration: none;
+  color: #000;
+}
+
+.logo {
+  font-weight: 700;
+}
