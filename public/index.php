@@ -19,7 +19,7 @@ if( isset($data['redirect']) ) {
 	header("Location: ".$data['redirect']);
 } else {
         // start twig 
-	require_once('Twig/lib/Twig/Autoloader.php');
+	require_once('Include/twig/lib/Twig/Autoloader.php');
 	Twig_Autoloader::register();
 	$loader = new Twig_Loader_Filesystem('Templates/');
 	$twig = new Twig_Environment($loader);

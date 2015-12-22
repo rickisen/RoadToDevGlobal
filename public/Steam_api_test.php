@@ -1,5 +1,5 @@
 <?php
-require 'includes/lightopenid/openid.php';
+require 'Include/lightopenid/openid.php';
 
 session_start();
 
