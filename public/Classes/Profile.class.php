@@ -5,6 +5,6 @@ class Profile{
 	private function __clone(){}
 
 	static function displayUser($id){
-		return ['loadview' => 'profile', 'user' => new User($id) ];
+		return ['loadview' => 'playerprofile', 'user' => new User($id[0]) ];
 	}
 }

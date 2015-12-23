@@ -17,7 +17,7 @@
 
       {% if currentUser %}
 
-        <img class="navbar-right navbar-form" src="{{ currentUser.imageM }}">
+        <a href="?/Profile/displayUser/{{currentUser.steamId}}"> <img class="navbar-right navbar-form" src="{{ currentUser.imageM }}"> </a>
 
         <form action="/index.php?" method="post" class="navbar-form navbar-right">
             <input type="submit" name="logout" value="logout">
