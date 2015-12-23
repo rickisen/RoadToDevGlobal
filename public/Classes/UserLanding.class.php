@@ -18,6 +18,8 @@ class UserLanding{
 
 		// construct a new user object with the known steamId 
 		$_SESSION['currentUser'] = new User($_SESSION['steamId']);
+		unset($_SESSION['steamId']);
+
 		$currentUser = $_SESSION['currentUser'];
 
 		// then we update the info on thatuser with what is saved in steams servers...
@@ -46,6 +48,6 @@ class UserLanding{
 
 		$currentUser->updateSteamStats($nickname, $kills, $deaths, $hoursPlayed, $image_l, $image_m, $image_s);
 
-		return ['loadview' => 'playerProfile', 'user' => $currentUser];
+		return ['loadview' => 'playerprofile', 'user' => $currentUser];
 	}
 }
