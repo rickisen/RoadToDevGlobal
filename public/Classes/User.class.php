@@ -41,11 +41,10 @@ class User{
       $this->rank          = $row['rank'];
       $this->age           = $row['age'];
       $this->bio           = $row['bio'];
-      $this->kd_ratio      = $row['kd_ratio'];
       $this->kills         = $row['kills'];
       $this->deaths        = $row['deaths'];
-      $this->hoursPlayed   = $row['hoursPlayed'];
-      $this->registerDate  = $row['registerDate'];
+      $this->hoursPlayed   = $row['hours_played'];
+      $this->registerDate  = $row['register_date'];
       $this->nickname      = $row['nickname'];
       $this->image_l       = $row['image_l'];
       $this->image_m       = $row['image_m'];

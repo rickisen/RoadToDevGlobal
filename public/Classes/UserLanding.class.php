@@ -10,7 +10,7 @@ class UserLanding{
 
 	public static function fetchSteamStats(){
 
-		// if someone gothere without a steamId in the session, send them to the steam login page
+		// if someone go there without a steamId in the session, send them to the steam login page
 		if(!isset($_SESSION['steamId'])){
 			header('http://192.168.13.37/?/LoginRedirect/steamLogin');
 		}
@@ -26,7 +26,7 @@ class UserLanding{
 	    $api_1_decoded = json_decode(file_get_contents($url));
 
 	    // get what we need from steam api version 2
-		$url2 = "http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=730&key=".self::$steamApiKey."&steamid=".$_SESSION['steamId'];
+			$url2 = "http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=730&key=".self::$steamApiKey."&steamid=".$_SESSION['steamId'];
 	  	$api_2_decoded = json_decode(file_get_contents($url2), true);
 
 	  	// make a clearer assoc array from the api 2 responce
@@ -45,6 +45,6 @@ class UserLanding{
 
 		$currentUser->updateSteamStats($nickname, $kills, $deaths, $hoursPlayed, $image_l, $image_m, $image_s);
 
-		return ['loadview' => 'profile', 'currentUser' => $currentUser];
+		return ['loadview' => 'playerProfile', 'user' => $currentUser];
 	}
 }
