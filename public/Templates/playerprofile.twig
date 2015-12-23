@@ -7,7 +7,7 @@
   <div class="col-md-8">
     <div class="row">
       <div class="col-md-10">
-          <h3>Carl</h3>
+          <h3>{{ user.nickname }}</h3>
           <hr>
       </div>
     </div>
@@ -23,9 +23,9 @@
 
       <div class="col-xs-6 col-md-6">
         <ul>
-          <li>Rating: </li>
-          <li>Games played:</li>
-          <li>Registered:</li>
+          <li>Kills: {{ user.kills }} </li>
+          <li>Deaths: {{ user.deaths }}</li>
+          <li>Hours played: {{ user.steam_id }}</li>
         </ul>
       </div>
     </div>
