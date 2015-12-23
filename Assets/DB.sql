@@ -4,6 +4,20 @@ SET time_zone = '+00:00';
 SET foreign_key_checks = 0;
 SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
+DROP TABLE IF EXISTS `language`;
+CREATE TABLE `language` (
+  `steam_id` bigint(20) NOT NULL,
+  `lang` enum('English','Swedish','Danish','German','French') COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+
+DROP TABLE IF EXISTS `role`;
+CREATE TABLE `role` (
+  `steam_id` bigint(20) NOT NULL,
+  `name` enum('entry_fragger','play_maker','strat_caller','support','awper','lurker') COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `steam_id` bigint(20) unsigned NOT NULL,
