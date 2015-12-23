@@ -68,7 +68,7 @@ h1 {
   border: 1px solid limegreen;
 }
 
-img {
+.loading img {
 width: 140px;
 height: 100px;
 -webkit-animation:spin 2s linear infinite;
@@ -107,11 +107,5 @@ select {
   font-weight: bold;
 }
 .accordion dd {
-  border-top: 0;
   font-size: 12px;
-}
-.accordion dd:last-of-type {
-  border-top: 1px solid white;
-  position: relative;
-  top: -1px;
 }
