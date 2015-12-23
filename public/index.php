@@ -1,8 +1,7 @@
 <?php
+require_once 'Classes/User.class.php';
+require_once 'Classes/DB.class.php';
 session_start();
-require_once("Classes/DB.class.php");
-
-error_reporting(0);
 
 if(isset($_POST['logout'])) {
   unset($_SESSION['currentUser']);
@@ -29,10 +28,9 @@ if(isset($_SESSION['currentUser'])) {
   $data['currentUser'] = $_SESSION['currentUser'];
 }
 
-
-
 // RENDER THE TEMPLATE ==================================================
 if( ! isset($data['redirect']) ) { // Unless we got a redirect request
+
         // start twig
 	require_once('Include/twig/lib/Twig/Autoloader.php');
 	Twig_Autoloader::register();

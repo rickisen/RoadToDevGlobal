@@ -9,7 +9,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <h4 class="logo"><a href="http://192.168.13.37/index.php?">TEAM MATE, YO!</a></h4>
+      <h4 class="logo"><a href="http://192.168.13.37/index.php">TEAM MATE, YO!</a></h4>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -17,7 +17,7 @@
 
       {% if currentUser %}
 
-        <img class="navbar-right navbar-form" src="{{ user.imageS }}">
+        <img class="navbar-right navbar-form" src="{{ currentUser.imageM }}">
 
         <form action="/index.php?" method="post" class="navbar-form navbar-right">
             <input type="submit" name="logout" value="logout">
