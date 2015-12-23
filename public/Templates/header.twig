@@ -17,15 +17,17 @@
 
       {% if currentUser %}
 
-      <form action="/index.php?" method="post" class="navbar-form navbar-right" role="logout">
-          <input type="submit" name="logout" value="logout">
-      </form>
+        <img class="navbar-right navbar-form" src="{{ user.imageS }}">
+
+        <form action="/index.php?" method="post" class="navbar-form navbar-right">
+            <input type="submit" name="logout" value="logout">
+        </form>
 
       {% else %}
 
-      <form action="?/LoginRedirect/steamLogin&login" method="post" class="navbar-form navbar-right" name="steamLogin">
-          <input type="image" src="http://cdn.steamcommunity.com/public/images/signinthroughsteam/sits_small.png">
-      </form>
+        <form action="?/LoginRedirect/steamLogin&login" method="post" class="navbar-form navbar-right" name="steamLogin">
+            <input type="image" src="http://cdn.steamcommunity.com/public/images/signinthroughsteam/sits_small.png">
+        </form>
 
       {% endif %}
 
