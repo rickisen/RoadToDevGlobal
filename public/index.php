@@ -2,14 +2,20 @@
 session_start();
 require_once("Classes/DB.class.php");
 
+error_reporting(0);
+
+if(isset($_POST['logout'])) {
+  unset($_SESSION['steamId']);
+}
+
 // ROUTE GET REQUESTS ==================================================
 // Unless we didn't get any get request
-if( ! empty($_GET)  ) { 
+if( ! empty($_GET)  ) {
   # $url_params blir en array med alla "värden" som står efter ? avgränsade med /
   # ex. /Posts/single/11 kommer ge en array med 3 värden som är Posts, single och 11
   $url_parts = getUrlParts($_GET) ;
 
-  $class  = array_shift($url_parts); # tar ut första värdet och lägger den i $class 
+  $class  = array_shift($url_parts); # tar ut första värdet och lägger den i $class
   $method = array_shift($url_parts); # tar ut andra värdet och lägger den i $method
 
   require_once("Classes/".$class.".class.php"); # Hämta in klassfilen för den klass vi ska anropa
@@ -18,9 +24,15 @@ if( ! empty($_GET)  ) {
   $data = array('loadview' => 'landingpage');
 }
 
+if(isset($_SESSION['steamId'])) {
+  $data['currentUser'] = $_SESSION['steamId'];
+}
+
+
+
 // RENDER THE TEMPLATE ==================================================
 if( ! isset($data['redirect']) ) { // Unless we got a redirect request
-        // start twig 
+        // start twig
 	require_once('Include/twig/lib/Twig/Autoloader.php');
 	Twig_Autoloader::register();
 	$loader = new Twig_Loader_Filesystem('Templates/');
@@ -47,6 +59,5 @@ function getUrlParts($get){
 	}
 
 	$url_parts = $array;
-	return $url_parts; 
+	return $url_parts;
 }
-
