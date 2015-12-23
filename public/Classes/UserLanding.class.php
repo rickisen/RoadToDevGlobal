@@ -18,7 +18,7 @@ class UserLanding{
 
 		// construct a new user object with the known steamId 
 		$_SESSION['currentUser'] = new User($_SESSION['steamId']);
-		unset($_SESSION['steamId']);
+		/* unset($_SESSION['steamId']); */
 
 		$currentUser = $_SESSION['currentUser'];
 
@@ -44,7 +44,7 @@ class UserLanding{
 	    $image_l     = $api_1_decoded->response->players[0]->avatarfull;
 	    $kills       = $api_2_array['total_kills'];
 	    $deaths      = $api_2_array['total_deaths'];
-	    $hoursPlayed = $api_2_array['total_time_played']; #might need some mathematical fix
+	    $hoursPlayed = ((float) $api_2_array['total_time_played'] / 60 / 60 ); #might need some mathematical fix
 
 		$currentUser->updateSteamStats($nickname, $kills, $deaths, $hoursPlayed, $image_l, $image_m, $image_s);
 

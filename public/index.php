@@ -5,6 +5,7 @@ require_once("Classes/DB.class.php");
 error_reporting(0);
 
 if(isset($_POST['logout'])) {
+  unset($_SESSION['currentUser']);
   unset($_SESSION['steamId']);
 }
 
@@ -24,8 +25,8 @@ if( ! empty($_GET)  ) {
   $data = array('loadview' => 'landingpage');
 }
 
-if(isset($_SESSION['steamId'])) {
-  $data['currentUser'] = $_SESSION['steamId'];
+if(isset($_SESSION['currentUser'])) {
+  $data['currentUser'] = $_SESSION['currentUser'];
 }
 
 
