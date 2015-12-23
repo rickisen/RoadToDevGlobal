@@ -8,6 +8,7 @@ class UserLanding{
 
 	private static $steamApiKey = "EC3378BE4E67D544BEA9E6D9B32B5B57";
 
+	// MAYBE THIS SHOULD BE MOVED TO THE USER CLASS
 	public static function fetchSteamStats(){
 
 		// if someone go there without a steamId in the session, send them to the steam login page

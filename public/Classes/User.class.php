@@ -5,11 +5,11 @@ class User{
     $rank,
     $age,
     $bio,
-    $kd_ratio,
+    $kdRatio,
     $registerDate,
-    $image_l,
-    $image_m,
-    $image_s,
+    $imageL,
+    $imageM,
+    $imageS,
 
     $nickname,
     $kills,
@@ -46,11 +46,11 @@ class User{
       $this->hoursPlayed   = $row['hours_played'];
       $this->registerDate  = $row['register_date'];
       $this->nickname      = $row['nickname'];
-      $this->image_l       = $row['image_l'];
-      $this->image_m       = $row['image_m'];
-      $this->image_s       = $row['image_s'];
+      $this->imageL        = $row['image_l'];
+      $this->imageM        = $row['image_m'];
+      $this->imageS        = $row['image_s'];
 
-      $this->kd_ratio = $this->kills / $this->deaths ;
+      $this->kdRatio = $this->kills / $this->deaths ;
       $this->exists = TRUE;
     } else {
       $this->exists = FALSE;
@@ -59,12 +59,36 @@ class User{
   }
   
   function updateSteamStats($nickname, $kills, $deaths, $hoursPlayed, $image_l, $image_m, $image_s){
-    $this->nickname    = $nickname ;
-    $this->kills       = $kills ;
-    $this->deaths      = $deaths ;
-    $this->image_l     = $image_l ;
-    $this->image_m     = $image_m ;
-    $this->image_s     = $image_s ;
-    $this->hoursPlayed = $hoursPlayed ;
+    $database = DB::getInstance();
+
+		// get the changes localy and clean them
+    $this->nickname    = $database->real_escape_string(stripslashes($nickname)) ;
+    $this->kills       = $database->real_escape_string(stripslashes($kills)) ;
+    $this->deaths      = $database->real_escape_string(stripslashes($deaths)) ;
+    $this->imageL      = $database->real_escape_string(stripslashes($image_l)) ;
+    $this->imageM      = $database->real_escape_string(stripslashes($image_m)) ;
+    $this->imageS      = $database->real_escape_string(stripslashes($image_s)) ;
+    $this->hoursPlayed = $database->real_escape_string(stripslashes($hoursPlayed)) ;
+
+		// then update fresh info into DB
+		$qUpdateDB = ' 
+								UPDATE user 
+								SET nickname     = "'.$this->nickname.'",
+								    kills        = "'.$this->kills.'",
+								    deaths       = "'.$this->deaths.'",
+								    image_l      = "'.$this->imageL.'",
+								    image_m      = "'.$this->imageM.'",
+								    image_s      = "'.$this->imageS.'",
+								    hours_played = "'.$this->hoursPlayed.'"
+								WHERE steam_id = "'.$this->steamId.'";
+				';
+
+		// send the query
+		$result = $database->query($qUpdateDB);
+		
+		// print the error if we got one 
+		if ($database->error) {
+						echo "something went wrong when updating the user data".$database->error;
+		}
   }
 }
