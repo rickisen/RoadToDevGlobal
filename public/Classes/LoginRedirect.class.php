@@ -25,14 +25,14 @@ class LoginRedirect{
 			    $_SESSION['steamId'] = $matches[1];
 
 					// Looks like we have everything we need, so lets send him to userlanding
-			    return UserLanding::fetchSteamStats();
+			    return UserLanding::currentUserCheck();
 			} 
 			  else {
 			    echo "<a href='http://192.168.13.37/?/LoginRedirect/steamLogin'>Try again</a>";
 			}
 		} 
 		else { 
-				return UserLanding::fetchSteamStats();
+				return UserLanding::currentUserCheck();
 		}
 	}
 }

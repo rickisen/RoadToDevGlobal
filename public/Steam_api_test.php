@@ -1,5 +1,5 @@
 <?php
-require 'Include/lightopenid/openid.php';
+require 'includes/lightopenid/openid.php';
 
 session_start();
 
@@ -81,7 +81,7 @@ try
                   echo '<br>';
                   echo 'Total bombs planted: ' .$total_planted_bombs;
 
-        } else echo "<a href='http://192.168.33.10/apitest.php'>Try again</a>";
+        } else echo "<a href='http://192.168.13.37/Steam_api_test.php'>Try again</a>";
     }
 }
 

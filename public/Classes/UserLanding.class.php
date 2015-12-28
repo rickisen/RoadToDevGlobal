@@ -7,7 +7,7 @@ require_once 'User.class.php';
 class UserLanding{
 
 	// MAYBE THIS SHOULD BE MOVED TO THE USER CLASS
-	public static function fetchSteamStats(){
+	public static function currentUserCheck(){
 
 		// if someone go there without a steamId in the session, send them to the steam login page
 		if(!isset($_SESSION['steamId'])){
@@ -17,9 +17,8 @@ class UserLanding{
 		// construct a new user object with the known steamId 
 		$_SESSION['currentUser'] = new User($_SESSION['steamId']);
 		$currentUser = $_SESSION['currentUser'];
-                if ($currentUser->existed) $currentUser->fetchSteamStats();
 
-
-                return ['loadview' => 'playerprofile', 'user' => $currentUser];
-        }
+        if ($currentUser->existed) $currentUser->fetchSteamStats();
+		return ['loadview' => 'playerprofile', 'user' => $currentUser];
+    }
 }
