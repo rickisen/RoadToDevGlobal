@@ -9,7 +9,7 @@ h1, h2, h3 {
   margin: 0;
 }
 
-a, a:hover {
+a, a:hover, a:active {
   text-decoration: none;
   color: #000;
 }
@@ -19,6 +19,19 @@ a, a:hover {
   background: none;
   border: 0;
   box-shadow: none;
+}
+
+.panel-default>.panel-heading {
+  background: transparent;
+}
+
+.panel-default, .panel-group .panel-heading+.panel-collapse>.list-group, .panel-group .panel-heading+.panel-collapse>.panel-body {
+  border: 0;
+}
+
+.panel {
+-webkit-box-shadow: 0 0px 0px rgba(0,0,0,.0);
+box-shadow: 0 0px 0px rgba(0,0,0,.0);
 }
 
 /* HEADER STYLES */
@@ -47,26 +60,14 @@ ul li {
   height: 60px;
   width: 250px;
   background: none;
-  border: 1px solid black;
+  border: 3px solid black;
 }
 
 .playnow-btn:hover {
-  background: limegreen;
-  color: white;
-  border: 1px solid limegreen;
+  background: #000;
+  color: #FFF;
+  border: 3px solid #000;
 }
-
-.loading img {
-width: 140px;
-height: 100px;
--webkit-animation:spin 2s linear infinite;
--moz-animation:spin 2s linear infinite;
-animation:spin 2s linear infinite;
-}
-
-@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
-@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
-@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
 select {
   background: transparent;
@@ -99,6 +100,20 @@ select {
 }
 
 
+/* LOADING PAGE ANIMATION */
+.loading img {
+width: 140px;
+height: 100px;
+-webkit-animation:spin 2s linear infinite;
+-moz-animation:spin 2s linear infinite;
+animation:spin 2s linear infinite;
+}
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+
 /* PROFILE PAGE */
 .profileheader {
   margin-top: 50px;
@@ -116,4 +131,69 @@ select {
 .footer {
   background: #eee;
   height: 150px;
+}
+
+/* TESTING DROPDOWNS */
+
+.dropdown dd,
+.dropdown dt {
+  margin: 0px;
+  padding: 0px;
+}
+
+.dropdown ul {
+  margin: 0 0 0 80px;
+}
+
+.dropdown dd {
+  position: relative;
+}
+
+.dropdown a,
+.dropdown a:visited {
+  color: #fff;
+  text-decoration: none;
+  outline: none;
+  font-size: 12px;
+}
+
+.dropdown dt a {
+  background-color: #4F6877;
+  display: inline-block;
+  padding: 14px 20px 5px 10px;
+  min-height: 50px;
+  line-height: 24px;
+  overflow: hidden;
+  border: 0;
+  width: 200px;
+}
+
+.dropdown dt a span,
+.multiSel span {
+  cursor: pointer;
+  display: inline-block;
+  padding: 0 3px 2px 0;
+}
+
+.dropdown dd ul {
+  background-color: #4F6877;
+  border: 0;
+  color: #fff;
+  display: none;
+  left: 0px;
+  padding: 10px 15px 2px 5px;
+  position: absolute;
+  width: 200px;
+  list-style: none;
+  overflow: auto;
+  z-index: 999;
+}
+
+.dropdown span.value {
+  display: none;
+}
+
+.dropdown dd ul li a {
+  padding: 5px;
+  display: block;
 }
