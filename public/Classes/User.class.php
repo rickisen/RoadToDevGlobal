@@ -1,26 +1,31 @@
 <?php
 class User{
   private static $steamApiKey = "EC3378BE4E67D544BEA9E6D9B32B5B57";
+  private $steamId;
+  private $existed;
+
   private 
-    $steamId,
+    // user specified
     $rank,
     $age,
     $bio,
+
+    //calculated
     $kdRatio,
     $registerDate,
-    $imageL,
-    $imageM,
-    $imageS,
 
+    // from steamAPI
     $nickname,
     $kills,
     $deaths,
+    $imageL,
+    $imageM,
+    $imageS,
     $hoursPlayed;
 
+  // support multiple values
   private $roles = array();
   private $languages = array();
-
-  private $existed ;
 
   function __isset($val){
     return isset($this->$val);
@@ -37,15 +42,15 @@ class User{
       SELECT * FROM user WHERE steam_id = '.$steamId.' LIMIT 1
     ';
 
-    $qInsertUser = '
-      INSERT INTO user (steam_id, rank, nickname, hours_played, kills, deaths, image_l, image_m, image_s) 
-      VALUES (\''.$steamId.'\', 0, 0, 0, 0, 0, 0, 0, 0)
-    ';
-
+    // svae the steam Id first since som memberfunctions 
+    // depend on it when fetching other info
     $this->steamId = $steamId;
 
+    // should hold one row if succesfull,
+    // and if there was no such User
+    // it should hold no rows
     $result = $database->query($qGetUserFromId);
-    if( $result->num_rows > 0  ){
+    if( $result->num_rows > 0 ){
       $row = $result->fetch_assoc();
       $this->rank          = $row['rank'];
       $this->age           = $row['age'];
@@ -59,21 +64,35 @@ class User{
       $this->imageM        = $row['image_m'];
       $this->imageS        = $row['image_s'];
 
+      // calculate kd_ratio, fails if divided by 0, sooo
       if ($this->kills > 0 && $this->deaths > 0) 
         $this->kdRatio = $this->kills / $this->deaths ;
       else
         $this->kdRatio = 0;
 
+      // remeber that this is an old user.
       $this->existed = TRUE;
+
     } else {
+      // if we didnt find a user in the db with this steam id, we create one
+
+      // query to insert a empty user into the db
+      $qInsertUser = '
+        INSERT INTO user (steam_id, rank, nickname, hours_played, kills, deaths, image_l, image_m, image_s) 
+        VALUES (\''.$steamId.'\', "Unknown" , 0, 0, 0, 0, 0, 0, 0) ';
+
+      // send the query and report any errors
       $database->query($qInsertUser);
       if ($database->error){
         echo "something went wrong when inserting a new User".$database->error;
       }
+
+      // The qInsertUser-query only inserts empty steam-values into the db (0),
+      // so we need to fetch data from steam-API after the user is created 
+      // (at the end of fetchSteamStats, updateSteamStats is run to sync with the db)
       $this->fetchSteamStats();
-      $this->existed = FALSE;
+      $this->existed = FALSE; // mark this user as a new user
     }
-    $this->steamId = $steamId;
   }
   
   function updateSteamStats($nickname, $kills, $deaths, $hoursPlayed, $image_l, $image_m, $image_s){
