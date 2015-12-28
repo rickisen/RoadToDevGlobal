@@ -35,6 +35,11 @@ class User{
     return $this->$val;
   }
 
+  function __set($prop, $val){
+    if($prop == 'rank' || $prop == 'bio' || $prop == 'age') 
+      $this->$prop = $val;
+  }
+
   function __construct( $steamId ){
     $database = DB::getInstance();
 
@@ -153,5 +158,22 @@ class User{
     $hoursPlayed = round(((float) $api_2_array['total_time_played'] / 60 / 60 )); #might need some mathematical fix
 
     $this->updateSteamStats($nickname, $kills, $deaths, $hoursPlayed, $image_l, $image_m, $image_s);
+  }
+
+  function updateUserSuppliedInfo(){
+    $database = DB::getInstance();
+
+    $qUpdateUserSuppliedInfo = '
+      UPDATE user 
+      SET bio        = "'.$this->bio.'",
+          age        = "'.$this->age.'",
+          rank       = "'.$this->rank.'",
+      WHERE steam_id = "'.$this->steamId.'";
+    ';
+
+    $database->query($qUpdateUserSuppliedInfo);
+      if ($database->error){
+        echo "something went wrong when updating Update User Supplied Info".$database->error;
+      }
   }
 }
