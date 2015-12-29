@@ -4,12 +4,13 @@ class User{
   private $steamId;
   private $existed;
 
-  private 
+  public
     // user specified
     $rank,
     $age,
-    $bio,
+    $bio;
 
+  private
     //calculated
     $kdRatio,
     $registerDate,
@@ -35,10 +36,10 @@ class User{
     return $this->$val;
   }
 
-  function __set($prop, $val){
-    if($prop == 'rank' || $prop == 'bio' || $prop == 'age') 
-      $this->$prop = $val;
-  }
+  // function __set($prop, $val){
+  //   if($prop == 'rank' || $prop == 'bio' || $prop == 'age')
+  //     $this->$prop = $val;
+  // }
 
   function __construct( $steamId ){
     $database = DB::getInstance();
@@ -47,7 +48,7 @@ class User{
       SELECT * FROM user WHERE steam_id = '.$steamId.' LIMIT 1
     ';
 
-    // svae the steam Id first since som memberfunctions 
+    // svae the steam Id first since som memberfunctions
     // depend on it when fetching other info
     $this->steamId = $steamId;
 
@@ -70,7 +71,7 @@ class User{
       $this->imageS        = $row['image_s'];
 
       // calculate kd_ratio, fails if divided by 0, sooo
-      if ($this->kills > 0 && $this->deaths > 0) 
+      if ($this->kills > 0 && $this->deaths > 0)
         $this->kdRatio = $this->kills / $this->deaths ;
       else
         $this->kdRatio = 0;
@@ -83,7 +84,7 @@ class User{
 
       // query to insert a empty user into the db
       $qInsertUser = '
-        INSERT INTO user (steam_id, rank, nickname, hours_played, kills, deaths, image_l, image_m, image_s) 
+        INSERT INTO user (steam_id, rank, nickname, hours_played, kills, deaths, image_l, image_m, image_s)
         VALUES (\''.$steamId.'\', "Unknown" , 0, 0, 0, 0, 0, 0, 0) ';
 
       // send the query and report any errors
@@ -93,13 +94,13 @@ class User{
       }
 
       // The qInsertUser-query only inserts empty steam-values into the db (0),
-      // so we need to fetch data from steam-API after the user is created 
+      // so we need to fetch data from steam-API after the user is created
       // (at the end of fetchSteamStats, updateSteamStats is run to sync with the db)
       $this->fetchSteamStats();
       $this->existed = FALSE; // mark this user as a new user
     }
   }
-  
+
   function updateSteamStats($nickname, $kills, $deaths, $hoursPlayed, $image_l, $image_m, $image_s){
     $database = DB::getInstance();
 
@@ -113,8 +114,8 @@ class User{
     $this->hoursPlayed = $database->real_escape_string(stripslashes($hoursPlayed)) ;
 
     // then update fresh info into DB
-    $qUpdateDB = ' 
-    UPDATE user 
+    $qUpdateDB = '
+    UPDATE user
     SET nickname     = "'.$this->nickname.'",
         kills        = "'.$this->kills.'",
         deaths       = "'.$this->deaths.'",
@@ -127,8 +128,8 @@ class User{
 
     // send the query
     $result = $database->query($qUpdateDB);
-    
-    // print the error if we got one 
+
+    // print the error if we got one
     if ($database->error) {
       echo "something went wrong when updating the user data".$database->error;
     }
@@ -164,7 +165,7 @@ class User{
     $database = DB::getInstance();
 
     $qUpdateUserSuppliedInfo = '
-      UPDATE user 
+      UPDATE user
       SET bio        = "'.$this->bio.'",
           age        = "'.$this->age.'",
           rank       = "'.$this->rank.'",
