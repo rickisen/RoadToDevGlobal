@@ -21,7 +21,7 @@ CREATE TABLE `role` (
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `steam_id` bigint(20) unsigned NOT NULL,
-  `rank` enum('silver_1','silver_2','silver_3','silver_4','silver_elite','silver_elite_master','gold_nova_1','gold_nova_2','gold_nova_3','gold_nova_master','master_guardian_1','master_guardian_2','master_guardian_elite','distinguished_master_guardian','legendary_eagle_master','supreme_master_first_class','the_global_elite') COLLATE utf8_bin NOT NULL,
+  `rank` enum('silver_1','silver_2','silver_3','silver_4','silver_elite','silver_elite_master','gold_nova_1','gold_nova_2','gold_nova_3','gold_nova_master','master_guardian_1','master_guardian_2','master_guardian_elite','distinguished_master_guardian','legendary_eagle_master','supreme_master_first_class','the_global_elite' 'unknown') COLLATE utf8_bin NOT NULL,
   `nickname` varchar(50) COLLATE utf8_bin NOT NULL,
   `hours_played` int(10) unsigned NOT NULL,
   `register_date` datetime NOT NULL,
