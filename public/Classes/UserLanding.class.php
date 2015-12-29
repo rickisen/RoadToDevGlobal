@@ -18,7 +18,19 @@ class UserLanding{
 		$_SESSION['currentUser'] = new User($_SESSION['steamId']);
 		$currentUser = $_SESSION['currentUser'];
 
-        if ($currentUser->existed) $currentUser->fetchSteamStats();
-		return ['loadview' => 'playerprofile', 'user' => $currentUser];
-    }
-}
+                if ($currentUser->existed) {
+                  // only run this on already existing users, 
+                  // since it's run when constructing a fresh user
+                  $currentUser->fetchSteamStats(); 
+
+                  // send the user to the landingpage when logged in. 
+                  return ['loadview' => 'landingpage'];
+
+                } else {
+                  // Otherwise if they are new users 
+                  // send them to the edit-profile-page
+                  require_once "EditProfile.class.php";
+                  return EditProfile::currentUser();
+                }
+      }
+  }
