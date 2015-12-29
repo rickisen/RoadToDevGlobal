@@ -1,11 +1,13 @@
 <?php
 require_once 'Classes/User.class.php';
 require_once 'Classes/DB.class.php';
+require_once 'Classes/PostReceiver.class.php';
 session_start();
 
-if(isset($_POST['logout'])) {
-  unset($_SESSION['currentUser']);
-  unset($_SESSION['steamId']);
+
+// ROUTE POST REQUESTS ==================================================
+if( ! empty($_POST)  ) {
+  PostReceiver::handlePosts();
 }
 
 // ROUTE GET REQUESTS ==================================================
