@@ -1,0 +1,66 @@
+<form action="?/PostReceiver/profileUpdate" method="post">
+	<div class="row profileheader">
+	  <div class="col-md-4">
+	    <img src="{{ user.imageL }}">
+	  </div>
+
+	  <div class="col-md-8">
+	    <div class="row">
+	      <div class="col-md-10">
+		  <h3>{{ user.nickname }}</h3>
+		  <hr>
+	      </div>
+	    </div>
+
+	    <div class="row">
+	      <div class="col-xs-6 col-md-6">
+		<ul>
+		  <li>rank: <input name="rank" type="text" placeholder="{{ user.rank }}"> </input></li>
+		  <li>age:  <input name="age"  type="text" placeholder="{{ user.age  }}"> </input></li>
+		</ul>
+	      </div>
+
+	      <div class="col-xs-6 col-md-6">
+		<ul>
+		  <li>Kills: {{ user.kills }} </li>
+		  <li>Deaths: {{ user.deaths }}</li>
+		  <li>Hours played: {{ user.hoursPlayed }}</li>
+		</ul>
+	      </div>
+	    </div>
+
+	  </div>
+	</div>
+
+        <div class="row">
+          <div class="col-md-12 ">
+	   <input name="bio" class="userBio" type="textarea" placeholder="{{user.bio}}"> </input>
+          </div>
+          <div class="col-md-4 col-md-offset-4">
+	   <input type="submit" > </input>
+          </div>
+        </div>
+        </div>
+
+	<div class="row">
+	  <div class="col-md-4 col-md-offset-4">
+	    <h2 style="text-align: center;">In-game stats</h2>
+	  </div>
+	</div>
+
+	<div class="row">
+	  <div class="col-md-12 stats-container">
+	    <ul>
+	      <li>Kills: {{ user.kills }} </li>
+	      <li>Deaths: {{ user.deaths }}</li>
+	      <li>Hours played: {{ user.hoursPlayed }}</li>
+	      <li>Kills: {{ user.kills }} </li>
+	      <li>Deaths: {{ user.deaths }}</li>
+	      <li>Hours played: {{ user.hoursPlayed }}</li>
+	      <li>Kills: {{ user.kills }} </li>
+	      <li>Deaths: {{ user.deaths }}</li>
+	      <li>Hours played: {{ user.hoursPlayed }}</li>
+	    </ul>
+	  </div>
+	</div>
+</form>
