@@ -35,7 +35,7 @@ var $clicked = $(e.target);
 if (!$clicked.parents().hasClass("dropdown")) $(".dropdown dd ul").hide();
 });
 
-$('.mutliSelect1 input[type="checkbox"]').on('click', function() {
+$('.mutliSelect input[type="checkbox"]').on('click', function() {
 
 var title = $(this).closest('.mutliSelect').find('input[type="checkbox"]').val(),
   title = $(this).val() + ",";
