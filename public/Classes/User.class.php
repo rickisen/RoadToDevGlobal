@@ -168,7 +168,7 @@ class User{
       UPDATE user
       SET bio        = "'.$this->bio.'",
           age        = "'.$this->age.'",
-          rank       = "'.$this->rank.'",
+          rank       = "'.$this->rank.'"
       WHERE steam_id = "'.$this->steamId.'";
     ';
 

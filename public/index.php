@@ -4,10 +4,9 @@ require_once 'Classes/DB.class.php';
 require_once 'Classes/PostReceiver.class.php';
 session_start();
 
-
 // ROUTE POST REQUESTS ==================================================
-if( ! empty($_POST)  ) {
-  PostReceiver::handlePosts();
+if( ! empty($_POST) && isset($_POST['postHandler']) ) {
+  PostReceiver::$_POST['postHandler']();
 }
 
 // ROUTE GET REQUESTS ==================================================
