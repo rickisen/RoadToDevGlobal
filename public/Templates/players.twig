@@ -18,7 +18,11 @@
                  <h3 style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">
                      <a href="?/Profile/displayuser/{{ user.steamId }}"> {{ user.nickname }}</a>
                  </h3>
+                 {% if user.hoursPlayed == 0 %}
+                 <p> Private profile </p> <!--temp solution for showing "private profile"-->
+                 {% else %}
                  <p> Hours played:{{ user.hoursPlayed }}</p>
+                 {% endif %}
                </div>
              {% endfor %}
          </div>
