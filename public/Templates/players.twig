@@ -23,6 +23,11 @@
                     Hours played: {{ user.hoursPlayed }}<br>
                     K/D Ratio: {{ user.kdRatio }}
                  </p>
+                 {% if user.hoursPlayed == 0 %}
+                 <p> Private profile </p> <!--temp solution for showing "private profile"-->
+                 {% else %}
+                 <p> Hours played:{{ user.hoursPlayed }}</p>
+                 {% endif %}
                </div>
              {% endfor %}
          </div>
