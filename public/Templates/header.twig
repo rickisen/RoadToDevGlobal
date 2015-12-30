@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <h4 class="logo" style="display: inline-block"><a href="index.php">Team Aid</a></h4>
+      <h4 class="logo"><a href="index.php">Team Aid</a></h4>
       <ul style="display: inline-block;">
         <li style="display: inline-block; margin-left: 40px;"><a href="?/Players/viewuserprofiles">Players</a></li>
         <li style="display: inline-block; margin-left: 40px;"><a href="#">Teams</a></li>
@@ -20,11 +20,29 @@
 
       {% if currentUser %}
 
-        <a href="?/Profile/displayUser/{{currentUser.steamId}}"> <img class="navbar-right navbar-form" src="{{ currentUser.imageM }}"> </a>
-        <form action="/index.php?" method="post" class="navbar-form navbar-right">
-		<input type="submit" name="postHandler" value="logout">
-        </form>
-	<a href="?/EditProfile/currentUser" class="navbar-right navbar-form">Edit Profile</a>
+        <div class="navbar-right">
+         <nav class="menu-opener">
+           <img src="{{currentUser.imageS}}">
+         </nav>
+         <nav class="menu">
+           <ul class="menu-inner">
+             <a href="?/Profile/displayUser/{{currentUser.steamId}}" class="menu-link">
+               <li>Profile</li>
+             </a>
+             <a href="?/EditProfile/currentUser" class="menu-link">
+               <li>Edit profile</li>
+             </a>
+             <a href="#" class="menu-link">
+               <li>
+                 <form action="/index.php?" method="post" class="navbar-form navbar-right logout-btn">
+         		        <input type="submit" name="postHandler" value="Logout" class="logout-btn">
+                 </form>
+                </li>
+             </a>
+           </ul>
+         </nav>
+        </div>
+
 
       {% else %}
 
