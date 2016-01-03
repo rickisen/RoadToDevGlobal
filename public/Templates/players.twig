@@ -2,7 +2,7 @@
        <div class="row">
            <div class="col-lg-12">
                <h1 class="page-header">Players
-                   <small>Find players to play with</small>
+                 <small>Find players to play with</small>
                </h1>
            </div>
        </div>
@@ -11,14 +11,23 @@
        <!-- Players Card -->
          <div class="row">
            {% for user in users %}
-             <div class="col-md-3 portfolio-item" style="width: 225px;">
+             <div class="col-md-3 portfolio-item" style="width: 225px; margin-bottom: 25px; margin-right: 9px;">
                  <a href="?/Profile/displayuser/{{ user.steamId }}">
                      <img class="img-responsive" src="{{ user.imageL }}" alt="">
                  </a>
                  <h3 style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">
                      <a href="?/Profile/displayuser/{{ user.steamId }}"> {{ user.nickname }}</a>
                  </h3>
+                 <p>
+                    Rank: {{ user.rank }}<br>
+                    Hours played: {{ user.hoursPlayed }}<br>
+                    K/D Ratio: {{ user.kdRatio }}
+                 </p>
+                 {% if user.hoursPlayed == 0 %}
+                 <p> Private profile </p> <!--temp solution for showing "private profile"-->
+                 {% else %}
                  <p> Hours played:{{ user.hoursPlayed }}</p>
+                 {% endif %}
                </div>
              {% endfor %}
          </div>

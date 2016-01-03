@@ -1,4 +1,5 @@
-/*GENERAL STYLES*/
+/*GENERAL STYLES
+===================================================== */
 ul {
   list-style: none;
   margin: 0;
@@ -14,7 +15,20 @@ a, a:hover, a:active {
   color: #000;
 }
 
-/* RESET BOOTSTRAP STYLES */
+textarea {
+	resize: none;
+}
+
+.center {
+  text-align: center;
+}
+
+/* RESET BOOTSTRAP STYLES
+===================================================== */
+a:focus {
+  text-decoration: none !important;
+}
+
 .navbar-default, .navbar {
   background: none;
   border: 0;
@@ -35,8 +49,15 @@ box-shadow: 0 0 0 rgba(0,0,0,.0);
 }
 
 /* HEADER STYLES */
+
+.logo a:focus {
+  text-decoration: none !important;
+}
+
 .logo {
+  font-size: 26px;
   font-weight: 700;
+  display: inline-block;
 }
 
 ul li {
@@ -44,7 +65,8 @@ ul li {
 }
 
 
-/* LANDING PAGE STYLES */
+/* LANDING PAGE STYLES
+===================================================== */
 .landingpagetitle {
   text-align: center;
   margin-bottom: 75px;
@@ -79,10 +101,6 @@ select {
   -moz-appearance: none;
 }
 
-.more-info:hover {
-  text-decoration: underline;
-}
-
 .accordion {
   margin: 10px;
 }
@@ -100,7 +118,8 @@ select {
 }
 
 
-/* LOADING PAGE ANIMATION */
+/* LOADING PAGE ANIMATION
+===================================================== */
 .loading img {
 width: 140px;
 height: 100px;
@@ -114,26 +133,37 @@ animation:spin 2s linear infinite;
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
 
-/* PROFILE PAGE */
+/* PROFILE PAGE
+===================================================== */
+
 .profileheader {
   margin-top: 50px;
-  margin-bottom: 75px;
+  margin-bottom: 50px;
+}
+
+.bio-container {
+  margin-bottom: 50px;
+  border: 1px solid black;
+  min-height: 100px;
 }
 
 .stats-container {
-  height: 500px;
-  background: #eee;
+  min-height: 150px;
+  border: 1px solid black;
   margin-bottom: 30px;
+  padding: 20px;
 }
 
 
-/* FOOTER */
+/* FOOTER
+===================================================== */
 .footer {
   background: #eee;
   height: 150px;
 }
 
-/* TESTING DROPDOWNS */
+/* TESTING DROPDOWNS
+===================================================== */
 
 .dropdown dd,
 .dropdown dt {
@@ -197,4 +227,117 @@ animation:spin 2s linear infinite;
 .dropdown dd ul li a {
   padding: 5px;
   display: block;
+}
+
+/* NAV SLIDER TEST
+===================================================== */
+
+.logout-btn {
+  border: 0;
+  background: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.menu-opener, .menu-opener:hover, .menu-opener.active, .menu-opener-inner, .menu-opener-inner::before, .menu-opener-inner::after, .menu, .menu.active {
+  -webkit-transition: 250ms all;
+  transition: 250ms all;
+}
+
+.menu-opener {
+  cursor: pointer;
+  height: 32px;
+  position: absolute;
+  top: 20%;
+  right: 1%;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 32px;
+}
+
+.menu {
+  background: #4F6877;
+  color: transparent;
+  height: 32px;
+  position: absolute;
+  top: 20%;
+  right: 4.2%;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 0rem;
+  z-index: -1;
+}
+.menu.active {
+  width: -webkit-calc(30% - 2rem);
+  width: calc(30% - 2rem);
+  z-index: 0;
+}
+.menu.active .menu-link {
+  color: white;
+}
+
+.menu-inner {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  height: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-link {
+  color: transparent;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 1.5rem;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  height: 100%;
+  text-align: center;
+  text-decoration: none;
+}
+.menu-link li {
+  margin: auto;
+}
+
+.menu-link:hover {
+  background: #f1c40f ;
+}
+
+@media screen and (max-width: 768px) {
+  .menu {
+    height: auto;
+  }
+  .menu-inner {
+    display: block;
+  }
+  .menu-link {
+    padding: 5px 0;
+    font-size: 1.2em;
+  }
+  .menu.active {
+    width: -webkit-calc(100% - 0.5rem);
+    width: calc(100% - 0.5rem);
+  }
 }
