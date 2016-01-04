@@ -5,6 +5,8 @@ class Profile{
 	private function __clone(){}
 
 	static function displayUser($id){
-		return ['loadview' => 'playerprofile', 'user' => new User($id[0]) ];
+		$user = new User($id[0]);
+		$user->fetchSteamStats();
+		return ['loadview' => 'playerprofile', 'user' => $user ];
 	}
 }
