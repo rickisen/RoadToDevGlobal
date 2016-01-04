@@ -20,11 +20,11 @@
                  </h3>
                  <p>
                     Rank: <img src="http://s22.postimg.org/4eiardx8x/image.png" style="width: 55px; height: 20px;"><br>
-                    K/D Ratio: {{ user.kdRatio }}
-                    {% if user.hoursPlayed == 0 %}
-                    <br>Private profile <!--temp solution for showing "private profile"-->
+                    {% if user.isPrivateAcc %}
+                    Private profile
                     {% else %}
-                    Hours played: {{ user.hoursPlayed }}</p>
+                    K/D Ratio: {{ user.kdRatio }}<br>
+                    Hours played: {{ user.hoursPlayed }}<br>
                     {% endif %}
                  </p>
 
