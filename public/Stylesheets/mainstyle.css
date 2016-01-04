@@ -167,7 +167,17 @@ animation:spin 2s linear infinite;
   margin-bottom: 20px;
 }
 
+/* LOBBY
+===================================================== */
 
+.lobby-title{
+  margin: 70px;
+}
+
+.lobby-button{
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
 
 /* FOOTER
 ===================================================== */
