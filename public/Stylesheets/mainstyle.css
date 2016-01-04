@@ -156,6 +156,19 @@ animation:spin 2s linear infinite;
 }
 
 
+/* FAQ
+===================================================== */
+
+.faq-article h3 {
+  margin-bottom: 7px;
+}
+
+.faq-article {
+  margin-bottom: 20px;
+}
+
+
+
 /* FOOTER
 ===================================================== */
 .footer {
