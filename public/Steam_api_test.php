@@ -1,12 +1,10 @@
 <?php
-require 'includes/lightopenid/openid.php';
+require 'include/lightopenid/openid.php';
 
 session_start();
 
 $_STEAMAPI = "EC3378BE4E67D544BEA9E6D9B32B5B57";
 // If user is not logged in
-if(!isset($_SESSION['steamId'])) {
-
 try
 {
     $openid = new LightOpenID('http://192.168.13.37/Steam_api_test.php');
@@ -57,7 +55,6 @@ try
                     <br/>MediumAvatar: <img src='$player->avatarmedium'/>
                     <br/>LargeAvatar: <img src='$player->avatarfull'/>
                     <br/>Account created: $player->timecreated
-                    <br>
                     ";
                 }
 
@@ -89,12 +86,4 @@ catch(ErrorException $e)
 {
     echo $e->getMessage();
 }
-
-}
-
-// If user is logged in
-else {
-  echo "You are logged in!";
-}
-
 ?>
