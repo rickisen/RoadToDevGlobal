@@ -94,7 +94,7 @@ class User{
       // query to insert a empty user into the db
       $qInsertUser = '
         INSERT INTO user (steam_id, rank, nickname, hours_played, kills, deaths, image_l, image_m, image_s, is_private_acc)
-        VALUES (\''.$steamId.'\', "Unknown" , 0, 0, 0, 0, 0, 0, 0, 0) ';
+        VALUES (\''.$steamId.'\', "unknown" , 0, 0, 0, 0, 0, 0, 0, 0) ';
 
       // send the query and report any errors
       $database->query($qInsertUser);
