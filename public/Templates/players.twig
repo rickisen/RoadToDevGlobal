@@ -1,68 +1,74 @@
-<!-- Page Header -->
-       <div class="row">
-           <div style="height:200px;" class="col-lg-12">
-               <h1 class="page-header">Players
-                 <small>Find players to play with</small>
-               </h1>
-               <span class="filter-toggle">FILTER</span>
-           </div>
+<!-- Page header with filter -->
+<div style="margin:0px; padding:0px;" class="row"> <!--Add styles to class-->
+  <div class="col-lg-12 page-header">
+   <div class="row">
+       <div style="padding:0px;" class="col-lg-12"> <!--Add styles to class-->
+           <h1>Players
+             <small>Find players to play with</small>
+             <small style="font-size:12px; padding-left:695px;" class="filter-toggle">FILTER &nabla;</small> <!--Add styles to class-->
+           </h1>
        </div>
-       <!-- /.row -->
+   </div>
+   <div style="margin-top:30px;" class="row show-filter"><!--Add styles to class-->
+    
+     <div class="col-lg-4">
+      <form>
+        <span>Language:</span>
+        <ul style="margin-top:15px;"><!--Add styles to class-->
+         <li><input value="swedish" type="checkbox">SWEDISH</input></li>
+         <li><input value="english" type="checkbox">ENGLISH</input></li>
+         <li><input value="german" type="checkbox">GERMAN</input></li>
+         <li><input value="norweigan" type="checkbox">NORWEIGAN</input></li>
+       </ul>
+      </form>
+      </div>
+      <div class="col-lg-4">
+      <form>
+        <span>Rank:</span>
+        <ul style="margin-top:15px;"><!--Add styles to class-->
+         <li><input value="" type="checkbox">rank_picture1</input></li>
+         <li><input value="" type="checkbox">rank_picture2</input></li>
+         <li><input value="" type="checkbox">rank_picture3</input></li>
+         <li><input value="" type="checkbox">rank_picture4</input></li>
+       </ul>
+      </form>
+      </div>
+      <div class="col-lg-4">
+      <form>
+        <span>Age:</span>
+        <ul style="margin-top:15px;"><!--Add styles to class-->
+         <li><input value="" type="checkbox"> under 13</input></li>
+         <li><input value="" type="checkbox">13-20</input></li>
+         <li><input value="" type="checkbox">20-30</input></li>
+         <li><input value="" type="checkbox">30-40</input></li>
+       </ul>
+      </form>
+      </div>
+     </div><!-- ROW END -->
+  </div>
+</div>
+<!-- /.row -->
 
-       <div class="row show-filter">
-        
-         <div class="col-lg-4">
-          <form>
-            <ul>
-             <li><input value="swedish" type="checkbox">SWEDISH</input></li>
-             <li><input value="english" type="checkbox">ENGLISH</input></li>
-             <li><input value="german" type="checkbox">GERMAN</input></li>
-             <li><input value="norweigan" type="checkbox">NORWEIGAN</input></li>
-           </ul>
-          </form>
-          </div>
-          <div class="col-lg-4">
-          <form>
-            <ul>
-             <li><input value="svenska" type="checkbox">SWEDISH</input></li>
-             <li><input value="svenska" type="checkbox">ENGLISH</input></li>
-             <li><input value="svenska" type="checkbox">GERMAN</input></li>
-             <li><input value="svenska" type="checkbox">NORWEIGAN</input></li>
-           </ul>
-          </form>
-          </div>
-          <div class="col-lg-4">
-          <form>
-            <ul>
-             <li><input value="svenska" type="checkbox">SWEDISH</input></li>
-             <li><input value="svenska" type="checkbox">ENGLISH</input></li>
-             <li><input value="svenska" type="checkbox">GERMAN</input></li>
-             <li><input value="svenska" type="checkbox">NORWEIGAN</input></li>
-           </ul>
-          </form>
-          </div>
-         </div><!-- ROW END -->
-
-       <!-- Players Card -->
-         <div class="row">
-           {% for user in users %}
-             <div class="col-md-3 portfolio-item" style="width: 225px; margin-bottom: 25px; margin-right: 9px;">
-                 <a href="?/Profile/displayuser/{{ user.steamId }}">
-                     <img class="img-responsive" src="{{ user.imageL }}" alt="">
-                 </a>
-                 <h3 style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden; margin: 10px 0px;">
-                     <a href="?/Profile/displayuser/{{ user.steamId }}"> {{ user.nickname }}</a>
-                 </h3>
-                 <p>
-                    Rank: <img src="{{ user.rankImg }}" style="width: 55px; height: 20px;"><br>
-                    {% if user.isPrivateAcc == 1 %}
-                      Private profile
-                    {% else %}
-                      K/D Ratio: {{ user.kdRatio }}<br>
-                      Hours played: {{ user.hoursPlayed }}<br>
-                    {% endif %}
-                 </p>
-               </div>
-             {% endfor %}
-         </div>
-       <!-- /.row -->
+   <!-- Players Card -->
+     <div class="row">
+       {% for user in users %}
+         <div class="col-md-3 portfolio-item" style="width: 225px; margin-bottom: 25px; margin-right: 9px;">
+             <a href="?/Profile/displayuser/{{ user.steamId }}">
+                 <img class="img-responsive" src="{{ user.imageL }}" alt="">
+             </a>
+             <h3 style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden; margin: 10px 0px;">
+                 <a href="?/Profile/displayuser/{{ user.steamId }}"> {{ user.nickname }}</a>
+             </h3>
+             <p>
+                Rank: <img src="{{ user.rankImg }}" style="width: 55px; height: 20px;"><br>
+                {% if user.isPrivateAcc == 1 %}
+                  Private profile
+                {% else %}
+                  K/D Ratio: {{ user.kdRatio }}<br>
+                  Hours played: {{ user.hoursPlayed }}<br>
+                {% endif %}
+             </p>
+           </div>
+         {% endfor %}
+     </div>
+   <!-- /.row -->
