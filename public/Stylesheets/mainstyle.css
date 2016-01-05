@@ -25,6 +25,10 @@ textarea {
   text-align: center;
 }
 
+.redTxt{
+  color: red;
+}
+
 /* RESET BOOTSTRAP STYLES
 ===================================================== */
 
@@ -96,16 +100,6 @@ ul li {
   border: 3px solid #000;
 }
 
-select {
-  background: transparent;
-  padding: 5px 40px;
-  border-radius: 0;
-  border: 1px solid black;
-  text-align: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-
 .accordion {
   margin: 10px;
 }
@@ -137,6 +131,20 @@ animation:spin 2s linear infinite;
 @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+
+/* EDIT PROFILE PAGE
+=====================================================*/
+
+select {
+  margin: 0;
+  padding: 0;
+  border: 1px solid black;
+  text-align: center;
+  width: 100%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
 
 
 /* PROFILE PAGE
