@@ -22,6 +22,11 @@ class Players{
 			echo "Failed to get users from DB".$database->error;
 		}
 
+                /* // update the steam stats for all the players, only use for debug
+                foreach ($users as $user) 
+                $user->fetchSteamStats(); 
+                */
+
 		return ['loadview' => 'players', 'users' => $users ];
 	}
 

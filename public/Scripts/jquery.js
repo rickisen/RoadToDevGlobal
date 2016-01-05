@@ -106,8 +106,6 @@ $(document).ready(function(){
   return $("#" + id).find("dt a span.value").html();
   }
 
-
-
   // Lobby prompt
   $(function(){
   $(document).keypress(function(e) {
@@ -131,6 +129,5 @@ function cwrite(str,title) {
   ce.prepend(sg);
   //if(ce.children("p").length>6) ce.children("p").first().remove();
 }
-
 
 });
