@@ -1,12 +1,47 @@
 <!-- Page Header -->
        <div class="row">
-           <div class="col-lg-12">
+           <div style="height:200px;" class="col-lg-12">
                <h1 class="page-header">Players
                  <small>Find players to play with</small>
                </h1>
+               <span>FILTER</span>
            </div>
        </div>
        <!-- /.row -->
+
+       <div class="row">
+        
+         <div class="col-lg-4">
+          <form>
+            <ul>
+             <li><input value="swedish" type="checkbox">SWEDISH</input></li>
+             <li><input value="english" type="checkbox">ENGLISH</input></li>
+             <li><input value="german" type="checkbox">GERMAN</input></li>
+             <li><input value="norweigan" type="checkbox">NORWEIGAN</input></li>
+           </ul>
+          </form>
+          </div>
+          <div class="col-lg-4">
+          <form>
+            <ul>
+             <li><input value="svenska" type="checkbox">SWEDISH</input></li>
+             <li><input value="svenska" type="checkbox">ENGLISH</input></li>
+             <li><input value="svenska" type="checkbox">GERMAN</input></li>
+             <li><input value="svenska" type="checkbox">NORWEIGAN</input></li>
+           </ul>
+          </form>
+          </div>
+          <div class="col-lg-4">
+          <form>
+            <ul>
+             <li><input value="svenska" type="checkbox">SWEDISH</input></li>
+             <li><input value="svenska" type="checkbox">ENGLISH</input></li>
+             <li><input value="svenska" type="checkbox">GERMAN</input></li>
+             <li><input value="svenska" type="checkbox">NORWEIGAN</input></li>
+           </ul>
+          </form>
+          </div>
+         </div><!-- ROW END -->
 
        <!-- Players Card -->
          <div class="row">
@@ -27,7 +62,6 @@
                       Hours played: {{ user.hoursPlayed }}<br>
                     {% endif %}
                  </p>
-
                </div>
              {% endfor %}
          </div>
