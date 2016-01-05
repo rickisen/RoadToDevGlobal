@@ -55,6 +55,10 @@ a:focus {
 box-shadow: 0 0 0 rgba(0,0,0,.0);
 }
 
+h1, h2, h3, h4, h5 {
+  font-weight: 200;
+}
+
 /* HEADER STYLES
 =================================================== */
 
@@ -91,7 +95,7 @@ ul li {
   height: 60px;
   width: 250px;
   background: none;
-  border: 3px solid black;
+  border: 2px solid black;
 }
 
 .playnow-btn:hover {
@@ -143,10 +147,10 @@ select {
   border: 1px solid black;
   text-align: center;
   width: 100%;
+  padding-left: 5px;
   -webkit-appearance: none;
   -moz-appearance: none;
 }
-
 
 /* PROFILE PAGE
 ===================================================== */
@@ -173,8 +177,8 @@ select {
 /* FAQ
 ===================================================== */
 
-.faq-article h3 {
-  margin-bottom: 7px;
+.faq-container {
+  margin-top: 40px;
 }
 
 .faq-article {
@@ -507,7 +511,7 @@ h2#dlg-header {
 #console {position: absolute;bottom: 0;left: 0;width: 100%;height: 100px;box-sizing: border-box;background: #f0f0f0;color: #606060;font: 400 13px/16px Open Sans;letter-spacing: 0em;text-align: left;padding: 2px;overflow-y: scroll;0 } #console p {margin: 0; padding: 0;} #console p em {font-style: none;font-weight: 700;}
 
 
-/* Testing lobby tooltip 
+/* Testing lobby tooltip
 ================================================== */
 [data-tooltip] {
   position: relative;
