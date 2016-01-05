@@ -7,14 +7,40 @@ $(document).ready(function(){
   });
 
   // LANDING PAGE FILTER DROPDOWNS
+
+  // DP 1
   $(".dp1 dt a").on('click', function() {
   $(".dp1 dd ul").slideToggle('fast');
   });
+
 
   $(".dp1 dd ul li a").on('click', function() {
   $(".d1 dd ul").hide();
   });
 
+  $(document).bind('click', function(e) {
+  var $clicked = $(e.target);
+  if (!$clicked.parents().hasClass("dp1")) $(".dp1 dd ul").hide();
+  });
+
+  $('.mutliSelect1 input[type="checkbox"]').on('click', function() {
+
+  var title = $(this).closest('.mutliSelect1').find('input[type="checkbox"]').val(),
+    title = $(this).val() + ",";
+
+  if ($(this).is(':checked')) {
+    var html = '<span title="' + title + '">' + title + '</span>';
+    $('.multiSel1').append(html);
+    $(".hida1").hide();
+  } else {
+    $('span[title="' + title + '"]').remove();
+    var ret = $(".hida1");
+    $('.dp1 dt a').append(ret);
+
+  }
+  });
+
+  // DP 2
   $(".dp2 dt a").on('click', function() {
   $(".dp2 dd ul").slideToggle('fast');
   });
@@ -23,6 +49,29 @@ $(document).ready(function(){
   $(".d2 dd ul").hide();
   });
 
+  $(document).bind('click', function(e) {
+  var $clicked = $(e.target);
+  if (!$clicked.parents().hasClass("dp2")) $(".dp2 dd ul").hide();
+  });
+
+  $('.mutliSelect2 input[type="checkbox"]').on('click', function() {
+
+  var title = $(this).closest('.mutliSelect2').find('input[type="checkbox"]').val(),
+    title = $(this).val() + ",";
+
+  if ($(this).is(':checked')) {
+    var html = '<span title="' + title + '">' + title + '</span>';
+    $('.multiSel2').append(html);
+    $(".hida2").hide();
+  } else {
+    $('span[title="' + title + '"]').remove();
+    var ret = $(".hida2");
+    $('.dp2 dt a').append(ret);
+
+  }
+  });
+
+  // DP 3
   $(".dp3 dt a").on('click', function() {
   $(".dp3 dd ul").slideToggle('fast');
   });
@@ -31,31 +80,33 @@ $(document).ready(function(){
   $(".d3 dd ul").hide();
   });
 
-  function getSelectedValue(id) {
-  return $("#" + id).find("dt a span.value").html();
-  }
-
   $(document).bind('click', function(e) {
   var $clicked = $(e.target);
-  if (!$clicked.parents().hasClass("dropdown")) $(".dropdown dd ul").hide();
+  if (!$clicked.parents().hasClass("dp3")) $(".dp3 dd ul").hide();
   });
 
-  $('.mutliSelect input[type="checkbox"]').on('click', function() {
+  $('.mutliSelect3 input[type="checkbox"]').on('click', function() {
 
-  var title = $(this).closest('.mutliSelect').find('input[type="checkbox"]').val(),
+  var title = $(this).closest('.mutliSelect3').find('input[type="checkbox"]').val(),
     title = $(this).val() + ",";
 
   if ($(this).is(':checked')) {
     var html = '<span title="' + title + '">' + title + '</span>';
-    $('.multiSel').append(html);
-    $(".hida").hide();
+    $('.multiSel3').append(html);
+    $(".hida3").hide();
   } else {
     $('span[title="' + title + '"]').remove();
-    var ret = $(".hida");
-    $('.dp1 dt a').append(ret);
+    var ret = $(".hida3");
+    $('.dp3 dt a').append(ret);
 
   }
   });
+
+  function getSelectedValue(id) {
+  return $("#" + id).find("dt a span.value").html();
+  }
+
+
 
   // Lobby prompt
   $(function(){

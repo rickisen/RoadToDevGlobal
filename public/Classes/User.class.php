@@ -115,7 +115,10 @@ class User{
     $this->imageS      = $database->real_escape_string(stripslashes($image_s)) ;
     $this->hoursPlayed = $database->real_escape_string(stripslashes($hoursPlayed)) ;
     $this->isPrivateAcc = $database->real_escape_string(stripslashes($isPrivateAcc)) ; #do we need strip/res?
- 
+    
+    if($isPrivateAcc) $isPrivateAcc = 1;
+    else $isPrivateAcc = 0;
+
     // then update fresh info into DB
     $qUpdateDB = '
     UPDATE user
@@ -170,7 +173,7 @@ class User{
       $hoursPlayed = "";
     }
 
-    $this->updateSteamStats($nickname, $kills, $deaths, $hoursPlayed, $image_l, $image_m, $image_s, $isPrivateAcc);
+    $this->updateSteamStats($nickname, $kills, $deaths, $hoursPlayed, $image_l, $image_m, $image_s, $this->isPrivateAcc);
   }
 
   function updateUserSuppliedInfo(){
