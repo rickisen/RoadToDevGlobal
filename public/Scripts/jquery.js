@@ -1,6 +1,14 @@
 /* DROPDOWNS */
 $(document).ready(function(){
 
+  // FILTER BUTTON ON PLAYERS.TWIG
+  $(".show-filter").hide();
+
+  $(".filter-toggle").click(function(){
+      $(".show-filter").slideToggle();
+  });
+  
+
   // OPEN USER NAV MENU
   $(".menu-opener").click(function(){
   $(".menu-opener, .menu-opener-inner, .menu").toggleClass("active");
