@@ -462,7 +462,6 @@ h2#dlg-header {
 }
 #dlg-content {
   font-weight: 300;
-  font-style: italic;
   letter-spacing: 0.015em;
 }
 #dlg-prompt .button {
