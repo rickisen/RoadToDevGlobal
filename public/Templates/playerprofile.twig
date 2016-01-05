@@ -6,7 +6,11 @@
   <div class="col-md-8">
     <div class="row">
       <div class="col-md-10">
-          <h3>{{ user.nickname }}</h3>
+          {% if user.isPrivateAcc %}
+          <h3 style="display: inline-block;">{{ user.nickname }} [<span class="redTxt">private profile</span>]</h3>
+          {% else %}
+          <h3 style="display: inline-block;">{{ user.nickname }}</h3>
+          {% endif %}
           <hr>
       </div>
     </div>
@@ -14,8 +18,8 @@
     <div class="row">
       <div class="col-xs-6 col-md-6">
         <ul>
-          <li>rank: {{ user.rank }} </li>
-          <li>age: {{ user.age }} </li>
+          <li>Rank: <img src="http://s22.postimg.org/4eiardx8x/image.png" style="width: 55px; height: 20px;"> </li>
+          <li>Age: {{ user.age }} </li>
           <li>Looking for team</li>
         </ul>
       </div>
@@ -34,7 +38,7 @@
 
     <div class="row center">
       <h2>Bio</h2>
-      <div class="col-md-offset-2 col-md-8 center bio-container" style="padding: 20px;">
+      <div class="col-md-12 center bio-container" style="padding: 20px;">
        <p class="userBio"> {{ user.bio }}</p>
       </div>
     </div>

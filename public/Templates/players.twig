@@ -15,19 +15,19 @@
                  <a href="?/Profile/displayuser/{{ user.steamId }}">
                      <img class="img-responsive" src="{{ user.imageL }}" alt="">
                  </a>
-                 <h3 style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">
+                 <h3 style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden; margin: 10px 0px;">
                      <a href="?/Profile/displayuser/{{ user.steamId }}"> {{ user.nickname }}</a>
                  </h3>
                  <p>
-                    Rank: {{ user.rank }}<br>
+                    Rank: <img src="http://s22.postimg.org/4eiardx8x/image.png" style="width: 55px; height: 20px;"><br>
+                    {% if user.isPrivateAcc == TRUE %}
+                    Private profile
+                    {% else %}
+                    K/D Ratio: {{ user.kdRatio }}<br>
                     Hours played: {{ user.hoursPlayed }}<br>
-                    K/D Ratio: {{ user.kdRatio }}
+                    {% endif %}
                  </p>
-                 {% if user.hoursPlayed == 0 %}
-                 <p> Private profile </p> <!--temp solution for showing "private profile"-->
-                 {% else %}
-                 <p> Hours played:{{ user.hoursPlayed }}</p>
-                 {% endif %}
+
                </div>
              {% endfor %}
          </div>
