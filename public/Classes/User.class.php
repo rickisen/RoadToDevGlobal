@@ -70,6 +70,7 @@ class User{
       $this->imageL        = $row['image_l'];
       $this->imageM        = $row['image_m'];
       $this->imageS        = $row['image_s'];
+      $this->isPrivateAcc  = $row['is_private_acc'];
 
       // calculate kd_ratio, fails if divided by 0, sooo
       if ($this->kills > 0 && $this->deaths > 0)
@@ -85,8 +86,8 @@ class User{
 
       // query to insert a empty user into the db
       $qInsertUser = '
-        INSERT INTO user (steam_id, rank, nickname, hours_played, kills, deaths, image_l, image_m, image_s)
-        VALUES (\''.$steamId.'\', "Unknown" , 0, 0, 0, 0, 0, 0, 0) ';
+        INSERT INTO user (steam_id, rank, nickname, hours_played, kills, deaths, image_l, image_m, image_s, is_private_acc)
+        VALUES (\''.$steamId.'\', "Unknown" , 0, 0, 0, 0, 0, 0, 0, 0) ';
 
       // send the query and report any errors
       $database->query($qInsertUser);
@@ -102,7 +103,7 @@ class User{
     }
   }
 
-  function updateSteamStats($nickname, $kills, $deaths, $hoursPlayed, $image_l, $image_m, $image_s){
+  function updateSteamStats($nickname, $kills, $deaths, $hoursPlayed, $image_l, $image_m, $image_s, $isPrivateAcc){
     $database = DB::getInstance();
 
     // get the changes localy and clean them
@@ -113,7 +114,8 @@ class User{
     $this->imageM      = $database->real_escape_string(stripslashes($image_m)) ;
     $this->imageS      = $database->real_escape_string(stripslashes($image_s)) ;
     $this->hoursPlayed = $database->real_escape_string(stripslashes($hoursPlayed)) ;
-
+    $this->isPrivateAcc = $database->real_escape_string(stripslashes($isPrivateAcc)) ; #do we need strip/res?
+ 
     // then update fresh info into DB
     $qUpdateDB = '
     UPDATE user
@@ -123,7 +125,8 @@ class User{
         image_l      = "'.$this->imageL.'",
         image_m      = "'.$this->imageM.'",
         image_s      = "'.$this->imageS.'",
-        hours_played = "'.$this->hoursPlayed.'"
+        hours_played = "'.$this->hoursPlayed.'",
+        is_private_acc = "'.$this->isPrivateAcc.'"
     WHERE steam_id = "'.$this->steamId.'";
                     ';
 
@@ -167,7 +170,7 @@ class User{
       $hoursPlayed = "";
     }
 
-    $this->updateSteamStats($nickname, $kills, $deaths, $hoursPlayed, $image_l, $image_m, $image_s);
+    $this->updateSteamStats($nickname, $kills, $deaths, $hoursPlayed, $image_l, $image_m, $image_s, $isPrivateAcc);
   }
 
   function updateUserSuppliedInfo(){

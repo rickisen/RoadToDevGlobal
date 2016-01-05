@@ -20,7 +20,7 @@
                  </h3>
                  <p>
                     Rank: <img src="http://s22.postimg.org/4eiardx8x/image.png" style="width: 55px; height: 20px;"><br>
-                    {% if user.isPrivateAcc %}
+                    {% if user.isPrivateAcc == TRUE %}
                     Private profile
                     {% else %}
                     K/D Ratio: {{ user.kdRatio }}<br>
