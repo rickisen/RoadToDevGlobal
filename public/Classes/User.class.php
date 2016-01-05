@@ -15,6 +15,9 @@ class User{
     $kdRatio,
     $registerDate,
 
+    // rank image
+    $rankImg,
+
     // from steamAPI
     $nickname,
     $isPrivateAcc,
@@ -46,7 +49,10 @@ class User{
     $database = DB::getInstance();
 
     $qGetUserFromId = '
-      SELECT * FROM user WHERE steam_id = '.$steamId.' LIMIT 1
+      SELECT user.* , rank_img.img
+      FROM user LEFT JOIN rank_img 
+        ON user.rank = rank_img.rank
+      WHERE steam_id = '.$steamId.' LIMIT 1
     ';
 
     // svae the steam Id first since som memberfunctions
@@ -71,6 +77,7 @@ class User{
       $this->imageM        = $row['image_m'];
       $this->imageS        = $row['image_s'];
       $this->isPrivateAcc  = $row['is_private_acc'];
+      $this->rankImg       = $row['img'];
 
       // calculate kd_ratio, fails if divided by 0, sooo
       if ($this->kills > 0 && $this->deaths > 0)
