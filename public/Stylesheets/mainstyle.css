@@ -195,6 +195,7 @@ select {
   padding: 0px 5px;
   -webkit-appearance: none;
   -moz-appearance: none;
+  cursor: crosshair !important; /*CROSSHAIR EFFECT*/
 }
 
 /* FAQ
