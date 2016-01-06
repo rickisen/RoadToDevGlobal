@@ -11,6 +11,10 @@ h1, h2, h3 {
   margin: 0;
 }
 
+p {
+  font-weight: 200;
+}
+
 a, a:hover, a:active, a:focus {
   text-decoration: none;
   color: #000;

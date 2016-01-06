@@ -5,6 +5,6 @@ class LobbyLoader{
 	private function __clone(){}
 
 	static function searchLobby(){
-		return ['loadview' => 'searchingformatch' ];
+		return ['loadview' => 'loadingpage' ];
 	}
 }
