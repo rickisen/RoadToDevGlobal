@@ -36,6 +36,11 @@ class Players{
     	$attributes = "";
 
     	$clauses = array();
+    	if(empty($_POST['language']) && empty($_POST['rank']) && empty($_POST['hours'])){
+
+    		return self::viewUserProfiles();
+    	}
+
 
     	if( isset($_POST['language'])&& !empty($_POST['language']) ){
     		$languageClause  = ' language = ';
@@ -58,13 +63,13 @@ class Players{
 
     	$finalClause = ' WHERE ';
 
-    	foreach ($clauses as $clause) {
+    	for ($i = 0; $i != count($clauses); $i++) {
     		// If we are not on the first clause, prefix an "AND" .
-    		if(!$clauses[0] == $clause){
+    		if($i != 0){
     			$finalClause .= ' AND ';
     		}
 
-    		$finalClause .= $clause;
+    		$finalClause .= $clauses[$i];
     	}
 
     	$users = array();
