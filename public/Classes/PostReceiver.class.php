@@ -28,8 +28,8 @@ class postReceiver{
 	}
 
     static function logout(){
-            unset($_SESSION['currentUser']);
-            unset($_SESSION['steamId']);
+        unset($_SESSION['currentUser']);
+        unset($_SESSION['steamId']);
     }
 
 }
