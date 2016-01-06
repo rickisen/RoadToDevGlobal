@@ -8,7 +8,8 @@ class User{
     // user specified
     $rank,
     $age,
-    $bio;
+    $bio,
+    $country;
 
   private
     //calculated
@@ -50,7 +51,7 @@ class User{
 
     $qGetUserFromId = '
       SELECT user.* , rank_img.img
-      FROM user LEFT JOIN rank_img 
+      FROM user LEFT JOIN rank_img
         ON user.rank = rank_img.rank
       WHERE steam_id = '.$steamId.' LIMIT 1
     ';
@@ -66,7 +67,8 @@ class User{
     if( $result->num_rows > 0 ){
       $row = $result->fetch_assoc();
       $this->rank          = $row['rank'];
-      $this->age           = $row['age'];
+      $this->age           = date("Y") - $row['age'];
+      $this->country       = $row['country'];
       $this->bio           = $row['bio'];
       $this->kills         = $row['kills'];
       $this->deaths        = $row['deaths'];
@@ -122,7 +124,7 @@ class User{
     $this->imageS      = $database->real_escape_string(stripslashes($image_s)) ;
     $this->hoursPlayed = $database->real_escape_string(stripslashes($hoursPlayed)) ;
     $this->isPrivateAcc = $database->real_escape_string(stripslashes($isPrivateAcc)) ; #do we need strip/res?
-    
+
     if($isPrivateAcc) $isPrivateAcc = 1;
     else $isPrivateAcc = 0;
 
@@ -190,6 +192,7 @@ class User{
       UPDATE user
       SET bio        = "'.$this->bio.'",
           age        = "'.$this->age.'",
+          country    = "'.$this->country.'",
           rank       = "'.$this->rank.'"
       WHERE steam_id = "'.$this->steamId.'";
     ';

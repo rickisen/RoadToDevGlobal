@@ -5,6 +5,6 @@ class Teams{
 	private function __clone(){}
 
 	static function viewTeams(){
-		return ['loadview' => 'Teams' ];
+		return ['loadview' => 'teams' ];
 	}
 }

@@ -433,7 +433,7 @@ a {
   display: block;
   box-sizing: border-box;
   margin: 0 auto;
-  top: 50%;
+  top: 25%;
   transform: translateY(-50%);
   width: 640px;
   padding: 2rem;
@@ -499,6 +499,9 @@ h2#dlg-header {
   transition: .1s all;
   cursor: pointer;
 }
+
+.button {display: none;}
+
 .button:hover, a.button:hover {
   color: #a0a0a0;
   background: #f8f8f8;

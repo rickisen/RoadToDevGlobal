@@ -15,6 +15,10 @@ class postReceiver{
 			$_SESSION['currentUser']->age = $database->real_escape_string(stripslashes($_POST['age']));
 		}
 
+		if( isset($_POST['country'])&& !empty($_POST['country']) ){
+			$_SESSION['currentUser']->country = $database->real_escape_string(stripslashes($_POST['country']));
+		}
+
 		if( isset($_POST['bio'])&& !empty($_POST['bio']) ){
 			$_SESSION['currentUser']->bio = $database->real_escape_string(stripslashes($_POST['bio']));
 		}
