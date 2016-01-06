@@ -23,8 +23,9 @@ class postReceiver{
 		header('Location: ' . '?/Profile/displayUser/'.$_SESSION['currentUser']->steamId);
 	}
 
-        static function logout(){
-                unset($_SESSION['currentUser']);
-                unset($_SESSION['steamId']);
-        }
+    static function logout(){
+            unset($_SESSION['currentUser']);
+            unset($_SESSION['steamId']);
+    }
+
 }

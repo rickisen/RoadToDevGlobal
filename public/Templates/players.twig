@@ -10,38 +10,48 @@
        </div>
    </div>
    <div class="row show-filter" style="margin-bottom: 35px; margin-top:35px;">
-         <form>
+         <form method="post" action="?/Players/filterUsers">
 
          <div class="col-lg-2">
-            <select>
-              <option value="" type="checkbox">From</option>
-              <option value="swedish" type="checkbox">SWEDISH</option>
-              <option value="english" type="checkbox">ENGLISH</option>
+            <select name="language">
+              <option value="" name="" type="checkbox">Language:</option>
+              <option value="swedish"  type="checkbox">SWEDISH</option>
+              <option value="english"  type="checkbox">ENGLISH</option>
               <option value="german" type="checkbox">GERMAN</option>
               <option value="norweigan" type="checkbox">NORWEIGAN</option>
            </select>
           </div>
 
           <div class="col-lg-2">
-            <select>
+            <select name="rank">
               <option value="" type="checkbox">Rank</option>
-              <option value="swedish" type="checkbox">SWEDISH</option>
-              <option value="english" type="checkbox">ENGLISH</option>
-              <option value="german" type="checkbox">GERMAN</option>
-              <option value="norweigan" type="checkbox">NORWEIGAN</option>
+              <option value="silver_1" type="checkbox">silver</option>
+              <option value="silver_2" type="checkbox">gold</option>
+              <option value="silver_3"  type="checkbox">global</option>
+              <option value="silver_4" type="checkbox">supreme</option>
+              <option value="silver_4" type="checkbox">supreme</option>
+              <option value="silver_4" type="checkbox">supreme</option>
+              <option value="silver_4" type="checkbox">supreme</option>
+              <option value="silver_4" type="checkbox">supreme</option>
+              <option value="silver_4" type="checkbox">supreme</option>
+              <option value="silver_4" type="checkbox">supreme</option>
+              <option value="silver_4" type="checkbox">supreme</option>
+              <option value="silver_4" type="checkbox">supreme</option>
+              <option value="silver_4" type="checkbox">supreme</option>
+              <option value="silver_4" type="checkbox">supreme</option>
            </select>
           </div>
 
           <div class="col-lg-2">
-            <select>
+            <select name="hours">
               <option value="" type="checkbox">Hours played</option>
-              <option value="" type="checkbox">100+</option>
-              <option value="" type="checkbox">300+</option>
-              <option value="" type="checkbox">500+</option>
-              <option value="" type="checkbox">1000+</option>
+              <option value="100"  type="checkbox">100+</option>
+              <option value="300"  type="checkbox">300+</option>
+              <option value="500"  type="checkbox">500+</option>
+              <option value="1000" type="checkbox">1000+</option>
            </select>
           </div>
-
+          <input type="submit">
           </form>
          </div><!-- ROW END -->
   </div>

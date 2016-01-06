@@ -30,4 +30,60 @@ class Players{
 		return ['loadview' => 'players', 'users' => $users ];
 	}
 
+	static function filterUsers($attributes){
+
+		$database = DB::getInstance();
+    	$attributes = "";
+
+    	$clauses = array();
+
+    	if( isset($_POST['language'])&& !empty($_POST['language']) ){
+    		$languageClause  = ' language = ';
+			$languageClause .= $database->real_escape_string(stripcslashes($_POST['language']));
+			$clauses[] = $languageClause;
+    	}
+
+    	if( isset($_POST['rank'])&& !empty($_POST['rank']) ){
+			$rankClause  = ' rank = "';
+			$rankClause .= $database->real_escape_string(stripcslashes($_POST['rank']));
+			$rankClause .= '"';
+			$clauses[] = $rankClause;
+    	}
+
+    	if( isset($_POST['hours'])&& !empty($_POST['hours']) ){
+			$hoursClause  = ' hours_played > ';
+			$hoursClause .= $database->real_escape_string(stripcslashes($_POST['hours']));
+			$clauses[] = $hoursClause;
+    	}
+
+    	$finalClause = ' WHERE ';
+
+    	foreach ($clauses as $clause) {
+    		// If we are not on the first clause, prefix an "AND" .
+    		if(!$clauses[0] == $clause){
+    			$finalClause .= ' AND ';
+    		}
+
+    		$finalClause .= $clause;
+    	}
+
+    	$users = array();
+
+		$qGetFilteredUsers = '
+			SELECT steam_id FROM user
+			'. $finalClause .'
+			LIMIT 24;
+		';
+
+		if( $result = $database->query($qGetFilteredUsers)){
+			while ($row = $result->fetch_assoc()) {
+				$users[] = new User($row['steam_id']);
+			}
+		} else {
+			echo "Failed to get users from DB".$database->error;
+		}
+
+		return ['loadview' => 'players', 'users' => $users ];
+	}
+
 }
