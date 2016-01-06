@@ -186,6 +186,17 @@ select {
   display: none;
 }
 
+.sub-btn{
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  border: 1px solid black;
+  text-align: center;
+  padding: 0px 5px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
 /* FAQ
 ===================================================== */
 
