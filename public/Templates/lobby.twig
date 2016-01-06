@@ -53,24 +53,28 @@
 <div id='dialog'>
 	<label id="dlg-back" for="dialog_state"></label>
 	<div id='dlg-wrap'>
-		<label id="dlg-close" for="dialog_state"><i class="icon ion-ios-close-empty"></i></label>
+		<label id="dlg-close" for="dialog_state"></label>
 		<h2 id='dlg-header'>You are the lobby leader!</h2>
 		<div id='dlg-content'>It is now your responsibility to make sure a game is initiated through the Steam group provided.</div>
 		<div id='dlg-prompt'>
-			<div class='button'><i class="icon ion-ios-checkmark-empty"></i> Allright, let's do it!</div>
+			<div class='button'>Allright, let's do it!</div>
 		</div>
 	</div>
 </div>
 
 <main id='main' class='main_area'>
 	<div class='center'>
-		<label class="button" for="dialog_state"><i class="icon ion-ios-upload-outline
-			"></i>Lobby leader</label>
+		<label class="button" id="trigger" for="dialog_state">Lobby leader</label>
 	</div>
 <div id='console'></div>
 </main>
 
 <div class="row">
 	<div class="col-md-12 lobby-button center">
-		<!-- BREDARE KNAPP? +++++ LÄNK TILL STEAMGRUPPEN -->
-		<a href="steam://friends/joinchat/103582791439841834"><button type="button" class="playnow-btn"><h1>Join group!</h1></button></a>
+		<a href="steam://friends/joinchat/103582791439841834"><button type="button" class="playnow-btn"><h1>Play!</h1></button></a>
+	</div>
+</div>
+
+<script>
+document.getElementById('trigger').click();
+</script>
