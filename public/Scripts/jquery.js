@@ -2,8 +2,6 @@
 $(document).ready(function(){
 
   // FILTER BUTTON ON PLAYERS.TWIG
-  $(".show-filter").hide();
-
   $(".filter-toggle").click(function(){
       $(".show-filter").slideToggle();
   });
@@ -34,7 +32,7 @@ $(document).ready(function(){
   $('.mutliSelect1 input[type="checkbox"]').on('click', function() {
 
   var title = $(this).closest('.mutliSelect1').find('input[type="checkbox"]').val(),
-    title = $(this).val() + ",";
+    title = $(this).val() + " ";
 
   if ($(this).is(':checked')) {
     var html = '<span title="' + title + '">' + title + '</span>';
@@ -65,7 +63,7 @@ $(document).ready(function(){
   $('.mutliSelect2 input[type="checkbox"]').on('click', function() {
 
   var title = $(this).closest('.mutliSelect2').find('input[type="checkbox"]').val(),
-    title = $(this).val() + ",";
+    title = $(this).val() + " ";
 
   if ($(this).is(':checked')) {
     var html = '<span title="' + title + '">' + title + '</span>';
@@ -96,7 +94,7 @@ $(document).ready(function(){
   $('.mutliSelect3 input[type="checkbox"]').on('click', function() {
 
   var title = $(this).closest('.mutliSelect3').find('input[type="checkbox"]').val(),
-    title = $(this).val() + ",";
+    title = $(this).val() + " ";
 
   if ($(this).is(':checked')) {
     var html = '<span title="' + title + '">' + title + '</span>';
