@@ -37,35 +37,18 @@
 </div>
 
     <div class="row center">
-      <h2>Bio</h2>
-      <div class="col-md-12 center bio-container" style="padding: 20px;">
+      <div class="col-md-offset-1 col-md-5 center bio-container">
+        <h3 class="info-box-header">Bio</h3>
         {{ user.bio }}
       </div>
-    </div>
 
-    <div class="row">
-      <div class="col-md-4 col-md-offset-4">
-        <h2 style="text-align: center;">In-game stats</h2>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-12 stats-container">
-        <div class="col-md-6 center">
+      <div class="col-md-5 center stats-container">
+        <h3 class="info-box-header">In-game stats</h3>
           <ul>
             <li>Kills: {{ user.kills }} </li>
             <li>Deaths: {{ user.deaths }}</li>
             <li>Hours played: {{ user.hoursPlayed }}</li>
             <li>K/D Ratio: {{ user.kdRatio }} </li>
           </ul>
-        </div>
-        <div class="col-md-6 center">
-          <ul>
-            <li>Kills: {{ user.kills }} </li>
-            <li>Deaths: {{ user.deaths }}</li>
-            <li>Hours played: {{ user.hoursPlayed }}</li>
-            <li>K/D Ratio: {{ user.kdRatio }} </li>
-          </ul>
-        </div>
       </div>
     </div>
