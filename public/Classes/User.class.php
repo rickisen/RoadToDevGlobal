@@ -83,7 +83,7 @@ class User{
 
       // calculate kd_ratio, fails if divided by 0, sooo
       if ($this->kills > 0 && $this->deaths > 0)
-        $this->kdRatio = round($this->kills / $this->deaths, 2);
+        $this->kdRatio = round($this->kills / $this->deaths, 2) ;
       else
         $this->kdRatio = 0;
 
