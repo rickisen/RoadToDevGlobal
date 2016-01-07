@@ -3,6 +3,7 @@ class User{
   private static $steamApiKey = "EC3378BE4E67D544BEA9E6D9B32B5B57";
   private $steamId;
   private $existed;
+  private $inLobby;
 
   public
     // user specified
@@ -39,6 +40,10 @@ class User{
 
   function __get($val){
     return $this->$val;
+  }
+
+  function setLobby($lobbyID){
+    $this->inLobby = $lobbyID ;
   }
 
   // function __set($prop, $val){
