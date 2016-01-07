@@ -9,7 +9,9 @@ class User{
     $rank,
     $age,
     $bio,
-    $country;
+    $country,
+    $priLang,
+    $secLang;
 
   private
     // calculated
@@ -80,6 +82,8 @@ class User{
       $this->imageS        = $row['image_s'];
       $this->isPrivateAcc  = $row['is_private_acc'];
       $this->rankImg       = $row['img'];
+      $this->priLang       = $row['primary_language'];
+      $this->secLang       = $row['secondary_language'];
 
       // calculate kd_ratio, fails if divided by 0, sooo
       if ($this->kills > 0 && $this->deaths > 0)
@@ -190,10 +194,12 @@ class User{
 
     $qUpdateUserSuppliedInfo = '
       UPDATE user
-      SET bio        = "'.$this->bio.'",
-          age        = "'.$this->age.'",
-          country    = "'.$this->country.'",
-          rank       = "'.$this->rank.'"
+      SET bio                = "'.$this->bio.'",
+          age                = "'.$this->age.'",
+          country            = "'.$this->country.'",
+          rank               = "'.$this->rank.'",
+          primary_language   = "'.$this->priLang.'",
+          secondary_language = "'.$this->secLang.'"
       WHERE steam_id = "'.$this->steamId.'";
     ';
 
