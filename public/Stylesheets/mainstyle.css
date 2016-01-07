@@ -165,18 +165,11 @@ select {
   margin-bottom: 50px;
 }
 
-.bio-container {
-  margin-bottom: 50px;
-  padding: 20px 40px;
-}
-
 .stats-container {
-  border-left: 1px solid #999;
-  padding: 20px 40px;
-  margin-bottom: 30px;
+  margin-top: 30px;
 }
 
-.info-box-header {
+.stats-box-header {
   margin-bottom: 15px;
 }
 

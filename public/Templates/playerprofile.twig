@@ -1,6 +1,8 @@
 <div class="row profileheader">
   <div class="col-md-4 center">
     <img src="{{ user.imageL }}">
+    <h5>Bio</h5>
+    <p style="max-width: 200px; font-size: 12px; display: inline-block;">{{ user.bio }}</p>
   </div>
 
   <div class="col-md-8">
@@ -15,40 +17,60 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-xs-6 col-md-6">
-        <ul>
-          <li>Rank: <img src="{{ user.rankImg }}" style="width: 55px; height: 20px;"> </li>
-          <li>Age: {{ user.age }}</li>
-          <li>From: {{ user.country }} </li>
-        </ul>
-      </div>
 
-      <div class="col-xs-6 col-md-6">
-        <ul>
-          <li>Rating: </li>
-          <li>TA Games: </li>
-	        <li>Team: </li>
-        </ul>
+<div class="row">
+  <div class="col-md-10">
+    <div class="row">
+
+        <div class="col-xs-6 col-md-6">
+          <ul>
+            <li>Rank: <img src="{{ user.rankImg }}" style="width: 55px; height: 20px;"> </li>
+            <li>Age: {{ user.age }}</li>
+            <li>From: {{ user.country }} </li>
+          </ul>
+        </div>
+
+        <div class="col-xs-6 col-md-6">
+          <ul>
+            <li>Rating: </li>
+            <li>TA Games: </li>
+  	        <li>Team: </li>
+          </ul>
+        </div>
+
       </div>
     </div>
-
   </div>
 </div>
 
-    <div class="row center">
-      <div class="col-md-offset-1 col-md-5 center bio-container">
-        <h3 class="info-box-header">Bio</h3>
-        {{ user.bio }}
-      </div>
 
-      <div class="col-md-5 center stats-container">
+
+  <div class="col-md-8 stats-container">
+    <div class="row">
+      <div class="col-md-10">
         <h3 class="info-box-header">In-game stats</h3>
-          <ul>
-            <li>Kills: {{ user.kills }} </li>
-            <li>Deaths: {{ user.deaths }}</li>
-            <li>Hours played: {{ user.hoursPlayed }}</li>
-            <li>K/D Ratio: {{ user.kdRatio }} </li>
-          </ul>
+        <hr>
+        <div class="row">
+          <div class="col-xs-6 col-md-6">
+            <ul>
+              <li>Kills: {{ user.kills }} </li>
+              <li>Deaths: {{ user.deaths }}</li>
+              <li>Hours played: {{ user.hoursPlayed }}</li>
+              <li>K/D Ratio: {{ user.kdRatio }}</li>
+            </ul>
+          </div>
+
+          <div class="col-xs-6 col-md-6">
+            <ul>
+              <li>Kills: {{ user.kills }} </li>
+              <li>Deaths: {{ user.deaths }}</li>
+              <li>Hours played: {{ user.hoursPlayed }}</li>
+              <li>K/D Ratio: {{ user.kdRatio }} </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
+
+</div>
