@@ -1,11 +1,6 @@
 /* DROPDOWNS */
 $(document).ready(function(){
 
-  refreshSearch();
-  function refreshSearch(){
-    $('#loading-container').load('asdf', function(){
-      setTimeout(refreshSearch, 5000);
-  })};
 
   // FILTER BUTTON ON PLAYERS.TWIG
   $(".filter-toggle").click(function(){
