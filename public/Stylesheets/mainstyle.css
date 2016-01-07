@@ -21,6 +21,10 @@ a, a:hover, a:active, a:focus {
   outline: none;
 }
 
+.gray-hover a:hover {
+  color: #999;
+}
+
 textarea {
 	resize: none;
 }
@@ -65,10 +69,6 @@ h1, h2, h3, h4, h5 {
 
 /* HEADER STYLES
 =================================================== */
-
-.logo a:focus {
-  text-decoration: none !important;
-}
 
 .logo {
   font-size: 26px;

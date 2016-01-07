@@ -7,7 +7,7 @@ class Lobby {
 	static function viewLobby(){
       $database = DB::getInstance();
 
-      // if someone tries to hackinto another 
+      // if someone tries to hackinto another
       // lobby send them back to the landingpage
       if ($_SESSION['currentUser']->inLobby == 'nolobby') {
 		return ['loadview' => 'landingpage' ];
@@ -19,19 +19,19 @@ class Lobby {
 
       $qGetLobbyMates = '
         SELECT steam_id
-        FROM lobby 
+        FROM lobby
         WHERE lobby_id  = "'.$lobbyID.'"
           AND steam_id != "'.$mySteamID.'"
       ';
 
-      if( $result = $database->query($qGetLobbyMates)){
+			$result = $database->query($qGetLobbyMates);
+      if( $result->num_rows > 0){
           while ($row = $result->fetch_assoc()) {
               $lobbyMates[] = new User($row['steam_id']);
           }
       } else {
           echo "Failed to get users from Lobby: $lobbyID : ".$database->error;
       }
-
       return ['loadview' => 'lobby', 'lobbyMates' => $lobbyMates];
 	}
 }

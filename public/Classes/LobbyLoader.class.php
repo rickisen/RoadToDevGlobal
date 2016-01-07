@@ -40,6 +40,7 @@ class LobbyLoader {
       }
 
       if($foundLobby) {
+					$_SESSION['currentUser']->setLobby($lobbyId);
           return Lobby::viewLobby();
       } else {
           return ['loadview' => 'loadingpage' ];

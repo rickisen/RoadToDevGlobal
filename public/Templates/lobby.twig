@@ -11,38 +11,21 @@
 			<div class="col-md-2">
 				<div class="row center">
 					<span></span>
-					<div class="col-md-12"><img src="http://placehold.it/150x150"></div>
-					<div class="col-md-12">NICK</div>
+					<div class="col-md-12"><img src="{{ currentUser.imageL }}" style="width: 150px; height:150px"></div>
+					<div class="col-md-12"> {{ currentUser.nickname }}</div>
 				</div>
 			</div>
+
+ {% for lobbyMate in lobbyMates %}
 			<div class="col-md-2">
 				<div class="row center">
 					<span></span>
-					<div class="col-md-12"><img src="http://placehold.it/150x150"></div>
-					<div class="col-md-12">NICK</div>
+					<div class="col-md-12"><img src="{{ lobbyMate.imageL }}" style="width: 150px; height:150px"></div>
+					<div class="col-md-12">{{ lobbyMate.nickname }}</div>
 				</div>
 			</div>
-			<div class="col-md-2">
-				<div class="row center">
-					<p data-tooltip="This player is leader" style="position: absolute; padding: 10px 35px; z-index: 999;">L</p>
-					<div class="col-md-12"><img src="http://placehold.it/150x150"></div>
-					<div class="col-md-12">NICK</div>
-				</div>
-			</div>
-			<div class="col-md-2">
-				<div class="row center">
-					<span></span>
-					<div class="col-md-12"><img src="http://placehold.it/150x150"></div>
-					<div class="col-md-12">NICK</div>
-				</div>
-			</div>
-			<div class="col-md-2">
-				<div class="row center">
-					<span></span>
-					<div class="col-md-12"><img src="http://placehold.it/150x150"></div>
-					<div class="col-md-12">NICK</div>
-				</div>
-			</div>
+	{% endfor %}
+
 
 		</div>
 	</div>
