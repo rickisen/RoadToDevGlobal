@@ -9,7 +9,7 @@ class Lobby {
 
       // if someone tries to hackinto another 
       // lobby send them back to the landingpage
-      if (empty($_SESSION['currentUser']->inLobby)) {
+      if ($_SESSION['currentUser']->inLobby == 'nolobby') {
 		return ['loadview' => 'landingpage' ];
       }
 

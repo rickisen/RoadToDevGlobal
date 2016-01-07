@@ -3,7 +3,7 @@ class User{
   private static $steamApiKey = "EC3378BE4E67D544BEA9E6D9B32B5B57";
   private $steamId;
   private $existed;
-  private $inLobby;
+  private $inLobby =  'nolobby';
 
   public
     // user specified
