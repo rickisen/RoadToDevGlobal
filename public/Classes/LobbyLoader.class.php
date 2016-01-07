@@ -9,9 +9,8 @@ class LobbyLoader {
       $database = DB::getInstance();
 
       $qInserCurrentPlayerIntoPlfl = '
-        INSERT INTO player_looking_for_lobby
-          ("steam_id")
-        VALUES ("'.$_SESSION['currentUser']->steamId.'")
+        INSERT INTO player_looking_for_lobby (steam_id)
+        VALUES ('.$_SESSION['currentUser']->steamId.')
       ';
 
       // send the query and print an error if it fails
