@@ -44,20 +44,20 @@ class Players{
 
     	if( isset($_POST['language'])&& !empty($_POST['language']) ){
     		$languageClause  = ' language = ';
-			$languageClause .= $database->real_escape_string(stripcslashes($_POST['language']));
+			$languageClause .= $database->real_escape_string(stripslashes($_POST['language']));
 			$clauses[] = $languageClause;
     	}
 
     	if( isset($_POST['rank'])&& !empty($_POST['rank']) ){
 			$rankClause  = ' rank = "';
-			$rankClause .= $database->real_escape_string(stripcslashes($_POST['rank']));
+			$rankClause .= $database->real_escape_string(stripslashes($_POST['rank']));
 			$rankClause .= '"';
 			$clauses[] = $rankClause;
     	}
 
     	if( isset($_POST['hours'])&& !empty($_POST['hours']) ){
 			$hoursClause  = ' hours_played > ';
-			$hoursClause .= $database->real_escape_string(stripcslashes($_POST['hours']));
+			$hoursClause .= $database->real_escape_string(stripslashes($_POST['hours']));
 			$clauses[] = $hoursClause;
     	}
 
