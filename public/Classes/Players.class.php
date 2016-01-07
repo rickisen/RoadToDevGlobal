@@ -36,7 +36,7 @@ class Players{
     	$attributes = "";
 
     	$clauses = array();
-    	if(empty($_POST['language']) && empty($_POST['rank']) && empty($_POST['hours'])){
+    	if(empty($_POST['language']) && empty($_POST['rank']) && empty($_POST['hours']) && empty($_POST['nick']) ){
 
     		return self::viewUserProfiles();
     	}
@@ -60,6 +60,14 @@ class Players{
 			$hoursClause .= $database->real_escape_string(stripslashes($_POST['hours']));
 			$clauses[] = $hoursClause;
     	}
+
+    	if( isset($_POST['nick']) && !empty($_POST['nick']) ){
+    		$nickClause = ' nickname LIKE "%';
+    		$nickClause .= $database->real_escape_string(stripslashes($_POST['nick']));
+    		$nickClause .= '%"';
+    		$clauses[] = $nickClause;
+    	}
+
 
     	$finalClause = ' WHERE ';
 

@@ -23,6 +23,14 @@ class postReceiver{
 			$_SESSION['currentUser']->bio = $database->real_escape_string(stripslashes($_POST['bio']));
 		}
 
+		if( isset($_POST['primary_language'])&& !empty($_POST['primary_language']) ){
+			$_SESSION['currentUser']->priLang = $database->real_escape_string(stripslashes($_POST['primary_language']));
+		}
+
+		if( isset($_POST['secondary_language'])&& !empty($_POST['secondary_language']) ){
+			$_SESSION['currentUser']->secLang = $database->real_escape_string(stripslashes($_POST['secondary_language']));
+		}
+
 		$_SESSION['currentUser']->updateUserSuppliedInfo();
 		header('Location: ' . '?/Profile/displayUser/'.$_SESSION['currentUser']->steamId);
 	}
