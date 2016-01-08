@@ -11,17 +11,28 @@
 			<div class="col-md-2">
 				<div class="row center">
 					<span></span>
-					<div class="col-md-12"><img src="{{ currentUser.imageL }}" style="width: 150px; height:150px"></div>
-					<div class="col-md-12"> {{ currentUser.nickname }}</div>
+					<div class="col-md-12"><img src="{{ currentUser.imageL }}" style="width: 150px; height:150px">
+						<h4>{{ currentUser.nickname }}</h5>
+						<p>FROM: {{ currentUser.country }}<br>
+						AGE: {{ currentUser.age }}<br>
+						KD: {{ currentUser.kdRatio }}</p>
+					</div>
+
 				</div>
 			</div>
 
  {% for lobbyMate in lobbyMates %}
 			<div class="col-md-2">
 				<div class="row center">
-					<span></span>
-					<div class="col-md-12"><img src="{{ lobbyMate.imageL }}" style="width: 150px; height:150px"></div>
-					<div class="col-md-12">{{ lobbyMate.nickname }}</div>
+					{% if lobbyMate.leader %}
+					<p data-tooltip="This player is leader" style="position: absolute; padding: 10px 35px; z-index: 999; color: red; font-weight: 700;">L</p>
+					{% endif %}
+					<div class="col-md-12"><img src="{{ lobbyMate.imageL }}" style="width: 150px; height:150px">
+						<h4>{{ lobbyMate.nickname }}</h4>
+						<p>FROM: {{ lobbyMate.country }}<br>
+						AGE: {{ lobbyMate.age }}<br>
+						KD: {{ lobbyMate.kdRatio }}</p>
+					</div>
 				</div>
 			</div>
 	{% endfor %}
