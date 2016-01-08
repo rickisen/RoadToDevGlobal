@@ -43,7 +43,7 @@ class Players{
 
 
     	if( isset($_POST['language'])&& !empty($_POST['language']) ){
-    		$languageClause  = ' language = ';
+    		$languageClause  = ' primary_language = ';
 			$languageClause .= $database->real_escape_string(stripslashes($_POST['language']));
 			$clauses[] = $languageClause;
     	}

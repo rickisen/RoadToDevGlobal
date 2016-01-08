@@ -125,13 +125,13 @@ class User{
     $database = DB::getInstance();
 
     // get the changes localy and clean them
-    $this->nickname    = $database->real_escape_string(stripslashes($nickname)) ;
-    $this->kills       = $database->real_escape_string(stripslashes($kills)) ;
-    $this->deaths      = $database->real_escape_string(stripslashes($deaths)) ;
-    $this->imageL      = $database->real_escape_string(stripslashes($image_l)) ;
-    $this->imageM      = $database->real_escape_string(stripslashes($image_m)) ;
-    $this->imageS      = $database->real_escape_string(stripslashes($image_s)) ;
-    $this->hoursPlayed = $database->real_escape_string(stripslashes($hoursPlayed)) ;
+    $this->nickname     = $database->real_escape_string(stripslashes($nickname)) ;
+    $this->kills        = $database->real_escape_string(stripslashes($kills)) ;
+    $this->deaths       = $database->real_escape_string(stripslashes($deaths)) ;
+    $this->imageL       = $database->real_escape_string(stripslashes($image_l)) ;
+    $this->imageM       = $database->real_escape_string(stripslashes($image_m)) ;
+    $this->imageS       = $database->real_escape_string(stripslashes($image_s)) ;
+    $this->hoursPlayed  = $database->real_escape_string(stripslashes($hoursPlayed)) ;
     $this->isPrivateAcc = $database->real_escape_string(stripslashes($isPrivateAcc)) ; #do we need strip/res?
 
     if($isPrivateAcc) $isPrivateAcc = 1;
@@ -140,15 +140,15 @@ class User{
     // then update fresh info into DB
     $qUpdateDB = '
     UPDATE user
-    SET nickname     = "'.$this->nickname.'",
-        kills        = "'.$this->kills.'",
-        deaths       = "'.$this->deaths.'",
-        image_l      = "'.$this->imageL.'",
-        image_m      = "'.$this->imageM.'",
-        image_s      = "'.$this->imageS.'",
-        hours_played = "'.$this->hoursPlayed.'",
+    SET nickname       = "'.$this->nickname.'",
+        kills          = "'.$this->kills.'",
+        deaths         = "'.$this->deaths.'",
+        image_l        = "'.$this->imageL.'",
+        image_m        = "'.$this->imageM.'",
+        image_s        = "'.$this->imageS.'",
+        hours_played   = "'.$this->hoursPlayed.'",
         is_private_acc = "'.$this->isPrivateAcc.'"
-    WHERE steam_id = "'.$this->steamId.'";
+    WHERE steam_id     = "'.$this->steamId.'";
                     ';
 
     // send the query
@@ -204,13 +204,42 @@ class User{
           country            = "'.$this->country.'",
           rank               = "'.$this->rank.'",
           primary_language   = "'.$this->priLang.'",
-          secondary_language = "'.$this->secLang.'"
-      WHERE steam_id = "'.$this->steamId.'";
+          secondary_language = "'.$this->secLang.'",
+          age_group          = "'.$this->getAgeGroup().'"
+      WHERE steam_id         = "'.$this->steamId.'";
     ';
 
     $database->query($qUpdateUserSuppliedInfo);
       if ($database->error){
         echo "something went wrong when updating Update User Supplied Info".$database->error;
       }
+  }
+  // this method returns which age group the user should be inserted to
+  function getAgeGroup(){
+    switch($this->age){
+      case ($this->age >= 0 && $this->age <= 9):
+        return 'cry_babies';
+        break;
+
+      case ($this->age >= 10 && $this->age <= 15):
+        return 'squeekers';
+        break;
+
+      case ($this->age >= 16 && $this->age <= 19):
+        return 'teenage_dirtbags';
+        break;
+      
+      case ($this->age >= 20 && $this->age <= 30):
+        return 'young_adults';
+        break;
+
+      case ($this->age >= 31 && $this->age <= 50):
+        return 'old_farts';
+        break;
+
+      default:
+        return 'trollz';
+        break;      
+    } 
   }
 }
