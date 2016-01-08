@@ -13,25 +13,25 @@ class Lobby {
 		return ['loadview' => 'landingpage' ];
       }
 
-      $lobbyID    = $_SESSION['currentUser']->inLobby;
+      $lobbyId    = $_SESSION['currentUser']->inLobby;
       $mySteamID  = $_SESSION['currentUser']->steamId;
       $lobbyMates = array();
 
       $qGetLobbyMates = '
         SELECT steam_id
-        FROM lobby
-        WHERE lobby_id  = "'.$lobbyID.'"
+        FROM lobby 
+        WHERE lobby_id  = "'.$lobbyId.'"
           AND steam_id != "'.$mySteamID.'"
       ';
 
-			$result = $database->query($qGetLobbyMates);
+      $result = $database->query($qGetLobbyMates);
       if( $result->num_rows > 0){
           while ($row = $result->fetch_assoc()) {
               $lobbyMates[] = new User($row['steam_id']);
           }
       } else {
-          echo "Failed to get users from Lobby: $lobbyID : ".$database->error;
+          echo "Failed to get users from Lobby: $lobbyId : ".$database->error;
       }
-      return ['loadview' => 'lobby', 'lobbyMates' => $lobbyMates];
-	}
+      return ['loadview' => 'lobby', 'lobbyMates' => $lobbyMates, 'lobbyId' => $lobbyId];
+    }
 }
