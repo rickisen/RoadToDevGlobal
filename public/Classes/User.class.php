@@ -9,6 +9,7 @@ class User{
     // user specified
     $rank,
     $age,
+    $born,
     $bio,
     $country,
     $priLang,
@@ -74,7 +75,8 @@ class User{
     if( $result->num_rows > 0 ){
       $row = $result->fetch_assoc();
       $this->rank          = $row['rank'];
-      $this->age           = date("Y") - $row['age'];
+      $this->age           = $row['age'];
+      $this->born          = $row['born'];
       $this->country       = $row['country'];
       $this->bio           = $row['bio'];
       $this->kills         = $row['kills'];
@@ -200,7 +202,8 @@ class User{
     $qUpdateUserSuppliedInfo = '
       UPDATE user
       SET bio                = "'.$this->bio.'",
-          age                = "'.$this->age.'",
+          age                = "'.date('Y') - $this->born.'",
+          born               = "'.$this->born.'",
           country            = "'.$this->country.'",
           rank               = "'.$this->rank.'",
           primary_language   = "'.$this->priLang.'",
