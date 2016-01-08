@@ -218,27 +218,27 @@ class User{
   function getAgeGroup(){
     switch($this->age){
       case ($this->age >= 0 && $this->age <= 9):
-        return '"cry_babies"';
+        return 'cry_babies';
         break;
 
       case ($this->age >= 10 && $this->age <= 15):
-        return '"squeekers"';
+        return 'squeekers';
         break;
 
       case ($this->age >= 16 && $this->age <= 19):
-        return '"teenage_dirtbags"';
+        return 'teenage_dirtbags';
         break;
       
       case ($this->age >= 20 && $this->age <= 30):
-        return '"young_adults"';
+        return 'young_adults';
         break;
 
       case ($this->age >= 31 && $this->age <= 50):
-        return '"old_farts"';
+        return 'old_farts';
         break;
 
       default:
-        return '"trollz"';
+        return 'trollz';
         break;      
     } 
   }
