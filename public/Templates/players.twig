@@ -70,23 +70,7 @@
    <!-- Players Card -->
      <div class="row">
        {% for user in users %}
-         <div class="col-md-3 portfolio-item" style="width: 225px; margin-bottom: 25px; margin-right: 9px;">
-             <a href="?/Profile/displayuser/{{ user.steamId }}">
-                 <img class="img-responsive" src="{{ user.imageL }}" alt="">
-             </a>
-             <h3 style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden; margin: 10px 0px;">
-                 <a href="?/Profile/displayuser/{{ user.steamId }}"> {{ user.nickname }}</a>
-             </h3>
-             <p>
-                Rank: <img src="{{ user.rankImg }}" style="width: 55px; height: 20px;"><br>
-                {% if user.isPrivateAcc == 1 %}
-                  Private profile
-                {% else %}
-                  K/D Ratio: {{ user.kdRatio }}<br>
-                  Hours played: {{ user.hoursPlayed }}<br>
-                {% endif %}
-             </p>
-           </div>
+        {% include "playersummarycard.twig" %}
          {% endfor %}
      </div>
    <!-- /.row -->
