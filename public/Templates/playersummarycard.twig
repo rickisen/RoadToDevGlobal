@@ -7,7 +7,7 @@
               <a href="?/Profile/displayuser/{{ user.steamId }}"> {{ user.nickname }}</a>
           </h3>
           <p>
-             <img src="{{ user.rankImg }}" style="width: 55px; height: 20px;"><br>
+             <img class="rankimg" src="{{ user.rankImg }}"><br>
              {% if user.isPrivateAcc == 1 %}
                Private profile
              {% else %}
