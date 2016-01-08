@@ -23,6 +23,7 @@ a, a:hover, a:active, a:focus {
 
 .gray-hover a:hover {
   color: #999;
+  transition: 0.2s;
 }
 
 textarea {
@@ -344,8 +345,8 @@ a {
   z-index: -1;
 }
 .menu.active {
-  width: -webkit-calc(30% - 2rem);
-  width: calc(30% - 2rem);
+  width: -webkit-calc(35% - 2rem);
+  width: calc(35% - 2rem);
   z-index: 0;
 }
 .menu.active .menu-link {
