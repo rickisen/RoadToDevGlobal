@@ -11,8 +11,8 @@ class postReceiver{
 			$_SESSION['currentUser']->rank = $database->real_escape_string(stripslashes($_POST['rank']));
 		}
 
-		if( isset($_POST['age'])&& !empty($_POST['age']) ){
-			$_SESSION['currentUser']->age = $database->real_escape_string(stripslashes($_POST['age']));
+		if( isset($_POST['born'])&& !empty($_POST['born']) ){
+			$_SESSION['currentUser']->born = $database->real_escape_string(stripslashes($_POST['born']));
 		}
 
 		if( isset($_POST['country'])&& !empty($_POST['country']) ){

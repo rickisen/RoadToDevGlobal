@@ -41,21 +41,28 @@ class Players{
     		return self::viewUserProfiles();
     	}
 
+    	if( isset($_POST['language']) && !empty($_POST['language']) ){
 
-    	if( isset($_POST['language'])&& !empty($_POST['language']) ){
-    		$languageClause  = ' language = ';
-			$languageClause .= $database->real_escape_string(stripslashes($_POST['language']));
-			$clauses[] = $languageClause;
+    		$languageClause  = ' primary_language = "';
+                $languageClause .= $database->real_escape_string(stripslashes($_POST['language']));
+    		$languageClause .= '"';
+                
+    		$languageClause .= ' OR ';
+
+    		$languageClause .= ' secondary_language = "';
+                $languageClause .= $database->real_escape_string(stripslashes($_POST['language']));
+    		$languageClause .= '"';
+                $clauses[] = $languageClause;
     	}
 
-    	if( isset($_POST['rank'])&& !empty($_POST['rank']) ){
+    	if( isset($_POST['rank']) && !empty($_POST['rank']) ){
 			$rankClause  = ' rank = "';
 			$rankClause .= $database->real_escape_string(stripslashes($_POST['rank']));
 			$rankClause .= '"';
 			$clauses[] = $rankClause;
     	}
 
-    	if( isset($_POST['hours'])&& !empty($_POST['hours']) ){
+    	if( isset($_POST['hours']) && !empty($_POST['hours']) ){
 			$hoursClause  = ' hours_played > ';
 			$hoursClause .= $database->real_escape_string(stripslashes($_POST['hours']));
 			$clauses[] = $hoursClause;
@@ -79,7 +86,6 @@ class Players{
 
     		$finalClause .= $clauses[$i];
     	}
-
     	$users = array();
 
 		$qGetFilteredUsers = '

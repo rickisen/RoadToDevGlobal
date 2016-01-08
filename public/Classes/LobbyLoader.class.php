@@ -15,7 +15,7 @@ class LobbyLoader {
 
       // send the query and print an error if it fails
       if ( !$result = $database->query($qInserCurrentPlayerIntoPlfl)){
-        echo "something went wrong when trying to add user to the plfl table: ".$database->error;
+        /* echo "something went wrong when trying to add user to the plfl table: ".$database->error; */
       }
 
       return ['loadview' => 'loadingpage' ];
