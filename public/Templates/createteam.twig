@@ -1,25 +1,22 @@
 <div class="row">
-<div class="col-md-12" style="margin-top: 40px;">
+  <div class="col-md-12" style="margin-top: 40px;">
+    <div class="row">
+      <div class="col-md-offset-3 col-md-6 center">
+          <h3>Create new team</h3>
+          <p style="color: red;"><i>It looks like you are not in a team yet, you can create one here!</i></p><br>
 
+            <form action="" method="post">
+              <input type="hidden" name="postHandler" value="createTeam">
+              <p>Team name</p>
+                <input type="text" class="form-control" name="team_name" id="team-name"><br>
+              <p>Team description</p>
+                <textarea rows="7"  class="form-control" name="team_desc" id="team-desc"></textarea><br>
+              <p>Image (Paste your image URL here, preferably 500 x 800px)</p>
+                <input type="text" class="form-control" name="team_img" id="team-img">
+              <input type="submit" class="btn-default" value="Create!">
+            </form>
 
-
-  <div class="row">
-    <div class="col-md-offset-3 col-md-6 center">
-
-      <h3>Create new team</h3>
-      <p style="color: red;"><i>It looks like you are not in a team yet, you can create one here!</i></p><br>
-      <form action="/?/teamprofile/team" method="post">
-      <p>Team name</p>
-      <input type="text" class="form-control" name="teamName" id="teamName"><br>
-      <p>Team description</p>
-      <textarea rows="7"  class="form-control" name="teamDescription" id="post-content"></textarea><br>
-      <p>Image (Paste your image URL here, preferably 500 x 800px)</p>
-      <input type="text" class="form-control" name="postImage" id="post-image">
-
-      <button type="submit" class="btn-default">Create!</button>
-    </form>
+      </div>
+    </div>
   </div>
-</div>
-
-
 </div>

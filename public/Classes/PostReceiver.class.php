@@ -35,6 +35,31 @@ class postReceiver{
 		header('Location: ' . '?/Profile/displayUser/'.$_SESSION['currentUser']->steamId);
 	}
 
+	static function createTeam(){
+		$database = DB::getInstance();
+
+		if (isset($_POST['team_name']) && !empty($_POST['team_name']) && isset($_POST['team_desc']) && !empty($_POST['team_desc']) && isset($_POST['team_img']) && !empty($_POST['team_img'])) {
+
+
+			$team_creator = $database->real_escape_string($_SESSION['currentUser']->steamId);
+			$team_name = $database->real_escape_string($_POST['team_name']);
+			$team_desc = $database->real_escape_string($_POST['team_desc']);
+			$team_img = $database->real_escape_string($_POST['team_img']);
+
+			$qInsertTeam = '
+					INSERT INTO team (creator, name, descr, img)
+		      VALUES (\''.$team_creator.'\' , \''.$team_name.'\',\''.$team_desc.'\', \''.$team_img.'\' )';
+
+					$database->query($qInsertTeam);
+
+			if ($database->error) {
+				echo "something went wrong when updating the user data".$database->error;
+			}
+
+			header('Location: ' . '?/TeamProfile/Team/');
+		}
+	}
+
     static function logout(){
         unset($_SESSION['currentUser']);
         unset($_SESSION['steamId']);
