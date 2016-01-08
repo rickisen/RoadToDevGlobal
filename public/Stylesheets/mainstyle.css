@@ -37,6 +37,11 @@ textarea {
   color: red;
 }
 
+.rankimg {
+  width: 55px;
+  height: 20px;
+}
+
 /* RESET BOOTSTRAP STYLES
 ===================================================== */
 

@@ -13,8 +13,9 @@
 					<span></span>
 					<div class="col-md-12"><img src="{{ currentUser.imageL }}" style="width: 150px; height:150px">
 						<h4>{{ currentUser.nickname }}</h5>
-						<p>FROM: {{ currentUser.country }}<br>
-						AGE: {{ currentUser.age }}<br>
+						<img class="rankimg" src="{{ currentUser.rankImg }}"><br>
+						<p>{{ currentUser.country }}<br>
+						Age: {{ currentUser.age }}<br>
 						KD: {{ currentUser.kdRatio }}</p>
 					</div>
 
@@ -28,9 +29,10 @@
 					<p data-tooltip="This player is leader" style="position: absolute; padding: 10px 35px; z-index: 999; color: red; font-weight: 700;">L</p>
 					{% endif %}
 					<div class="col-md-12"><img src="{{ lobbyMate.imageL }}" style="width: 150px; height:150px">
-						<h4>{{ lobbyMate.nickname }}</h4>
-						<p>FROM: {{ lobbyMate.country }}<br>
-						AGE: {{ lobbyMate.age }}<br>
+						<h4>{{ lobbyMate.nickname }}</h5>
+						<img class="rankimg" src="{{ lobbyMate.rankImg }}"><br>
+						<p>{{ lobbyMate.country }}<br>
+						Age: {{ lobbyMate.age }}<br>
 						KD: {{ lobbyMate.kdRatio }}</p>
 					</div>
 				</div>
