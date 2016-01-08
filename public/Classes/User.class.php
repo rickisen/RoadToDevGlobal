@@ -8,8 +8,8 @@ class User{
   public
     // user specified
     $rank,
-    $age,
     $born,
+    $age,
     $bio,
     $country,
     $priLang,
@@ -199,10 +199,12 @@ class User{
   function updateUserSuppliedInfo(){
     $database = DB::getInstance();
 
+    $reCalcAge = date('Y') - $this->born; #should it be declared over here
+
     $qUpdateUserSuppliedInfo = '
       UPDATE user
       SET bio                = "'.$this->bio.'",
-          age                = "'.date('Y') - $this->born.'",
+          age                = "'.$reCalcAge.'",
           born               = "'.$this->born.'",
           country            = "'.$this->country.'",
           rank               = "'.$this->rank.'",
