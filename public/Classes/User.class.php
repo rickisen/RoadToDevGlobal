@@ -16,6 +16,9 @@ class User{
     $secLang;
 
   private
+
+    $inTeam,
+
     // calculated
     $kdRatio,
     $registerDate,
@@ -91,6 +94,7 @@ class User{
       $this->rankImg       = $row['img'];
       $this->priLang       = $row['primary_language'];
       $this->secLang       = $row['secondary_language'];
+      $this->inTeam        = $row['in_team'];
 
       // calculate kd_ratio, fails if divided by 0, sooo
       if ($this->kills > 0 && $this->deaths > 0)
@@ -233,7 +237,7 @@ class User{
       case ($this->age >= 16 && $this->age <= 19):
         return 'teenage_dirtbags';
         break;
-      
+
       case ($this->age >= 20 && $this->age <= 30):
         return 'young_adults';
         break;
@@ -244,7 +248,7 @@ class User{
 
       default:
         return 'trollz';
-        break;      
-    } 
+        break;
+    }
   }
 }
