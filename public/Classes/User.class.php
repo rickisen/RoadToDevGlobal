@@ -17,14 +17,13 @@ class User{
 
   private
 
-    $inTeam,
-
     // calculated
     $kdRatio,
     $registerDate,
 
-    // rank image
+    // From db
     $rankImg,
+    $inTeam,
 
     // from steamAPI
     $nickname,
