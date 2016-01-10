@@ -40,7 +40,6 @@ class postReceiver{
 
 		if (isset($_POST['team_name']) && !empty($_POST['team_name']) && isset($_POST['team_desc']) && !empty($_POST['team_desc']) && isset($_POST['team_img']) && !empty($_POST['team_img'])) {
 
-
 			$team_creator = $database->real_escape_string($_SESSION['currentUser']->steamId);
 			$team_name = $database->real_escape_string($_POST['team_name']);
 			$team_desc = $database->real_escape_string($_POST['team_desc']);

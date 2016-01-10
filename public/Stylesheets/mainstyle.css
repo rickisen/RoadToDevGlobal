@@ -182,6 +182,17 @@ select {
 /* PLAYERS PAGE
 ===================================================== */
 
+.player-card {
+  width: 206px;
+  margin-bottom: 25px;
+  padding: 10px;
+  margin-right: 25px;
+}
+
+.player-card:hover {
+ background: #eee;
+}
+
 .show-filter{
   display: none;
 }

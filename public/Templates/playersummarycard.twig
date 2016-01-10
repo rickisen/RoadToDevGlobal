@@ -1,5 +1,5 @@
 <!-- Players Card -->
-      <div class="col-md-3 portfolio-item" style="width: 225px; margin-bottom: 25px; margin-right: 9px;">
+      <div class="col-md-3 player-card">
           <a href="?/Profile/displayuser/{{ user.steamId }}">
               <img class="img-responsive" src="{{ user.imageL }}" alt="">
           </a>
@@ -7,7 +7,7 @@
               <a href="?/Profile/displayuser/{{ user.steamId }}"> {{ user.nickname }}</a>
           </h3>
           <p>
-             <img class="rankimg" src="{{ user.rankImg }}"><br>
+             <img class="rankimg center" src="{{ user.rankImg }}"><br>
              {% if user.isPrivateAcc == 1 %}
                Private profile
                <br>
