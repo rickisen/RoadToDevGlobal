@@ -30,7 +30,13 @@
          </nav>
          <nav class="menu">
            <ul class="menu-inner">
-             <a href="?/CreateTeam/newTeam" class="menu-link">
+
+             {% if currentUser.inTeam != 0 %}
+                <a href="?/CreateTeam/newTeam" class="menu-link">
+               {%  else %}
+                <a href="?/Team/viewTeam" class="menu-link">
+             {% endif %}
+
                <li>My team</li>
              </a>
              <a href="?/Profile/displayUser/{{currentUser.steamId}}" class="menu-link">

@@ -46,13 +46,13 @@ class postReceiver{
 			$team_img      = $database->real_escape_string($_POST['team_img']);
 
                         // create the team
-                        $qInsertTeam = ' 
+                        $qInsertTeam = '
                           INSERT INTO team (creator, name, descr, img)
                           VALUES (\''.$team_creator.'\' , \''.$team_name.'\',\''.$team_desc.'\', \''.$team_img.'\' )
                         ';
 
                         $database->query($qInsertTeam);
-                        if ($database->error) 
+                        if ($database->error)
                           echo "something went wrong when creating a team: ".$database->error;
 
                         // get this team's ID, (the last query's id should've been saved in this variable)
@@ -60,16 +60,16 @@ class postReceiver{
 
                         // Query to update the currentuser so that he is in this team
                         $qUpdateUsersTeamStatus = '
-                          UPDATE user 
+                          UPDATE user
                           SET in_team = '.$TeamId.'
                           WHERE steam_id = '.$_SESSION['currentUser']->steamId.'
                         ';
 
                         $database->query($qUpdateUsersTeamStatus);
-                        if ($database->error) 
+                        if ($database->error)
                           echo "something went wrong when adding a user into a team: ".$database->error;
 
-			header('Location: ' . '?/TeamProfile/Team/');
+			header('Location: ' . '?/TeamProfile/Team/'.$_SESSION['currentUser']->inTeam);
 		}
 	}
 
