@@ -32,7 +32,11 @@
           <ul>
             <li>Rating: </li>
             <li>TA Games: </li>
-  	        <li>Team: <a href="?/TeamProfile/Team/{{team.id}}">{{ team.name }}</a> </li>
+  	        <li>Team: <a href="?/TeamProfile/Team/{{team.id}}">
+            {% if user.inTeam == team.id %}  
+            {{ team.name }}
+            {% endif %}
+            </a></li>
           </ul>
         </div>
 

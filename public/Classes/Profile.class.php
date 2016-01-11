@@ -12,7 +12,7 @@ class Profile{
 		$qGetTeamFromId = '
 		SELECT team.id
 		FROM team
-				WHERE team.id = '.$_SESSION['currentUser']->inTeam.'
+				WHERE team.id = '.$user->inTeam.'
 				LIMIT 1
 		';
 
