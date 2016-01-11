@@ -25,10 +25,12 @@ class TeamProfile{
 			echo 'Did not find team associated to '.$_SESSION['currentUser']->inTeam. $database->error;
 		}
 
-		}
+	}
 
 	static function Team($teamId){
-		$teamId = $database->real_escape_string(stripslashes($teamId));
+		$database = DB::getInstance();
+
+		$teamId = $database->real_escape_string(stripslashes($teamId[0]));
 		return ['loadview' => 'teamprofile', 'team' => new Team($teamId)];
 	}
 }

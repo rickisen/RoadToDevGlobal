@@ -45,31 +45,34 @@ class postReceiver{
 			$team_desc     = $database->real_escape_string($_POST['team_desc']);
 			$team_img      = $database->real_escape_string($_POST['team_img']);
 
-                        // create the team
-                        $qInsertTeam = '
-                          INSERT INTO team (creator, name, descr, img)
-                          VALUES (\''.$team_creator.'\' , \''.$team_name.'\',\''.$team_desc.'\', \''.$team_img.'\' )
-                        ';
+      // create the team
+      $qInsertTeam = '
+        INSERT INTO team (creator, name, descr, img)
+        VALUES (\''.$team_creator.'\' , \''.$team_name.'\',\''.$team_desc.'\', \''.$team_img.'\' )
+      ';
 
-                        $database->query($qInsertTeam);
-                        if ($database->error)
-                          echo "something went wrong when creating a team: ".$database->error;
+      $database->query($qInsertTeam);
+      if ($database->error)
+        echo "something went wrong when creating a team: ".$database->error;
 
-                        // get this team's ID, (the last query's id should've been saved in this variable)
-                        $TeamId = $database->insert_id;
+      // get this team's ID, (the last query's id should've been saved in this variable)
+      $teamId = $database->insert_id;
 
-                        // Query to update the currentuser so that he is in this team
-                        $qUpdateUsersTeamStatus = '
-                          UPDATE user
-                          SET in_team = '.$TeamId.'
-                          WHERE steam_id = '.$_SESSION['currentUser']->steamId.'
-                        ';
+			$_SESSION['currentUser']->setTeam($teamId);
 
-                        $database->query($qUpdateUsersTeamStatus);
-                        if ($database->error)
-                          echo "something went wrong when adding a user into a team: ".$database->error;
+      // Query to update the currentuser so that he is in this team
+      $qUpdateUsersTeamStatus = '
+        UPDATE user
+        SET in_team = '.$teamId.'
+        WHERE steam_id = '.$_SESSION['currentUser']->steamId.'
+      ';
 
-			header('Location: ' . '?/TeamProfile/Team/'.$_SESSION['currentUser']->inTeam);
+      $database->query($qUpdateUsersTeamStatus);
+      if ($database->error) {
+				echo "something went wrong when adding a user into a team: ".$database->error;
+			}
+
+			header('Location: ' . '?/TeamProfile/myTeam/');
 		}
 	}
 

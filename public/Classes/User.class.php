@@ -51,6 +51,10 @@ class User{
     $this->inLobby = $lobbyID ;
   }
 
+  function setTeam($teamId){
+    $this->inTeam = $teamId ;
+  }
+
   // function __set($prop, $val){
   //   if($prop == 'rank' || $prop == 'bio' || $prop == 'age')
   //     $this->$prop = $val;

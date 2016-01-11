@@ -31,11 +31,11 @@
          <nav class="menu">
            <ul class="menu-inner">
 
-             {% if currentUser.inTeam == 0 %}
-                <a href="?/CreateTeam/newTeam" class="menu-link">
-               {%  else %}
-                <a href="?/TeamProfile/myTeam" class="menu-link">
-             {% endif %}
+            {% if currentUser.inTeam > 0 %}
+              <a href="?/TeamProfile/myTeam" class="menu-link">
+            {%  else %}
+              <a href="?/CreateTeam/newTeam" class="menu-link">
+            {% endif %}
 
                <li>My team</li>
              </a>
