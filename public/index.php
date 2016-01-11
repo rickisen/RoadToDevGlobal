@@ -3,6 +3,7 @@ require_once 'Classes/User.class.php';
 require_once 'Classes/DB.class.php';
 require_once 'Classes/PostReceiver.class.php';
 require_once 'Classes/LobbyLoader.class.php';
+require_once 'Classes/Team.class.php';
 session_start();
 
 // ROUTE POST REQUESTS ==================================================
