@@ -22,10 +22,8 @@ class TeamProfile{
 
 			return ['loadview' => 'teamprofile', 'team' => $team];
 		} else {
-			return ['loadview' => 'createteam'];
+			echo 'Did not find team associated to '.$_SESSION['currentUser']->inTeam. $database->error;
 		}
-
-
 
 		}
 
