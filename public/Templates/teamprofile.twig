@@ -1,10 +1,19 @@
-<div class="row">
-  <div class="col-md-offset 3col-md-6 center">
-    <h3>{{ team.name }}</h3>
-    <img src="{{ team.img }}" style="width: 300px; height: 300px;">
-    <h4></h4>
+<div class="row" style="margin-top: 40px;">
+  <div class="col-md-offset-2 col-md-2">
+    <img src="{{ team.img }}" style="width: 150px; height: 150px;">
+  </div>
+
+  <div class="col-md-3">
+    <h2>{{ team.name }}</h2>
     <p>
       {{ team.descr }}
     </p>
   </div>
+
+  {% if currentUser.inTeam == team.id %}
+    <div class="col-md-2">
+      <a href="?/TeamProfile/editTeam">Manage team</a>
+    </div>
+  {% endif %}
+
 </div>

@@ -317,7 +317,7 @@ select {
   margin: 0;
 }
 
-a {
+.menu>a {
   display: block;
   width: 100%;
   height: 100%;

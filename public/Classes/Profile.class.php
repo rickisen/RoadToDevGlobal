@@ -7,6 +7,21 @@ class Profile{
 	static function displayUser($id){
 		$user = new User($id[0]);
 		$user->fetchSteamStats();
-		return ['loadview' => 'playerprofile', 'user' => $user ];
+		$database = DB::getInstance();
+
+		$qGetTeamFromId = '
+		SELECT team.id
+		FROM team
+				WHERE team.id = '.$_SESSION['currentUser']->inTeam.'
+				LIMIT 1
+		';
+
+		$result = $database->query($qGetTeamFromId);
+
+		if( $result->num_rows > 0 ){
+			$row = $result->fetch_assoc();
+			$team = new Team($row['id']); }
+
+		return ['loadview' => 'playerprofile', 'user' => $user, 'team' => $team ];
 	}
 }
