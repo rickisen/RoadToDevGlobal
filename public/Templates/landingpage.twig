@@ -109,7 +109,12 @@
 
   <div class="row">
     <div class="col-md-12 landingpage-select">
-        <a href="/?/LobbyLoader/addUserToPlfl"><button type="button" class="playnow-btn"><h1>PLAY!</h1></button></a>
+        <!-- TWIG IF TILL FUNKTION -->
+        {% if currentUser %}
+            <a href="/?/LobbyLoader/addUserToPlfl"><button type="button" class="playnow-btn"><h1>PLAY!</h1></button></a>
+        {% else %}
+            <a href="/?/UnderConstruction/viewConstruction"><button type="button" class="playnow-btn"><h1>PLAY!</h1></button></a>
+        {% endif %}
     </div>
   </div>
 
