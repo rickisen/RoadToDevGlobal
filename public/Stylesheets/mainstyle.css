@@ -209,6 +209,19 @@ select {
   cursor: crosshair !important; /*CROSSHAIR EFFECT*/
 }
 
+/* Team summary cards
+==================================================== */
+
+.thumbnail {
+  border-radius: 0;
+  padding: 10px;
+  max-width: 250px;
+}
+
+.caption {
+
+}
+
 /* FAQ
 ===================================================== */
 
