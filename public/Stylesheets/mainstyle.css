@@ -216,6 +216,7 @@ select {
   border-radius: 0;
   padding: 10px;
   max-width: 250px;
+  height: 350px;
 }
 
 .caption {
@@ -251,7 +252,9 @@ select {
 .footer {
   background: #eee;
   height: 150px;
-}
+  position: fixed;
+  bottom: 0px;
+  }
 
 /* TESTING DROPDOWNS
 ===================================================== */
