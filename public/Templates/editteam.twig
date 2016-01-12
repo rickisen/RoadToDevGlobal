@@ -1,24 +1,33 @@
 <div class="row">
   <div class="col-md-12" style="margin-top: 40px;">
-
     <div class="row">
       <div class="col-md-offset-3 col-md-6 center">
-          <h3>Edit team</h3>
-          <br>
+        <h3>Edit team</h3>
+        <br>
 
-            <form action="" method="post">
-              <input type="hidden" name="postHandler" value="editTeam">
-              <p>Team name</p>
-                <input type="text" class="form-control" name="edit_team_name" id="team-name" value="{{ team.name }}"><br>
-              <p>Team description</p>
-                <textarea rows="7"  class="form-control" name="edit_team_descr" id="team-desc">{{ team.descr }}</textarea><br>
-              <p>Image (Paste your image URL here, preferably 500 x 800px)</p>
-                <input type="text" class="form-control" name="edit_team_img" id="team-img" value="{{ team.img }}">
-              <input type="submit" class="btn-default" value="Save!">
-            </form>
+        <form action="" method="post">
 
+          <input type="hidden" name="postHandler" value="editTeam">
+
+          <p>Team name</p>
+          <input type="text" class="form-control" name="edit_team_name" id="team-name" value="{{ team.name }}"><br>
+
+          <p>Team description</p>
+          <textarea rows="7"  class="form-control" name="edit_team_descr" id="team-desc">{{ team.descr }}</textarea><br>
+
+          <p>Image (Paste your image URL here, preferably 500 x 800px)</p>
+          <input type="text" class="form-control" name="edit_team_img" id="team-img" value="{{ team.img }}"><br>
+
+          <select name="looking_for_players">
+          <option value="" type="checkbox">Looking for players?</option>
+          <option value="yes" type="checkbox">Yes</option>
+          <option value="no" type="checkbox">No</option>
+          </select><br><br>
+          
+          <input type="submit" class="btn-default" value="Save!">
+
+        </form>
       </div>
     </div>
-
   </div>
 </div>

@@ -82,7 +82,7 @@ class Teams{
 			echo "Failed to get teams from DB".$database->error;
 		}
 
-		return ['loadview' => 'players', 'teams' => $teams ];
+		return ['loadview' => 'teams', 'teams' => $teams ];
 	}
 
 }

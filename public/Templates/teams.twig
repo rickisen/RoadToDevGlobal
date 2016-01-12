@@ -1,27 +1,51 @@
 <!-- Page Heading -->
-       <div class="row">
-           <div class="col-lg-12">
-               <h1 class="page-header">Find teams
-               </h1>
-           </div>
+<div class="row"> <!--Add styles to class-->
+  <div class="col-lg-12 page-header">
+   <div class="row">
+       <div class="col-lg-12"> <!--Add styles to class-->
+           <h1>Teams
+             <small>Find teams</small>
+             <small style="font-size:12px; margin-left:695px; cursor:pointer;" class="filter-toggle">FILTER &nabla;</small> <!--Add styles to class-->
+           </h1>
        </div>
-       <!-- /.row -->
+   </div>
+
+   <div class="row show-filter" style="margin-bottom: 35px; margin-top:35px;">
+      <form method="post" action="?/Teams/filterTeams">
+
+        <div class="col-lg-2">
+          <select name="looking_for_players">
+          <option value="" type="checkbox">Looking for players</option>
+          <option value="yes" type="checkbox">Yes</option>
+          <option value="no" type="checkbox">No</option>
+          </select>
+        </div>
+
+        <!-- Search form for players nick -->
+        <div class="col-lg-2">
+          <input type="text" name="team_name" placeholder="Enter team name here...">
+        </div>
+
+        <input class="sub-btn" type="submit" value="Filter">
+        
+      </form>
+    </div><!-- ROW END -->
+  </div>
+</div><!-- /.row -->
 
        <!-- Row -->
-       <div class="row">
-         {% for team in teams %}
-            <div class="col-md-3 col-sm-6 hero-feature">
-                  <div class="thumbnail">
-                      <img src="{{ team.img }}" style="height: 200px; width: 225px;">
-                      <div class="caption">
-                          <h3>{{ team.name }}</h3>
-                          <p> {{ team.descr }}<p>
-                          <a href="?/TeamProfile/Team/{{ team.id }}">More Info</a>
-                          </p>
-                      </div>
-                  </div>
-              </div>
-          {% endfor %}
-       </div>
-       <!-- /.row -->
-  <!-- /.row -->
+<div class="row">
+  {% for team in teams %}
+    <div class="col-md-3 col-sm-6 hero-feature">
+      <div class="thumbnail">
+        <img src="{{ team.img }}" style="height: 200px; width: 225px;">
+        <div class="caption">
+          <h3>{{ team.name }}</h3>
+          <p> {{ team.descr }}
+          <a href="?/TeamProfile/Team/{{ team.id }}">More Info</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div><!-- /.row -->
