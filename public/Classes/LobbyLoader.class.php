@@ -50,17 +50,16 @@ class LobbyLoader {
     static function getRandomTip(){
 
       $tips = array(
-        'If you have any questions you might find your answers in the FAQ-tab.',
-        'If someone is acting rude or griefs you can report them.',
+        'If you have any questions about the functionalities on the site you might find your answers in the "FAQ" -tab.',
+        'If someone is griefing or acting rude you can report always them.',
         'It\'s always better to be nice to other players in the long run.',
-        'Respect the elders',
-        'Life is real until you rip',
-        'The red bulls are for drinking',
-        'They don\'t deserve for rekt',
-        'As a premium member you will have access to more features on the site.',
+        'In the "teams" -tab you can search and apply to teams that meet your criterias',
+        'As a premium member you will have access to even more features on the site.',
+        'Good luck and have fun!',
         'One player in the lobby will get the leader role and it\'s up to the leader to make sure that you start up a game together.',
         'As soon as you land in a lobby you can join a team chat together with your lobby members',
-        'You will know who the lobby leader is by looking at the profile portraits in the lobby.'
+        'You will know who the lobby leader is by looking at the profile portraits in the lobby.',
+        'Feel free to visit our forum at any time'
         );
       $random = mt_rand(0, count($tips)-1);
 
