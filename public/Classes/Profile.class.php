@@ -9,9 +9,9 @@ class Profile{
 
 		$user = new User($id[0]);
 		if ($user->inTeam > 0 ){  
-			$team = new Team($user->inTeam);
+			return ['loadview' => 'playerprofile', 'user' => $user, 'team' => new Team($user->inTeam) ];
+		} else {
+			return ['loadview' => 'playerprofile', 'user' => $user];
 		}
-
-		return ['loadview' => 'playerprofile', 'user' => $user, 'team' => $team ];
 	}
 }
