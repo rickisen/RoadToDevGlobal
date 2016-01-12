@@ -18,7 +18,7 @@ class LobbyLoader {
         /* echo "something went wrong when trying to add user to the plfl table: ".$database->error; */
       }
 
-      return ['loadview' => 'loadingpage' ];
+      return ['loadview' => 'loadingpage', 'randomTip' => self::getRandomTip() ];
     }
 
     static function lookForLobby(){
@@ -43,7 +43,7 @@ class LobbyLoader {
 					$_SESSION['currentUser']->setLobby($lobbyId);
           return Lobby::viewLobby();
       } else {
-          return ['loadview' => 'loadingpage', 'randomTip' => self::getRandomTip()];
+          return ['loadview' => 'loadingpage','randomTip' => self::getRandomTip()];
       }
     }
 
