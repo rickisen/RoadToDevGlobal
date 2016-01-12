@@ -30,10 +30,9 @@ class Players{
 		return ['loadview' => 'players', 'users' => $users ];
 	}
 
-	static function filterUsers($attributes){
+	static function filterUsers(){
 
 		$database = DB::getInstance();
-    	$attributes = "";
 
     	$clauses = array();
     	if(empty($_POST['language']) && empty($_POST['rank']) && empty($_POST['hours']) && empty($_POST['nick']) ){
