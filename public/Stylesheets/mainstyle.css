@@ -131,6 +131,16 @@ ul li {
   font-size: 12px;
 }
 
+.select-left-mid li{
+  text-align: left;
+  margin-left: 60px;
+}
+
+.select-right li{
+  text-align: left;
+  margin-left: 40px;
+}
+
 
 /* LOADING PAGE ANIMATION
 ===================================================== */
@@ -216,6 +226,7 @@ select {
   border-radius: 0;
   padding: 10px;
   max-width: 250px;
+  height: 350px;
 }
 
 .caption {
@@ -251,7 +262,9 @@ select {
 .footer {
   background: #eee;
   height: 150px;
-}
+  position: fixed;
+  bottom: 0px;
+  }
 
 /* TESTING DROPDOWNS
 ===================================================== */
