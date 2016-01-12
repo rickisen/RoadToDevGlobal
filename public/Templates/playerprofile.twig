@@ -10,7 +10,11 @@
           {% if user.isPrivateAcc %}
           <h3 style="display: inline-block;">{{ user.nickname }} [<span class="redTxt">private profile</span>]</h3>
           {% else %}
-          <h3 style="display: inline-block;">{{ user.nickname }}</h3>
+          <h3 style="display: inline-block;">{{ user.nickname }}
+            {% if user.country %}
+              <img src="{{ user.countryFlag }}">
+            {% endif %}
+          </a></h3>
           {% endif %}
           <hr>
       </div>
@@ -33,7 +37,7 @@
             <li>Rating: </li>
             <li>TA Games: </li>
   	        <li>Team: <a href="?/TeamProfile/Team/{{team.id}}">
-            {% if user.inTeam == team.id %}  
+            {% if user.inTeam %}
             {{ team.name }}
             {% endif %}
             </a></li>

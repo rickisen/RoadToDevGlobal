@@ -24,6 +24,7 @@ class User{
     // From db
     $rankImg,
     $inTeam,
+    $countryFlag,
 
     // from steamAPI
     $nickname,
@@ -64,13 +65,17 @@ class User{
     $database = DB::getInstance();
 
     $qGetUserFromId = '
-      SELECT user.* , rank_img.img
-      FROM user LEFT JOIN rank_img
-        ON user.rank = rank_img.rank
-      WHERE steam_id = '.$steamId.' LIMIT 1
+      SELECT user.* , rank_img.img, flag_img.image
+      FROM user
+        LEFT JOIN rank_img
+          ON user.rank = rank_img.rank
+        LEFT JOIN flag_img
+          ON user.country = flag_img.country
+      WHERE steam_id = '.$steamId.'
+      LIMIT 1
     ';
 
-    // svae the steam Id first since som memberfunctions
+    // save the steam Id first since some memberfunctions
     // depend on it when fetching other info
     $this->steamId = $steamId;
 
@@ -98,6 +103,7 @@ class User{
       $this->priLang       = $row['primary_language'];
       $this->secLang       = $row['secondary_language'];
       $this->inTeam        = $row['in_team'];
+      $this->countryFlag   = $row['image'];
 
       // calculate kd_ratio, fails if divided by 0, sooo
       if ($this->kills > 0 && $this->deaths > 0)
