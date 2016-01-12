@@ -131,6 +131,16 @@ ul li {
   font-size: 12px;
 }
 
+.select-left-mid li{
+  text-align: left;
+  margin-left: 60px;
+}
+
+.select-right li{
+  text-align: left;
+  margin-left: 40px;
+}
+
 
 /* LOADING PAGE ANIMATION
 ===================================================== */
