@@ -9,6 +9,7 @@ class Team {
   $name,
   $descr,
   $img,
+  $lookingForPlayers,
 
   //team members
   $members = array();
@@ -46,22 +47,31 @@ class Team {
       $database->query($qGetTeamFromId);
     }
 }
+    function constructEmpty(){
 
-  function getMembers() {
-    $database = DB::getInstance();
+      $this->id          = 0;
+      $this->creator     = 0;
+      $this->name        = 0;
+      $this->descr       = 0;
+      $this->img         = 0;
+      $this->lookingForPlayers;
+    }
 
-    $qGetTeamMembers = '
-    SELECT user.steam_id
-    FROM user
-        WHERE user.in_team = '.$this->id.'
-        LIMIT 5
-    ';
+    function getMembers() {
+      $database = DB::getInstance();
 
-    $result = $database->query($qGetTeamMembers);
-    if($result->num_rows == 5) {
-      while($row = $result->fetch_assoc()) {
-        $this->members[] = new User($row['steam_id']);
-      }
+      $qGetTeamMembers = '
+      SELECT user.steam_id
+      FROM user
+          WHERE user.in_team = '.$this->id.'
+          LIMIT 5
+      ';
+
+      $result = $database->query($qGetTeamMembers);
+      if($result->num_rows == 5) {
+        while($row = $result->fetch_assoc()) {
+          $this->members[] = new User($row['steam_id']);
+        }
     }
   }
 }
