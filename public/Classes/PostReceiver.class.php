@@ -109,9 +109,23 @@ class postReceiver{
 		}
 
 		static function receiveComments() {
+			$database = DB::getInstance();
+
 			if (isset($_POST['comment']) && !empty($_POST['comment'])) {
 				$post_comment = $database->real_escape_string(stripslashes($_POST['comment']));
 			}
+
+			$qInsQuery = '
+				INSERT INTO comment (Comment, Signature)
+				VALUES (\''.$post_comment.'\', \''.$_SESSION['currentUser']->nickname.'\')
+				';
+
+				$database->query($qInsQuery);
+
+				if ($database->error) {
+					echo "Sorry, something went wrong when trying to upload your comment: ".$database->error;
+			}
+
 		}
 
         static function logout(){

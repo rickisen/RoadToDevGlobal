@@ -6,7 +6,10 @@
   <div class="col-md-4">
     <h2>{{ team.name }}</h2>
     <p>
-      {{ team.descr }}
+      Members:
+    </p>
+    <p>
+      Team bio: {{ team.descr }}
     </p>
   </div>
 
@@ -21,7 +24,7 @@
           <h3>Post on team wall</h3>
           <form action="" method="post">
             <input type="hidden" name="postHandler" value="receiveComments">
-            <textarea rows="3" class="form-control" name="commentContent" placeholder="Got something to say?"></textarea><br>
+            <textarea rows="3" class="form-control" name="comment" placeholder="Got something to say?"></textarea><br>
             <p>You are posting as <u>{{ currentUser.nickname }}</u></p>
             <input type='hidden' name='commentParent' value='{{readmore}}'>
             <button type="submit">Post</button>
