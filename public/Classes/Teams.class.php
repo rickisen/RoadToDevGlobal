@@ -10,8 +10,9 @@ class Teams{
 		$teams = array();
 
 		$qGetTeams = '
-		SELECT id FROM team
-				LIMIT 24
+		SELECT id
+		FROM team
+		LIMIT 24
 		';
 
 		$result = $database->query($qGetTeams);
@@ -39,10 +40,10 @@ class Teams{
     		return self::viewTeams();
     	}
 
-    	if( isset($_POST['need_players']) && !empty($_POST['need_players']) ){
+    	if( isset($_POST['looking_for_players']) && !empty($_POST['looking_for_players']) ){
 
     		$wantPlayersClause  = ' looking_for_players = "';
-			$wantPlayersClause .= $database->real_escape_string(stripslashes($_POST['need_players']));
+			$wantPlayersClause .= $database->real_escape_string(stripslashes($_POST['looking_for_players']));
 			$wantPlayersClause .= '"';
 			$clauses[] = $wantPlayersClause;
 		}
@@ -69,7 +70,7 @@ class Teams{
     	$teams = array();
 
 		$qGetFilteredTeams = '
-			SELECT id FROM team
+			SELECT team.id FROM team
 			'. $finalClause .'
 			LIMIT 24;
 		';
