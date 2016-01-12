@@ -21,7 +21,7 @@
           </select>
         </div>
 
-        <!-- Search form for players nick -->
+        <!-- Search form for team names -->
         <div class="col-lg-2">
           <input type="text" name="team_name" placeholder="Enter team name here...">
         </div>
@@ -37,11 +37,11 @@
 <div class="row">
   {% for team in teams %}
     <div class="col-md-3 col-sm-6 hero-feature">
-      <div class="thumbnail">
-        <img src="{{ team.img }}" style="height: 200px; width: 225px;">
+      <div class="thumbnail"><a href="?/TeamProfile/Team/{{ team.id }}">
+        <img src="{{ team.img }}" style="height: 200px; width: 225px;"></a>
         <div class="caption">
-          <h3>{{ team.name }}</h3>
-          <p> {{ team.descr }}
+          <a href="?/TeamProfile/Team/{{ team.id }}"><h3>{{ team.name }}</h3></a>
+          <p style="word-wrap: break-word;"> {{ team.descr }}
           <a href="?/TeamProfile/Team/{{ team.id }}">More Info</a>
           </p>
         </div>
