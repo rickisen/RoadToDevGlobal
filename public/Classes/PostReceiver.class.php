@@ -36,47 +36,28 @@ class postReceiver{
 	}
 
 	static function createTeam(){
+
 		$database = DB::getInstance();
 
-		if (isset($_POST['team_name']) && !empty($_POST['team_name']) && isset($_POST['team_desc']) && !empty($_POST['team_desc']) && isset($_POST['team_img']) && !empty($_POST['team_img'])) {
+		if (isset($_POST['team_name']) && !empty($_POST['team_name']) &&
+			isset($_POST['team_descr']) && !empty($_POST['team_descr']) && 
+			isset($_POST['team_img']) && !empty($_POST['team_img']) && 
+			isset($_POST['looking_for_players']) && !empty($_POST['looking_for_players']))		
+		{
+			$team_name     = $database->real_escape_string(stripslashes($_POST['team_name']));
+			$team_descr    = $database->real_escape_string(stripslashes($_POST['team_descr']));
+			$team_img      = $database->real_escape_string(stripslashes($_POST['team_img']));
+			$team_lfp	   = $database->real_escape_string(stripslashes($_POST['looking_for_players']));
 
-			$team_creator  = $_SESSION['currentUser']->steamId;
-			$team_name     = $database->real_escape_string($_POST['team_name']);
-			$team_desc     = $database->real_escape_string($_POST['team_desc']);
-			$team_img      = $database->real_escape_string($_POST['team_img']);
-
-      // create the team
-      $qInsertTeam = '
-        INSERT INTO team (creator, name, descr, img)
-        VALUES (\''.$team_creator.'\' , \''.$team_name.'\',\''.$team_desc.'\', \''.$team_img.'\' )
-      ';
-
-      $database->query($qInsertTeam);
-      if ($database->error)
-        echo "something went wrong when creating a team: ".$database->error;
-
-      // get this team's ID, (the last query's id should've been saved in this variable)
-      $teamId = $database->insert_id;
-
-			$_SESSION['currentUser']->setTeam($teamId);
-
-      // Query to update the currentuser so that he is in this team
-      $qUpdateUsersTeamStatus = '
-        UPDATE user
-        SET in_team = '.$teamId.'
-        WHERE steam_id = '.$_SESSION['currentUser']->steamId.'
-      ';
-
-      $database->query($qUpdateUsersTeamStatus);
-      if ($database->error) {
-				echo "something went wrong when adding a user into a team: ".$database->error;
-			}
-
-			header('Location: ' . '?/TeamProfile/myTeam/');
+			$team = new Team('emptyObject');
+			$team->setInitProperties($_SESSION['currentUser']->steamId, $team_name, $team_descr, $team_img, $team_lfp);
+			$team->insertTeam();
 		}
+		header('Location: ' . '?/TeamProfile/myTeam/');
 	}
 
 	static function editTeam() {
+
 		$database = DB::getInstance();
 
 		if ( isset($_POST['edit_team_name']) && !empty($_POST['edit_team_name']) ) {
@@ -91,46 +72,42 @@ class postReceiver{
 			$edit_team_img      = $database->real_escape_string(stripslashes($_POST['edit_team_img']));
 		}
 
-			$qUpdateTeamProfile = '
-			UPDATE team
-			SET name 		= "'.$edit_team_name.'",
-					descr 	= "'.$edit_team_descr.'",
-					img 		= "'.$edit_team_img.'"
-			WHERE id 		= "'.$_SESSION['currentUser']->inTeam.'"
+		if ( isset($_POST['looking_for_players']) && !empty($_POST['looking_for_players']) ) {
+			$edit_lfp      = $database->real_escape_string(stripslashes($_POST['looking_for_players']));
+		}
+
+		$team = new Team('emptyObject');
+		$team->setProperties($_SESSION['currentUser']->inTeam, $_SESSION['currentUser']->steamId, $edit_team_name, $edit_team_descr, $edit_team_img, $edit_lfp);
+		$team->updateTeamInfo();
+
+		header('Location: ' . '?/TeamProfile/myTeam/');
+
+	}
+
+	static function receiveComments() {
+
+		$database = DB::getInstance();
+
+		if (isset($_POST['comment']) && !empty($_POST['comment'])) {
+			$post_comment = $database->real_escape_string(stripslashes($_POST['comment']));
+		}
+
+		$qInsQuery = '
+			INSERT INTO comment (Comment, Signature)
+			VALUES (\''.$post_comment.'\', \''.$_SESSION['currentUser']->nickname.'\')
 			';
 
-			$database->query($qUpdateTeamProfile);
+			$database->query($qInsQuery);
 
 			if ($database->error) {
-				echo "Sorry, something went wrong when trying to update your team: ".$database->error;
-			}
-
-			header('Location: ' . '?/TeamProfile/myTeam/');
+				echo "Sorry, something went wrong when trying to upload your comment: ".$database->error;
 		}
 
-		static function receiveComments() {
-			$database = DB::getInstance();
+	}
 
-			if (isset($_POST['comment']) && !empty($_POST['comment'])) {
-				$post_comment = $database->real_escape_string(stripslashes($_POST['comment']));
-			}
-
-			$qInsQuery = '
-				INSERT INTO comment (Comment, Signature)
-				VALUES (\''.$post_comment.'\', \''.$_SESSION['currentUser']->nickname.'\')
-				';
-
-				$database->query($qInsQuery);
-
-				if ($database->error) {
-					echo "Sorry, something went wrong when trying to upload your comment: ".$database->error;
-			}
-
-		}
-
-        static function logout(){
-            unset($_SESSION['currentUser']);
-            unset($_SESSION['steamId']);
-        }
+    static function logout(){
+        unset($_SESSION['currentUser']);
+        unset($_SESSION['steamId']);
+    }
 
 }
