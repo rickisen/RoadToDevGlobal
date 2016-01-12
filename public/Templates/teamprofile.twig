@@ -16,4 +16,16 @@
     </div>
   {% endif %}
 
+  <div class="row">
+    <div class="col-md-offset-2 col-md-8" style="margin-top: 40px;">
+          <h3>Post on team wall</h3>
+          <form action="" method="post">
+            <input type="hidden" name="postHandler" value="receiveComments">
+            <textarea rows="3" class="form-control" name="commentContent" placeholder="Got something to say?"></textarea><br>
+            <p>You are posting as <u>{{ currentUser.nickname }}</u></p>
+            <input type='hidden' name='commentParent' value='{{readmore}}'>
+            <button type="submit">Post</button>
+          </form>
+    </div>
+  </div>
 </div>

@@ -80,15 +80,15 @@ class postReceiver{
 		$database = DB::getInstance();
 
 		if ( isset($_POST['edit_team_name']) && !empty($_POST['edit_team_name']) ) {
-			$edit_team_name     = $database->real_escape_string($_POST['edit_team_name']);
+			$edit_team_name     = $database->real_escape_string(stripslashes($_POST['edit_team_name']));
 		}
 
-	 	if ( isset($_POST['edit_team_desc']) && !empty($_POST['edit_team_desc']) ) {
-		 $edit_team_desc     = $database->real_escape_string($_POST['edit_team_desc']);
+	 	if ( isset($_POST['edit_team_descr']) && !empty($_POST['edit_team_descr']) ) {
+		 $edit_team_descr     = $database->real_escape_string(stripslashes($_POST['edit_team_descr']));
 	 	}
 
 	 	if ( isset($_POST['edit_team_img']) && !empty($_POST['edit_team_img']) ) {
-			$edit_team_img      = $database->real_escape_string($_POST['edit_team_img']);
+			$edit_team_img      = $database->real_escape_string(stripslashes($_POST['edit_team_img']));
 		}
 
 			$qUpdateTeamProfile = '
@@ -106,6 +106,12 @@ class postReceiver{
 			}
 
 			header('Location: ' . '?/TeamProfile/myTeam/');
+		}
+
+		static function receiveComments() {
+			if (isset($_POST['comment']) && !empty($_POST['comment'])) {
+				$post_comment = $database->real_escape_string(stripslashes($_POST['comment']));
+			}
 		}
 
         static function logout(){
