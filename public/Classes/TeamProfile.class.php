@@ -44,10 +44,10 @@ class TeamProfile{
 			$team = new Team($row['id']);
 
 			return ['loadview' => 'editteam', 'team' => $team];
+
 		} else {
 			echo 'Did not find team associated to '.$_SESSION['currentUser']->inTeam. $database->error;
 		}
-			// return ['loadview' => 'editteam', 'team' => $_SESSION['currentUser']->inTeam];
 	}
 
 	static function Team($teamId){

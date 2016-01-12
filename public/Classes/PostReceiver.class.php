@@ -76,6 +76,38 @@ class postReceiver{
 		}
 	}
 
+	static function editTeam() {
+		$database = DB::getInstance();
+
+		if ( isset($_POST['edit_team_name']) && !empty($_POST['edit_team_name']) ) {
+			$edit_team_name     = $database->real_escape_string($_POST['edit_team_name']);
+		}
+
+	 	if ( isset($_POST['edit_team_desc']) && !empty($_POST['edit_team_desc']) ) {
+		 $edit_team_desc     = $database->real_escape_string($_POST['edit_team_desc']);
+	 	}
+
+	 	if ( isset($_POST['edit_team_img']) && !empty($_POST['edit_team_img']) ) {
+			$edit_team_img      = $database->real_escape_string($_POST['edit_team_img']);
+		}
+
+			$qUpdateTeamProfile = '
+			UPDATE team
+			SET name 		= "'.$edit_team_name.'",
+					descr 	= "'.$edit_team_descr.'",
+					img 		= "'.$edit_team_img.'"
+			WHERE id 		= "'.$_SESSION['currentUser']->inTeam.'"
+			';
+
+			$database->query($qUpdateTeamProfile);
+
+			if ($database->error) {
+				echo "Sorry, something went wrong when trying to update your team: ".$database->error;
+			}
+
+			header('Location: ' . '?/TeamProfile/myTeam/');
+		}
+
         static function logout(){
             unset($_SESSION['currentUser']);
             unset($_SESSION['steamId']);
