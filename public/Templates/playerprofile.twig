@@ -52,29 +52,38 @@
   <div class="col-md-8 stats-container">
     <div class="row">
       <div class="col-md-10">
-        <h3 class="info-box-header">In-game stats</h3>
-        <hr>
-        <div class="row">
-          <div class="col-xs-6 col-md-6">
-            <ul>
-              <li>Kills: {{ user.kills }} </li>
-              <li>Deaths: {{ user.deaths }}</li>
-              <li>Hours played: {{ user.hoursPlayed }}</li>
-              <li>K/D Ratio: {{ user.kdRatio }}</li>
-            </ul>
+        <h3 class="info-box-header" style="margin-bottom: 20px;">In-game stats</h3>
+
+        <div class="tabbable">
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab1" data-toggle="tab">General</a></li>
+            <li><a href="#tab2" data-toggle="tab">Guns</a></li>
+          </ul>
+        </div>
+
+        <div class="row tab-content">
+
+            <div id="tab1" class="col-xs-6 col-md-6 tab-pane active" >
+              <ul>
+                <li>Kills: {{ user.kills }} </li>
+                <li>Deaths: {{ user.deaths }}</li>
+                <li>Hours played: {{ user.hoursPlayed }}</li>
+                <li>K/D Ratio: {{ user.kdRatio }}</li>
+              </ul>
+           </div>
+
+            <div id="tab2" class="col-xs-6 col-md-6 tab-pane">
+              <ul>
+                <li>AK-47: {{ user.kills }} </li>
+                <li>M4: {{ user.deaths }}</li>
+                <li>Hours played: {{ user.hoursPlayed }}</li>
+                <li>K/D Ratio: {{ user.kdRatio }} </li>
+              </ul>
+            </div>
+
           </div>
 
-          <div class="col-xs-6 col-md-6">
-            <ul>
-              <li>Kills: {{ user.kills }} </li>
-              <li>Deaths: {{ user.deaths }}</li>
-              <li>Hours played: {{ user.hoursPlayed }}</li>
-              <li>K/D Ratio: {{ user.kdRatio }} </li>
-            </ul>
-          </div>
         </div>
-      </div
+      </div>
     </div>
   </div>
-
-</div>
