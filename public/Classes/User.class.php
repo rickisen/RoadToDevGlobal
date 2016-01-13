@@ -116,7 +116,7 @@ class User{
 
     } else {
       // if we didnt find a user in the db with this steam id, we create one
-      $this->registerDate = date("Y-m-d H:i:s");
+      $this->registerDate = date("Y-m-d H:i:s"); #use the date function to match DBs input value
       // query to insert a empty user into the db
       $qInsertUser = '
         INSERT INTO user (steam_id, rank, nickname, hours_played, register_date, kills, deaths, image_l, image_m, image_s, is_private_acc)
@@ -193,7 +193,7 @@ class User{
     $image_l     = $api_1_decoded->response->players[0]->avatarfull;
 
     if(!$this->isPrivateAcc){
-      // make a clearer assoc array from the api 2 responce
+      // make a clearer assoc array from the api 2 response
       $api_2_array = array();
       foreach ($api_2_decoded['playerstats']['stats'] as $stat) {
           $api_2_array[$stat["name"]] = $stat["value"];
@@ -210,10 +210,11 @@ class User{
     $this->updateSteamStats($nickname, $kills, $deaths, $hoursPlayed, $image_l, $image_m, $image_s, $this->isPrivateAcc);
   }
 
+  //update to DB method
   function updateUserSuppliedInfo(){
     $database = DB::getInstance();
 
-    $reCalcAge = date('Y') - $this->born; #should it be declared over here
+    $reCalcAge = date('Y') - $this->born; #uses the date function to calculate the users age
 
     $qUpdateUserSuppliedInfo = '
       UPDATE user
@@ -233,7 +234,7 @@ class User{
         echo "something went wrong when updating Update User Supplied Info".$database->error;
       }
   }
-  // this method returns which age group the user should be inserted to
+  // this method returns which age_group the user should be inserted to
   function getAgeGroup(){
     switch($this->age){
       case ($this->age >= 0 && $this->age <= 9):
