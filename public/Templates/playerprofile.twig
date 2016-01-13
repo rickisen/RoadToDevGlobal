@@ -54,33 +54,48 @@
       <div class="col-md-10">
         <h3 class="info-box-header" style="margin-bottom: 20px;">In-game stats</h3>
 
-        <div class="tabbable">
+        <div class="tabbable" style="margin-bottom: 15px;">
           <ul class="nav nav-tabs">
             <li class="active"><a href="#tab1" data-toggle="tab">General</a></li>
             <li><a href="#tab2" data-toggle="tab">Guns</a></li>
           </ul>
         </div>
 
-        <div class="row tab-content">
+        <div class="row">
+          <div class="col-md-12 tab-content">
 
-            <div id="tab1" class="col-xs-6 col-md-6 tab-pane active" >
-              <ul>
-                <li>Kills: {{ user.kills }} </li>
-                <li>Deaths: {{ user.deaths }}</li>
-                <li>Hours played: {{ user.hoursPlayed }}</li>
-                <li>K/D Ratio: {{ user.kdRatio }}</li>
-              </ul>
+            <div id="tab1" class="row tab-pane active">
+              <div class="col-xs-6">
+                <ul>
+                  <li>Kills: {{ user.kills }} </li>
+                  <li>Deaths: {{ user.deaths }}</li>
+                  <li>Hours played: {{ user.hoursPlayed }}</li>
+                  <li>K/D Ratio: {{ user.kdRatio }}</li>
+                </ul>
+             </div>
            </div>
 
-            <div id="tab2" class="col-xs-6 col-md-6 tab-pane">
-              <ul>
-                <li>AK-47: {{ user.kills }} </li>
-                <li>M4: {{ user.deaths }}</li>
-                <li>Hours played: {{ user.hoursPlayed }}</li>
-                <li>K/D Ratio: {{ user.kdRatio }} </li>
-              </ul>
+            <div id="tab2" class="row tab-pane">
+              <div class="col-xs-6">
+                <ul>
+                  <li>AK-47: {{ user.kills }} </li>
+                  <li>M4/A1: {{ user.deaths }}</li>
+                  <li>AWP: {{ user.hoursPlayed }}</li>
+                  <li>K/D Ratio: {{ user.kdRatio }} </li>
+                </ul>
+                </div>
+                <div class="col-xs-6">
+                <ul>
+                  <li>USP/P2000: {{ user.kills }} </li>
+                  <li>Glock: {{ user.deaths }}</li>
+                  <li>Five-seven: {{ user.hoursPlayed }}</li>
+                  <li>P250: {{ user.kdRatio }} </li>
+                  <li>Deagle: {{ user.kdRatio }} </li>
+                </ul>
+              </div>
             </div>
 
+            </div>
           </div>
 
         </div>
