@@ -25,7 +25,7 @@
  {% for lobbyMate in lobbyMates %}
 			<div class="col-md-2">
 				<div class="row center">
-					{% if lobbyMate.leader %}
+					{% if min(lobbyMate.registerDate) %}<!--should return the player which has the oldest account-->
 					<p data-tooltip="This player is leader" style="position: absolute; padding: 10px 35px; z-index: 999; color: red; font-weight: 700;">L</p>
 					{% endif %}
 					<div class="col-md-12"><img src="{{ lobbyMate.imageL }}" style="width: 150px; height:150px">

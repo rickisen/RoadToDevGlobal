@@ -116,11 +116,11 @@ class User{
 
     } else {
       // if we didnt find a user in the db with this steam id, we create one
-
+      $this->registerDate = date("Y-m-d H:i:s");
       // query to insert a empty user into the db
       $qInsertUser = '
-        INSERT INTO user (steam_id, rank, nickname, hours_played, kills, deaths, image_l, image_m, image_s, is_private_acc)
-        VALUES (\''.$steamId.'\', "unknown" , 0, 0, 0, 0, 0, 0, 0, 0) ';
+        INSERT INTO user (steam_id, rank, nickname, hours_played, register_date, kills, deaths, image_l, image_m, image_s, is_private_acc)
+        VALUES (\''.$steamId.'\', "unknown" , 0, 0, \''.$this->registerDate.'\', 0, 0, 0, 0, 0, 0) ';
 
       // send the query and report any errors
       $database->query($qInsertUser);
@@ -191,6 +191,7 @@ class User{
     $image_s     = $api_1_decoded->response->players[0]->avatar;
     $image_m     = $api_1_decoded->response->players[0]->avatarmedium;
     $image_l     = $api_1_decoded->response->players[0]->avatarfull;
+
     if(!$this->isPrivateAcc){
       // make a clearer assoc array from the api 2 responce
       $api_2_array = array();
