@@ -47,7 +47,7 @@ class postReceiver{
 			$team_name     = $database->real_escape_string(stripslashes($_POST['team_name']));
 			$team_descr    = $database->real_escape_string(stripslashes($_POST['team_descr']));
 			$team_img      = $database->real_escape_string(stripslashes($_POST['team_img']));
-			$team_lfp	   = $database->real_escape_string(stripslashes($_POST['looking_for_players']));
+			$team_lfp	   	 = $database->real_escape_string(stripslashes($_POST['looking_for_players']));
 
 			$team = new Team('emptyObject');
 			$team->setInitProperties($_SESSION['currentUser']->steamId, $team_name, $team_descr, $team_img, $team_lfp);
@@ -73,10 +73,10 @@ class postReceiver{
 		}
 
 		if ( isset($_POST['looking_for_players']) && !empty($_POST['looking_for_players']) ) {
-			$edit_lfp      = $database->real_escape_string(stripslashes($_POST['looking_for_players']));
+			$edit_lfp      			= $database->real_escape_string(stripslashes($_POST['looking_for_players']));
 		}
 
-		$team = new Team('emptyObject');
+		$team = new Team($_SESSION['currentUser']->inTeam);
 		$team->setProperties($_SESSION['currentUser']->inTeam, $_SESSION['currentUser']->steamId, $edit_team_name, $edit_team_descr, $edit_team_img, $edit_lfp);
 		$team->updateTeamInfo();
 
@@ -87,9 +87,9 @@ class postReceiver{
 	static function receiveComments() {
 
 		if (isset($_POST['comment']) && !empty($_POST['comment'])) {
-			$post_comment = $database->real_escape_string(stripslashes($_POST['comment']));
+			$text = $database->real_escape_string(stripslashes($_POST['comment']));
 
-			$comment = new TeamComment('emptyObject');
+      $teamComment = new TeamComment($text);
 
 		}
 	}

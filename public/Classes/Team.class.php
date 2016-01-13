@@ -123,7 +123,7 @@ class Team {
       WHERE id    = "'.$this->id.'"
       ';
 
-    $database->query($qUpdateTeamProfile); 
+    $database->query($qUpdateTeamProfile);
 
     if($database->error) echo 'Something went wrong when updating team info: '.$database->error;
   }
