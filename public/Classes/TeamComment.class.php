@@ -1,61 +1,63 @@
 <?php
 
 class TeamComment{
-  private $author, $text, $date;
+  private $teamId, $text, $date, $commentId;
 
-  function __construct($content, $signature, $date=""){
-    $this->author    = $author;
-    $this->text      = $text;
-    $this->date      = $date;
+  public static function fromText($text, $teamId){
+
+    $database = DB::getInstance();
+    $ret = new self();
+
+    $qInsertNewComment = '
+      INSERT INTO comment (team_id, author, text)
+      VALUES ( \''.$teamId.'\',\''.$_SESSION['currentUser']->steamId.'\', \''.$text.'\')
+    ';
+    $database->query($qInsertNewComment);
+
+    if($error = $database->error){ 
+
+      echo "Something went wrong when trying to insert a comment $id : $error";
+      return FALSE;
+
+    }else {
+
+      $commentId = $database->insert_id;
+      $this->commentId = $commentId;
+      return $ret;
+    }
   }
+
+  public static function withID($commentId){
+    $database = DB::getInstance();
+
+    $ret = new self();
+    $ret->commentId = $commentId;
+
+    $qGetTeamComment = '
+      SELECT * FROM team_comment WHERE id = '. $id .'
+    ';
+
+    if($result = $database->query($qGetTeamComment)){
+      $row = $result->fetch_assoc();
+      $ret->text = $row['text'];
+      $ret->date = $row['date'];
+
+    } elseif($error = $database->error){ 
+      echo "Something went wrong when trying to fetch comment $id : $error";
+
+    }
+
+    return $ret;
+  }
+
+
+  function __construct(){}
 
   function __get($x){
     return $this->$x;
   }
 
-  function __isset($x){
+  /*function __isset($x){
     return isset($this->$x);
-  }
-
-  function storeComment($teamId){
-    $database = DB::getInstance();
-
-    // escape the input before upload
-    $teamId   = $database->real_escape_string(stripslashes($teamId));
-    $author   = $database->real_escape_string(stripslashes($this->author));
-    $text     = $database->real_escape_string(stripslashes($this->text));
-
-    $qInsQuery = '
-			INSERT INTO comment (author, text, date)
-			VALUES ( \''.$_SESSION['currentUser']->steamId.'\', \''.$text.'\')
-			';
-
-			$database->query($qInsQuery);
-
-			if ($database->error) {
-				echo "Sorry, something went wrong when trying to upload your comment: ".$database->error;
-		}
-  }
-
-  function fetchComments {
-    $database = DB::getInstance();
-
-    $qFetchComments = '
-    SELECT team_comment.*
-    FROM team_comment
-    WHERE team_comment.id = team.id
-    ';
-
-    $result = $database->query($qFetchComments);
-    if($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-          $comments[] = new TeamComment($row['id']);
-
-          $database->query($qFetchComments);
-      }
-    } else {
-			echo "Failed to get teams from DB".$database->error;
-		}
-
-  }
+  }*/
 }

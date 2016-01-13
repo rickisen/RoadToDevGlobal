@@ -4,16 +4,21 @@ require_once 'Classes/DB.class.php';
 require_once 'Classes/PostReceiver.class.php';
 require_once 'Classes/LobbyLoader.class.php';
 require_once 'Classes/Team.class.php';
+require_once 'Classes/TeamComment.class.php';
 session_start();
 
 // ROUTE POST REQUESTS ==================================================
 if( ! empty($_POST) && isset($_POST['postHandler']) ) {
-  PostReceiver::$_POST['postHandler']();
+  $database = DB::getInstance();
+  /*$postHandler = $database->real_escape_string(stripslashes($_POST['postHandler']));*/
+  $postHandler = $_POST['postHandler'];
+  PostReceiver::$postHandler();
 }
 
 // ROUTE GET REQUESTS ==================================================
 // Unless we didn't get any get request
 if( ! empty($_GET)  ) {
+
   # $url_params blir en array med alla "värden" som står efter ? avgränsade med /
   # ex. /Posts/single/11 kommer ge en array med 3 värden som är Posts, single och 11
   $url_parts = getUrlParts($_GET) ;
@@ -52,11 +57,13 @@ if( ! isset($data['redirect']) ) { // Unless we got a redirect request
 // function that explodes a string with the '/' character as a delimiter
 // And returns that array
 function getUrlParts($get){
+  $database = DB::getInstance();
 	$get_params = array_keys($get);
 	$url = $get_params[0];
 
 	$url_parts = explode("/",$url);
 	foreach($url_parts as $k => $v){
+    $v = $database->real_escape_string(stripslashes($v));
 		if($v) $array[] = $v;
 	}
 

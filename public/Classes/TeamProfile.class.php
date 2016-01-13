@@ -50,10 +50,10 @@ class TeamProfile{
 		}
 	}
 
-	static function Team($teamId){
+	static function Team($teamIdArr){
 		$database = DB::getInstance();
-
-		$teamId = $database->real_escape_string(stripslashes($teamId[0]));
+    $teamId = $teamIdArr[0];
+		$teamId = $database->real_escape_string(stripslashes($teamId));
 		return ['loadview' => 'teamprofile', 'team' => new Team($teamId)];
 	}
 

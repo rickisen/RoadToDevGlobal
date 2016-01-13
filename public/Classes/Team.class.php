@@ -10,6 +10,7 @@ class Team {
   $descr,
   $img,
   $lookingForPlayers,
+  $comments = array(),
 
   //team members
   $members = array();
@@ -19,7 +20,8 @@ class Team {
   }
 
   function __get($val){
-    return $this->$val;
+    if($val != 'comments')
+      return $this->$val;
   }
 
   function __construct($teamId){
@@ -37,7 +39,7 @@ class Team {
     // and if there was no such Team
     // it should hold no rows
     $result = $database->query($qGetTeamFromId);
-    if( $result->num_rows > 0 ){
+    if( $result && $result->num_rows > 0 ){
       $row = $result->fetch_assoc();
       $this->id                = $row['id'];
       $this->creator           = $row['creator'];
@@ -126,5 +128,28 @@ class Team {
     $database->query($qUpdateTeamProfile);
 
     if($database->error) echo 'Something went wrong when updating team info: '.$database->error;
+  }
+
+  function getComments() {
+    $database = DB::getInstance();
+    if(count($this->comments) != 0){
+      return $this->comments;
+    }
+
+    $qFetchComments = '
+    SELECT team_comment.*
+    FROM team_comment
+    WHERE team_comment.team_id = '. $this->id .'
+    ';
+
+    $result = $database->query($qFetchComments);
+    if($result->num_rows > 0) {
+      while ($row = $result->fetch_assoc()) {
+        $this->comments[] = TeamComment::withId($row['id']);
+      }
+    }elseif($error = $datbase->error) {
+      echo "Failed to get comments from DB ".$error;
+    }
+    return $this->comments;
   }
 }

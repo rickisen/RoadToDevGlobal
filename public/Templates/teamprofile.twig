@@ -30,7 +30,7 @@
             <input type="hidden" name="postHandler" value="receiveComments">
             <textarea rows="3" class="form-control" name="comment" placeholder="Got something to say?"></textarea><br>
             <p>You are posting as <u>{{ currentUser.nickname }}</u></p>
-            <input type='hidden' name='commentParent' value='{{readmore}}'>
+            <input type='hidden' name='team_id' value='{{team.id}}'>
             <button type="submit">Post</button>
           </form>
     </div>
