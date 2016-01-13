@@ -4,19 +4,20 @@
     <h5>Bio</h5>
     <p style="max-width: 200px; font-size: 12px; display: inline-block;">{{ user.bio }}</p>
   </div>
+  
   <div class="col-md-8">
     <div class="row">
       <div class="col-md-10">
-          {% if user.isPrivateAcc %}
-          <h3 style="display: inline-block;">{{ user.nickname }} [<span class="redTxt">private profile</span>]</h3>
-          {% else %}
-          <h3 style="display: inline-block;">{{ user.nickname }}
-            {% if user.country %}
-              <img src="{{ user.countryFlag }}">
-            {% endif %}
-          </a></h3>
+        {% if user.isPrivateAcc %}
+        <h3 style="display: inline-block;">{{ user.nickname }} [<span class="redTxt">private profile</span>]</h3>
+        {% else %}
+        <h3 style="display: inline-block;">{{ user.nickname }}
+          {% if user.country %}
+            <img src="{{ user.countryFlag }}">
           {% endif %}
-          <hr>
+        </a></h3>
+        {% endif %}
+        <hr>
       </div>
     </div>
 
