@@ -4,25 +4,22 @@ class TeamComment{
   private $teamId, $text, $date, $commentId;
 
   public static function fromText($text, $teamId){
-
     $database = DB::getInstance();
+
     $ret = new self();
 
     $qInsertNewComment = '
-      INSERT INTO comment (team_id, author, text)
+      INSERT INTO team_comment (team_id, author, text)
       VALUES ( \''.$teamId.'\',\''.$_SESSION['currentUser']->steamId.'\', \''.$text.'\')
     ';
     $database->query($qInsertNewComment);
 
     if($error = $database->error){ 
-
       echo "Something went wrong when trying to insert a comment $id : $error";
       return FALSE;
-
     }else {
-
       $commentId = $database->insert_id;
-      $this->commentId = $commentId;
+      $ret->commentId = $commentId;
       return $ret;
     }
   }

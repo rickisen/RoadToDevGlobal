@@ -86,7 +86,7 @@ class postReceiver{
 
 	static function receiveComments() {
     $database = DB::getInstance();
-    echo "BAJZ";
+
 
 		if (isset($_POST['comment']) && !empty($_POST['comment']) && isset($_POST['team_id']) && !empty($_POST['team_id'])) {
       $text   = $database->real_escape_string(stripslashes($_POST['comment']));
@@ -97,7 +97,6 @@ class postReceiver{
 		}
     header('Location: ' . '?/TeamProfile/Team/'. $teamId);
 	}
-
     static function logout(){
         unset($_SESSION['currentUser']);
         unset($_SESSION['steamId']);
