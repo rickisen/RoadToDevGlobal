@@ -40,9 +40,9 @@ class postReceiver{
 		$database = DB::getInstance();
 
 		if (isset($_POST['team_name']) && !empty($_POST['team_name']) &&
-			isset($_POST['team_descr']) && !empty($_POST['team_descr']) && 
-			isset($_POST['team_img']) && !empty($_POST['team_img']) && 
-			isset($_POST['looking_for_players']) && !empty($_POST['looking_for_players']))		
+			isset($_POST['team_descr']) && !empty($_POST['team_descr']) &&
+			isset($_POST['team_img']) && !empty($_POST['team_img']) &&
+			isset($_POST['looking_for_players']) && !empty($_POST['looking_for_players']))
 		{
 			$team_name     = $database->real_escape_string(stripslashes($_POST['team_name']));
 			$team_descr    = $database->real_escape_string(stripslashes($_POST['team_descr']));
@@ -86,23 +86,12 @@ class postReceiver{
 
 	static function receiveComments() {
 
-		$database = DB::getInstance();
-
 		if (isset($_POST['comment']) && !empty($_POST['comment'])) {
 			$post_comment = $database->real_escape_string(stripslashes($_POST['comment']));
+
+			$comment = new TeamComment('emptyObject');
+
 		}
-
-		$qInsQuery = '
-			INSERT INTO comment (Comment, Signature)
-			VALUES (\''.$post_comment.'\', \''.$_SESSION['currentUser']->nickname.'\')
-			';
-
-			$database->query($qInsQuery);
-
-			if ($database->error) {
-				echo "Sorry, something went wrong when trying to upload your comment: ".$database->error;
-		}
-
 	}
 
     static function logout(){
