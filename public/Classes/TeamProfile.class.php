@@ -54,7 +54,8 @@ class TeamProfile{
 		$database = DB::getInstance();
     $teamId = $teamIdArr[0];
 		$teamId = $database->real_escape_string(stripslashes($teamId));
-		return ['loadview' => 'teamprofile', 'team' => new Team($teamId)];
+    $team = new Team($teamId);
+		return ['loadview' => 'teamprofile', 'team' => $team];
 	}
 
 }

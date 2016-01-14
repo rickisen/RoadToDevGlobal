@@ -14,7 +14,7 @@ class TeamComment{
     ';
     $database->query($qInsertNewComment);
 
-    if($error = $database->error){ 
+    if($error = $database->error){
       echo "Something went wrong when trying to insert a comment $id : $error";
       return FALSE;
     }else {
@@ -31,19 +31,16 @@ class TeamComment{
     $ret->commentId = $commentId;
 
     $qGetTeamComment = '
-      SELECT * FROM team_comment WHERE id = '. $id .'
+      SELECT * FROM team_comment WHERE id = '. $ret->commentId .'
     ';
 
     if($result = $database->query($qGetTeamComment)){
       $row = $result->fetch_assoc();
       $ret->text = $row['text'];
       $ret->date = $row['date'];
-
-    } elseif($error = $database->error){ 
-      echo "Something went wrong when trying to fetch comment $id : $error";
-
+    } elseif($error = $database->error){
+      echo "Something went wrong when trying to fetch comment $this->commentId : $error";
     }
-
     return $ret;
   }
 

@@ -35,4 +35,13 @@
       </form>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col-md-offset-2 col-md-8" style="margin-top: 40px;">
+      {% for comment in team.0.comments %}
+        <p> {{ comment.text }} </p>
+      {% endfor %}
+    </div>
+  </div>
+
 </div>
