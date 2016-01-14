@@ -41,13 +41,19 @@ class TeamComment{
     $ret->commentId = $commentId;
 
     $qGetTeamComment = '
-      SELECT * FROM team_comment WHERE id = '. $ret->commentId .'
+      SELECT *
+      FROM team_comment
+        LEFT JOIN user
+        ON team_comment.author = user.steam_id
+      WHERE team_comment.id = '. $ret->commentId .'
     ';
 
     if($result = $database->query($qGetTeamComment)){
       $row = $result->fetch_assoc();
-      $ret->text = $row['text'];
-      $ret->date = $row['date'];
+      $ret->author = $row['author'];
+      $ret->nick   = $row['nickname'];
+      $ret->text   = $row['text'];
+      $ret->date   = $row['date'];
     } elseif($error = $database->error){
       echo "Something went wrong when trying to fetch comment $this->commentId : $error";
     }
