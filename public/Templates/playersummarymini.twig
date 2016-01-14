@@ -1,0 +1,14 @@
+<!-- Players Card -->
+<div class="row">
+  <div class="col-md-2">
+    <a href="?/Profile/displayuser/{{ user.steamId }}">
+      <img style="padding: 0;" src="{{ user.imageS }}" alt="">
+    </a>
+  </div>
+  <div class="col-md-8">
+    <p style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">
+        <a href="?/Profile/displayuser/{{ user.steamId }}"> {{ user.nickname }}</a>
+    </p>
+  </div>
+</div>
+<!-- /.row -->

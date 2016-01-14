@@ -219,6 +219,17 @@ select {
   cursor: crosshair !important; /*CROSSHAIR EFFECT*/
 }
 
+/* TEAM PROFILE PAGE
+=====================================================*/
+
+.player-mini {
+  width: 100px;
+  margin-bottom: 25px;
+  padding: 10px;
+  margin-right: 25px;
+}
+
+
 /* Team summary cards
 ==================================================== */
 
