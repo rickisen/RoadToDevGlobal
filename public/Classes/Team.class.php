@@ -146,7 +146,7 @@ class Team {
         // $this->comments[] = ['text' => 'hejsan'];
         $this->comments[] = TeamComment::withId($row['id']);
       }
-    }elseif($error = $datbase->error) {
+    }elseif($error = $database->error) {
       echo "Failed to get comments from DB ".$error;
     }
   }

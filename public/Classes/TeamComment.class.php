@@ -3,6 +3,16 @@
 class TeamComment{
   private $teamId, $text, $date, $commentId;
 
+  function __construct(){}
+
+  function __get($x){
+    return $this->$x;
+  }
+
+  function __isset($x){
+    return isset($this->$x);
+  }
+
   public static function fromText($text, $teamId){
     $database = DB::getInstance();
 
@@ -43,15 +53,4 @@ class TeamComment{
     }
     return $ret;
   }
-
-
-  function __construct(){}
-
-  function __get($x){
-    return $this->$x;
-  }
-
-  /*function __isset($x){
-    return isset($this->$x);
-  }*/
 }
