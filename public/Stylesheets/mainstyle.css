@@ -256,6 +256,14 @@ select {
   margin-top: 50px;
 }
 
+.leader{ /*sets border for the leader*/
+  border: 5px solid peachpuff;
+}
+
+.currentUser{ /*sets border for the current user*/
+  border: 5px solid green;
+}
+
 /* FOOTER
 ===================================================== */
 

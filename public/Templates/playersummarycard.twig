@@ -1,26 +1,24 @@
 <!-- Players Card -->
-      <div class="col-md-3 player-card">
-          <a href="?/Profile/displayuser/{{ user.steamId }}">
-              <img class="img-responsive" src="{{ user.imageL }}" alt="">
-          </a>
-          <h3 style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden; margin: 10px 0px;">
-              <a href="?/Profile/displayuser/{{ user.steamId }}"> {{ user.nickname }}</a>
-          </h3>
-          <p>
-            {% if user.country %}
-              <img src="{{ user.countryFlag }}">
-            {% endif %}
-             <img class="rankimg center" src="{{ user.rankImg }}"><br>
+<a href="?/Profile/displayuser/{{ user.steamId }}">
+  <img class="img-responsive" src="{{ user.imageL }}" alt="">
+</a>
+<h3 style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden; margin: 10px 0px;">
+    <a href="?/Profile/displayuser/{{ user.steamId }}"> {{ user.nickname }}</a>
+</h3>
+<p>
+  {% if user.country %}
+    <img src="{{ user.countryFlag }}">
+  {% endif %}
+    <img class="rankimg center" src="{{ user.rankImg }}"><br>
 
-             {% if user.isPrivateAcc == TRUE %}
-               Private profile
-               <br>
-               <br>
-               <br>
-             {% else %}
-               K/D Ratio: {{ user.kdRatio }}<br>
-               Hours played: {{ user.hoursPlayed }}<br>
-             {% endif %}
-          </p>
-        </div>
+  {% if user.isPrivateAcc == TRUE %}
+    Private profile
+    <br>
+    <br>
+    <br>
+  {% else %}
+    K/D Ratio: {{ user.kdRatio }}<br>
+    Hours played: {{ user.hoursPlayed }}<br>
+  {% endif %}
+</p>
 <!-- /.row -->

@@ -72,7 +72,9 @@
    <!-- Players Card -->
      <div class="row">
       {% for user in users %}
-        {% include "playersummarycard.twig" %}
+        <div class="col-md-3 player-card">
+          {% include "playersummarycard.twig" %}
+        </div>
       {% endfor %}
      </div>
    <!-- /.row -->

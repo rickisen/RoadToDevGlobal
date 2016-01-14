@@ -3,67 +3,43 @@
 		<h1 class="lobby-title">Get ready to play, have fun!</h1>
 	</div>
 </div>
-
-<div class="row">
-	<div class="col-md-12 col-md-offset-1">
-		<div class="row">
-
-			<div class="col-md-2">
-				<div class="row center">
-					<span></span>
-					<div class="col-md-12"><img src="{{ currentUser.imageL }}" style="width: 150px; height:150px">
-						<h4>{{ currentUser.nickname }}</h5>
-						<img class="rankimg" src="{{ currentUser.rankImg }}"><br>
-						<p>{{ currentUser.country }}<br>
-						Age: {{ currentUser.age }}<br>
-						KD: {{ currentUser.kdRatio }}</p>
-					</div>
-
-				</div>
-			</div>
-
- {% for lobbyMate in lobbyMates %}
-			<div class="col-md-2">
-				<div class="row center">
-					{% if min(lobbyMate.registerDate) %}<!--should return the player which has the oldest account-->
-					<p data-tooltip="This player is leader" style="position: absolute; padding: 10px 35px; z-index: 999; color: red; font-weight: 700;">L</p>
-					{% endif %}
-					<div class="col-md-12"><img src="{{ lobbyMate.imageL }}" style="width: 150px; height:150px">
-						<h4>{{ lobbyMate.nickname }}</h5>
-						<img class="rankimg" src="{{ lobbyMate.rankImg }}"><br>
-						<p>{{ lobbyMate.country }}<br>
-						Age: {{ lobbyMate.age }}<br>
-						KD: {{ lobbyMate.kdRatio }}</p>
-					</div>
-				</div>
+<div class="row lobby-members">
+	{% for user in lobbyMates %}
+		{% if user.steamId == leader.steamId %}
+			<div class="col-md-3 player-card leader">
+		{% elseif user.steamId == currentUser.steamId %}
+			<div class="col-md-3 player-card currentUser">
+		{% else %}
+			<div class="col-md-3 player-card">
+		{% endif %}
+		{% include "playersummarycard.twig" %}
 			</div>
 	{% endfor %}
-
-
-		</div>
-	</div>
+  
 </div>
 
-<input type="checkbox" name="dialog_state" id="dialog_state" class="dialog_state">
+{% if leader.steamId == currentUser.steamId %}
+	<input type="checkbox" name="dialog_state" id="dialog_state" class="dialog_state">
 
-<div id='dialog'>
-	<label id="dlg-back" for="dialog_state"></label>
-	<div id='dlg-wrap'>
-		<label id="dlg-close" for="dialog_state"></label>
-		<h2 id='dlg-header'>You are the lobby leader!</h2>
-		<div id='dlg-content'>It is now your responsibility to make sure a game is initiated through the Steam group provided.</div>
-		<div id='dlg-prompt'>
-			<div class='button'>Allright, let's do it!</div>
+	<div id='dialog'>
+		<label id="dlg-back" for="dialog_state"></label>
+		<div id='dlg-wrap'>
+			<label id="dlg-close" for="dialog_state"></label>
+			<h2 id='dlg-header'>You are the lobby leader!</h2>
+			<div id='dlg-content'>It is now your responsibility to make sure a game is initiated through the Steam group provided.</div>
+			<div id='dlg-prompt'>
+				<div class='button'>Allright, let's do it!</div>
+			</div>
 		</div>
 	</div>
-</div>
 
-<main id='main' class='main_area'>
-	<div class='center'>
-		<label class="button" id="trigger" for="dialog_state">Lobby leader</label>
-	</div>
-<div id='console'></div>
-</main>
+	<main id='main' class='main_area'>
+		<div class='center'>
+			<label class="button" id="trigger" for="dialog_state">Lobby leader</label>
+		</div>
+		<div id='console'></div>
+	</main>
+{% endif %}
 
 <div class="row">
 	<div class="col-md-12 lobby-button center">
