@@ -30,7 +30,17 @@ class User{
     $nickname,
     $isPrivateAcc,
     $kills,
+    $killsByHs,
     $deaths,
+    $killsAk47,
+    $killsM4,
+    $killsAwp,
+    $killsP2000,
+    $killsGlock,
+    $killsP250,
+    $killsFiveseven,
+    $killsTec9,
+    $killsDeagle,
     $imageL,
     $imageM,
     $imageS,
@@ -85,25 +95,35 @@ class User{
     $result = $database->query($qGetUserFromId);
     if( $result->num_rows > 0 ){
       $row = $result->fetch_assoc();
-      $this->rank          = $row['rank'];
-      $this->age           = $row['age'];
-      $this->born          = $row['born'];
-      $this->country       = $row['country'];
-      $this->bio           = $row['bio'];
-      $this->kills         = $row['kills'];
-      $this->deaths        = $row['deaths'];
-      $this->hoursPlayed   = $row['hours_played'];
-      $this->registerDate  = $row['register_date'];
-      $this->nickname      = $row['nickname'];
-      $this->imageL        = $row['image_l'];
-      $this->imageM        = $row['image_m'];
-      $this->imageS        = $row['image_s'];
-      $this->isPrivateAcc  = $row['is_private_acc'];
-      $this->rankImg       = $row['img'];
-      $this->priLang       = $row['primary_language'];
-      $this->secLang       = $row['secondary_language'];
-      $this->inTeam        = $row['in_team'];
-      $this->countryFlag   = $row['image'];
+      $this->rank            = $row['rank'];
+      $this->age             = $row['age'];
+      $this->born            = $row['born'];
+      $this->country         = $row['country'];
+      $this->bio             = $row['bio'];
+      $this->kills           = $row['kills'];
+      $this->killsByHs       = $row['killsbyhs'];
+      $this->deaths          = $row['deaths'];
+      $this->killsAk47       = $row['killsak47'];
+      $this->killsM4         = $row['killsm4'];
+      $this->killsAwp        = $row['killsawp'];
+      $this->killsP2000      = $row['killsp2000'];
+      $this->killsGlock      = $row['killsglock'];
+      $this->killsP250       = $row['killsp250'];
+      $this->killsFiveseven  = $row['killsfiveseven'];
+      $this->killsTec9       = $row['killstec9'];
+      $this->killsDeagle     = $row['killsdeagle'];
+      $this->hoursPlayed     = $row['hours_played'];
+      $this->registerDate    = $row['register_date'];
+      $this->nickname        = $row['nickname'];
+      $this->imageL          = $row['image_l'];
+      $this->imageM          = $row['image_m'];
+      $this->imageS          = $row['image_s'];
+      $this->isPrivateAcc    = $row['is_private_acc'];
+      $this->rankImg         = $row['img'];
+      $this->priLang         = $row['primary_language'];
+      $this->secLang         = $row['secondary_language'];
+      $this->inTeam          = $row['in_team'];
+      $this->countryFlag     = $row['image'];
 
       // calculate kd_ratio, fails if divided by 0, sooo
       if ($this->kills > 0 && $this->deaths > 0)
@@ -119,7 +139,8 @@ class User{
       $this->registerDate = date("Y-m-d H:i:s"); #use the date function to match DBs input value
       // query to insert a empty user into the db
       $qInsertUser = '
-        INSERT INTO user (steam_id, rank, nickname, hours_played, register_date, kills, deaths, image_l, image_m, image_s, is_private_acc)
+        INSERT INTO user (steam_id,
+         rank, nickname, hours_played, register_date, kills, killsbyhs, deaths, killsak47, killsm4, killsawp, killsp2000, killsglock, killsp250, killsfiveseven, killstec9, killsdeagle, image_l, image_m, image_s, is_private_acc)
         VALUES (\''.$steamId.'\', "unknown" , 0, 0, \''.$this->registerDate.'\', 0, 0, 0, 0, 0, 0) ';
 
       // send the query and report any errors
@@ -136,18 +157,47 @@ class User{
     }
   }
 
-  function updateSteamStats($nickname, $kills, $deaths, $hoursPlayed, $image_l, $image_m, $image_s, $isPrivateAcc){
+  function updateSteamStats(
+      $nickname,
+      $kills,
+      $killsByHs,
+      $deaths,
+      $hoursPlayed,
+      $killsAk47,
+      $killsM4,
+      $killsAwp,
+      $killsP2000,
+      $killsGlock,
+      $killsP250,
+      $killsFiveseven,
+      $killsTec9,
+      $killsDeagle,
+      $image_l,
+      $image_m,
+      $image_s,
+      $isPrivateAcc){
+
     $database = DB::getInstance();
 
     // get the changes localy and clean them
-    $this->nickname     = $database->real_escape_string(stripslashes($nickname)) ;
-    $this->kills        = $database->real_escape_string(stripslashes($kills)) ;
-    $this->deaths       = $database->real_escape_string(stripslashes($deaths)) ;
-    $this->imageL       = $database->real_escape_string(stripslashes($image_l)) ;
-    $this->imageM       = $database->real_escape_string(stripslashes($image_m)) ;
-    $this->imageS       = $database->real_escape_string(stripslashes($image_s)) ;
-    $this->hoursPlayed  = $database->real_escape_string(stripslashes($hoursPlayed)) ;
-    $this->isPrivateAcc = $database->real_escape_string(stripslashes($isPrivateAcc)) ; #do we need strip/res?
+    $this->nickname        = $database->real_escape_string(stripslashes($nickname)) ;
+    $this->kills           = $database->real_escape_string(stripslashes($kills)) ;
+    $this->killsByHs       = $database->real_escape_string(stripslashes($killsByHs)) ;
+    $this->deaths          = $database->real_escape_string(stripslashes($deaths)) ;
+    $this->killsAk47       = $database->real_escape_string(stripslashes($killsAk47)) ;
+    $this->killsM4         = $database->real_escape_string(stripslashes($killsM4)) ;
+    $this->killsAwp        = $database->real_escape_string(stripslashes($killsAwp)) ;
+    $this->killsP2000      = $database->real_escape_string(stripslashes($killsP2000)) ;
+    $this->killsGlock      = $database->real_escape_string(stripslashes($killsGlock)) ;
+    $this->killsP250       = $database->real_escape_string(stripslashes($killsP250)) ;
+    $this->killsFiveseven  = $database->real_escape_string(stripslashes($killsFiveseven)) ;
+    $this->killsTec9       = $database->real_escape_string(stripslashes($killsTec9)) ;
+    $this->killsDeagle     = $database->real_escape_string(stripslashes($killsDeagle)) ;
+    $this->imageL          = $database->real_escape_string(stripslashes($image_l)) ;
+    $this->imageM          = $database->real_escape_string(stripslashes($image_m)) ;
+    $this->imageS          = $database->real_escape_string(stripslashes($image_s)) ;
+    $this->hoursPlayed     = $database->real_escape_string(stripslashes($hoursPlayed)) ;
+    $this->isPrivateAcc    = $database->real_escape_string(stripslashes($isPrivateAcc)) ; #do we need strip/res?
 
     if($isPrivateAcc) $isPrivateAcc = 1;
     else $isPrivateAcc = 0;
@@ -157,7 +207,17 @@ class User{
     UPDATE user
     SET nickname       = "'.$this->nickname.'",
         kills          = "'.$this->kills.'",
+        killsByHs      = "'.$this->killsByHs.'",
         deaths         = "'.$this->deaths.'",
+        killsAk47      = "'.$this->killsAk47.'",
+        killsM4        = "'.$this->killsM4.'",
+        killsAwp       = "'.$this->killsAwp.'",
+        killsP2000     = "'.$this->killsP2000.'",
+        killsGlock     = "'.$this->killsGlock.'",
+        killsP250      = "'.$this->killsP250.'",
+        killsFiveseven = "'.$this->killsFiveseven.'",
+        killsTec9      = "'.$this->killsTec9.'",
+        killsDeagle    = "'.$this->killsDeagle.'",
         image_l        = "'.$this->imageL.'",
         image_m        = "'.$this->imageM.'",
         image_s        = "'.$this->imageS.'",
@@ -198,16 +258,64 @@ class User{
       foreach ($api_2_decoded['playerstats']['stats'] as $stat) {
           $api_2_array[$stat["name"]] = $stat["value"];
       }
-      $kills       = $api_2_array['total_kills'];
-      $deaths      = $api_2_array['total_deaths'];
-      $hoursPlayed = round(((float) $api_2_array['total_time_played'] / 60 / 60 )); #might need some mathematical fix
+
+      // Fetching weapons stats
+
+      // General
+      $kills            = $api_2_array['total_kills'];
+      $killsByHs        = $api_2_array['total_kills_headshot'];
+      $deaths           = $api_2_array['total_deaths'];
+      $hoursPlayed      = round(((float) $api_2_array['total_time_played'] / 60 / 60 )); #might need some mathematical fix
+
+      // Rifles
+      $killsAk47        = $api_2_array['total_kills_ak47'];
+      $killsM4          = $api_2_array['total_kills_m4a1'];
+      $killsAwp         = $api_2_array['total_kills_awp'];
+
+      // Pistols
+      $killsP2000       = $api_2_array['total_kills_hkp2000'];
+      $killsGlock       = $api_2_array['total_kills_glock'];
+      $killsP250        = $api_2_array['total_kills_p250'];
+      $killsFiveseven   = $api_2_array['total_kills_fiveseven'];
+      $killsTec9        = $api_2_array['total_kills_tec9'];
+      $killsDeagle      = $api_2_array['total_kills_deagle'];
+
     }else{
-      $kills       = "";
-      $deaths      = "";
-      $hoursPlayed = "";
+      $kills          = "";
+      $killsByHs      = "";
+      $deaths         = "";
+      $hoursPlayed    = "";
+      $killsAk47      = "";
+      $killsM4        = "";
+      $killsAwp       = "";
+      $killsP2000     = "";
+      $killsGlock     = "";
+      $killsP250      = "";
+      $killsFiveseven = "";
+      $killsTec9      = "";
+      $killsDeagle    = "";
+
     }
 
-    $this->updateSteamStats($nickname, $kills, $deaths, $hoursPlayed, $image_l, $image_m, $image_s, $this->isPrivateAcc);
+    $this->updateSteamStats(
+      $nickname,
+      $kills,
+      $killsByHs,
+      $deaths,
+      $hoursPlayed,
+      $killsAk47,
+      $killsM4,
+      $killsAwp,
+      $killsP2000,
+      $killsGlock,
+      $killsP250,
+      $killsFiveseven,
+      $killsTec9,
+      $killsDeagle,
+      $image_l,
+      $image_m,
+      $image_s,
+      $this->isPrivateAcc);
   }
 
   //update to DB method

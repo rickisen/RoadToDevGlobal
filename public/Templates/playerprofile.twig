@@ -4,7 +4,7 @@
     <h5>Bio</h5>
     <p style="max-width: 200px; font-size: 12px; display: inline-block;">{{ user.bio }}</p>
   </div>
-  
+
   <div class="col-md-8">
     <div class="row">
       <div class="col-md-10">
@@ -69,6 +69,7 @@
               <div class="col-xs-6">
                 <ul>
                   <li>Kills: {{ user.kills }} </li>
+                  <li>Headshot kills: {{ user.killsByHs }}</li>
                   <li>Deaths: {{ user.deaths }}</li>
                   <li>Hours played: {{ user.hoursPlayed }}</li>
                   <li>K/D Ratio: {{ user.kdRatio }}</li>
@@ -79,19 +80,19 @@
             <div id="tab2" class="row tab-pane">
               <div class="col-xs-6">
                 <ul>
-                  <li>AK-47: {{ user.kills }} </li>
-                  <li>M4/A1: {{ user.deaths }}</li>
-                  <li>AWP: {{ user.hoursPlayed }}</li>
-                  <li>K/D Ratio: {{ user.kdRatio }} </li>
+                  <li>AK-47: {{ user.killsAk47 }} </li>
+                  <li>M4/A1: {{ user.killsM4 }}</li>
+                  <li>AWP: {{ user.killsAwp }}</li>
                 </ul>
                 </div>
                 <div class="col-xs-6">
                 <ul>
-                  <li>USP/P2000: {{ user.kills }} </li>
-                  <li>Glock: {{ user.deaths }}</li>
-                  <li>Five-seven: {{ user.hoursPlayed }}</li>
-                  <li>P250: {{ user.kdRatio }} </li>
-                  <li>Deagle: {{ user.kdRatio }} </li>
+                  <li>USP/P2000: {{ user.killsP2000 }} </li>
+                  <li>Glock: {{ user.killsGlock }}</li>
+                  <li>P250: {{ user.killsP250 }}</li>
+                  <li>Fiveseven: {{ user.killsFiveseven }} </li>
+                  <li>Tec9: {{ user.killsTec9 }} </li>
+                  <li>Deagle: {{ user.killsDeagle }} </li>
                 </ul>
               </div>
             </div>
