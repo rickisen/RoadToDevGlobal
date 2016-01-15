@@ -10,8 +10,7 @@ session_start();
 // ROUTE POST REQUESTS ==================================================
 if( ! empty($_POST) && isset($_POST['postHandler']) ) {
   $database = DB::getInstance();
-  /*$postHandler = $database->real_escape_string(stripslashes($_POST['postHandler']));*/
-  $postHandler = $_POST['postHandler'];
+  $postHandler = $database->real_escape_string(stripslashes($_POST['postHandler']));
   PostReceiver::$postHandler();
 }
 
