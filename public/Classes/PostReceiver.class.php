@@ -108,6 +108,17 @@ class postReceiver{
 		}
 	}
 
+  static function receiveRemovePlayer(){
+    $database = DB::getInstance();
+
+    if(isset($_POST['kick_player']) && !empty($_POST['kick_player'])){
+      $kickPlayer = $database->real_escape_string(stripslashes($_POST['kick_player']));
+
+     $_SESSION['currentUser']->removePlayerFromTeam($kickPlayer);
+      
+    }
+  }
+
   static function logout(){
     unset($_SESSION['currentUser']);
     unset($_SESSION['steamId']);
