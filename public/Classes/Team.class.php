@@ -16,11 +16,21 @@ class Team {
   $members = array();
 
   function __isset($val){
-    return isset($this->$val);
+    if($val != 'members'){
+      return isset($this->$val);
+    } else{
+      $this->getMembers();
+      return isset($this->members);
+    }
   }
 
   function __get($val){
+    if($val != 'members'){
       return $this->$val;
+    } else{
+      $this->getMembers();
+      return $this->members;
+    }
   }
 
   function __construct($teamId){
@@ -77,13 +87,15 @@ class Team {
         WHERE user.in_team = '.$this->id.'
         LIMIT 5
     ';
-
-    $result = $database->query($qGetTeamMembers);
-    if($result->num_rows == 5) {
-      while($row = $result->fetch_assoc()) {
-        $this->members[] = new User($row['steam_id']);
+    if(count($this->members) < 1){
+      $result = $database->query($qGetTeamMembers);
+      if($result->num_rows == 5) {
+        while($row = $result->fetch_assoc()) {
+          $this->members[] = new User($row['steam_id']);
+        }
       }
     }
+    return $this->members;
   }
 
   function insertTeam(){
