@@ -2,7 +2,7 @@
     <div class="col-md-offset-2 col-md-2 center">
       <img src="{{ team.img }}">
       <form action="?/TeamProfile/Team/{{ team.id }}" method="post">
-         <button type="submit" name="postHandler" value="Applytoteam">Apply to team</button>
+        <button type="submit" name="postHandler" value="applyToTeam">Apply to team</button>
       </form>
     </div>
 
@@ -11,7 +11,7 @@
       <br>
       <p>
         Members:
-        {% for member in team.getMembers %}
+        {% for member in team.members %}
         {{member.nickname}}
         {% endfor %}
       </p>
@@ -52,11 +52,12 @@
         <p>You are posting as <u>{{ currentUser.nickname }}</u></p>
         <input type='hidden' name='team_id' value='{{team.id}}'>
         <button type="submit">Post</button>
+      </form> 
       {% else %}
-        <form>
+      <form>
         <textarea rows="3" class="form-control" name="" placeholder="You have to log in to make comments." disabled></textarea><br>
         <button type="submit" disabled>Post</button>
-        </form>
+      </form>
       {% endif %}
     </div>
   </div>

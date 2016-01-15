@@ -87,24 +87,26 @@ class postReceiver{
 	static function receiveComments() {
     $database = DB::getInstance();
 
-
 		if (isset($_POST['comment']) && !empty($_POST['comment']) && isset($_POST['team_id']) && !empty($_POST['team_id'])) {
-      $text   = $database->real_escape_string(stripslashes($_POST['comment']));
-      $teamId = $database->real_escape_string(stripslashes($_POST['team_id']));
+		  $text   = $database->real_escape_string(stripslashes($_POST['comment']));
+		  $teamId = $database->real_escape_string(stripslashes($_POST['team_id']));
 
-      $teamComment = TeamComment::fromText($text, $teamId);
-
+		  $teamComment = TeamComment::fromText($text, $teamId);
 		}
+
     header('Location: ' . '?/TeamProfile/Team/'. $teamId);
 	}
 
   static function applyToTeam() {
-
+  	$database = DB::getInstance();
+  	
+  	/*skickas till apply into team*/
+  	/**/
   }
 
-    static function logout(){
-        unset($_SESSION['currentUser']);
-        unset($_SESSION['steamId']);
-    }
+  static function logout(){
+    unset($_SESSION['currentUser']);
+    unset($_SESSION['steamId']);
+  }
 
 }
