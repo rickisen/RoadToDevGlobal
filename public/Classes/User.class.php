@@ -141,7 +141,7 @@ class User{
       $qInsertUser = '
         INSERT INTO user (steam_id,
          rank, nickname, hours_played, register_date, kills, killsbyhs, deaths, killsak47, killsm4, killsawp, killsp2000, killsglock, killsp250, killsfiveseven, killstec9, killsdeagle, image_l, image_m, image_s, is_private_acc)
-        VALUES (\''.$steamId.'\', "unknown" , 0, 0, \''.$this->registerDate.'\', 0, 0, 0, 0, 0, 0) ';
+        VALUES (\''.$steamId.'\', "unknown" , 0, 0, \''.$this->registerDate.'\', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0) ';
 
       // send the query and report any errors
       $database->query($qInsertUser);
