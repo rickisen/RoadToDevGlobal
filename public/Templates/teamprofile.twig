@@ -1,9 +1,13 @@
   <div class="row mrg-top-40 team-profile-container">
     <div class="col-md-offset-2 col-md-2 center">
       <img src="{{ team.img }}">
+      {% if currentUser.inTeam != team.id and currentUser %} <!--if the user isnt in the team and we're logged in as a user, we show the Apply button-->
       <form action="?/TeamProfile/Team/{{ team.id }}" method="post">
-        <button type="submit" name="postHandler" value="applyToTeam">Apply to team</button>
+        <input type="hidden" name="postHandler" value="receiveTeamRequest">
+        <button type="submit" name="teamId" value="{{team.id}}">Apply to team</button>
       </form>
+      <!--build a elseif twig where we show the current team applys we have?-->
+      {% endif %}
     </div>
 
     <div class="col-md-4">
