@@ -93,10 +93,15 @@ class postReceiver{
       $teamId = $database->real_escape_string(stripslashes($_POST['team_id']));
 
       $teamComment = TeamComment::fromText($text, $teamId);
-      
+
 		}
     header('Location: ' . '?/TeamProfile/Team/'. $teamId);
 	}
+
+  static function applyToTeam() {
+
+  }
+
     static function logout(){
         unset($_SESSION['currentUser']);
         unset($_SESSION['steamId']);
