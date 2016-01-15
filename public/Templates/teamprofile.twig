@@ -1,6 +1,9 @@
   <div class="row" style="margin-top: 40px;">
-    <div class="col-md-offset-2 col-md-2">
+    <div class="col-md-offset-2 col-md-2 center">
       <img src="{{ team.img }}" style="width: 150px; height: 150px;">
+      <form action="?/TeamProfile/Team/{{ team.id }}" method="post">
+         <button type="submit" name="postHandler" value="Applytoteam">Apply to team</button>
+      </form>
     </div>
 
     <div class="col-md-4">
@@ -68,4 +71,3 @@
       {% endfor %}
     </div>
   </div>
-
