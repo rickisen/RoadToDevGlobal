@@ -1,6 +1,6 @@
-  <div class="row" style="margin-top: 40px;">
+  <div class="row mrg-top-40 team-profile-container">
     <div class="col-md-offset-2 col-md-2 center">
-      <img src="{{ team.img }}" style="width: 150px; height: 150px;">
+      <img src="{{ team.img }}">
       <form action="?/TeamProfile/Team/{{ team.id }}" method="post">
         <button type="submit" name="postHandler" value="applyToTeam">Apply to team</button>
       </form>
@@ -43,7 +43,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-offset-2 col-md-8" style="margin-top: 40px;">
+    <div class="col-md-offset-2 col-md-8 mrg-top-40">
       <h3>Post on team wall</h3>
       {% if currentUser %}
       <form action="/index.php?" method="post">
@@ -63,10 +63,10 @@
   </div>
 
   <div class="row">
-    <div class="col-md-offset-2 col-md-8" style="margin-top: 40px;">
+    <div class="col-md-offset-2 col-md-8 mrg-top-40">
       {% for comment in team.comments %}
-        <p style="display: inline-block;"><a href="?/Profile/displayuser/{{ comment.author }}"><u> {{ comment.nick }} </u> </a> </p>
-        <p style="font-size: 10px; display: inline-block;"> {{ comment.date }} </p>
+        <p class="inline-block"><a href="?/Profile/displayuser/{{ comment.author }}"><u> {{ comment.nick }} </u> </a> </p>
+        <p class="inline-block date-stamp"> {{ comment.date }} </p>
         <p> {{ comment.text }} </p>
         <hr>
       {% endfor %}

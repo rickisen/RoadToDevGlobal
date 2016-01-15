@@ -1,17 +1,17 @@
-<div class="row profileheader">
+<div class="row profile-header">
   <div class="col-md-4 center">
     <img src="{{ user.imageL }}">
     <h5>Bio</h5>
-    <p style="max-width: 200px; font-size: 12px; display: inline-block;">{{ user.bio }}</p>
+    <p class="inline-block bio-text">{{ user.bio }}</p>
   </div>
 
   <div class="col-md-8">
     <div class="row">
       <div class="col-md-10">
         {% if user.isPrivateAcc %}
-        <h3 style="display: inline-block;">{{ user.nickname }} [<span class="redTxt">private profile</span>]</h3>
+        <h3 class="inline-block;">{{ user.nickname }} [<span class="redTxt">private profile</span>]</h3>
         {% else %}
-        <h3 style="display: inline-block;">{{ user.nickname }}
+        <h3 class="inline-block">{{ user.nickname }}
           {% if user.country %}
             <img src="{{ user.countryFlag }}">
           {% endif %}
@@ -53,9 +53,9 @@
   <div class="col-md-8 stats-container">
     <div class="row">
       <div class="col-md-10">
-        <h3 class="info-box-header" style="margin-bottom: 20px;">In-game stats</h3>
+        <h3 class="info-box-header mrg-bot-20">In-game stats</h3>
 
-        <div class="tabbable" style="margin-bottom: 15px;">
+        <div class="tabbable mrg-bot-15">
           <ul class="nav nav-tabs">
             <li class="active"><a href="#tab1" data-toggle="tab">General</a></li>
             <li><a href="#tab2" data-toggle="tab">Guns</a></li>

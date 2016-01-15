@@ -5,7 +5,7 @@
        <div class="col-lg-12"> <!--Add styles to class-->
            <h1>Teams
              <small>Find teams</small>
-             <small style="font-size:12px; margin-left:695px; cursor:pointer;" class="filter-toggle">FILTER &nabla;</small> <!--Add styles to class-->
+             <small class="filter-toggle">FILTER &nabla;</small> <!--Add styles to class-->
            </h1>
        </div>
    </div>
@@ -27,25 +27,16 @@
         </div>
 
         <input class="sub-btn" type="submit" value="Filter">
-        
+
       </form>
     </div><!-- ROW END -->
   </div>
 </div><!-- /.row -->
 
-       <!-- Row -->
 <div class="row">
   {% for team in teams %}
     <div class="col-md-3 col-sm-6 hero-feature">
-      <div class="thumbnail"><a href="?/TeamProfile/Team/{{ team.id }}">
-        <img src="{{ team.img }}" style="height: 200px; width: 225px;"></a>
-        <div class="caption">
-          <a href="?/TeamProfile/Team/{{ team.id }}"><h3>{{ team.name }}</h3></a>
-          <p style="word-wrap: break-word;"> {{ team.descr }}
-          <a href="?/TeamProfile/Team/{{ team.id }}">More Info</a>
-          </p>
-        </div>
-      </div>
+      {% include "teamsummarycard.twig" %}
     </div>
   {% endfor %}
-</div><!-- /.row -->
+</div>

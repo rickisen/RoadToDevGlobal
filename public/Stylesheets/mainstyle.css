@@ -43,6 +43,34 @@ textarea {
   height: 20px;
 }
 
+.mrg-top-40 {
+  margin-top: 40px;
+}
+
+.mrg-top-35 {
+  margin-top: 35px;
+}
+
+.mrg-bot-35 {
+  margin-bottom: 35px;
+}
+
+.mrg-bot-20 {
+  margin-bottom: 20px;
+}
+
+.mrg-bot-15 {
+  margin-bottom: 15px;
+}
+
+.mrg-left-40 {
+  margin-left: 40px;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
 /* RESET BOOTSTRAP STYLES
 ===================================================== */
 
@@ -173,12 +201,17 @@ select {
   -moz-appearance: none;
 }
 
-/* PROFILE PAGE
+/* PLAYER PROFILE PAGE
 ===================================================== */
 
-.profileheader {
+.profile-header {
   margin-top: 50px;
   margin-bottom: 50px;
+}
+
+.profile-header .bio-text {
+  max-width: 200px;
+  font-size: 12px;
 }
 
 .stats-container {
@@ -199,12 +232,25 @@ select {
   margin-right: 25px;
 }
 
+.player-card h3 {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin: 10px 0px;
+}
+
 .player-card:hover {
  background: #eee;
 }
 
 .show-filter{
   display: none;
+}
+
+.filter-toggle {
+  font-size: 12px;
+  margin-left: 695px;
+  cursor: pointer;
 }
 
 .sub-btn{
@@ -221,6 +267,15 @@ select {
 
 /* TEAM PROFILE PAGE
 =====================================================*/
+
+.team-profile-container img {
+  width: 150px;
+  height: 150px;
+}
+
+.date-stamp {
+  font-size: 10px;
+}
 
 .player-mini {
   width: 100px;
@@ -240,8 +295,9 @@ select {
   height: 350px;
 }
 
-.caption {
-
+.team-card a img {
+  height: 200px;
+  width: 225px;
 }
 
 /* FAQ
@@ -301,7 +357,6 @@ select {
 .dropdown dd {
   position: relative;
 }
-
 
 .dropdown a,
 .dropdown a:visited {
