@@ -26,18 +26,20 @@
           
           <input type="submit" class="btn-default" value="Save!">
         </form>
-        <form method="post" id="delete_form">
+
+        <form method="post">
           <p>Remove Team Members:</p>
+          <input type="hidden" name="postHandler" value="receiveRemovePlayer">
           <select name="kick_player">
             <option></option>
             {% for member in team.members %}
-              <option>  
+              <option type="checkbox" value="{{member.steamId}}">  
                 {{member.nickname}}
               </option>
             {% endfor %}
           </select>
 
-          <input onclick="callesKod()" type="submit" value="kick">
+          <input type="submit" value="kick">
 
           </form>
           
@@ -46,7 +48,9 @@
   </div>
 </div>
 
-<div class="toggle-pop-up">
+
+<!-- KODEN SKA ANVÄNDAS, LÅT STÅ!
+<!--<div class="">
 <input type="checkbox" name="dialog_state" id="dialog_state" class="dialog_state">      
   <div id='dialog'>
     <label id="dlg-back" for="dialog_state"></label>
@@ -73,4 +77,4 @@
 
 <script>
 document.getElementById('trigger').click();
-</script>
+</script> -->
