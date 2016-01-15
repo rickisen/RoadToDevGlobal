@@ -11,7 +11,7 @@ class Players{
 
 		$qGetAllUsers = '
 			SELECT steam_id FROM user
-			LIMIT 24;
+			LIMIT 25;
 		';
 
 		if( $result = $database->query($qGetAllUsers)){
@@ -21,11 +21,11 @@ class Players{
 		} else {
 			echo "Failed to get users from DB".$database->error;
 		}
-			/*
-             // update the steam stats for all the players, only use for debug
-            foreach ($users as $user) 
-            $user->fetchSteamStats();
-            */                
+  /*
+  update the steam stats for all the players, only use for debug
+  foreach ($users as $user)
+  $user->fetchSteamStats();
+  */
 
 		return ['loadview' => 'players', 'users' => $users ];
 	}
@@ -45,7 +45,7 @@ class Players{
     		$languageClause  = ' primary_language = "';
                 $languageClause .= $database->real_escape_string(stripslashes($_POST['language']));
     		$languageClause .= '"';
-                
+
     		$languageClause .= ' OR ';
 
     		$languageClause .= ' secondary_language = "';
