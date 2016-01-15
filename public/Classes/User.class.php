@@ -55,7 +55,7 @@ class User{
   }
 
   function __get($val){
-    return $this->$val;
+      return $this->$val;
   }
 
   function setLobby($lobbyID){
