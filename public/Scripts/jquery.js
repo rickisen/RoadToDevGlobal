@@ -112,7 +112,9 @@ $(document).ready(function(){
   return $("#" + id).find("dt a span.value").html();
   }
 
-  // Lobby prompt
+  // Lobby and EditTeam prompt
+
+
   $(function(){
   $(document).keypress(function(e) {
     cwrite(e.which,'Keypress event');

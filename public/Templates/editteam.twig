@@ -24,15 +24,53 @@
           <option value="no" type="checkbox">No</option>
           </select><br><br>
           
-
-          <input type="submit" name="add_member" value="Add member">
-          <input type="submit" name="kick_member" value="Kick member">
-        
-
           <input type="submit" class="btn-default" value="Save!">
-
         </form>
+        <form method="post" id="delete_form">
+          <p>Remove Team Members:</p>
+          <select name="kick_player">
+            <option></option>
+            {% for member in team.members %}
+              <option>  
+                {{member.nickname}}
+              </option>
+            {% endfor %}
+          </select>
+
+          <input onclick="callesKod()" type="submit" value="kick">
+
+          </form>
+          
       </div>
     </div>
   </div>
 </div>
+
+<div class="toggle-pop-up">
+<input type="checkbox" name="dialog_state" id="dialog_state" class="dialog_state">      
+  <div id='dialog'>
+    <label id="dlg-back" for="dialog_state"></label>
+    <div id='dlg-wrap'>
+      <label id="dlg-close" for="dialog_state"></label>
+      <h2 id='dlg-header'>Are you sure that you want to remove this player from the team?</h2>
+      <div id='dlg-content'>If you press "Yes" the user will be permanently deleted from the team. Press "Cancel" if you regret your decisions.</div>
+      <div id='dlg-prompt'>
+        <form method="post">
+          <input type="submit" value="Yes">
+          <input type="submit" value="Cancer">
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <main id='main' class='main_area'>
+    <div class='center'>
+      <label class="button" id="trigger" for="dialog_state">Lobby leader</label>
+    </div>
+    <div id='console'></div>
+  </main>
+</div>
+
+<script>
+document.getElementById('trigger').click();
+</script>
