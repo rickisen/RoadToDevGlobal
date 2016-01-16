@@ -11,7 +11,7 @@ class Players{
 
     $qGetAllUsers = '
       SELECT steam_id FROM user
-      ORDER BY register_date 
+      ORDER BY register_date
       LIMIT 24
     ';
 
@@ -34,7 +34,7 @@ class Players{
 
   static function filterUsers(){
     $database = DB::getInstance();
-    
+
     $clauses = array();
     if(empty($_POST['language']) && empty($_POST['rank']) && empty($_POST['hours']) && empty($_POST['nick']) ){
       return self::viewUserProfiles();
@@ -107,13 +107,13 @@ class Players{
     $users = array();
     if (count($offset) > 0 )
       $offset = 24 * $database->real_escape_string(stripslashes($offset[0]));
-    else 
+    else
       $offset = 0;
 
     $qGetFilteredUsersOffset = $_SESSION['LastFilterQuery'].' OFFSET '.$offset;
 
     if( $result = $database->query($qGetFilteredUsersOffset)){
-      while ($row = $result->fetch_assoc()) 
+      while ($row = $result->fetch_assoc())
         $users[] = new user($row['steam_id']);
     } else {
       echo "failed to get users from db ".$database->error;

@@ -1,5 +1,25 @@
+html {
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
 /*GENERAL STYLES
 ===================================================== */
+body {
+  background: url('http://s17.postimg.org/cxnzuxdin/Background_image.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: #19191b;
+  color: #FFF;
+  font-family: 'PT Sans', sans-serif;
+}
+/*http://s17.postimg.org/cxnzuxdin/Background_image.jpg*/
+
+.container {
+  width: 1100px;
+}
 
 ul {
   list-style: none;
@@ -17,7 +37,7 @@ p {
 
 a, a:hover, a:active, a:focus {
   text-decoration: none;
-  color: #000;
+  color: #FFF;
   outline: none;
 }
 
@@ -67,16 +87,20 @@ textarea {
   margin-left: 40px;
 }
 
+.mrg-right-20 {
+  margin-right: 20px;
+}
+
+.mrg-left-20 {
+  margin-left: 16px;
+}
+
 .inline-block {
   display: inline-block;
 }
 
 /* RESET BOOTSTRAP STYLES
 ===================================================== */
-
-a:focus {
-  text-decoration: none !important;
-}
 
 .navbar-default, .navbar {
   background: none;
@@ -85,7 +109,15 @@ a:focus {
 }
 
 .panel-default>.panel-heading {
-  background: transparent;
+  background: none;
+}
+
+.panel-body {
+  background: none;
+}
+
+.panel-title>.small, .panel-title>.small>a, .panel-title>a, .panel-title>small, .panel-title>small>a {
+  color: #FFF;
 }
 
 .panel-default, .panel-group .panel-heading+.panel-collapse>.list-group, .panel-group .panel-heading+.panel-collapse>.panel-body {
@@ -104,10 +136,29 @@ h1, h2, h3, h4, h5 {
 /* HEADER STYLES
 =================================================== */
 
+.navbar {
+  margin-top: 35px;
+  margin-left: 20px;
+}
 .logo {
-  font-size: 26px;
-  font-weight: 700;
+  font-size: 16px;
   display: inline-block;
+  font-weight: 700;
+}
+
+.navlinkstyles a {
+  font-size: 16px;
+  padding-bottom: 10px;
+  text-transform: Uppercase;
+  font-weight: 700;
+}
+
+.navlinkstyles a:visited, .navlinkstyles a:hover, .navlinkstyles a:active {
+  border-bottom: 3px solid #d72919;
+}
+
+.logo a {
+  color: #d72919;
 }
 
 ul li {
@@ -118,28 +169,51 @@ ul li {
 /* LANDING PAGE STYLES
 ===================================================== */
 
-.landingpagetitle {
-  text-align: center;
-  margin-bottom: 75px;
-  margin-top: 75px;
+.landing-page-container {
+  position: absolute;
+  top: 30%;
+  left: 15%;
+  max-width: 900px;
 }
 
-.landingpage-select {
-  text-align: center;
-  margin-bottom: 75px;
+.landing-page-text p {
+  color: #888;
+  font-size: 18px;
+  line-height: 30px;
+
+}
+
+ .beta-text {
+  letter-spacing: 6px;
+  margin-bottom: 15px;
+}
+
+.landing-page-title {
+  font-size: 48px;
+  line-height: 65px;
+  letter-spacing: 8px;
+  margin-bottom: 20px;
+  font-weight: 700;
 }
 
 .playnow-btn {
-  height: 60px;
-  width: 250px;
-  background: none;
-  border: 2px solid black;
+  border-radius: 3px;
+  letter-spacing: 1.2px;
+  line-height: 222px;
+  height: 55px;
+  width: 222px;
+  font-size: 18px;
+  background: #d72919;
+  border: 0;
 }
 
-.playnow-btn:hover {
-  background: #000;
+.playnow-btn h1 {
+  font-size: 14px;
+}
+
+.landingpage-select .playnow-btn:hover {
+  background: #b72619 ;
   color: #FFF;
-  border: 3px solid #000;
   transition: 0.1s;
 }
 
@@ -158,17 +232,6 @@ ul li {
 .accordion dd {
   font-size: 12px;
 }
-
-.select-left-mid li{
-  text-align: left;
-  margin-left: 60px;
-}
-
-.select-right li{
-  text-align: left;
-  margin-left: 40px;
-}
-
 
 /* LOADING PAGE ANIMATION
 ===================================================== */
@@ -229,7 +292,8 @@ select {
   width: 206px;
   margin-bottom: 25px;
   padding: 10px;
-  margin-right: 25px;
+  margin-right: 12.5px;
+  margin-left: 12.5px;
 }
 
 .player-card h3 {
@@ -240,7 +304,7 @@ select {
 }
 
 .player-card:hover {
- background: #eee;
+ background: #222;
 }
 
 .show-filter{
@@ -293,6 +357,15 @@ select {
   padding: 10px;
   max-width: 250px;
   height: 350px;
+  background-color: #19191b;
+}
+
+.thumbnail p {
+  color: #FFF;
+}
+
+.thumbnail a {
+  text-decoration: underline;
 }
 
 .team-card a img {
@@ -335,10 +408,14 @@ select {
 ===================================================== */
 
 .footer {
-  background: #eee;
-  height: 150px;
-  position: fixed;
-  bottom: 0px;
+    position: absolute;
+    width: 95%;
+    bottom:0px;
+    height: 40px;
+  }
+
+  .footer ul li a {
+    color: #888;
   }
 
 /* TESTING DROPDOWNS
@@ -351,7 +428,7 @@ select {
 }
 
 .dropdown ul {
-  margin: 0 0 0 80px;
+  margin: 0;
 }
 
 .dropdown dd {
@@ -363,13 +440,14 @@ select {
   color: #fff;
   text-decoration: none;
   outline: none;
-  font-size: 12px;
+  font-size: 16px;
 }
 
+
 .dropdown dt a {
-  background-color: #4F6877;
+  background-color: transparent;
   display: inline-block;
-  padding: 14px 8px 5px 10px;
+  padding: 14px 8px 5px 0px;
   min-height: 55px;
   line-height: 24px;
   overflow: hidden;
@@ -378,24 +456,33 @@ select {
 }
 
 .dropdown dt a span,
-.multiSel span {
+.multiSel1 span, .multiSel2 span, .multiSel3 span {
   cursor: pointer;
   display: inline-block;
   padding: 0 3px 2px 0;
+  color: #FFF;
 }
 
 .dropdown dd ul {
-  background-color: #4F6877;
+  background-color: rgba(255, 255, 255, 0.9);;
   border: 0;
-  color: #fff;
+  color: #000;
   display: none;
   left: 0;
   padding: 10px 15px 2px 5px;
   position: absolute;
-  width: 200px;
+  width: 160px;
   list-style: none;
   overflow: auto;
   z-index: 999;
+}
+
+.dropdown .rank {
+  margin-left: -50px;
+}
+
+.dropdown .ambition {
+  margin-left: -35px;
 }
 
 .dropdown span.value {
@@ -407,8 +494,23 @@ select {
   display: block;
 }
 
+.select-left-mid li{
+  text-align: left;
+  margin-left: 30px;
+}
+
+.select-right li{
+  text-align: left;
+  margin-left: 20px;
+}
+
+
 /* NAV SLIDER TEST
 ===================================================== */
+
+.menu-opener img {
+  border-radius: 100%;
+}
 
 .logout-btn {
   border: 0;
@@ -442,12 +544,11 @@ select {
 }
 
 .menu {
-  background: #4F6877;
-  color: transparent;
+  background: none;
   height: 32px;
   position: absolute;
   top: 20%;
-  right: 4.2%;
+  right: 5%;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;

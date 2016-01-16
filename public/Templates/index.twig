@@ -9,14 +9,15 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
-
 	<!-- Our css -->
 	<link rel="stylesheet" href="/Stylesheets/mainstyle.css" />
 
+  <!-- FONTS -->
+<link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
 	</head>
 
 	<body>
-		<div class="container">
+		<div class="container-fluid">
 
 			<!-- Including header on all views -->
 			{% include "header.twig" %}
@@ -24,10 +25,13 @@
 			<!-- Fetch loadview variable to display the view requested -->
 			{% include loadview~".twig" %}
 
+      {% include "footer.twig" %}
+
 		</div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-<script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-tab.js"></script>
-<script src="/Scripts/jquery.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-tab.js"></script>
+  <script src="/Scripts/jquery.js"></script>
 	</body>
 </html>

@@ -1,24 +1,28 @@
+<div class="landing-page-container">
 <div class="row">
-  <div class="col-md-12">
-    <h1 class="landingpagetitle">Get ready to meet your new BFFS! :-))</h1>
+  <div class="col-md-offset-1 col-md-8 landing-page-text">
+    <p class="beta-text">
+    BETA VERSION
+    </p>
+    <h1 class="landing-page-title">GET READY TO MEET <br> YOUR NEW TEAM</h1>
+    <p>
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea    </p>
   </div>
 </div>
 
 <div class="row">
-
-  <div class="col-md-4 landingpage-select">
-    <h5>Prefered language</h5>
+  <div class="col-md-offset-1 col-md-2 landing-page-select" style="margin-right: 10px;">
     <dl class="dropdown dp1">
         <dt>
         <a href="#">
-          <span class="hida1">Select</span>
+          <span class="hida1">LANGUAGE<span style="margin-left: 10px;"><img src="http://s13.postimg.org/uxb6t4x7n/arrow.png"></span>
           <p class="multiSel1"></p>
         </a>
         </dt>
 
         <dd>
             <div class="mutliSelect1 select-left-mid">
-                <ul>
+                <ul class="pref-lang">
                     <li>
                         <input type="checkbox" value="English" /> English</li>
                     <li>
@@ -38,23 +42,22 @@
   </div>
 
 
-  <div class="col-md-4 landingpage-select">
-    <h5>Rank</h5>
+  <div class="col-md-2 landingpage-select mrg-left-20">
     <dl class="dropdown dp2">
         <dt>
         <a href="#">
-          <span class="hida2">Select</span>
+          <span class="hida2">RANK <span style="margin-left: 10px;"><img src="http://s13.postimg.org/uxb6t4x7n/arrow.png"></span>
           <p class="multiSel2"></p>
         </a>
         </dt>
 
         <dd>
             <div class="mutliSelect2 select-left-mid">
-                <ul>
+                <ul class="rank">
                     <li>
-                        <input type="checkbox" value="GE" /><span><img src="http://s22.postimg.org/4eiardx8x/image.png" style="width: 55px; height: 20px; margin-left: 5px;"></span></li>
+                        <input type="checkbox" value="GE" /><span><img src="http://s22.postimg.org/4eiardx8x/image.png" style="width: 55px; height: 20px; margin-left: 8px;"></span></li>
                     <li>
-                        <input type="checkbox" value="SMFC" /><span><img src="http://s9.postimg.org/eu769ua6n/SMFC.png" style="width: 55px; height: 20px; margin-left: 5px;"></span></li>
+                        <input type="checkbox" value="SMFC" /><span><img src="http://s9.postimg.org/eu769ua6n/SMFC.png" style="width: 55px; height: 20px; margin-left: 8px;"></span></li>
                     <li>
                         <input type="checkbox" value="LEM" /> <span><img src="http://s23.postimg.org/npxi9uol7/LEM.png" style="width: 55px; height: 20px; margin-left: 5px;"></span></li>
                     <li>
@@ -81,35 +84,33 @@
     </dl>
   </div>
 
+    <div class="col-md-2 landingpage-select">
+      <dl class="dropdown dp3">
+          <dt>
+          <a href="#">
+            <span class="hida3">AMBITION<span style="margin-left: 10px;"><img src="http://s13.postimg.org/uxb6t4x7n/arrow.png"></span>
+            <p class="multiSel3"></p>
+          </a>
+          </dt>
 
-  <div class="col-md-4 landingpage-select">
-    <h5>Ambition</h5>
-    <dl class="dropdown dp3">
-        <dt>
-        <a href="#">
-          <span class="hida3">Select</span>
-          <p class="multiSel3"></p>
-        </a>
-        </dt>
-
-        <dd>
-            <div class="mutliSelect3 select-right">
-                <ul>
-                    <li>
-                        <input type="checkbox" value="CF" /> Casual friendly</li>
-                    <li>
-                        <input type="checkbox" value="P2W" /> Playing to win</li>
-                    <li>
-                        <input type="checkbox" value="HC" /> Hardcore</li>
-                </ul>
-            </div>
-        </dd>
-    </dl>
+          <dd>
+              <div class="mutliSelect3 select-right">
+                  <ul class="ambition">
+                      <li>
+                          <input type="checkbox" value="CF" /> Casual friendly</li>
+                      <li>
+                          <input type="checkbox" value="P2W" /> Playing to win</li>
+                      <li>
+                          <input type="checkbox" value="HC" /> Hardcore</li>
+                  </ul>
+              </div>
+          </dd>
+      </dl>
+    </div>
   </div>
-</div>
 
   <div class="row">
-    <div class="col-md-12 landingpage-select">
+    <div class="col-md-offset-1 col-md-6 landingpage-select">
         <!-- TWIG IF TILL FUNKTION -->
         {% if currentUser %}
             <a href="/?/LobbyLoader/addUserToPlfl"><button type="button" class="playnow-btn"><h1>PLAY!</h1></button></a>
@@ -119,8 +120,12 @@
     </div>
   </div>
 
+</div>
 
-  <div class="row">
+
+
+
+  <!-- <div class="row">
     <div class="col-md-12 center">
       <div class="bs-example">
         <div class="panel-group" id="accordion">
@@ -141,6 +146,5 @@
       </div>
 
     </div>
-  </div>
+  </div> -->
 <!-- Including footer -->
-  {% include "footer.twig" %}
