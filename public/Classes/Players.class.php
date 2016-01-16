@@ -11,8 +11,11 @@ class Players{
 
     $qGetAllUsers = '
       SELECT steam_id FROM user
-      LIMIT 25;
+      ORDER BY register_date 
+      LIMIT 24
     ';
+
+    $_SESSION['LastFilterQuery'] = $qGetAllUsers;
 
     if( $result = $database->query($qGetAllUsers)){
       while ($row = $result->fetch_assoc()) {
