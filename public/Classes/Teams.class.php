@@ -72,18 +72,40 @@ class Teams{
 		$qGetFilteredTeams = '
 			SELECT team.id FROM team
 			'. $finalClause .'
-			LIMIT 24;
+			LIMIT 24
 		';
+      
+    // save this query so that we can offset it later
+    $_SESSION['LastFilterQuery'] = $qGetFilteredTeams;
 
 		if( $result = $database->query($qGetFilteredTeams)){
 			while ($row = $result->fetch_assoc()) {
 				$teams[] = new Team($row['id']);
 			}
 		} else {
-			echo "Failed to get teams from DB".$database->error;
+			echo "Failed to get teams from DB ".$database->error;
 		}
 
-		return ['loadview' => 'teams', 'teams' => $teams ];
+		return ['loadview' => 'teams', 'teams' => $teams, 'lastOffset' => 0 ];
 	}
 
+  static function offsetLastFilter($offset){
+    $database = DB::getInstance();
+    $users = array();
+    if (count($offset) > 0 )
+      $offset = 24 * $database->real_escape_string(stripslashes($offset[0]));
+    else 
+      $offset = 0;
+
+    $qGetFilteredOffset = $_SESSION['LastFilterQuery'].' OFFSET '.$offset;
+
+    if( $result = $database->query($qGetFilteredOffset)){
+      while ($row = $result->fetch_assoc()) 
+        $teams[] = new Team($row['id']);
+    } else {
+      echo "failed to get teams from db ".$database->error;
+    }
+
+		return ['loadview' => 'teams', 'teams' => $teams, 'lastOffset' => $offset / 24];
+  }
 }

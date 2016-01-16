@@ -78,3 +78,16 @@
       {% endfor %}
      </div>
    <!-- /.row -->
+
+<div class="row">
+    <div class="col-xs-12 ">
+{% if lastOffset > 0 %}
+				 <a href="?/Players/offsetLastFilter/{{lastOffset - 1}}"> Prev </a>
+{% endif %}
+
+{% if users|length == 24 %}
+				 <a class="pull-right" href="?/Players/offsetLastFilter/{{lastOffset + 1}}"> Next </a>
+{% endif %}
+    </div>
+</div>
+<!-- /.row -->
