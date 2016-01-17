@@ -15,6 +15,7 @@ $(document).ready(function(){
   // LANDING PAGE FILTER DROPDOWNS
 
   // DP 1
+  // DP 1
   $(".dp1 dt a").on('click', function() {
   $(".dp1 dd ul").slideToggle('fast');
   });
@@ -38,13 +39,17 @@ $(document).ready(function(){
     var html = '<span title="' + title + '">' + title + '</span>';
     $('.multiSel1').append(html);
     $(".hida1").hide();
-  } else {
+  } else if($(this).not(':checked')) {
     $('span[title="' + title + '"]').remove();
-    var ret = $(".hida1");
-    $('.dp1 dt a').append(ret);
-
   }
+
+  if ($('li input:checked').length == 0){
+    $(".hida1").show();
+  }
+
   });
+
+
 
   // DP 2
   $(".dp2 dt a").on('click', function() {
@@ -65,16 +70,18 @@ $(document).ready(function(){
   var title = $(this).closest('.mutliSelect2').find('input[type="checkbox"]').val(),
     title = $(this).val() + " ";
 
-  if ($(this).is(':checked')) {
+    if ($(this).is(':checked')) {
     var html = '<span title="' + title + '">' + title + '</span>';
     $('.multiSel2').append(html);
     $(".hida2").hide();
-  } else {
+  } else if($(this).not(':checked')) {
     $('span[title="' + title + '"]').remove();
-    var ret = $(".hida2");
-    $('.dp2 dt a').append(ret);
-
   }
+
+  if ($('li input:checked').length == 0){
+    $(".hida2").show();
+  }
+
   });
 
   // DP 3
@@ -100,12 +107,14 @@ $(document).ready(function(){
     var html = '<span title="' + title + '">' + title + '</span>';
     $('.multiSel3').append(html);
     $(".hida3").hide();
-  } else {
+  } else if($(this).not(':checked')) {
     $('span[title="' + title + '"]').remove();
-    var ret = $(".hida3");
-    $('.dp3 dt a').append(ret);
-
   }
+
+  if ($('li input:checked').length == 0){
+    $(".hida3").show();
+  }
+
   });
 
   function getSelectedValue(id) {
