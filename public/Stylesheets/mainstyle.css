@@ -155,7 +155,7 @@ h1, h2, h3, h4, h5 {
 }
 
 .navlinkstyles a:visited, .navlinkstyles a:hover, .navlinkstyles a:active {
-  border-bottom: 3px solid #d72919;
+  border-bottom: 1px solid #d72919;
 }
 
 .logo a {
@@ -285,6 +285,10 @@ select {
   color: #000;
 }
 
+.bio-container h2 {
+  margin-bottom: 15px;
+}
+
 /* PLAYER PROFILE PAGE
 ===================================================== */
 
@@ -383,6 +387,7 @@ select {
 .manage-team {
   padding-bottom: 10px;
   border-bottom: 1px solid #d72919;
+  margin-left: -55px;
 }
 
  .comment-header {
@@ -423,7 +428,7 @@ select {
 
 .thumbnail a h3 {
   margin-top: 15px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   font-weight: 700;
 }
 
@@ -623,7 +628,7 @@ select {
   height: 32px;
   position: absolute;
   top: 20%;
-  right: 120px;
+  right: 130px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -633,12 +638,14 @@ select {
 }
 
 .menu.active {
-  width: -webkit-calc(450px - 2rem);
-  width: calc(450px - 2rem);
+  width: -webkit-calc(375px - 2rem);
+  width: calc(375px - 2rem);
   z-index: 0;
 }
 .menu.active .menu-link {
   color: white;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 .menu-inner {

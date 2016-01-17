@@ -138,13 +138,12 @@
 	  </div><!--END ROW-->
 	</div><!--END ROW-->
 
-  <div class="row center">
-    <h2>Bio</h2>
-    <div class="col-md-12 bio-container" style="border: 0;">
-       <textarea rows="7" cols="100" name="bio" class="userBio center"> {{ user.bio }} </textarea>
-       <div class="col-md-12 center">
-          <input class="sub-btn" type="submit">
-       </div>
+  <div class="row">
+
+    <div class="col-md-offset-4 col-md-4 bio-container" style="border: 0;">
+      <h2>Bio</h2>
+      <textarea rows="7" cols="75" name="bio" class="userBio"> {{ user.bio }} </textarea>
+      <input class="sub-btn" type="submit">
     </div>
   </div>
 </form>
