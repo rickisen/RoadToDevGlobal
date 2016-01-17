@@ -258,14 +258,14 @@ and (max-width : 1300px) {
 /* 13" AND SMALLER */
 
 @media only screen
-and (max-width : 1300px) {
+and (max-width : 1450px) {
 
   .landing-page-container {
     position:fixed;
     left:0px;
     bottom:0px;
     height:30px;
-    top: 20%;
+    top: 25%;
     left: 14%;
     max-width: 900px;
   }
