@@ -16,6 +16,13 @@
         <li class="inline-block mrg-left-20"><a href="?/Players/viewuserprofiles">Players</a></li>
         <li class="inline-block mrg-left-20"><a href="/?/Teams/viewTeams">Teams</a></li>
         <li class="inline-block mrg-left-20"><a href="?/Faq/viewFaq">FAQ</a></li>
+				{% if currentUser.isInLobby %}
+          <li class="inline-block mrg-left-20 logo"><a href="/?/Lobby/viewLobby">YOUR LOBBY</a></li>
+	      {% elseif currentUser %}
+          <li class="inline-block mrg-left-20"><a href="/?/LobbyLoader/addUserToPlfl">FIND LOBBY</a></li>
+				{% else %}
+					<li class="inline-block mrg-left-20"><a href="/?/UnderConstruction/viewConstruction">FIND LOBBY</a></li>
+        {% endif %}
       </ul>
     </div>
 
@@ -23,6 +30,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
       {% if currentUser %}
+
 
         <div class="navbar-right">
          <nav class="menu-opener" style="margin-right: 70px;">
