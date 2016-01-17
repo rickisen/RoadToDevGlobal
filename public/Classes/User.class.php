@@ -3,7 +3,7 @@ class User{
   private static $steamApiKey = "EC3378BE4E67D544BEA9E6D9B32B5B57";
   private $steamId;
   private $existed;
-  private $inLobby =  'nolobby';
+  private $isInALobby = FALSE;
 
   public
     // user specified
@@ -58,8 +58,8 @@ class User{
       return $this->$val;
   }
 
-  function setLobby($lobbyID){
-    $this->inLobby = $lobbyID ;
+  function setInALobby($val){
+    $this->isInALobby = $val ;
   }
 
   function setTeam($teamId){
