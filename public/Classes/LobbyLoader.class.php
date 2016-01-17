@@ -55,10 +55,12 @@ class LobbyLoader {
 
     $result = $database->query($qAmIInALobby) ;
     if ( $result->num_rows == 1){
+      $_SESSION['currentUser']->setInALobby(TRUE);
       return TRUE;
     } else {
       if ($error = $database->error)
         echo "something went wrong when trying to see if a user is in a lobby: $error";
+      $_SESSION['currentUser']->setInALobby(FALSE);
       return FALSE;
     }
   }

@@ -52,10 +52,12 @@ class Lobby {
 
     $qRemoveFromLobby = ' DELETE from lobby where steam_id = '.$_SESSION['currentUser']->steamId.' limit 1 ';
     $database->query($qRemoveFromLobby);
+    $_SESSION['currentUser']->setInALobby(FALSE);
 
-    if ($error = $database->error)
+    if ($error = $database->error){
       echo "Something went wrong when trying to exit a lobby: $error";
-
+      $_SESSION['currentUser']->setInALobby(TRUE);
+    }
     return ['loadview' => 'landingpage'];
   }
 }
