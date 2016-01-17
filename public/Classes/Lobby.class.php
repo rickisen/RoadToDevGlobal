@@ -44,7 +44,7 @@ class Lobby {
         echo "Failed to get users from Lobby $lobbyId : $error";
     }
     return ['loadview' => 'lobby', 'lobbyMates' => $lobbyMates, 'lobbyId' => $lobbyId, 
-      'lobbyQuality' => $lobbyQuality, 'created' => $created ,'leader' => $leader];
+      'lobbyQuality' => $lobbyQuality, 'lobbyCreated' => $lobbyCreated ,'leader' => $leader];
   }
 
   static function leaveLobby(){
