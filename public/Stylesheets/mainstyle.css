@@ -390,6 +390,14 @@ select {
   margin-left: -55px;
 }
 
+.apply-to-team {
+  margin-left: -75px;
+  padding-bottom: 10px;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #d72919;
+}
+
  .comment-header {
   margin-bottom: 10px;
 }
@@ -527,7 +535,7 @@ select {
   background-color: transparent;
   display: inline-block;
   padding: 14px 8px 5px 0px;
-  min-height: 55px;
+  min-height: 25px;
   line-height: 24px;
   letter-spacing: 0.5px;
   overflow: hidden;
@@ -551,14 +559,19 @@ select {
   left: 0;
   padding: 10px 15px 2px 5px;
   position: absolute;
-  width: 160px;
+  width: 150px;
   list-style: none;
   overflow: auto;
   z-index: 999;
 }
 
-.dropdown .rank {
-  margin-left: -50px;
+.dropdown .rank2 {
+  margin-left: -100px;
+  width: 130px;
+}
+.dropdown .rank1 {
+  margin-left: 30px;
+  width: 150px;
 }
 
 .dropdown .ambition {

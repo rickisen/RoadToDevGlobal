@@ -3,10 +3,7 @@
     <div class="col-md-offset-2 col-md-2 center">
       <img src="{{ team.img }}">
       {% if currentUser.inTeam != team.id and currentUser %} <!--if the user isnt in the team and we're logged in as a user, we show the Apply button-->
-      <form action="?/TeamProfile/Team/{{ team.id }}" method="post">
-        <input type="hidden" name="postHandler" value="receiveTeamRequest">
-        <button type="submit" name="teamId" value="{{team.id}}">Apply to team</button>
-      </form>
+
       <!--build a elseif twig where we show the current team applys we have?-->
       {% endif %}
     </div>
@@ -32,6 +29,13 @@
       <div class="col-md-offset-1 col-md-2">
         <a class="manage-team" href="?/TeamProfile/editTeam">Manage team</a>
       </div>
+    {% else %}
+    <div class="col-md-offset-1 col-md-2">
+    <form action="?/TeamProfile/Team/{{ team.id }}" method="post">
+      <input type="hidden" name="postHandler" value="receiveTeamRequest">
+      <button type="submit" class="apply-to-team" name="teamId" value="{{team.id}}">Apply to team</button>
+    </form>
+  </div>
     {% endif %}
   </div>
 
