@@ -8,7 +8,7 @@
 
     <img class="rankimg center" src="{{ user.rankImg }}" style="margin-bottom: 10px;">
   <p>
-    {% if user.country != 0 %}
+    {% if user.country != empty %}
       {{ user.country }}
       <img src="{{ user.countryFlag }}" style="width: 20px; height: 20px; margin-left: 10px; margin-top: -4px;">
       {% else %}
