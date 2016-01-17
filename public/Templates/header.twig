@@ -16,9 +16,9 @@
         <li class="inline-block mrg-left-20"><a href="?/Players/viewuserprofiles">Players</a></li>
         <li class="inline-block mrg-left-20"><a href="/?/Teams/viewTeams">Teams</a></li>
         <li class="inline-block mrg-left-20"><a href="?/Faq/viewFaq">FAQ</a></li>
-				{% if currentUser.isInLobby %}
+				{% if currentUser.isInALobby %}
           <li class="inline-block mrg-left-20 logo"><a href="/?/Lobby/viewLobby">YOUR LOBBY</a></li>
-	      {% elseif currentUser %}
+				{% elseif currentUser %}
           <li class="inline-block mrg-left-20"><a href="/?/LobbyLoader/addUserToPlfl">FIND LOBBY</a></li>
 				{% else %}
 					<li class="inline-block mrg-left-20"><a href="/?/UnderConstruction/viewConstruction">FIND LOBBY</a></li>
@@ -57,7 +57,7 @@
              <a href="#" class="menu-link">
                <li>
                  <form action="/index.php?" method="post" class="navbar-form navbar-right logout-btn">
-         		        <input type="submit" name="postHandler" value="LOGOUT" class="logout-btn">
+										<input type="submit" name="postHandler" value="LOGOUT" class="logout-btn">
                  </form>
                 </li>
              </a>
