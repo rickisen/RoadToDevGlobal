@@ -149,6 +149,11 @@ h1, h2, h3, h4, h5 {
   margin-top: 35px;
   margin-left: 20px;
 }
+
+.navbar-header {
+  margin-left: 70px;
+}
+
 .logo {
   font-size: 16px;
   display: inline-block;
@@ -172,6 +177,22 @@ h1, h2, h3, h4, h5 {
 
 ul li {
   margin-bottom: 15px;
+}
+
+.menu-opener {
+  margin-right: 70px;
+}
+
+@media only screen
+and (max-width : 1300px) {
+
+  .menu-opener {
+    margin-right: 0px;
+  }
+
+  .navbar-header {
+    margin-left: 0;
+  }
 }
 
 
