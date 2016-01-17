@@ -23,27 +23,28 @@ class Lobby {
       return ['loadview' => 'landingpage'];
     }
 
-    $mySteamID  = $_SESSION['currentUser']->steamId;
-    $lobbyMates = array();
-
     $qGetLobbyMates = '
       SELECT *
       FROM lobby 
       WHERE lobby_id  = "'.$lobbyId.'"
     ';
 
+    $lobbyMates = array();
     $result = $database->query($qGetLobbyMates);
     if( $result->num_rows > 0){
       while ($row = $result->fetch_assoc()) {
         if($row['is_leader'] == 1 ){
           $leader = new User($row['steam_id']);
+          $lobbyQuality = $row['quality'];
+          $lobbyCreated = $row['created'];
         }        
         $lobbyMates[] = new User($row['steam_id']);
       }
     } elseif ($error = $database->error){
         echo "Failed to get users from Lobby $lobbyId : $error";
     }
-    return ['loadview' => 'lobby', 'lobbyMates' => $lobbyMates, 'lobbyId' => $lobbyId, 'leader' => $leader];
+    return ['loadview' => 'lobby', 'lobbyMates' => $lobbyMates, 'lobbyId' => $lobbyId, 
+      'lobbyQuality' => $lobbyQuality, 'created' => $created ,'leader' => $leader];
   }
 
   static function leaveLobby(){
