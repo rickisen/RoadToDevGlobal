@@ -31,6 +31,23 @@
 
          <nav class="menu">
            <ul class="menu-inner">
+             <a href="#" class="menu-link">
+
+               <li>
+                 <form action="/index.php?" method="post" class="navbar-form navbar-right logout-btn">
+                     <input type="submit" name="postHandler" value="LOGOUT" class="logout-btn">
+                 </form>
+                </li>
+             </a>
+
+             <a href="?/EditProfile/currentUser" class="menu-link">
+               <li>Settings</li>
+             </a>
+
+             <a href="?/Profile/displayUser/{{currentUser.steamId}}" class="menu-link">
+               <li>Profile</li>
+             </a>
+
 
             {% if currentUser.inTeam > 0 %}
               <a href="?/TeamProfile/myTeam" class="menu-link">
@@ -38,21 +55,9 @@
               <a href="?/CreateTeam/newTeam" class="menu-link">
             {% endif %}
 
-               <li>My team</li>
+               <li>Team</li>
              </a>
-             <a href="?/Profile/displayUser/{{currentUser.steamId}}" class="menu-link">
-               <li>Profile</li>
-             </a>
-             <a href="?/EditProfile/currentUser" class="menu-link">
-               <li>Settings</li>
-             </a>
-             <a href="#" class="menu-link">
-               <li>
-                 <form action="/index.php?" method="post" class="navbar-form navbar-right logout-btn">
-         		        <input type="submit" name="postHandler" value="LOGOUT" class="logout-btn">
-                 </form>
-                </li>
-             </a>
+
            </ul>
          </nav>
         </div>

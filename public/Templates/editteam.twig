@@ -1,13 +1,15 @@
 <div class="row">
-  <div class="col-md-12" style="margin-top: 40px;">
+  <div class="col-md-12 mrg-top-40">
     <div class="row">
-      <div class="col-md-offset-3 col-md-6 center">
-        <h3>Edit team</h3>
+      <div class="col-md-offset-4 col-md-4">
+        <h3 class="bold">Edit team</h3>
         <br>
 
-        <form action="" method="post">
+        <form action="" method="post" class="mrg-bot-20" style="border-bottom: 1px solid #d72919; padding-bottom: 30px;">
 
           <input type="hidden" name="postHandler" value="editTeam">
+
+
 
           <p>Team name</p>
           <input type="text" class="form-control" name="edit_team_name" id="team-name" value="{{ team.name }}"><br>
@@ -15,34 +17,42 @@
           <p>Team description</p>
           <textarea rows="7"  class="form-control" name="edit_team_descr" id="team-descr">{{ team.descr }}</textarea><br>
 
-          <p>Image (Paste your image URL here, preferably 500 x 800px)</p>
+          <p>Image (Paste your image URL here, preferably le size of your mom)</p>
           <input type="text" class="form-control" name="edit_team_img" id="team-img" value="{{ team.img }}"><br>
 
+          <div class="row">
+            <div class="col-md-6">
+          <p>Looking for players?</p>
           <select name="looking_for_players">
           <option value="" type="checkbox">{{team.lookingForPlayers}}</option>
           <option value="yes" type="checkbox">Yes</option>
           <option value="no" type="checkbox">No</option>
           </select><br><br>
-          
-          <input type="submit" class="btn-default" value="Save!">
+        </div>
+      </div>
+
+          <input type="submit" class="sub-btn" value="Save">
         </form>
 
+    <div class="row">
+      <div class="col-md-6">
         <form method="post">
-          <p>Remove Team Members:</p>
+          <p>Remove team members</p>
           <input type="hidden" name="postHandler" value="receiveRemovePlayer">
-          <select name="kick_player">
-            <option></option>
-            {% for member in team.members %}
-              <option type="checkbox" value="{{member.steamId}}">  
-                {{member.nickname}}
-              </option>
-            {% endfor %}
-          </select>
+            <select name="kick_player">
+              <option></option>
+              {% for member in team.members %}
+                <option type="checkbox" value="{{member.steamId}}">
+                  {{member.nickname}}
+                </option>
+              {% endfor %}
+            </select>
+            <br><br>
+          <input type="submit" class="sub-btn" value="Remove">
+        </form>
+      </div>
+    </div>
 
-          <input type="submit" value="kick">
-
-          </form>
-          
       </div>
     </div>
   </div>
@@ -51,7 +61,7 @@
 
 <!-- KODEN SKA ANVÄNDAS, LÅT STÅ!
 <!--<div class="">
-<input type="checkbox" name="dialog_state" id="dialog_state" class="dialog_state">      
+<input type="checkbox" name="dialog_state" id="dialog_state" class="dialog_state">
   <div id='dialog'>
     <label id="dlg-back" for="dialog_state"></label>
     <div id='dlg-wrap'>

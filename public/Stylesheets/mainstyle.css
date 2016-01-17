@@ -47,6 +47,10 @@ textarea {
   color: #000;
 }
 
+.bold {
+  font-weight: 700;
+}
+
 .center {
   text-align: center;
 }
@@ -66,6 +70,10 @@ textarea {
 
 .mrg-top-35 {
   margin-top: 35px;
+}
+
+.mrg-top-20 {
+  margin-top: 20px;
 }
 
 .mrg-bot-35 {
@@ -243,13 +251,20 @@ and (max-width : 1300px) {
 
   .landing-page-text p {
     font-size: 14px;
-    line-height: 30px;
+    line-height: 25px;
   }
 
   .landing-page-title {
     font-size: 35px;
     line-height: 50px;
+    margin-bottom: 10px;
   }
+
+  .beta-text {
+   letter-spacing: 6px;
+   margin-bottom: 10px;
+ }
+
 }
 
 /* LOADING PAGE ANIMATION
@@ -286,7 +301,7 @@ select {
 }
 
 .bio-container h2 {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 /* PLAYER PROFILE PAGE
@@ -300,6 +315,7 @@ select {
 .profile-header .bio-text {
   max-width: 200px;
   font-size: 12px;
+  color: #888;
 }
 
 .stats-container {
@@ -380,8 +396,20 @@ select {
   height: 200px;
 }
 
+.team-profile-container h2 {
+  font-weight: 700;
+}
+
+.team-profile-container p {
+  color: #888;
+}
+
 .team-info {
   margin-left: 40px;
+}
+
+.comment-text {
+  color: #888;
 }
 
 .manage-team {
@@ -476,6 +504,10 @@ select {
   margin-bottom: 20px;
 }
 
+.faq-article p {
+  color: #888;
+}
+
 /* LOBBY
 ===================================================== */
 
@@ -505,7 +537,7 @@ select {
     text-transform: uppercase;
   }
 
-/* TESTING DROPDOWNS
+/* LANDING PAGE DROPDOWNS
 ===================================================== */
 
 .dropdown dd,
@@ -565,13 +597,17 @@ select {
   z-index: 999;
 }
 
+.dropdown .rank1 {
+  margin-left: 30px;
+  width: 130px;
+}
 .dropdown .rank2 {
   margin-left: -100px;
   width: 130px;
 }
-.dropdown .rank1 {
-  margin-left: 30px;
-  width: 150px;
+.dropdown .rank3 {
+  margin-left: 160px;
+  width: 130px;
 }
 
 .dropdown .ambition {
@@ -589,7 +625,7 @@ select {
 
 .select-left-mid li{
   text-align: left;
-  margin-left: 30px;
+  margin-left: 20px;
 }
 
 .select-right li{
@@ -598,7 +634,7 @@ select {
 }
 
 
-/* NAV SLIDER TEST
+/* USER NAV
 ===================================================== */
 
 .menu-opener img {
@@ -667,10 +703,10 @@ select {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
+  -webkit-box-direction: reverse;
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
   height: 100%;
   list-style-type: none;
   margin-right: 0px;
