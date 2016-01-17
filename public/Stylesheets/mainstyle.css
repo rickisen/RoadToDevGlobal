@@ -17,10 +17,6 @@ body {
 }
 /*http://s17.postimg.org/cxnzuxdin/Background_image.jpg*/
 
-.container {
-  width: 1100px;
-}
-
 ul {
   list-style: none;
   margin: 0;
@@ -48,6 +44,7 @@ a, a:hover, a:active, a:focus {
 
 textarea {
 	resize: none;
+  color: #000;
 }
 
 .center {
@@ -133,6 +130,10 @@ h1, h2, h3, h4, h5 {
   font-weight: 200;
 }
 
+.page-header {
+  border-bottom: 1px solid #d72919;
+}
+
 /* HEADER STYLES
 =================================================== */
 
@@ -170,17 +171,24 @@ ul li {
 ===================================================== */
 
 .landing-page-container {
-  position: absolute;
-  top: 30%;
-  left: 15%;
+  position:fixed;
+  left:0px;
+  bottom:0px;
+  height:30px;
+  top: 27%;
+  left: 18%;
   max-width: 900px;
 }
 
 .landing-page-text p {
   color: #888;
   font-size: 18px;
-  line-height: 30px;
+}
 
+.landing-info-text {
+  margin-bottom: 20px;
+  letter-spacing: 0.5px;
+  line-height: 30px;
 }
 
  .beta-text {
@@ -200,15 +208,15 @@ ul li {
   border-radius: 3px;
   letter-spacing: 1.2px;
   line-height: 222px;
-  height: 55px;
+  height: 45px;
   width: 222px;
-  font-size: 18px;
   background: #d72919;
   border: 0;
 }
 
 .playnow-btn h1 {
   font-size: 14px;
+  font-weight: 700;
 }
 
 .landingpage-select .playnow-btn:hover {
@@ -217,26 +225,38 @@ ul li {
   transition: 0.1s;
 }
 
-.accordion {
-  margin: 10px;
-}
-.accordion dt, .accordion dd {
-  padding: 10px;
-}
 
-.accordion dt a, .accordion dd a {
-  display: block;
-  color: black;
-  font-weight: bold;
-}
-.accordion dd {
-  font-size: 12px;
+/* 13" AND SMALLER */
+
+@media only screen
+and (max-width : 1300px) {
+
+  .landing-page-container {
+    position:fixed;
+    left:0px;
+    bottom:0px;
+    height:30px;
+    top: 20%;
+    left: 14%;
+    max-width: 900px;
+  }
+
+  .landing-page-text p {
+    font-size: 14px;
+    line-height: 30px;
+  }
+
+  .landing-page-title {
+    font-size: 35px;
+    line-height: 50px;
+  }
 }
 
 /* LOADING PAGE ANIMATION
 ===================================================== */
 
 .loading {
+margin-top: 35px;
 width: 140px;
 height: 100px;
 -webkit-animation:spin 2s linear infinite;
@@ -262,6 +282,7 @@ select {
   padding-left: 5px;
   -webkit-appearance: none;
   -moz-appearance: none;
+  color: #000;
 }
 
 /* PLAYER PROFILE PAGE
@@ -288,9 +309,16 @@ select {
 /* PLAYERS PAGE
 ===================================================== */
 
+.page-header h2 {
+  font-size: 19px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
 .player-card {
   width: 206px;
-  margin-bottom: 25px;
+  height: 360px;
+  margin-bottom: 40px;
   padding: 10px;
   margin-right: 12.5px;
   margin-left: 12.5px;
@@ -300,7 +328,14 @@ select {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  margin: 10px 0px;
+  margin: 20px 0px 10px 0px;
+  font-weight: 700;
+}
+.player-card p {
+  text-transform: Uppercase;
+  color: #888;
+  line-height: 24px;
+  font-weight: 700;
 }
 
 .player-card:hover {
@@ -312,8 +347,10 @@ select {
 }
 
 .filter-toggle {
-  font-size: 12px;
-  margin-left: 695px;
+  font-size: 19px;
+  font-weight: bold;
+  color: #FFF;
+  margin-left: 820px;
   cursor: pointer;
 }
 
@@ -321,20 +358,35 @@ select {
   margin: 0;
   padding: 0;
   border-radius: 0;
-  border: 1px solid black;
+  border: 0;
+  background: #d72919;
   text-align: center;
-  padding: 0px 5px;
+  padding: 3px 10px;
   -webkit-appearance: none;
   -moz-appearance: none;
-  cursor: crosshair !important; /*CROSSHAIR EFFECT*/
+  cursor: pointer;
 }
+
 
 /* TEAM PROFILE PAGE
 =====================================================*/
 
 .team-profile-container img {
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 200px;
+}
+
+.team-info {
+  margin-left: 40px;
+}
+
+.manage-team {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #d72919;
+}
+
+ .comment-header {
+  margin-bottom: 10px;
 }
 
 .date-stamp {
@@ -349,29 +401,56 @@ select {
 }
 
 
+/* Teams
+==================================================== */
+
+.team-container .filter-toggle {
+    margin-left: 834px;
+}
+
+
 /* Team summary cards
 ==================================================== */
 
 .thumbnail {
   border-radius: 0;
-  padding: 10px;
-  max-width: 250px;
-  height: 350px;
-  background-color: #19191b;
+  width: 240px;
+  height: 400px;
+  background: transparent;
+  border: 0;
+}
+
+
+.thumbnail a h3 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-weight: 700;
 }
 
 .thumbnail p {
-  color: #FFF;
-}
-
-.thumbnail a {
-  text-decoration: underline;
+  color: #888;
 }
 
 .team-card a img {
-  height: 200px;
-  width: 225px;
+  height: 220px;
+  width: 290px;
 }
+
+.team-card .more-info {
+  position: absolute;
+  bottom: 30px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.team-card .flag {
+  position: absolute;
+  bottom: 30px;
+  right: 40px;
+  width: 25px;
+  height: 25px;
+}
+
 
 /* FAQ
 ===================================================== */
@@ -396,26 +475,21 @@ select {
   margin-top: 50px;
 }
 
-.leader{ /*sets border for the leader*/
-  border: 5px solid peachpuff;
-}
-
-.currentUser{ /*sets border for the current user*/
-  border: 5px solid green;
-}
-
 /* FOOTER
 ===================================================== */
 
 .footer {
     position: absolute;
     width: 95%;
-    bottom:0px;
+    bottom: 15px;
     height: 40px;
   }
 
   .footer ul li a {
     color: #888;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
   }
 
 /* TESTING DROPDOWNS
@@ -450,6 +524,7 @@ select {
   padding: 14px 8px 5px 0px;
   min-height: 55px;
   line-height: 24px;
+  letter-spacing: 0.5px;
   overflow: hidden;
   border: 0;
   width: 200px;
@@ -548,7 +623,7 @@ select {
   height: 32px;
   position: absolute;
   top: 20%;
-  right: 5%;
+  right: 120px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -556,9 +631,10 @@ select {
   width: 0rem;
   z-index: -1;
 }
+
 .menu.active {
-  width: -webkit-calc(35% - 2rem);
-  width: calc(35% - 2rem);
+  width: -webkit-calc(450px - 2rem);
+  width: calc(450px - 2rem);
   z-index: 0;
 }
 .menu.active .menu-link {
@@ -577,7 +653,7 @@ select {
   flex-direction: row;
   height: 100%;
   list-style-type: none;
-  margin: 0;
+  margin-right: 0px;
   padding: 0;
 }
 
@@ -596,12 +672,33 @@ select {
   text-align: center;
   text-decoration: none;
 }
+
 .menu-link li {
   margin: auto;
 }
 
+.menu-link li:hover {
+  color: #d72919;
+}
+
 .menu-link:hover {
-  background: #f1c40f ;
+  background: transparent;
+}
+
+/* 13" AND SMALLER */
+
+@media only screen
+and (max-width : 1300px) {
+  .menu.active {
+    width: -webkit-calc(30% - 2rem);
+    width: calc(30% - 2rem);
+    z-index: 0;
+  }
+
+  .menu {
+    right: 10%;
+  }
+
 }
 
 @media screen and (max-width: 768px) {

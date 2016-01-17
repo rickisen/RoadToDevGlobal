@@ -5,7 +5,7 @@
     BETA VERSION
     </p>
     <h1 class="landing-page-title">GET READY TO MEET <br> YOUR NEW TEAM</h1>
-    <p>
+    <p class="landing-info-text">
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea    </p>
   </div>
 </div>
@@ -113,16 +113,14 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
     <div class="col-md-offset-1 col-md-6 landingpage-select">
         <!-- TWIG IF TILL FUNKTION -->
         {% if currentUser %}
-            <a href="/?/LobbyLoader/addUserToPlfl"><button type="button" class="playnow-btn"><h1>PLAY!</h1></button></a>
+            <a href="/?/LobbyLoader/addUserToPlfl"><button type="button" class="playnow-btn"><h1>FIND PLAYERS</h1></button></a>
         {% else %}
-            <a href="/?/UnderConstruction/viewConstruction"><button type="button" class="playnow-btn"><h1>PLAY!</h1></button></a>
+            <a href="/?/UnderConstruction/viewConstruction"><button type="button" class="playnow-btn"><h1>FIND PLAYERS</h1></button></a>
         {% endif %}
     </div>
   </div>
 
 </div>
-
-
 
 
   <!-- <div class="row">
@@ -147,4 +145,6 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 
     </div>
   </div> -->
+
 <!-- Including footer -->
+{% include "footer.twig" %}

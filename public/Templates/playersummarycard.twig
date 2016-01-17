@@ -5,20 +5,22 @@
 <h3>
     <a href="?/Profile/displayuser/{{ user.steamId }}"> {{ user.nickname }}</a>
 </h3>
-<p>
-  {% if user.country %}
-    <img src="{{ user.countryFlag }}">
-  {% endif %}
-    <img class="rankimg center" src="{{ user.rankImg }}"><br>
 
+    <img class="rankimg center" src="{{ user.rankImg }}" style="margin-bottom: 10px;">
+  <p>
+    {% if user.country %}
+      {{ user.country }}
+      <img src="{{ user.countryFlag }}" style="width: 20px; height: 20px; margin-left: 10px;">
+    {% endif %}
+    <br>
   {% if user.isPrivateAcc == TRUE %}
     Private profile
     <br>
     <br>
     <br>
   {% else %}
-    K/D Ratio: {{ user.kdRatio }}<br>
     Hours played: {{ user.hoursPlayed }}<br>
+    K/D Ratio: {{ user.kdRatio }}<br>
   {% endif %}
 </p>
 <!-- /.row -->

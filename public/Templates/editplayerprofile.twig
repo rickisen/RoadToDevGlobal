@@ -1,3 +1,4 @@
+<div class="container">
 <form action="" method="post">
   <input type="hidden" name="postHandler" value="profileUpdate">
 	<div class="row profileheader">
@@ -140,10 +141,11 @@
   <div class="row center">
     <h2>Bio</h2>
     <div class="col-md-12 bio-container" style="border: 0;">
-       <textarea rows="7" cols="160" name="bio" class="userBio center"> {{ user.bio }} </textarea>
+       <textarea rows="7" cols="100" name="bio" class="userBio center"> {{ user.bio }} </textarea>
        <div class="col-md-12 center">
-          <input type="submit">
+          <input class="sub-btn" type="submit">
        </div>
     </div>
   </div>
 </form>
+</div>

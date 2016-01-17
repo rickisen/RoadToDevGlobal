@@ -1,3 +1,4 @@
+<div class="container">
   <div class="row mrg-top-40 team-profile-container">
     <div class="col-md-offset-2 col-md-2 center">
       <img src="{{ team.img }}">
@@ -10,7 +11,7 @@
       {% endif %}
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-4 team-info">
       <h2>{{ team.name }}</h2>
       <br>
       <p>
@@ -29,7 +30,7 @@
 
     {% if currentUser.inTeam == team.id %}
       <div class="col-md-offset-1 col-md-2">
-        <a href="?/TeamProfile/editTeam">Manage team</a>
+        <a class="manage-team" href="?/TeamProfile/editTeam">Manage team</a>
       </div>
     {% endif %}
   </div>
@@ -48,15 +49,15 @@
 
   <div class="row">
     <div class="col-md-offset-2 col-md-8 mrg-top-40">
-      <h3>Post on team wall</h3>
+      <h3 class="comment-header">Post on team wall</h3>
       {% if currentUser %}
       <form action="/index.php?" method="post">
         <input type="hidden" name="postHandler" value="receiveComments">
         <textarea rows="3" class="form-control" name="comment" placeholder="Got something to say?"></textarea><br>
         <p>You are posting as <u>{{ currentUser.nickname }}</u></p>
         <input type='hidden' name='team_id' value='{{team.id}}'>
-        <button type="submit">Post</button>
-      </form> 
+        <button type="submit" class="sub-btn">Post</button>
+      </form>
       {% else %}
       <form>
         <textarea rows="3" class="form-control" name="" placeholder="You have to log in to make comments." disabled></textarea><br>
@@ -76,3 +77,4 @@
       {% endfor %}
     </div>
   </div>
+</div>

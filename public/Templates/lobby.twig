@@ -1,3 +1,4 @@
+<div class="container">
 <div class="row">
 	<div class="col-md-12 text-center">
 		<h1 class="lobby-title">Get ready to play, have fun!</h1>
@@ -15,7 +16,7 @@
 		{% include "playersummarycard.twig" %}
 			</div>
 	{% endfor %}
-  
+
 </div>
 
 {% if leader.steamId == currentUser.steamId %}
@@ -43,9 +44,11 @@
 
 <div class="row">
 	<div class="col-md-12 lobby-button center">
-		<a href="?/Lobby/leaveLobby"><button type="button" class="playnow-btn"><h1>Leave :(</h1></button></a>
-		<a href="steam://friends/joinchat/103582791439841834"><button type="button" class="playnow-btn"><h1>Play!</h1></button></a>
+		<a href="steam://friends/joinchat/103582791439841834"><button type="button" class="playnow-btn"><h1>Play!</h1></button></a><br>
+    <br>
+    <a href="?/Lobby/leaveLobby"><u>Leave :-(</u></a>
 	</div>
+</div>
 </div>
 
 <script>
