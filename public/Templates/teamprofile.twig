@@ -29,7 +29,7 @@
       <div class="col-md-offset-1 col-md-2">
         <a class="manage-team" href="?/TeamProfile/editTeam">Manage team</a>
       </div>
-    {% else %}
+    {% elseif currentUser %}
     <div class="col-md-offset-1 col-md-2">
     <form action="?/TeamProfile/Team/{{ team.id }}" method="post">
       <input type="hidden" name="postHandler" value="receiveTeamRequest">
