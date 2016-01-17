@@ -7,10 +7,10 @@
     </p>
     <h1 class="landing-page-title">GET READY TO MEET <br> YOUR NEW TEAM</h1>
     <p class="landing-info-text">
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-	sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-	Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea    </p>
+	    Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
+	    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+	    Ut enim ad minim veniam,
+	    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea    </p>
   </div>
 </div>
 {% else %}
@@ -21,21 +21,22 @@
     </p>
     <h1 class="landing-page-title">NO MORE SOLO QUE!</h1>
     <p class="landing-info-text">
-	Behind this button lies COUNT players currently waiting to be 
-	matched up together in a lobby. </p>
+	    Behind this button lies COUNT players currently waiting to be 
+	    matched up together in a lobby. </p>
     <p class="landing-info-text"> 
-   	Our lobby genrating algorithm does much more than just match on rank and ping. <br>
- 	We also group people based on language, age, ambition, region, and experience. 
-	All so that you will end up in the best lobby possible. </p>
+   	  Our lobby genrating algorithm does much more than just match on rank and ping. <br>
+ 	    We also group people based on language, age, ambition, region, and experience. 
+	    All so that you will end up in the best lobby possible. </p>
     <p class="landing-info-text"> 
     	You don't have to sign in to use our service, but we recommend that you do. Since 
     	signed in players will be matched together with more reliable data 
-	and have shorter que times than temporary users.
+	    and have shorter que times than temporary users.
     </p>
   </div>
 </div>
 {% endif %}
 
+{% if not currentUser %}
 <div class="row">
   <div class="col-md-offset-1 col-md-2 landing-page-select" style="margin-right: 10px;">
     <dl class="dropdown dp1">
@@ -136,6 +137,7 @@
       </dl>
     </div>
   </div>
+{% endif %}
 
   <div class="row">
     <div class="col-md-offset-1 col-md-6 landingpage-select">
