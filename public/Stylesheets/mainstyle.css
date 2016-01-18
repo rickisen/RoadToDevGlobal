@@ -16,6 +16,10 @@ body {
   font-family: 'PT Sans', sans-serif;
 }
 
+*:focus {
+    outline: none;
+}
+
 /*http://s17.postimg.org/cxnzuxdin/Background_image.jpg*/
 
 ul {
@@ -452,7 +456,7 @@ select {
 }
 
 .apply-to-team {
-  margin-left: -75px;
+  margin-left: -66px;
   padding-bottom: 10px;
   background: transparent;
   border: 0;
