@@ -85,11 +85,10 @@ class Team {
     SELECT user.steam_id
     FROM user
         WHERE user.in_team = '.$this->id.'
-        LIMIT 5
     ';
     if(count($this->members) < 1){
       $result = $database->query($qGetTeamMembers);
-      if($result->num_rows == 5) {
+      if($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
           $this->members[] = new User($row['steam_id']);
         }
@@ -160,6 +159,34 @@ class Team {
       }
     }elseif($error = $database->error) {
       echo "Failed to get comments from DB ".$error;
+    }
+  }
+
+  function removePlayerFromTeam($steamId) {
+    $database = DB::getInstance();
+    //double check that this user was in this team
+    $this->getMembers();
+    $isInMembers = FALSE;
+    foreach ($this->getMembers() as $member){
+      if($member->steamId == $steamId) 
+        $isInMembers = TRUE;
+    }
+
+    if ($isInMembers == TRUE){
+      $qUpdateUserInTeam = '
+        UPDATE user
+        SET in_team       = NULL
+        WHERE steam_id    = "'.$steamId.'";
+      ';
+
+      $database->query($qUpdateUserInTeam);
+
+      if($error = $database->error){
+        echo "Something went wrong when trying to update user: $error";
+        return FALSE;
+      }
+    }else{
+      return FALSE;
     }
   }
 }

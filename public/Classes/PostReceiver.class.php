@@ -75,13 +75,17 @@ class postReceiver{
 		if ( isset($_POST['looking_for_players']) && !empty($_POST['looking_for_players']) ) {
 			$edit_lfp      			= $database->real_escape_string(stripslashes($_POST['looking_for_players']));
 		}
+		if ( isset($_POST['teamId']) && !empty($_POST['teamId'])){
+			$teamId 						= $database->real_escape_string(stripslashes($_POST['teamId']));
+		}
 
-		$team = new Team($_SESSION['currentUser']->inTeam);
-		$team->setProperties($_SESSION['currentUser']->inTeam, $_SESSION['currentUser']->steamId, $edit_team_name, $edit_team_descr, $edit_team_img, $edit_lfp);
-		$team->updateTeamInfo();
+		$team = new Team($teamId);
+		if($_SESSION['currentUser']->steamId == $team->creator){
+			$team->setProperties($_SESSION['currentUser']->inTeam, $_SESSION['currentUser']->steamId, $edit_team_name, $edit_team_descr, $edit_team_img, $edit_lfp);
+			$team->updateTeamInfo();
+		}
 
 		header('Location: ' . '?/TeamProfile/myTeam/');
-
 	}
 
 	static function receiveComments() {
@@ -108,14 +112,16 @@ class postReceiver{
 		}
 	}
 
-  static function receiveRemovePlayer(){
+  static function kickPlayerFromTeam(){
     $database = DB::getInstance();
 
-    if(isset($_POST['kick_player']) && !empty($_POST['kick_player'])){
+    if(isset($_POST['kick_player']) && !empty($_POST['kick_player']) && isset($_POST['teamId']) && !empty($_POST['teamId'])){
       $kickPlayer = $database->real_escape_string(stripslashes($_POST['kick_player']));
+      $teamId 	  = $database->real_escape_string(stripslashes($_POST['teamId']));
 
-     $_SESSION['currentUser']->removePlayerFromTeam($kickPlayer);
-      
+	  	$team = new Team($teamId);
+	  	if($_SESSION['currentUser']->steamId == $team->creator) 
+	  		$team->removePlayerFromTeam($kickPlayer);      
     }
   }
 

@@ -387,21 +387,4 @@ class User{
       return FALSE;
     }
   }
-
-  function removePlayerFromTeam($steamId) {
-    $database = DB::getInstance();
-
-    $qUpdateUserInTeam = '
-      UPDATE user
-      SET in_team       = "0"
-      WHERE steam_id    = "'.$steamId.'";
-    ';
-
-    $database->query($qUpdateUserInTeam);
-
-    if($error = $database->error){
-      echo "Something went wrong when trying to update user: $error";
-      return FALSE;
-    }
-  }
 }
