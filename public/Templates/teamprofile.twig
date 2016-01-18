@@ -40,18 +40,6 @@
   </div><!--END ROW-->
 
   <div class="row">
-    <div class="col-md-offset-2 col-md-6">
-      <div class="row">
-        {% for user in team.members %}
-          <div class="col-md-2 player-mini">
-            {% include 'playersummarymini.twig'%}
-          </div>
-        {% endfor %}
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
     <div class="col-md-offset-2 col-md-8 mrg-top-40">
       <h3 class="comment-header">Post on team wall</h3>
       {% if currentUser %}

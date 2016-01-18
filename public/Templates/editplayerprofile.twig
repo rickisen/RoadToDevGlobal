@@ -1,4 +1,4 @@
-<div class="container mrg-top-20">
+<div class="container edit-player mrg-top-20">
 <form action="" method="post">
   <input type="hidden" name="postHandler" value="profileUpdate">
 	<div class="row profileheader">
@@ -15,9 +15,9 @@
 	    </div>
 
 	    <div class="row">
-	      <div class="col-xs-6 col-md-6">
+	      <div class="col-xs-10 col-md-10">
 	      	<div class="row">
-	      		<div class="col-md-3">
+	      		<div class="col-md-2">
 	      			<ul>
 	      				<li>Rank:</li>
 	      				<li>Born:</li>
@@ -26,9 +26,9 @@
 	      				<li title="Secondary">Language:</li> <!--another solution?-->
 	      			</ul>
 	      		</div>
-	    		<div class="col-md-7">
+	    		<div class="col-md-9">
 						<ul>
-						  <li><select name="rank" type="text" id="info-select">
+						  <li class="inline-block"><select name="rank" type="text" id="info-select">
 						  	<option value="{{ user.rank }}">{{ user.rank }}</option>
 						  	<option value="silver_1">SILVER 1</option>
 						  	<option value="silver_2">SILVER 2</option>
@@ -49,9 +49,10 @@
 						  	<option value="supreme_master_first_class">SUPREME MASTER FIRST CLASS</option>
 						  	<option value="the_global_elite">THE GLOBAL ELITE</option>
 						  </select>
-						  </li>
+            </li>
+            <p class="inline-block selection-info">Choose your rank</p>
 
-						  <li><select name="born" type="" class="info-select" >
+						  <li class="inline-block"><select name="born" type="" class="info-select" >
 							<option value="{{user.born}}">{{user.born}}</option>
 							<option value="2015">2015</option>
 							<option value="2014">2014</option>
@@ -101,8 +102,9 @@
 							<option value="1970">1970</option>
 							<option value="1969">1969</option>
 						  </select></li>
+              <p class="inline-block selection-info">For lobby match making</p>
 
-				    	  <li><select name="country" type="text">
+				    	  <li class="inline-block"><select name="country" type="text">
 				    	  	<option value="{{user.country}}">{{ user.country }}</option>
 				            <option value="Denmark">Denmark</option>
 				            <option value="France">France</option>
@@ -110,8 +112,9 @@
 				            <option value="Norway">Norway</option>
 				    	  	<option value="Sweden">Sweden</option>
 				    	  </select></li>
+                <p class="inline-block selection-info">For your profile</p>
 
-				    	  <li><select name="primary_language" type="text">
+				    	  <li class="inline-block"><select name="primary_language" type="text">
 				    	  	<option value="{{user.priLang}}">{{ user.priLang }}</option>
 				    	  	<option value="swedish" type="checkbox">Swedish</option>
 				            <option value="english" type="checkbox">English</option>
@@ -119,8 +122,9 @@
 				            <option value="danish" type="checkbox">Danish</option>
 				            <option value="norwegian" type="checkbox">Norwegian</option>
 				    	  </select></li>
+                <p class="inline-block selection-info">First language for filtering</p>
 
-				    	  <li><select name="secondary_language" type="text">
+				    	  <li class="inline-block"><select name="secondary_language" type="text">
 				    	  	<option value="{{user.secLang}}">{{ user.secLang }}</option>
 				    	  	<option value="swedish" type="checkbox">Swedish</option>
 				            <option value="english" type="checkbox">English</option>
@@ -128,6 +132,7 @@
 				            <option value="danish" type="checkbox">Danish</option>
 				            <option value="norwegian" type="checkbox">Norwegian</option>
 				    	  </select></li>
+                <p class="inline-block selection-info">Second language for filtering</p>
 						</ul>
 			  	</div>
 		    </div>

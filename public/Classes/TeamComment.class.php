@@ -46,6 +46,7 @@ class TeamComment{
         LEFT JOIN user
         ON team_comment.author = user.steam_id
       WHERE team_comment.id = '. $ret->commentId .'
+      ORDER BY team_comment.date DESC
     ';
 
     if($result = $database->query($qGetTeamComment)){

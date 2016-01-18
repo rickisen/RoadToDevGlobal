@@ -241,6 +241,7 @@ and (max-width : 1300px) {
   width: 222px;
   background: #d72919;
   border: 0;
+  text-transform: uppercase;
 }
 
 .playnow-btn h1 {
@@ -319,6 +320,16 @@ select {
   -webkit-appearance: none;
   -moz-appearance: none;
   color: #000;
+}
+
+.edit-player ul li {
+  width: 228px;
+}
+
+.selection-info {
+  font-size: 12px;
+  color: #888;
+  padding-left: 15px;
 }
 
 .bio-container h2 {
