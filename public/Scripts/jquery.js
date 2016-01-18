@@ -1,6 +1,9 @@
 /* DROPDOWNS */
 $(document).ready(function(){
 
+  $(".menu-opener").click(function(){
+    $(".menu").animate();
+});
 
   // FILTER BUTTON ON PLAYERS.TWIG
   $(".filter-toggle").click(function(){

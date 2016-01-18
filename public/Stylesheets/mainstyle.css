@@ -15,6 +15,7 @@ body {
   color: #FFF;
   font-family: 'PT Sans', sans-serif;
 }
+
 /*http://s17.postimg.org/cxnzuxdin/Background_image.jpg*/
 
 ul {
@@ -391,7 +392,7 @@ select {
 }
 
 .player-card:hover {
- background: #222;
+   background: #222;
 }
 
 .show-filter{
@@ -674,7 +675,6 @@ select {
 
 /* USER NAV
 ===================================================== */
-
 .menu-opener img {
   border-radius: 100%;
 }
@@ -686,22 +686,22 @@ select {
   margin: 0;
 }
 
-.menu>a {
+.menu-link {
   display: block;
   width: 100%;
   height: 100%;
 }
 
-.menu-opener, .menu-opener:hover, .menu-opener.active, .menu-opener-inner, .menu-opener-inner::before, .menu-opener-inner::after, .menu, .menu.active {
-  -webkit-transition: 250ms all;
-  transition: 250ms all;
+  .menu, .menu.active  {
+  -webkit-transition: 200ms all;
+  transition: 200ms all;
 }
 
 .menu-opener {
   cursor: pointer;
   height: 32px;
   position: absolute;
-  top: 20%;
+  top: 2%;
   right: 1%;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -711,11 +711,11 @@ select {
 }
 
 .menu {
-  background: none;
+  background: transparent;
   height: 32px;
   position: absolute;
-  top: 20%;
-  right: 130px;
+  top: 2%;
+  right: 143px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -725,10 +725,11 @@ select {
 }
 
 .menu.active {
-  width: -webkit-calc(375px - 2rem);
-  width: calc(375px - 2rem);
+  width: -webkit-calc(350px - 2rem);
+  width: calc(350px - 2rem);
   z-index: 0;
 }
+
 .menu.active .menu-link {
   color: white;
   font-weight: 700;
@@ -747,17 +748,19 @@ select {
   flex-direction: row-reverse;
   height: 100%;
   list-style-type: none;
-  margin-right: 0px;
   padding: 0;
+  margin-right: -15px;
 }
 
 .menu-link {
   color: transparent;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 16px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  font-size: 1.5rem;
   -webkit-box-flex: 1;
   -webkit-flex: 1 1 auto;
   -ms-flex: 1 1 auto;
@@ -773,10 +776,6 @@ select {
 
 .menu-link li:hover {
   color: #d72919;
-}
-
-.menu-link:hover {
-  background: transparent;
 }
 
 /* 13" AND SMALLER */
