@@ -31,13 +31,13 @@
       </div>
     {% elseif currentUser %}
     <div class="col-md-offset-1 col-md-2">
-    <form action="?/TeamProfile/Team/{{ team.id }}" method="post">
-      <input type="hidden" name="postHandler" value="receiveTeamRequest">
-      <button type="submit" class="apply-to-team" name="teamId" value="{{team.id}}">Apply to team</button>
-    </form>
-  </div>
+      <form action="?/TeamProfile/Team/{{ team.id }}" method="post">
+        <input type="hidden" name="postHandler" value="receiveTeamRequest">
+        <button type="submit" class="apply-to-team" name="teamId" value="{{team.id}}">Apply to team</button>
+      </form>
+    </div>
     {% endif %}
-  </div>
+  </div><!--END ROW-->
 
   <div class="row">
     <div class="col-md-offset-2 col-md-6">

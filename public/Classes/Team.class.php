@@ -221,18 +221,31 @@ class Team {
   function removeApplicant($steamId){
     $database = DB::getInstance();
 
-    $qRemoveApplicant = '
-      DELETE 
-      FROM player_applying_team
-      WHERE team_id = '.$this->id.'
-      AND steam_id = '.$steamId.'
-    ';
+    $this->getApplicants();
+    $appliesToTeam = FALSE;
 
-    $database->query($qRemoveApplicant);
+    foreach($this->getApplicants() as $applicant){
+      if($applicant->steamId == $steamId){
+        $appliesToTeam = TRUE;
+      }
+    }
 
-    if($error = $database->error){
-        echo "Something went wrong when trying deny a user: $error";
-        return FALSE;
+    if($appliesToTeam == TRUE){
+      $qRemoveApplicant = '
+        DELETE 
+        FROM player_applying_team
+        WHERE team_id = '.$this->id.'
+        AND steam_id = '.$steamId.'
+      ';
+
+      $database->query($qRemoveApplicant);
+
+      if($error = $database->error){
+          echo "Something went wrong when trying deny a user: $error";
+          return FALSE;
+      }
+    }else{
+      return FALSE;
     }
   }
 }

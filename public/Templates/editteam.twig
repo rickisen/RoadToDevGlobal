@@ -21,42 +21,42 @@
 
           <div class="row">
             <div class="col-md-6">
-          <p>Looking for players?</p>
-          <select name="looking_for_players">
-          <option value="" type="checkbox">{{team.lookingForPlayers}}</option>
-          <option value="yes" type="checkbox">Yes</option>
-          <option value="no" type="checkbox">No</option>
-          </select><br><br>
-        </div>
-      </div>
+              <p>Looking for players?</p>
+              <select name="looking_for_players">
+              <option value="" type="checkbox">{{team.lookingForPlayers}}</option>
+              <option value="yes" type="checkbox">Yes</option>
+              <option value="no" type="checkbox">No</option>
+              </select><br><br>
+            </div>
+          </div>
 
           <input type="submit" class="sub-btn" value="Save">
-      </form>
 
-    <div class="row">
-      <div class="col-md-6">
-        <form method="post">
-          <p>Remove team members</p>
-          <input type="hidden" name="postHandler" value="kickPlayerFromTeam">
-          <input type="hidden" name="teamId" value="{{team.id}}">
-            <select name="kick_player">
-              <option></option>
-              {% for member in team.members %}
-                <option type="checkbox" value="{{member.steamId}}">
-                  {{member.nickname}}
-                </option>
-              {% endfor %}
-            </select>
-            <br><br>
-          <input type="submit" class="sub-btn" value="Remove">
         </form>
-      </div>
-    </div>
 
+        <div class="row">
+          <div class="col-md-6">
+            <form method="post">
+              <p>Remove team members</p>
+              <input type="hidden" name="postHandler" value="kickPlayerFromTeam">
+              <input type="hidden" name="teamId" value="{{team.id}}">
+                <select name="kick_player">
+                  <option></option>
+                  {% for member in team.members %}
+                    <option type="checkbox" value="{{member.steamId}}">
+                      {{member.nickname}}
+                    </option>
+                  {% endfor %}
+                </select>
+                <br><br>
+              <input type="submit" class="sub-btn" value="Remove">
+            </form>
+          </div>
+        </div><!--END ROW-->
       </div>
-    </div>
+    </div><!--END ROW-->
   </div>
-</div>
+</div> <!--END ROW-->
 
 
 <!-- KODEN SKA ANVÄNDAS, LÅT STÅ!
