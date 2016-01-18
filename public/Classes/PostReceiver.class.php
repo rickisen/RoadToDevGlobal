@@ -107,7 +107,7 @@ class postReceiver{
 
 		if (isset($_POST['teamId']) && !empty($_POST['teamId'])){
 			$teamId = $database->real_escape_string(stripslashes($_POST['teamId']));
-
+			
 			$_SESSION['currentUser']->insertTeamRequest($teamId);
 		}
 	}

@@ -374,13 +374,25 @@ class User{
   // inserts player and team id into player_applying_team table in DB
   function insertTeamRequest($teamId) {
     $database = DB::getInstance();
-      
-    $qSendTeamApply ='
-      INSERT INTO player_applying_team (steam_id, team_id)
-      VALUES (\''.$this->steamId.'\', \''.$teamId.'\')
+    
+    $qhaveIRequested='
+      SELECT *
+      FROM player_applying_team
+      WHERE team_id = '.$teamId.'
+      AND steam_id = '.$this->steamId.'
     ';
 
-    $database->query($qSendTeamApply);
+    $result = $database->query($qhaveIRequested);
+
+    if($result->num_rows < 1){
+
+      $qSendTeamApply ='
+        INSERT INTO player_applying_team (steam_id, team_id)
+        VALUES (\''.$this->steamId.'\', \''.$teamId.'\')
+      ';
+
+      $database->query($qSendTeamApply);
+    }
 
     if($error = $database->error){
       echo "Something went wrong when trying to insert an team apply: $error";

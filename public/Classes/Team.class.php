@@ -13,23 +13,29 @@ class Team {
   $comments,
 
   //team members
-  $members = array();
+  $members    = array(),
+  $applicants = array();
 
   function __isset($val){
-    if($val != 'members'){
+    if($val != 'members' && $val != 'applicants'){
       return isset($this->$val);
-    } else{
+    } elseif($val == 'members'){
       $this->getMembers();
       return isset($this->members);
+    }elseif($val == 'applicants'){
+      $this->getApplicants();
+      return isset($this->applicants);
     }
   }
 
   function __get($val){
-    if($val != 'members'){
+    if($val != 'members' && $val != 'applicants'){
       return $this->$val;
-    } else{
+    } elseif($val == 'members'){
       $this->getMembers();
       return $this->members;
+    } elseif($val == 'applicants'){
+      return $this->getApplicants();
     }
   }
 
@@ -187,6 +193,46 @@ class Team {
       }
     }else{
       return FALSE;
+    }
+  }
+
+  function getApplicants(){
+    $database = DB::getInstance();
+
+    if(count($this->applicants) == 0){
+      $qFetchApplicants = '
+        SELECT *
+        FROM player_applying_team
+        WHERE team_id = '.$this->id.'
+      ';
+      $result = $database->query($qFetchApplicants);
+
+      if($result->num_rows > 0){    
+        while ($row = $result->fetch_assoc()){
+          $this->applicants[] = new User($row['steam_id']);
+        }
+      }elseif($error = $database->error){
+        echo "Something went wrong when trying to find applicants: $error"; 
+      }
+    }
+    return $this->applicants;   
+  }
+
+  function removeApplicant($steamId){
+    $database = DB::getInstance();
+
+    $qRemoveApplicant = '
+      DELETE 
+      FROM player_applying_team
+      WHERE team_id = '.$this->id.'
+      AND steam_id = '.$steamId.'
+    ';
+
+    $database->query($qRemoveApplicant);
+
+    if($error = $database->error){
+        echo "Something went wrong when trying deny a user: $error";
+        return FALSE;
     }
   }
 }
