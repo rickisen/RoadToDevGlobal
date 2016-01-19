@@ -157,6 +157,7 @@ h1, h2, h3, h4, h5 {
 
 .navbar-header {
   margin-left: 70px;
+  margin-top: -7px;
 }
 
 .logo {
@@ -170,6 +171,7 @@ h1, h2, h3, h4, h5 {
   padding-bottom: 10px;
   text-transform: Uppercase;
   font-weight: 700;
+  display: inline-block;
 }
 
 .navlinkstyles a:visited, .navlinkstyles a:hover, .navlinkstyles a:active {
@@ -291,8 +293,25 @@ and (max-width : 1450px) {
    letter-spacing: 6px;
    margin-bottom: 10px;
  }
-
 }
+
+@media only screen
+and (max-width:499px){
+  .landing-page-container {
+    margin: 20px auto;
+    position: static;
+    max-width: 250px;
+  }
+
+  .playnow-btn {
+    display: none;
+  }
+
+  .dropdown {
+    display: none;
+  }
+}
+
 
 /* LOADING PAGE ANIMATION
 ===================================================== */
@@ -580,6 +599,13 @@ select {
     text-transform: uppercase;
   }
 
+  @media only screen
+  and (max-width:499px){
+    .footer {
+      text-align: center;
+    }
+  }
+
 /* LANDING PAGE DROPDOWNS
 ===================================================== */
 
@@ -696,7 +722,7 @@ select {
   height: 100%;
 }
 
-  .menu, .menu.active  {
+  .menu, .menu.active {
   -webkit-transition: 200ms all;
   transition: 200ms all;
 }
@@ -753,7 +779,7 @@ select {
   height: 100%;
   list-style-type: none;
   padding: 0;
-  margin-right: -15px;
+  margin-right: -50px;
 }
 
 .menu-link {
@@ -784,18 +810,16 @@ select {
 
 /* 13" AND SMALLER */
 
-@media only screen
-and (max-width : 1300px) {
+@media screen and (max-width: 1300px) {
   .menu.active {
-    width: -webkit-calc(30% - 2rem);
-    width: calc(30% - 2rem);
+    width: -webkit-calc(25% - 2rem);
+    width: calc(25% - 2rem);
     z-index: 0;
   }
 
   .menu {
-    right: 10%;
+    right: 110px;
   }
-
 }
 
 @media screen and (max-width: 768px) {
