@@ -155,6 +155,7 @@ class Team {
     SELECT team_comment.*
     FROM team_comment
     WHERE team_comment.team_id = '. $this->id .'
+    ORDER BY team_comment.date DESC
     ';
 
     $result = $database->query($qFetchComments);
