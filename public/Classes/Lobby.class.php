@@ -7,7 +7,7 @@ class Lobby {
   static function viewLobby(){
     $database = DB::getInstance();
 
-    // get currentUsers  lobby 
+    // get currentUsers  lobby
     $qWhatIsMyLobby = '
       SELECT lobby_id FROM lobby
       WHERE lobby.steam_id = '.$_SESSION['currentUser']->steamId.'
@@ -18,14 +18,15 @@ class Lobby {
     if ($result->num_rows > 0)
       $lobbyId = $result->fetch_assoc()['lobby_id'];
     else {
-      // if someone got here without beeinng in a lobby, something went 
+      // if someone got here without beeinng in a lobby, something went
       // wrong or they are hacking, send them home
       return ['loadview' => 'landingpage'];
     }
 
     $qGetLobbyMates = '
       SELECT *
-      FROM lobby 
+      FROM lobby LEFT JOIN steam_group_chat
+        ON steam_group_chat.id = lobby.steam_group
       WHERE lobby_id  = "'.$lobbyId.'"
     ';
 
@@ -35,16 +36,17 @@ class Lobby {
       while ($row = $result->fetch_assoc()) {
         if($row['is_leader'] == 1 ){
           $leader = new User($row['steam_id']);
-          $lobbyQuality = $row['quality'];
-          $lobbyCreated = $row['created'];
-        }        
-        $lobbyMates[] = new User($row['steam_id']);
+        }
+        $lobbyQuality  = $row['quality'];
+        $lobbyCreated  = $row['created'];
+        $lobbyChatRoom = $row['chat_room_id'];
+        $lobbyMates[]  = new User($row['steam_id']);
       }
     } elseif ($error = $database->error){
         echo "Failed to get users from Lobby $lobbyId : $error";
     }
-    return ['loadview' => 'lobby', 'lobbyMates' => $lobbyMates, 'lobbyId' => $lobbyId, 
-      'lobbyQuality' => $lobbyQuality, 'lobbyCreated' => $lobbyCreated ,'leader' => $leader];
+    return ['loadview' => 'lobby', 'lobbyMates' => $lobbyMates, 'lobbyId' => $lobbyId,
+      'lobbyQuality' => $lobbyQuality, 'lobbyCreated' => $lobbyCreated ,'leader' => $leader, 'lobbyChatRoom' => $lobbyChatRoom];
   }
 
   static function leaveLobby(){

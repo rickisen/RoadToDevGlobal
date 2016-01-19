@@ -257,7 +257,7 @@ and (max-width : 1300px) {
 }
 
 .landingpage-select .playnow-btn:hover {
-  background: #b72619 ;
+  background: #b72619;
   color: #FFF;
   transition: 0.1s;
 }
@@ -441,6 +441,11 @@ select {
   -webkit-appearance: none;
   -moz-appearance: none;
   cursor: pointer;
+}
+
+.sub-btn:hover {
+  background: #b72619;
+  transition: 0.1s;
 }
 
 
