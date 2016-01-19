@@ -887,13 +887,12 @@ select {
   display: block;
   box-sizing: border-box;
   margin: 0 auto;
-  top: 25%;
+  top: 40%;
   transform: translateY(-50%);
   width: 640px;
   padding: 2rem;
-  border-radius: 0.25rem;
   border: 1px solid #969696;
-  background: #fff;
+  background: rgba(0, 0, 0, 0.9);;
   box-shadow: 1px 1px 6px rgba(0,0,0,0.3);
   max-height: 0;
   opacity: 0;
@@ -913,17 +912,18 @@ select {
   cursor: pointer;
 }
 h2#dlg-header {
-  font: 200 2em/1em Raleway, Open Sans, Arial, Sans-Serif;
+  font-weight: 700;
   text-transform: initial;
-  letter-spacing: -0.025em;
   margin: 0 0 1rem;
 }
 #dlg-content {
-  font-weight: 300;
   letter-spacing: 0.015em;
+  color: #888;
 }
-#dlg-prompt .button {
+#dlg-prompt .sub-btn {
   border-radius: 0;
+  margin-top: 10px;
+  max-width: 200px;
 }
 
 .main_area {
@@ -954,7 +954,9 @@ h2#dlg-header {
   cursor: pointer;
 }
 
-.button {display: none;}
+#trigger {
+  display:none;
+}
 
 .button:hover, a.button:hover {
   color: #a0a0a0;
