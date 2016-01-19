@@ -171,6 +171,8 @@ class Team {
 
   function removePlayerFromTeam($steamId) {
     $database = DB::getInstance();
+    //only allows execution if we are the creator OR if we're an member who is removing himself
+    if ( $this->creator != $_SESSION['currentUser']->steamId || $_SESSION['currentUser']->steamId != $steamId ) return FALSE;
     //double check that this user was in this team
     $this->getMembers();
     $isInMembers = FALSE;
@@ -221,17 +223,9 @@ class Team {
 
   function removeApplicant($steamId){
     $database = DB::getInstance();
+    //only allows execution if we are the creator OR if we're an applicant who is removing himself
+    if ( $this->creator == $_SESSION['currentUser']->steamId || $_SESSION['currentUser']->steamId == $steamId ){
 
-    $this->getApplicants();
-    $appliesToTeam = FALSE;
-
-    foreach($this->getApplicants() as $applicant){
-      if($applicant->steamId == $steamId){
-        $appliesToTeam = TRUE;
-      }
-    }
-
-    if($appliesToTeam == TRUE){
       $qRemoveApplicant = '
         DELETE 
         FROM player_applying_team
@@ -242,7 +236,40 @@ class Team {
       $database->query($qRemoveApplicant);
 
       if($error = $database->error){
-          echo "Something went wrong when trying deny a user: $error";
+          echo "Something went wrong when trying to deny a user: $error";
+          return FALSE;
+      }
+    }else{
+      echo "You're not allowed to execute this function!";
+    }
+  }
+
+  function acceptApplicant($steamId){
+    $database = DB::getInstance();
+    //makes sure only the creator is allowed to proceed
+    if($this->creator != $_SESSION['currentUser']->steamId) return FALSE;
+
+    $this->getMembers();
+    $appliesToTeam = FALSE;
+
+    foreach($this->getMembers() as $applicant){
+      if($applicant->steamId == $steamId){
+        $appliesToTeam = TRUE;
+      }
+    }
+
+    if($appliesToTeam == TRUE){
+      $qAcceptApplicant = '
+        UPDATE user
+        SET in_team       = '.$this->id.'
+        WHERE steam_id    = "'.$steamId.'"
+        AND in_team IS NULL;
+      ';
+
+      $database->query($qAcceptApplicant);
+
+      if($error = $database->error){
+          echo "Something went wrong when trying to accept a user: $error";
           return FALSE;
       }
     }else{
