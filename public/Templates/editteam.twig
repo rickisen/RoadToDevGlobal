@@ -46,10 +46,10 @@
                     <option type="checkbox" value="{{member.steamId}}">
                       {{member.nickname}}
                     </option>
-                  {% endfor %}
+                  {% endfor %}§
                 </select>
                 <br><br>
-              <input type="submit" class="sub-btn" value="Remove">
+              <input onclick="return confirm(' Are you sure you want to remove this player from your team?');" type="submit" class="sub-btn" value="Remove">
             </form>
           </div>
         </div><!--END ROW-->
@@ -57,34 +57,3 @@
     </div><!--END ROW-->
   </div>
 </div> <!--END ROW-->
-
-
-<!-- KODEN SKA ANVÄNDAS, LÅT STÅ!
-<!--<div class="">
-<input type="checkbox" name="dialog_state" id="dialog_state" class="dialog_state">
-  <div id='dialog'>
-    <label id="dlg-back" for="dialog_state"></label>
-    <div id='dlg-wrap'>
-      <label id="dlg-close" for="dialog_state"></label>
-      <h2 id='dlg-header'>Are you sure that you want to remove this player from the team?</h2>
-      <div id='dlg-content'>If you press "Yes" the user will be permanently deleted from the team. Press "Cancel" if you regret your decisions.</div>
-      <div id='dlg-prompt'>
-        <form method="post">
-          <input type="submit" value="Yes">
-          <input type="submit" value="Cancer">
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <main id='main' class='main_area'>
-    <div class='center'>
-      <label class="button" id="trigger" for="dialog_state">Lobby leader</label>
-    </div>
-    <div id='console'></div>
-  </main>
-</div>
-
-<script>
-document.getElementById('trigger').click();
-</script> -->
