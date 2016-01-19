@@ -4,5 +4,6 @@
     <p style="word-wrap: break-word;"> {{ team.descr }}<br>
       <a href="?/TeamProfile/Team/{{ team.id }}" class="more-info">More Info</a>
       <img class="flag" src="http://s13.postimg.org/tfl8ks43n/Sweden.png">
+      <p>Members: {{ team.members|length }}</p>
     </p>
 </div>
