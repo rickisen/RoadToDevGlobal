@@ -249,10 +249,9 @@ class Team {
     //makes sure only the creator is allowed to proceed
     if($this->creator != $_SESSION['currentUser']->steamId) return FALSE;
 
-    $this->getMembers();
     $appliesToTeam = FALSE;
 
-    foreach($this->getMembers() as $applicant){
+    foreach($this->getApplicants() as $applicant){
       if($applicant->steamId == $steamId){
         $appliesToTeam = TRUE;
       }
@@ -261,7 +260,7 @@ class Team {
     if($appliesToTeam == TRUE){
       $qAcceptApplicant = '
         UPDATE user
-        SET in_team       = '.$this->id.'
+        SET in_team       = "'.$this->id.'"
         WHERE steam_id    = "'.$steamId.'"
         AND in_team IS NULL;
       ';
@@ -269,8 +268,20 @@ class Team {
       $database->query($qAcceptApplicant);
 
       if($error = $database->error){
-          echo "Something went wrong when trying to accept a user: $error";
+        echo "Something went wrong when trying to accept a user: $error";
+        return FALSE;
+      }else{
+        $qDeleteApplications = '
+          DELETE FROM player_applying_team
+          WHERE steam_id = "'.$steamId.'"
+        ';
+
+        $database->query($qDeleteApplications);
+
+        if($error = $database->error){
+          echo "Something went wrong when trying to remove user applications: $error";
           return FALSE;
+        }
       }
     }else{
       return FALSE;

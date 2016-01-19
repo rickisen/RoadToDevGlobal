@@ -452,7 +452,7 @@ select {
 /* TEAM PROFILE PAGE
 =====================================================*/
 
-.team-profile-container img {
+.team-profile-img {
   width: 200px;
   height: 200px;
 }
@@ -477,6 +477,35 @@ select {
   padding-bottom: 10px;
   border-bottom: 1px solid #d72919;
   margin-left: -55px;
+}
+
+.manage-applicants{
+  margin-left: -55px;
+  overflow: hidden;
+  max-height: 80px;
+  max-width: 140px;
+
+}
+
+.manage-applicants form{
+  display:inline-block;
+  margin-bottom: -20px;
+}
+
+.manage-applicants img{
+  vertical-align: top;
+}
+
+.manage-applicants:hover{
+  overflow-y: scroll;
+}
+
+.manage-applicant-header{
+  margin-left: -55px;
+}
+
+.manage-applicant-posts{
+  margin-top: 5px;
 }
 
 .apply-to-team {
@@ -1037,4 +1066,40 @@ h2#dlg-header {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
   filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
+}
+
+/*Temp solution for scrollbar design, doesn't work in FireFox :(
+=============================================================================================== */
+.manage-applicants::-webkit-scrollbar  {
+  width: 2px;
+  height: 1px;
+}
+.manage-applicants::-webkit-scrollbar-button  {
+  width: 0px;
+  height: 0px;
+}
+.manage-applicants::-webkit-scrollbar-thumb  {
+  background: #ff0000;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+.manage-applicants::-webkit-scrollbar-thumb:hover  {
+  background: #ff0000;
+}
+.manage-applicants::-webkit-scrollbar-thumb:active  {
+  background: #ff0000;
+}
+.manage-applicants::-webkit-scrollbar-track  {
+  background: #666666;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+.manage-applicants::-webkit-scrollbar-track:hover  {
+  background: #ff0000;
+}
+.manage-applicants::-webkit-scrollbar-track:active  {
+  background: #ff0000;
+}
+.manage-applicants::-webkit-scrollbar-corner  {
+  background: transparent;
 }

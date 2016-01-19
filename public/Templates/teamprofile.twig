@@ -1,11 +1,7 @@
 <div class="container">
   <div class="row mrg-top-40 team-profile-container">
     <div class="col-md-offset-2 col-md-2 center">
-      <img src="{{ team.img }}">
-      {% if currentUser.inTeam != team.id and currentUser %} <!--if the user isnt in the team and we're logged in as a user, we show the Apply button-->
-
-      <!--build a elseif twig where we show the current team applys we have?-->
-      {% endif %}
+      <img class="team-profile-img" src="{{ team.img }}">      
     </div>
 
     <div class="col-md-4 team-info">
@@ -28,7 +24,33 @@
     {% if currentUser.steamId == team.creator %}
       <div class="col-md-offset-1 col-md-2">
         <a class="manage-team" href="?/TeamProfile/editTeam">Manage team</a>
+        <br><br>
+        {% if team.applicants %}
+        <h5 class="manage-applicant-header">Applicants for <br> {{team.name}}</h5>
+        <div class="manage-applicants">
+          <input type="hidden" name="postHandler" value="acceptOrDenyApplicant">
+          <ul>
+          {% for applicant in team.applicants %}
+            <li><a href="?/Profile/displayUser/{{applicant.steamId}}" target="_blank" title="{{applicant.bio}}"><img src="{{applicant.imageS}}">  {{applicant.nickname}}</a><br>
+              <form method="post">
+                <input type="hidden" name="postHandler" value="acceptApplicant">
+                <input class="manage-applicant-posts" type="image" src="https://cdn3.iconfinder.com/data/icons/musthave/16/Check.png" border="0" alt="Submit" />
+                <input type="hidden" name="applicant" value="{{applicant.steamId}}">
+                <input type='hidden' name='teamId' value='{{team.id}}'>
+              </form>
+              <form method="post">
+                <input type="hidden" name="postHandler" value="denyApplicant">
+                <input type="image" src="https://cdn3.iconfinder.com/data/icons/musthave/16/Delete.png" border="0" alt="Submit" />
+                <input type="hidden" name="applicant" value="{{applicant.steamId}}">
+                <input type='hidden' name='teamId' value='{{team.id}}'>
+              </form>
+            </li>
+          {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
       </div>
+
     {% elseif currentUser %}
     <div class="col-md-offset-1 col-md-2">
       <form action="?/TeamProfile/Team/{{ team.id }}" method="post">

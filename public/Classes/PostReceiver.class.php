@@ -125,6 +125,32 @@ class postReceiver{
     }
   }
 
+  static function acceptApplicant(){
+  	$database = DB::getInstance();
+
+ 		if(isset($_POST['applicant']) && !empty($_POST['applicant']) && isset($_POST['teamId']) && !empty($_POST['teamId'])){
+ 			$steamId = $database->real_escape_string(stripslashes($_POST['applicant']));
+ 			$teamId  = $database->real_escape_string(stripslashes($_POST['teamId']));
+
+			$team = new Team($teamId);
+	  	if($_SESSION['currentUser']->steamId == $team->creator) 
+	  		$team->acceptApplicant($steamId);
+ 		}
+  }
+
+  static function denyApplicant(){
+  	$database = DB::getInstance();
+
+  	if(isset($_POST['applicant']) && !empty($_POST['applicant']) && isset($_POST['teamId']) && !empty($_POST['teamId'])){
+ 			$steamId = $database->real_escape_string(stripslashes($_POST['applicant']));
+ 			$teamId  = $database->real_escape_string(stripslashes($_POST['teamId']));
+			
+			$team = new Team($teamId);
+	  	if($_SESSION['currentUser']->steamId == $team->creator) 
+	  		$team->removeApplicant($steamId);
+ 		}
+  }
+
   static function logout(){
     unset($_SESSION['currentUser']);
     unset($_SESSION['steamId']);
