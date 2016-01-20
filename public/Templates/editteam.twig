@@ -53,9 +53,8 @@
             </form>
           </div>
         
-
-          <div class="col-md-5 pull-right manage-applicants">
-            {% if team.applicants %}
+          {% if team.applicants %}
+            <div class="col-md-5 pull-right manage-applicants">
               <h5 class="">Applicants for <b>{{team.name}}</b></h5>
               <div class="">
                 <input type="hidden" name="postHandler" value="acceptOrDenyApplicant">
@@ -78,8 +77,8 @@
                 {% endfor %}
                 </ul>
               </div>
-            {% endif %}
-          </div>
+            </div>
+          {% endif %}
         </div><!--END ROW-->  
       </div>
     </div><!--END ROW-->
