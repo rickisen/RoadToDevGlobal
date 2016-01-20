@@ -476,20 +476,20 @@ select {
 .manage-team {
   padding-bottom: 10px;
   border-bottom: 1px solid #d72919;
-  margin-left: -55px;
 }
 
 .manage-applicants{
-  margin-left: -55px;
   overflow: hidden;
-  max-height: 80px;
-  max-width: 140px;
+  max-height: 120px;
+}
 
+.manage-applicants h5{
+  margin-top: 0px;
 }
 
 .manage-applicants form{
-  display:inline-block;
-  margin-bottom: -20px;
+  display: inline-block;
+  margin-right: 10px;
 }
 
 .manage-applicants img{
