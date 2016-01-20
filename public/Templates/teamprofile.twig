@@ -85,6 +85,8 @@
     <div class="col-md-offset-2 col-md-8 mrg-top-40">
       {% for comment in team.comments %}
         <p class="inline-block"><a href="?/Profile/displayuser/{{ comment.author }}"><u> {{ comment.nick }} </u> </a> </p>
+        <img src="{{ comment.rank }}">
+        <img src="{{ comment.country }}">
         <p class="inline-block date-stamp"> {{ comment.date }} </p>
         <p class="comment-text"> {{ comment.text }} </p>
         <hr>
