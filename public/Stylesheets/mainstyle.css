@@ -266,7 +266,7 @@ and (max-width : 1300px) {
 /* 13" AND SMALLER */
 
 @media only screen
-and (max-width : 1450px) {
+and (max-width: 1450px) {
 
   .landing-page-container {
     position:fixed;
@@ -779,7 +779,7 @@ select {
   height: 32px;
   position: absolute;
   top: 2%;
-  right: 143px;
+  right: 175px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
