@@ -79,6 +79,10 @@ textarea {
   width: 22px;
 }
 
+input[type=text] {
+  color: black;
+}
+
 .mrg-top-40 {
   margin-top: 40px;
 }
@@ -1052,6 +1056,7 @@ h2#dlg-header {
 
 .leader-icon a {
   color: red;
+  font-weight: 200;
 }
 
 [data-tooltip] {
