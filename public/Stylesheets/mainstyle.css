@@ -69,6 +69,16 @@ textarea {
   height: 20px;
 }
 
+.rankimg-small {
+  width: 45px;
+  height: 15px;
+}
+
+.flag-small {
+  height: 22px;
+  width: 22px;
+}
+
 .mrg-top-40 {
   margin-top: 40px;
 }
@@ -474,8 +484,13 @@ select {
 }
 
 .manage-team {
+  margin-left: -55px;
   padding-bottom: 10px;
   border-bottom: 1px solid #d72919;
+}
+
+.applicants {
+  margin-left: -75px;
 }
 
 .manage-applicants{
@@ -498,10 +513,6 @@ select {
 
 .manage-applicants:hover{
   overflow-y: scroll;
-}
-
-.manage-applicant-header{
-  margin-left: -55px;
 }
 
 .manage-applicant-posts{

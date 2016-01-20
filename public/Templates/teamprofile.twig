@@ -25,8 +25,8 @@
       <div class="col-md-offset-1 col-md-2">
         <a class="manage-team" href="?/TeamProfile/editTeam">Manage team</a><br><br>
         {% if team.applicants|length > 0 %}
-          You've <b>{{ team.applicants|length }}</b> applicant(s).
-        {% endif %}  
+          <p class="applicants">There's <b style="color: #FFF;">{{ team.applicants|length }}</b> applicant(s).</p>
+        {% endif %}
       </div>
 
     {% elseif currentUser %}
@@ -63,8 +63,8 @@
     <div class="col-md-offset-2 col-md-8 mrg-top-40">
       {% for comment in team.comments %}
         <p class="inline-block"><a href="?/Profile/displayuser/{{ comment.author }}"><u> {{ comment.nick }} </u> </a> </p>
-        <img src="{{ comment.rank }}">
-        <img src="{{ comment.country }}">
+        <img class="rankimg-small" src="{{ comment.rank }}">
+        <img class="flag-small" src="{{ comment.country }}">
         <p class="inline-block date-stamp"> {{ comment.date }} </p>
         <p class="comment-text"> {{ comment.text }} </p>
         <hr>
