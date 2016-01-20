@@ -13,7 +13,7 @@
         {% if user.isPrivateAcc %}
         <h3 class="inline-block;">{{ user.nickname }} [<span class="redTxt">private profile</span>]</h3>
         {% else %}
-        <h3 class="inline-block">{{ user.nickname }}
+        <h3 class="inline-block bold">{{ user.nickname }}
           {% if user.country %}
             <img src="{{ user.countryFlag }}" style="margin-top: -4px">
           {% endif %}
