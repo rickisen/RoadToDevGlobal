@@ -327,7 +327,7 @@ class User{
   function updateUserSuppliedInfo(){
     $database = DB::getInstance();
     $this->born = $this->dobYear .'-'. $this->dobMonth .'-'. $this->dobDay;
-    $reCalcAge = floor((time() - strtotime("$this->born")) / 31556926);
+    $reCalcAge = date("Y-m-d") - $this->born;
 
     $qUpdateUserSuppliedInfo = '
       UPDATE user
