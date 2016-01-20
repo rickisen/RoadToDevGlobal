@@ -65,9 +65,9 @@ class Players{
     }
 
     if( isset($_POST['nick']) && !empty($_POST['nick']) ){
-      $nickClause = ' nickname LIKE "%';
+      $nickClause = ' LOWER(nickname) LIKE LOWER("%';
       $nickClause .= $database->real_escape_string(stripslashes($_POST['nick']));
-      $nickClause .= '%"';
+      $nickClause .= '%")';
       $clauses[] = $nickClause;
     }
 
