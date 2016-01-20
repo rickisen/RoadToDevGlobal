@@ -52,9 +52,9 @@ class Teams{
 
 
       if( isset($_POST['team_name']) && !empty($_POST['team_name']) ){
-        $teamNameClause  = ' name LIKE "%';
+        $teamNameClause  = ' UPPER(name) LIKE UPPER("%';
         $teamNameClause .= $database->real_escape_string(stripslashes($_POST['team_name']));
-        $teamNameClause .= '%"';
+        $teamNameClause .= '%")';
         $clauses[] = $teamNameClause;
       }
 
