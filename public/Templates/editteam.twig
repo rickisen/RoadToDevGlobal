@@ -52,7 +52,35 @@
               <input onclick="return confirm(' Are you sure you want to remove this player from your team?');" type="submit" class="sub-btn" value="Remove">
             </form>
           </div>
-        </div><!--END ROW-->
+        
+
+          <div class="col-md-5 pull-right manage-applicants">
+            {% if team.applicants %}
+              <h5 class="">Applicants for <b>{{team.name}}</b></h5>
+              <div class="">
+                <input type="hidden" name="postHandler" value="acceptOrDenyApplicant">
+                <ul>
+                {% for applicant in team.applicants %}
+                  <li><a href="?/Profile/displayUser/{{applicant.steamId}}" target="_blank" title="{{applicant.bio}}"><img src="{{applicant.imageS}}">  {{applicant.nickname}}</a>
+                    <form class="pull-right" method="post">
+                      <input type="hidden" name="postHandler" value="denyApplicant">
+                      <input type="image" src="https://cdn3.iconfinder.com/data/icons/musthave/16/Delete.png" border="0" alt="Submit" />
+                      <input type="hidden" name="applicant" value="{{applicant.steamId}}">
+                      <input type='hidden' name='teamId' value='{{team.id}}'>
+                    </form>                   
+                    <form class="pull-right" method="post">
+                      <input type="hidden" name="postHandler" value="acceptApplicant">
+                      <input type="image" src="https://cdn3.iconfinder.com/data/icons/musthave/16/Check.png" border="0" alt="Submit" />
+                      <input type="hidden" name="applicant" value="{{applicant.steamId}}">
+                      <input type='hidden' name='teamId' value='{{team.id}}'>
+                    </form>
+                  </li>
+                {% endfor %}
+                </ul>
+              </div>
+            {% endif %}
+          </div>
+        </div><!--END ROW-->  
       </div>
     </div><!--END ROW-->
   </div>
