@@ -8,6 +8,7 @@
 	{% for user in lobbyMates %}
 		{% if user.steamId == leader.steamId %}
 			<div class="col-md-3 player-card leader">
+         <p class="leader-icon"><a href="#" data-tooltip="This is the lobby leader. The leader is responsible of inviting everyone to a game.">Leader</a></p>
 		{% elseif user.steamId == currentUser.steamId %}
 			<div class="col-md-3 player-card currentUser">
 		{% else %}

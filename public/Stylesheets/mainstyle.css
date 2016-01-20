@@ -344,6 +344,7 @@ animation:spin 2s linear infinite;
 =====================================================*/
 
 select {
+  height: 27px;
   margin: 0;
   padding: 0;
   border-radius: 0;
@@ -477,6 +478,10 @@ select {
 
 .team-info {
   margin-left: 40px;
+}
+
+.form-control {
+  border-radius: 0px;
 }
 
 .comment-text {
@@ -639,7 +644,6 @@ select {
 
 .lobby-button{
   margin-bottom: 50px;
-  margin-top: 50px;
 }
 
 /* FOOTER
@@ -1040,6 +1044,14 @@ h2#dlg-header {
 
 /* Testing lobby tooltip
 ================================================== */
+
+.leader-icon a {
+  position: absolute;
+  top: 5%;
+  left: 10%;
+  color: red;
+}
+
 [data-tooltip] {
   position: relative;
   z-index: 2;
