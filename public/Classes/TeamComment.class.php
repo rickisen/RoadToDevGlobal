@@ -1,7 +1,7 @@
 <?php
 
 class TeamComment{
-  private $teamId, $text, $date, $commentId;
+  private $teamId, $text, $date, $commentId, $country, $rank;
 
   function __construct(){}
 
@@ -44,16 +44,22 @@ class TeamComment{
       SELECT *
       FROM team_comment
         LEFT JOIN user
-        ON team_comment.author = user.steam_id
+          ON team_comment.author = user.steam_id
+        LEFT JOIN rank_img
+          ON user.rank = rank_img.rank
+        LEFT JOIN flag_img
+          ON user.country = flag_img.country
       WHERE team_comment.id = '. $ret->commentId .'
     ';
 
     if($result = $database->query($qGetTeamComment)){
       $row = $result->fetch_assoc();
-      $ret->author = $row['author'];
-      $ret->nick   = $row['nickname'];
-      $ret->text   = $row['text'];
-      $ret->date   = $row['date'];
+      $ret->author  = $row['author'];
+      $ret->nick    = $row['nickname'];
+      $ret->rank    = $row['img'];
+      $ret->country = $row['image'];
+      $ret->text    = $row['text'];
+      $ret->date    = $row['date'];
     } elseif($error = $database->error){
       echo "Something went wrong when trying to fetch comment $this->commentId : $error";
     }

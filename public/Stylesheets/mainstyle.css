@@ -723,6 +723,21 @@ select {
   width: 130px;
 }
 
+.dropdown .pref-lang1 {
+  margin-left: 130px;
+  width: 130px;
+}
+
+.dropdown .pref-lang2 {
+  margin-left: 0;
+  width: 130px;
+}
+
+.dropdown .pref-lang3 {
+  margin-left: 260px;
+  width: 130px;
+}
+
 .dropdown .ambition {
   margin-left: -35px;
 }
