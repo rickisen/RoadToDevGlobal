@@ -20,25 +20,46 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-      <ul class="navlinkstyles inline-block">
-        <li class="inline-block mrg-left-20"><a href="?/Players/viewuserprofiles">Players</a></li>
-        <li class="inline-block mrg-left-20"><a href="/?/Teams/viewTeams">Teams</a></li>
-        <li class="inline-block mrg-left-20"><a href="?/Faq/viewFaq">FAQ</a></li>
+      <ul class="navlinkstyles">
+        <li class=""><a href="?/Players/viewuserprofiles">Players</a></li>
+        <li class=""><a href="/?/Teams/viewTeams">Teams</a></li>
+        <li class=""><a href="?/Faq/viewFaq">FAQ</a></li>
+
+        <!-- Move user navs for mobile view IF LOGGED IN -->
+        {% if currentUser %}
+        <li class="user-mobile"><a href="?/Profile/displayUser/{{currentUser.steamId}}">Profile</a></li>
+        <li class="user-mobile"><a href="?/EditProfile/currentUser">Settings</a></li>
+
+        <li class="user-mobile">
+
+        {% if currentUser.inTeam > 0 %}
+            <a href="?/TeamProfile/myTeam">
+          {%  else %}
+            <a href="?/CreateTeam/newTeam">
+          {% endif %}
+
+          Team
+
+        </a></li>
+
+        <li class="user-mobile"><a href="?/Faq/viewFaq">Logout</a></li>
+        {% endif %}
+
+        <!-- Controll to show Lobby status -->
+        {% if currentUser.isInALobby %}
+          <li class="inline-block mrg-left-20 logo"><a href="/?/Lobby/viewLobby">YOUR LOBBY</a></li>
+        {% elseif currentUser.isLookingForLobby %}
+          <li class="inline-block mrg-left-20 "><a href="/?/LobbyLoader/addUserToPlfl">LOOKING FOR LOBBY...</a></li>
+        {% elseif currentUser %}
+          <li class="inline-block mrg-left-20"><a href="/?/LobbyLoader/addUserToPlfl">FIND LOBBY</a></li>
+        {% else %}
+          <li class="inline-block mrg-left-20"><a href="/?/UnderConstruction/viewConstruction">FIND LOBBY</a></li>
+        {% endif %}
       </ul>
 
-	<ul class="navlinkstyles inline-block ">
-	  {% if currentUser.isInALobby %}
-	    <li class="inline-block mrg-left-20 logo"><a href="/?/Lobby/viewLobby">YOUR LOBBY</a></li>
-	  {% elseif currentUser.isLookingForLobby %}
-	    <li class="inline-block mrg-left-20 "><a href="/?/LobbyLoader/addUserToPlfl">LOOKING FOR LOBBY...</a></li>
-	  {% elseif currentUser %}
-	    <li class="inline-block mrg-left-20"><a href="/?/LobbyLoader/addUserToPlfl">FIND LOBBY</a></li>
-	  {% else %}
-	    <li class="inline-block mrg-left-20"><a href="/?/UnderConstruction/viewConstruction">FIND LOBBY</a></li>
-	  {% endif %}
-	</ul>
-
         {% if currentUser %}
+
+    <!-- Nav slider & Steam login -->
 	   <div class="navbar-right">
 
            <nav class="menu-opener">
@@ -50,7 +71,7 @@
              <ul class="menu-inner">
                <a href="#" class="menu-link">
                  <li>
-                   <form action="/index.php?" method="post" class="navbar-form navbar-right logout-btn">
+                   <form action="/index.php?" method="post" class="navbar-right logout-btn">
                        <input type="submit" name="postHandler" value="LOGOUT" class="logout-btn">
                    </form>
                   </li>
@@ -71,7 +92,7 @@
                 <a href="?/CreateTeam/newTeam" class="menu-link">
               {% endif %}
 
-                 <li>Team</li>
+                 <li>MyTeam</li>
                </a>
 
              </ul>
@@ -79,7 +100,7 @@
 
         {% else %}
 
-          <form action="?/LoginRedirect/steamLogin&login" method="post" class="navbar-form navbar-right" name="steamLogin" style="margin-right: 70px;">
+          <form action="?/LoginRedirect/steamLogin&login" method="post" class="navbar-right steam-login" name="steamLogin">
               <input type="image" src="http://cdn.steamcommunity.com/public/images/signinthroughsteam/sits_small.png">
           </form>
 

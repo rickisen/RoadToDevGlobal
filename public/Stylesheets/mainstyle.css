@@ -83,6 +83,26 @@ input[type=text] {
   color: black;
 }
 
+.navbar-toggle {
+  border: 0;
+  color: white;
+  margin-top: 0px;´
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+  background: #FFF;
+}
+
+.navbar-collapse {
+  border-top: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+  background: transparent;
+}
+
 .mrg-top-40 {
   margin-top: 40px;
 }
@@ -192,6 +212,15 @@ h1, h2, h3, h4, h5 {
   border-bottom: 1px solid #d72919;
 }
 
+.navlinkstyles {
+  display: inline-block;
+}
+
+.navlinkstyles li {
+  display: inline-block;
+  margin-left: 20px;
+}
+
 .logo a {
   color: #d72919;
 }
@@ -200,7 +229,11 @@ ul li {
   margin-bottom: 15px;
 }
 
-.menu-opener {
+.user-mobile {
+  display: none !important;
+}
+
+.menu-opener, .steam-login {
   margin-right: 70px;
 }
 
@@ -214,6 +247,38 @@ and (max-width : 1300px) {
   .navbar-header {
     margin-left: 0;
   }
+}
+
+@media only screen
+and (max-width: 765px) {
+
+  .menu-opener, .menu, .menu-inner {
+    display: none;
+  }
+
+  .navlinkstyles {
+    display: block;
+  }
+
+  .navlinkstyles li {
+    margin: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .steam-login {
+    text-align: center;
+    margin-right: 0px;
+  }
+
+  .navlinkstyles a:visited, .navlinkstyles a:hover, .navlinkstyles a:active {
+    border: 0;
+  }
+
+  .user-mobile {
+    display: inline-block !important;
+  }
+
 }
 
 
@@ -292,6 +357,10 @@ and (max-width: 1450px) {
     max-width: 900px;
   }
 
+  .landing-info-text {
+    margin-bottom: 10px;
+  }
+
   .landing-page-text p {
     font-size: 14px;
     line-height: 25px;
@@ -299,7 +368,7 @@ and (max-width: 1450px) {
 
   .landing-page-title {
     font-size: 35px;
-    line-height: 50px;
+    line-height: 45px;
     margin-bottom: 10px;
   }
 
@@ -310,12 +379,18 @@ and (max-width: 1450px) {
 }
 
 @media only screen
-and (max-width:499px){
+and (max-width:760px){
   .landing-page-container {
     margin: 20px auto;
+    text-align: center;
     position: static;
     max-width: 250px;
   }
+}
+
+@media only screen
+and (max-width:499px){
+
 
   .playnow-btn {
     display: none;
@@ -819,7 +894,7 @@ select {
   cursor: pointer;
   height: 32px;
   position: absolute;
-  top: 2%;
+  top: -8%;
   right: 1%;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -832,7 +907,7 @@ select {
   background: transparent;
   height: 32px;
   position: absolute;
-  top: 2%;
+  top: -8%;
   right: 175px;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -868,6 +943,7 @@ select {
   list-style-type: none;
   padding: 0;
   margin-right: -50px;
+  overflow: hidden;
 }
 
 .menu-link {
