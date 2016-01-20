@@ -646,11 +646,6 @@ select {
   margin-bottom: 50px;
 }
 
-.leader {
-  border: 1px dotted limegreen;
-  box-sizing: border-box;
-}
-
 /* FOOTER
 ===================================================== */
 
@@ -1050,7 +1045,7 @@ h2#dlg-header {
 /* Testing lobby tooltip
 ================================================== */
 
-.leader-icon {
+.leader-icon a {
   position: absolute;
   top: 5%;
   left: 10%;
