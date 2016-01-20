@@ -4,6 +4,7 @@ class User{
   private $steamId;
   private $existed;
   private $isInALobby = FALSE;
+  private $isLookingForLobby = FALSE;
 
   public
     // user specified
@@ -55,7 +56,10 @@ class User{
   }
 
   function __get($val){
-      return $this->$val;
+    if ($val == 'isLookingForLobby'){
+      return $this->getIsLookingForLobby();
+    }
+    return $this->$val;
   }
 
   function setInALobby($val){
@@ -398,5 +402,27 @@ class User{
       echo "Something went wrong when trying to insert an team apply: $error";
       return FALSE;
     }
+  }
+
+  function getIsLookingForLobby(){
+    $database = DB::getInstance();
+
+    $qIsLooking = '
+      SELECT steam_id 
+      FROM player_looking_for_lobby 
+      WHERE steam_id = "'.$this->steamId.'"
+      LIMIT 1
+    ';
+
+    $result = $database->query($qIsLooking);
+    if ($result->num_rows == 1){
+      $this->isLookingForLobby == TRUE;
+      return TRUE;
+    }elseif ($error = $database->error){
+      $this->isLookingForLobby == FALSE;
+      echo "something went wrong when trying to see if a user is in a lobby $error";
+    }
+
+    return FALSE;
   }
 }

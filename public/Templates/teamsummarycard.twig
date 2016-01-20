@@ -1,9 +1,9 @@
 <div class="thumbnail team-card"><a href="?/TeamProfile/Team/{{ team.id }}">
   <img src="{{ team.img }}"></a>
-    <a href="?/TeamProfile/Team/{{ team.id }}"><h3>{{ team.name }}</h3></a>
+    <a href="?/TeamProfile/Team/{{ team.id }}" class="inline-block"><h3>{{ team.name }}</h3></a>
+    <img class="flag" src="http://s13.postimg.org/tfl8ks43n/Sweden.png">
     <p style="word-wrap: break-word;"> {{ team.descr }}<br>
       <a href="?/TeamProfile/Team/{{ team.id }}" class="more-info">More Info</a>
-      <img class="flag" src="http://s13.postimg.org/tfl8ks43n/Sweden.png">
-      <p>Members: {{ team.members|length }}</p>
+      <p class="number-of-members">Members: {{ team.members|length }}</p>
     </p>
 </div>
