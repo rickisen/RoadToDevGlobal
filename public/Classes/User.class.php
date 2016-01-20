@@ -9,9 +9,9 @@ class User{
   public
     // user specified
     $rank,
-    $born,
-    $age,
-    $bio,
+    $dobDay,
+    $dobMonth,
+    $dobYear,
     $country,
     $priLang,
     $secLang;
@@ -19,6 +19,7 @@ class User{
   private
 
     // calculated
+    $born,
     $kdRatio,
     $registerDate,
 
@@ -325,8 +326,8 @@ class User{
   //update to DB method
   function updateUserSuppliedInfo(){
     $database = DB::getInstance();
-
-    $reCalcAge = date('Y') - $this->born; #uses the date function to calculate the users age
+    $this->born = $this->dobYear .'-'. $this->dobMonth .'-'. $this->dobDay;
+    $reCalcAge = floor((time() - strtotime("$this->born")) / 31556926);
 
     $qUpdateUserSuppliedInfo = '
       UPDATE user

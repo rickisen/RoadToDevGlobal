@@ -11,9 +11,17 @@ class postReceiver{
 			$_SESSION['currentUser']->rank = $database->real_escape_string(stripslashes($_POST['rank']));
 		}
 
-		if( isset($_POST['born']) && !empty($_POST['born']) ){
-			$_SESSION['currentUser']->born = $database->real_escape_string(stripslashes($_POST['born']));
+		if( isset($_POST['dob_day']) && !empty($_POST['dob_day']) ){
+			$_SESSION['currentUser']->dobDay = $database->real_escape_string(stripslashes($_POST['dob_day']));
 		}
+
+    if( isset($_POST['dob_month']) && !empty($_POST['dob_month']) ){
+      $_SESSION['currentUser']->dobMonth = $database->real_escape_string(stripslashes($_POST['dob_month']));
+    }
+
+    if( isset($_POST['dob_year']) && !empty($_POST['dob_year']) ){
+      $_SESSION['currentUser']->dobYear = $database->real_escape_string(stripslashes($_POST['dob_year']));
+    }
 
 		if( isset($_POST['country']) && !empty($_POST['country']) ){
 			$_SESSION['currentUser']->country = $database->real_escape_string(stripslashes($_POST['country']));
