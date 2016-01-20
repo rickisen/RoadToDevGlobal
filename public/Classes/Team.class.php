@@ -172,31 +172,32 @@ class Team {
   function removePlayerFromTeam($steamId) {
     $database = DB::getInstance();
     //only allows execution if we are the creator OR if we're an member who is removing himself
-    if ( $this->creator != $_SESSION['currentUser']->steamId || $_SESSION['currentUser']->steamId != $steamId ) return FALSE;
-    //double check that this user was in this team
-    $this->getMembers();
-    $isInMembers = FALSE;
-    foreach ($this->getMembers() as $member){
-      if($member->steamId == $steamId) 
-        $isInMembers = TRUE;
-    }
+    if ( $this->creator == $_SESSION['currentUser']->steamId || $_SESSION['currentUser']->steamId == $steamId ){
+      //double check that this user was in this team
+      $this->getMembers();
+      $isInMembers = FALSE;
+      foreach ($this->getMembers() as $member){
+        if($member->steamId == $steamId) 
+          $isInMembers = TRUE;
+      }
 
-    if ($isInMembers == TRUE){
-      $qUpdateUserInTeam = '
-        UPDATE user
-        SET in_team       = NULL
-        WHERE steam_id    = "'.$steamId.'";
-      ';
+      if ($isInMembers == TRUE){
+        $qUpdateUserInTeam = '
+          UPDATE user
+          SET in_team       = NULL
+          WHERE steam_id    = "'.$steamId.'";
+        ';
 
-      $database->query($qUpdateUserInTeam);
+        $database->query($qUpdateUserInTeam);
 
-      if($error = $database->error){
-        echo "Something went wrong when trying to update user: $error";
+        if($error = $database->error){
+          echo "Something went wrong when trying to update user: $error";
+          return FALSE;
+        }
+      }else{
         return FALSE;
       }
-    }else{
-      return FALSE;
-    }
+    } 
   }
 
   function getApplicants(){
