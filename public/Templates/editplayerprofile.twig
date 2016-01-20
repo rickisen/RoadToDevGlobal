@@ -139,7 +139,7 @@
                 <p class="inline-block selection-info">For your profile</p>
 
 				    	  <li class="inline-block"><select name="primary_language" type="text">
-				    	  	  <option value="Chinese" type="checkbox">Chinese</option>
+				    	  	  <option value="{{user.priLang}}" type="checkbox">{{user.priLang}}</option>
                     <option value="Danish" type="checkbox">Danish</option>
                     <option value="English" type="checkbox">English</option>
                     <option value="Finnish" type="checkbox">Finnish</option>
@@ -159,8 +159,8 @@
                     </select></li>
                 <p class="inline-block selection-info">First language for filtering</p>
 
-				    	  <li class="inline-block"><select name="secondary_language" type="text">
-  				    	  	<option value="Chinese" type="checkbox">Chinese</option>
+	    	 					<li class="inline-block"><select name="secondary_language" type="text">
+		    	  				<option value="{{user.secLang}}" type="checkbox">{{user.secLang}}</option>
                     <option value="Danish" type="checkbox">Danish</option>
                     <option value="English" type="checkbox">English</option>
                     <option value="Finnish" type="checkbox">Finnish</option>
@@ -194,7 +194,7 @@
     <div class="col-md-offset-4 col-md-4 bio-container" style="border: 0;">
       <h2>Bio</h2>
       <textarea rows="7" cols="75" name="bio" class="userBio">{{ user.bio }}</textarea>
-      <input class="sub-btn" type="submit">
+      <input class="sub-btn" type="submit" value="Submit">
     </div>
   </div>
 </form>
