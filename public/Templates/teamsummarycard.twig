@@ -1,5 +1,6 @@
 <div class="thumbnail team-card"><a href="?/TeamProfile/Team/{{ team.id }}">
-  <img src="{{ team.img }}"></a>
+  <!-- <img src="{{ team.img }}"></a> -->
+  <div class="team-img" style="background-image:url({{ team.img }});background-position: center; background-size:cover;" alt=""></div>
     <a href="?/TeamProfile/Team/{{ team.id }}" class="inline-block"><h3>{{ team.name }}</h3></a>
     <img class="flag" src="http://s13.postimg.org/tfl8ks43n/Sweden.png">
     <p style="word-wrap: break-word;"> {{ team.descr }}<br>

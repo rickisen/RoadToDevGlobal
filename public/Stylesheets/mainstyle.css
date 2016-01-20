@@ -568,12 +568,17 @@ select {
   color: #888;
 }
 
-.team-card a img {
+.team-img {
+  height: 220px;
+  width: 234px;
+}
+
+.team-card a img{
   height: 220px;
   width: 290px;
 }
 
-.thumbnail a>img, .thumbnail>img {
+.thumbnail a>img, .thumbnail>img{
   margin: 0;
   display: inline-block;
 }
