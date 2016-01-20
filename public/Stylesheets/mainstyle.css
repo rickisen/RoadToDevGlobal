@@ -290,7 +290,7 @@ and (max-width: 765px) {
   left:0px;
   bottom:0px;
   height:30px;
-  top: 27%;
+  top: 25%;
   left: 18%;
   max-width: 900px;
 }
@@ -352,7 +352,6 @@ and (max-width: 1450px) {
     left:0px;
     bottom:0px;
     height:30px;
-    top: 25%;
     left: 14%;
     max-width: 900px;
   }
@@ -379,12 +378,23 @@ and (max-width: 1450px) {
 }
 
 @media only screen
+and (max-width:1005px) {
+  .landingpage-select {
+    margin-left: 0;
+  }
+
+  .landing-page-container {
+    max-width: 550px;
+  }
+}
+
+@media only screen
 and (max-width:760px){
   .landing-page-container {
     margin: 20px auto;
     text-align: center;
     position: static;
-    max-width: 250px;
+    max-width: 300px;
   }
 }
 
@@ -748,9 +758,10 @@ select {
   }
 
   @media only screen
-  and (max-width:499px){
+  and (max-width:500px){
     .footer {
-      text-align: center;
+      position: static;
+      margin-top: 95%;
     }
   }
 
