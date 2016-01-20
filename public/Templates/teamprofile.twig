@@ -23,32 +23,10 @@
 
     {% if currentUser.steamId == team.creator %}
       <div class="col-md-offset-1 col-md-2">
-        <a class="manage-team" href="?/TeamProfile/editTeam">Manage team</a>
-        <br><br>
-        {% if team.applicants %}
-        <h5 class="manage-applicant-header">Applicants for <br> {{team.name}}</h5>
-        <div class="manage-applicants">
-          <input type="hidden" name="postHandler" value="acceptOrDenyApplicant">
-          <ul>
-          {% for applicant in team.applicants %}
-            <li><a href="?/Profile/displayUser/{{applicant.steamId}}" target="_blank" title="{{applicant.bio}}"><img src="{{applicant.imageS}}">  {{applicant.nickname}}</a><br>
-              <form method="post">
-                <input type="hidden" name="postHandler" value="acceptApplicant">
-                <input class="manage-applicant-posts" type="image" src="https://cdn3.iconfinder.com/data/icons/musthave/16/Check.png" border="0" alt="Submit" />
-                <input type="hidden" name="applicant" value="{{applicant.steamId}}">
-                <input type='hidden' name='teamId' value='{{team.id}}'>
-              </form>
-              <form method="post">
-                <input type="hidden" name="postHandler" value="denyApplicant">
-                <input type="image" src="https://cdn3.iconfinder.com/data/icons/musthave/16/Delete.png" border="0" alt="Submit" />
-                <input type="hidden" name="applicant" value="{{applicant.steamId}}">
-                <input type='hidden' name='teamId' value='{{team.id}}'>
-              </form>
-            </li>
-          {% endfor %}
-          </ul>
-        </div>
-      {% endif %}
+        <a class="manage-team" href="?/TeamProfile/editTeam">Manage team</a><br><br>
+        {% if team.applicants|length > 0 %}
+          You've <b>{{ team.applicants|length }}</b> applicant(s).
+        {% endif %}  
       </div>
 
     {% elseif currentUser %}
