@@ -12,7 +12,7 @@ class Players{
     $qGetAllUsers = '
       SELECT steam_id FROM user
       ORDER BY register_date
-      LIMIT 24
+      LIMIT 25
     ';
 
     $_SESSION['LastFilterQuery'] = $qGetAllUsers;
@@ -86,7 +86,7 @@ class Players{
     $qGetFilteredUsers = '
       SELECT steam_id FROM user
       '. $finalClause .'
-      LIMIT 24
+      LIMIT 25
     ';
 
     // save this query so that we can offset it later
@@ -106,7 +106,7 @@ class Players{
     $database = DB::getInstance();
     $users = array();
     if (count($offset) > 0 )
-      $offset = 24 * $database->real_escape_string(stripslashes($offset[0]));
+      $offset = 25 * $database->real_escape_string(stripslashes($offset[0]));
     else
       $offset = 0;
 
@@ -119,6 +119,6 @@ class Players{
       echo "failed to get users from db ".$database->error;
     }
 
-    return ['loadview' => 'players', 'users' => $users, 'lastOffset' => $offset / 24];
+    return ['loadview' => 'players', 'users' => $users, 'lastOffset' => $offset / 25];
   }
 }
