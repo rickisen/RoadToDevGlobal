@@ -952,7 +952,7 @@ select {
   cursor: pointer;
 }
 .dialog_state:checked + #dialog #dlg-wrap {
-  max-height: 24rem;
+  max-height: 22rem;
   opacity: 1;
   padding: 2rem;
 }
@@ -977,13 +977,6 @@ select {
   transition: all .5s;
 }
 #dlg-close {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 2rem;
-  height: 2rem;
-  line-height: 2rem;
-  text-align: center;
   cursor: pointer;
 }
 h2#dlg-header {
@@ -999,6 +992,7 @@ h2#dlg-header {
   border-radius: 0;
   margin-top: 10px;
   max-width: 200px;
+  text-transform: uppercase;
 }
 
 .main_area {
@@ -1020,7 +1014,6 @@ h2#dlg-header {
   text-decoration: none;
   letter-spacing: 0.075em;
   line-height: 2rem;
-  font-family: Raleway, Open Sans, Arial;
   font-weight: 300;
   font-size: 0.85em;
   border: 1px solid #e0e0e0;
