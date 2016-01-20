@@ -7,7 +7,7 @@
 <div class="row lobby-members">
 	{% for user in lobbyMates %}
 		{% if user.steamId == leader.steamId %}
-			<div class="col-md-3 player-card leader">
+			<div class="col-md-3 player-card">
          <p class="leader-icon"><a href="#" data-tooltip="This is the lobby leader. The leader is responsible of inviting everyone to a game.">Leader</a></p>
 		{% elseif user.steamId == currentUser.steamId %}
 			<div class="col-md-3 player-card currentUser">
@@ -30,7 +30,6 @@
 			<div id='dlg-content'>It is now your responsibility to make sure a game is initiated through the Steam group provided.</div>
 			<div id='dlg-prompt'>
         <label id="dlg-close" for="dialog_state"><div class='sub-btn'>Allright!</div></label>
-
 			</div>
 		</div>
 	</div>

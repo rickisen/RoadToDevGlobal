@@ -1044,11 +1044,13 @@ h2#dlg-header {
 
 /* Testing lobby tooltip
 ================================================== */
-
-.leader-icon a {
+.leader-icon {
   position: absolute;
   top: 5%;
   left: 10%;
+}
+
+.leader-icon a {
   color: red;
 }
 
@@ -1056,6 +1058,7 @@ h2#dlg-header {
   position: relative;
   z-index: 2;
   cursor: pointer;
+  text-transform: none;
 }
 
 /* Hide the tooltip content by default */
