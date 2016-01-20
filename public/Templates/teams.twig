@@ -13,7 +13,7 @@
    <div class="row show-filter mrg-bot-35 mrg-top-35">
       <form method="post" action="?/Teams/filterTeams">
 
-        <div class="col-lg-2">
+        <div class="col-xs-12 col-sm-2">
           <select name="looking_for_players">
           <option value="" type="checkbox">Looking for players</option>
           <option value="yes" type="checkbox">Yes</option>
@@ -22,11 +22,13 @@
         </div>
 
         <!-- Search form for team names -->
-        <div class="col-lg-2">
+        <div class="col-xs-12 col-sm-2">
           <input type="text" name="team_name" placeholder="Enter team name here...">
         </div>
 
+        <div class="col-xs-2">
         <input class="sub-btn" type="submit" value="Filter">
+        </div>
 
       </form>
     </div><!-- ROW END -->
@@ -35,7 +37,7 @@
 
 <div class="row">
   {% for team in teams %}
-    <div class="col-xs-6 col-sm-4 col-md-3" style="margin-bottom: 20px;">
+    <div class="col-xs-12 col-sm-4 col-md-3" style="margin-bottom: 20px;">
       {% include "teamsummarycard.twig" %}
     </div>
   {% endfor %}

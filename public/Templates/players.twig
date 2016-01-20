@@ -13,7 +13,7 @@
    <div class="row show-filter mrg-top-35 mrg-bot-35">
          <form method="post" action="?/Players/filterUsers">
 
-         <div class="col-lg-2">
+         <div class="col-xs-12 col-sm-2">
             <select name="language">
               <option value="" type="checkbox">Language</option>
               <option value="Swedish" type="checkbox">Swedish</option>
@@ -36,7 +36,7 @@
            </select>
           </div>
 
-          <div class="col-lg-2">
+          <div class="col-xs-12 col-sm-2">
             <select name="rank">
               <option value="" type="checkbox">Rank</option>
               <option value="silver_1" type="checkbox">SILVER I</option>
@@ -60,7 +60,7 @@
            </select>
           </div>
 
-          <div class="col-lg-2">
+          <div class="col-xs-12 col-sm-2">
             <select name="hours">
               <option value="" type="checkbox">Hours played</option>
               <option value="100"  type="checkbox">100+</option>
@@ -70,11 +70,14 @@
            </select>
           </div>
           <!-- Search form for players nick -->
-          <div class="col-lg-2">
+          <div class="col-xs-12 col-sm-2">
             <input type="text" name="nick" placeholder="Enter player nick here...">
           </div>
 
+          <div class="col-xs-2">
           <input class="sub-btn" type="submit" value="Filter">
+          </div>
+
           </form>
          </div><!-- ROW END -->
   </div>
@@ -84,7 +87,7 @@
    <!-- Players Card -->
      <div class="row">
       {% for user in users %}
-        <div class="col-md-3 player-card" >
+        <div class="col-xs-2 col-md-3 player-card" >
           {% include "playersummarycard.twig" %}
         </div>
       {% endfor %}
