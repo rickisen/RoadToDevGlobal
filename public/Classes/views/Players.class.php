@@ -1,5 +1,4 @@
 <?php
-require_once 'Classes/User.class.php';
 
 class Players{
   private function __construct(){}

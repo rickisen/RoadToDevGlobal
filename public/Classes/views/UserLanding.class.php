@@ -1,7 +1,6 @@
 <?php
 
 require_once 'LoginRedirect.class.php';
-require_once 'User.class.php';
 
 //fix two different user classes "ME" & "THEM"
 class UserLanding{

@@ -1,5 +1,4 @@
 <?php
-require_once 'Classes/Team.class.php';
 
 class Teams{
   private function __construct(){}

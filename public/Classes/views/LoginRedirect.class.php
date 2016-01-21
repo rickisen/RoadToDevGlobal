@@ -1,6 +1,5 @@
 <?php
 
-require 'Include/lightopenid/openid.php';
 require 'UserLanding.class.php';
 
 class LoginRedirect{

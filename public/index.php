@@ -1,14 +1,14 @@
 <?php
-require_once 'Classes/User.class.php';
+require_once 'Include/lightopenid/openid.php';
 require_once 'Classes/DB.class.php';
-require_once 'Classes/PostReceiver.class.php';
-require_once 'Classes/LobbyLoader.class.php';
+require_once 'Classes/User.class.php';
 require_once 'Classes/Team.class.php';
 require_once 'Classes/TeamComment.class.php';
 session_start();
 
 // ROUTE POST REQUESTS ==================================================
 if( ! empty($_POST) && isset($_POST['postHandler']) ) {
+  require_once 'Classes/protected/PostReceiver.class.php';
   $database = DB::getInstance();
   $postHandler = $database->real_escape_string(stripslashes($_POST['postHandler']));
   PostReceiver::$postHandler();
@@ -25,7 +25,7 @@ if( ! empty($_GET)  ) {
   $class  = array_shift($url_parts); # tar ut första värdet och lägger den i $class
   $method = array_shift($url_parts); # tar ut andra värdet och lägger den i $method
 
-  require_once("Classes/".$class.".class.php"); # Hämta in klassfilen för den klass vi ska anropa
+  require_once("Classes/views/".$class.".class.php"); # Hämta in klassfilen för den klass vi ska anropa
   $data = $class::$method($url_parts); # Anropa metoden vill vill köra på klassen vi har fårr från vår URL samt skicka med övriga parametrar in till den metoden
 } else {
   $data = array('loadview' => 'landingpage');
