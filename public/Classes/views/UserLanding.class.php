@@ -10,7 +10,7 @@ class UserLanding{
 
 		// if someone go there without a steamId in the session, send them to the steam login page
 		if(!isset($_SESSION['steamId'])){
-			header('http://192.168.13.37/?/LoginRedirect/steamLogin');
+			header('Location: ' . '?/LoginRedirect/steamLogin'.$_SESSION['currentUser']->steamId);
 		}
 
 		// construct a new user object with the known steamId 
