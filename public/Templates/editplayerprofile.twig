@@ -55,7 +55,7 @@
 
 						  <li style="width: 228px;" class="inline-block"> <!-- TIDIGARE name="born" -->
                 <select style="width:70px;"  name="dob_day">
-                <option value="-">-</option>
+                <option value="{{ user.dobDay }}">{{ user.dobDay }}</option>
                 <option value="01">1</option>
                 <option value="02">2</option>
                 <option value="03">3</option>
@@ -90,7 +90,7 @@
               </select>
 
               <select style="width:33%;"  name="dob_month" type="" class="info-select" >
-                <option value="-">-</option>
+                <option value="{{ user.dobMonth }}">{{ user.dobMonth }}</option>
                 <option value="01">January</option>
                 <option value="02">Febuary</option>
                 <option value="03">March</option>
@@ -106,7 +106,7 @@
               </select>
 
                <select style="width:33%;" name="dob_year">
-                <option value="-">-</option>
+                <option value="{{ user.dobYear }}">{{ user.dobYear }}</option>
                 <option value="2011">2011</option>
                 <option value="2010">2010</option>
                 <option value="2009">2009</option>
