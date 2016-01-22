@@ -10,14 +10,14 @@
       <p>
         Members:
         {% for member in team.members %}
-        {{member.nickname}}
+          &nbsp; <a href="?/Profile/displayuser/{{ member.steamId }}"> {{member.nickname}} &nbsp; </a>
         {% endfor %}
       </p>
       <p>
-        Team bio: {{ team.descr }}
+        Team bio: &nbsp; {{ team.descr }}
       </p>
       <p>
-        Looking for members: {{ team.lookingForPlayers }}
+        Looking for members: &nbsp; {{ team.lookingForPlayers }}
       </p>
     </div>
 
@@ -30,12 +30,23 @@
       </div>
 
     {% elseif currentUser %}
-    <div class="col-md-offset-1 col-md-2">
-      <form action="?/TeamProfile/Team/{{ team.id }}" method="post">
-        <input type="hidden" name="postHandler" value="receiveTeamRequest">
-        <button type="submit" class="apply-to-team" name="teamId" value="{{team.id}}">Apply to team</button>
-      </form>
-    </div>
+      {% set inApplicants = FALSE %}
+      {% for applicant in team.applicants %}
+        {% if applicant.steamId == currentUser.steamId %}
+          {% set inApplicants = TRUE %}
+        {% endif %}
+      {% endfor %}
+      <div class="col-md-offset-1 col-md-2">
+        {% if inApplicants %}
+          <p class="applied-to-team"> You've applied to this team!</p>
+          <!--Add a form which deletes the application-->
+        {% else %}
+          <form action="?/TeamProfile/Team/{{ team.id }}" method="post">
+            <input type="hidden" name="postHandler" value="receiveTeamRequest">
+            <button type="submit" class="apply-to-team" name="teamId" value="{{ team.id }}">Apply to team</button>
+          </form>         
+        {% endif %}
+      </div>      
     {% endif %}
   </div><!--END ROW-->
 
