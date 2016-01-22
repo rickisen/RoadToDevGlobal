@@ -127,17 +127,35 @@ input[type=text] {
   margin-bottom: 15px;
 }
 
+.mrg-left-10 {
+  margin-left: 10px;
+}
+
+.mrg-left-20 {
+  margin-left: 16px;
+}
+
 .mrg-left-40 {
   margin-left: 40px;
+}
+
+.mrg-left-60{
+  margin-left: 60px;
+}
+
+.mrg-right-10{
+  margin-right: 10px;
 }
 
 .mrg-right-20 {
   margin-right: 20px;
 }
 
-.mrg-left-20 {
-  margin-left: 16px;
+.mrg-right-60{
+  margin-right: 60px;
 }
+
+
 
 .inline-block {
   display: inline-block;
@@ -198,6 +216,11 @@ h1, h2, h3, h4, h5 {
   font-size: 16px;
   display: inline-block;
   font-weight: 700;
+}
+
+.header-img{
+  height: 30px;
+  width: auto;
 }
 
 .navlinkstyles a {
@@ -464,6 +487,21 @@ select {
   margin-bottom: 20px;
 }
 
+.dob-li {
+  width: 228px;
+}
+
+.dob-day {
+  width: 70px;
+}
+
+.dob-select {
+  width: 33%;
+}
+
+.bio-border{
+  border:0;
+}
 
 /* PLAYER PROFILE PAGE
 ===================================================== */
@@ -626,6 +664,10 @@ select {
   border-bottom: 1px solid #d72919;
 }
 
+.applied-to-team{
+  margin-left: -140px;
+}
+
  .comment-header {
   margin-bottom: 10px;
 }
@@ -643,6 +685,10 @@ select {
 
 /* Edit team
 ==================================================== */
+
+.sub-title{
+color: red
+}
 
 .edit-team {
   margin-bottom: 75px;
@@ -757,6 +803,10 @@ select {
     text-transform: uppercase;
   }
 
+  .float-right{
+    float: right;
+  }
+
   @media only screen
   and (max-width:500px){
     .footer {
@@ -824,6 +874,19 @@ select {
   overflow: auto;
   z-index: 999;
 }
+
+.rank-input1{
+  width: 55px; 
+  height: 20px; 
+  margin-left: 5px;
+}
+
+.rank-input2{
+  width: 55px; 
+  height: 20px; 
+  margin-left: 8px;
+}
+
 
 .dropdown .rank1 {
   margin-left: 30px;
