@@ -327,12 +327,12 @@ class User{
   function updateUserSuppliedInfo(){
     $database = DB::getInstance();
     $this->born = $this->dobYear .'-'. $this->dobMonth .'-'. $this->dobDay;
-    $reCalcAge = floor((time() - strtotime($this->born)) / 31556926); #calculates age of user, the numbers stands for seconds in a year
+    $this->age = floor((time() - strtotime($this->born)) / 31556926); #calculates age of user, the numbers stands for seconds in a year
 
     $qUpdateUserSuppliedInfo = '
       UPDATE user
       SET bio                = "'.$this->bio.'",
-          age                = "'.$reCalcAge.'",
+          age                = "'.$this->age.'",
           born               = "'.$this->born.'",
           country            = "'.$this->country.'",
           rank               = "'.$this->rank.'",
