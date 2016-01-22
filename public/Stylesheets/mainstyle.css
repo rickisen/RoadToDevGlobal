@@ -680,7 +680,11 @@ select {
   margin-left: -140px;
 }
 
- .comment-header {
+.leave-team-button{
+  margin-top: 10px;
+}
+
+.comment-header {
   margin-bottom: 10px;
 }
 

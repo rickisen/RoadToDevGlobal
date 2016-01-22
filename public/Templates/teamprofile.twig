@@ -20,6 +20,14 @@
       <p>
         Looking for members: &nbsp; {{ team.lookingForPlayers }}
       </p>
+
+      {% if currentUser.inTeam == team.id %}
+        <form method="post">
+          <input type="hidden" name="postHandler" value="removeUserFromTeam">
+          <input type="hidden" name="teamId" value="{{currentUser.inTeam}}">
+          <button type="submit" class="sub-btn leave-team-button" name="remove_user" value="{{currentUser.steamId}}">Leave team</button>
+        </form>
+      {% endif %}
     </div>
 
     {% if currentUser.steamId == team.creator %}
