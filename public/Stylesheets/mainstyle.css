@@ -102,7 +102,9 @@ input[type=text] {
 .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
   background: transparent;
 }
-
+.mrg-top-50{
+  margin-top: 50px;
+}
 .mrg-top-40 {
   margin-top: 40px;
 }
@@ -125,6 +127,10 @@ input[type=text] {
 
 .mrg-bot-15 {
   margin-bottom: 15px;
+}
+
+.mrg-bot-10{
+  margin-bottom: 10px;
 }
 
 .mrg-left-10 {
@@ -435,7 +441,7 @@ and (max-width:499px){
 }
 
 
-/* LOADING PAGE ANIMATION
+/* LOADING PAGE 
 ===================================================== */
 
 .loading {
@@ -451,6 +457,14 @@ animation:spin 2s linear infinite;
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
+
+.lobby-stop{
+  padding: 5px 15px;
+}
+
+.loading-content{
+  margin-top: 8%;
+}
 
 /* EDIT PROFILE PAGE
 =====================================================*/
@@ -525,9 +539,15 @@ select {
   margin-bottom: 15px;
 }
 
+.player-flag{
+  margin-top: -4px;
+}
+
 /* PLAYERS PAGE
 ===================================================== */
-
+.players-container{
+  padding-bottom: 50px;
+}
 .page-header h2 {
   font-size: 19px;
   font-weight: 700;
@@ -591,6 +611,34 @@ select {
   transition: 0.1s;
 }
 
+/* PLAYER SUMMARY CARD
+=====================================================*/
+
+.player-sum-img{
+  width:182px;
+  height:182px;
+  background-position: center;
+}
+
+.player-sum-flag{
+  width: 20px; 
+  height: 20px; 
+  margin-left: 10px; 
+  margin-top: -4px;
+}
+
+/* PLAYER SUMMARY CARD MINI
+=====================================================*/
+
+.player-imgS{
+  padding: 0;
+}
+
+.player-mini-nick{
+  white-space: nowrap; 
+  text-overflow: ellipsis; 
+  overflow: hidden;
+}
 
 /* TEAM PROFILE PAGE
 =====================================================*/
@@ -694,6 +742,11 @@ color: red
   margin-bottom: 75px;
 }
 
+.edit-form{
+border-bottom: 1px solid #d72919; 
+padding-bottom: 30px;
+}
+
 /* Teams
 ==================================================== */
 
@@ -727,11 +780,17 @@ color: red
 .team-img {
   height: 220px;
   width: 234px;
+  background-position: center; 
+  background-size:cover;
 }
 
 .team-card a img{
   height: 220px;
   width: 290px;
+}
+
+.team-sum-desc{
+  word-wrap: break-word;
 }
 
 .thumbnail a>img, .thumbnail>img{
@@ -1311,4 +1370,9 @@ h2#dlg-header {
 }
 .manage-applicants::-webkit-scrollbar-corner  {
   background: transparent;
+}
+/* UNDER CONSTRUCTION
+================================================================== */
+.under-construction{
+  margin-top: 250px;
 }
