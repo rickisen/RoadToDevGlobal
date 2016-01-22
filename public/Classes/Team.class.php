@@ -10,6 +10,8 @@ class Team {
   $descr,
   $img,
   $lookingForPlayers,
+  $language,
+  $countryFlag,
   $comments,
 
   //team members
@@ -44,10 +46,12 @@ class Team {
     if($teamId == 'emptyObject') return;
 
     $qGetTeamFromId = '
-    SELECT team.*
+    SELECT team.*, flag_img.image
     FROM team
-        WHERE team.id = '.$teamId.'
-        LIMIT 1
+      LEFT join flag_img
+        ON team.language = flag_img.country
+    WHERE team.id = '.$teamId.'
+    LIMIT 1
     ';
 
     // should hold one row if succesfull,
@@ -62,26 +66,30 @@ class Team {
       $this->descr             = $row['descr'];
       $this->img               = $row['img'];
       $this->lookingForPlayers = $row['looking_for_players']; /*not set in DB*/
+      $this->language          = $row['language'];
+      $this->countryFlag       = $row['image'];
     }
 
     $this->downloadComments();
   }
 
-  function setProperties($id, $creator, $name, $descr, $img, $lookingForPlayers){
+  function setProperties($id, $creator, $name, $descr, $img, $lookingForPlayers, $language){
     $this->id                  = $id;
     $this->creator             = $creator;
     $this->name                = $name;
     $this->descr               = $descr;
     $this->img                 = $img;
     $this->lookingForPlayers   = $lookingForPlayers;
+    $this->language            = $language;
   }
 
-  function setInitProperties($creator, $name, $descr, $img, $lookingForPlayers){
+  function setInitProperties($creator, $name, $descr, $img, $lookingForPlayers, $language){
     $this->creator             = $creator;
     $this->name                = $name;
     $this->descr               = $descr;
     $this->img                 = $img;
     $this->lookingForPlayers   = $lookingForPlayers;
+    $this->language            = $language;
   }
 
   function getMembers() {
@@ -107,8 +115,8 @@ class Team {
     $database = DB::getInstance();
 
     $qInsertTeam = '
-        INSERT INTO team (creator, name, descr, img, looking_for_players)
-        VALUES (\''.$this->creator.'\' , \''.$this->name.'\',\''.$this->descr.'\', \''.$this->img.'\', \''.$this->lookingForPlayers.'\' )
+        INSERT INTO team (creator, name, descr, img, looking_for_players, language)
+        VALUES (\''.$this->creator.'\' , \''.$this->name.'\',\''.$this->descr.'\', \''.$this->img.'\', \''.$this->lookingForPlayers.'\', \''.$this->language.'\' )
     ';
 
     $database->query($qInsertTeam);
@@ -139,7 +147,8 @@ class Team {
       SET name                = "'.$this->name.'",
           descr               = "'.$this->descr.'",
           img                 = "'.$this->img.'",
-          looking_for_players = "'.$this->lookingForPlayers.'"
+          looking_for_players = "'.$this->lookingForPlayers.'",
+          language            = "'.$this->language.'"
       WHERE id    = "'.$this->id.'"
       ';
 
@@ -177,7 +186,7 @@ class Team {
       $this->getMembers();
       $isInMembers = FALSE;
       foreach ($this->getMembers() as $member){
-        if($member->steamId == $steamId) 
+        if($member->steamId == $steamId)
           $isInMembers = TRUE;
       }
 
@@ -197,7 +206,7 @@ class Team {
       }else{
         return FALSE;
       }
-    } 
+    }
   }
 
   function getApplicants(){
@@ -211,15 +220,15 @@ class Team {
       ';
       $result = $database->query($qFetchApplicants);
 
-      if($result->num_rows > 0){    
+      if($result->num_rows > 0){
         while ($row = $result->fetch_assoc()){
           $this->applicants[] = new User($row['steam_id']);
         }
       }elseif($error = $database->error){
-        echo "Something went wrong when trying to find applicants: $error"; 
+        echo "Something went wrong when trying to find applicants: $error";
       }
     }
-    return $this->applicants;   
+    return $this->applicants;
   }
 
   function removeApplicant($steamId){
@@ -228,7 +237,7 @@ class Team {
     if ( $this->creator == $_SESSION['currentUser']->steamId || $_SESSION['currentUser']->steamId == $steamId ){
 
       $qRemoveApplicant = '
-        DELETE 
+        DELETE
         FROM player_applying_team
         WHERE team_id = '.$this->id.'
         AND steam_id = '.$steamId.'

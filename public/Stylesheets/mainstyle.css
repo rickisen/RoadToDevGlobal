@@ -102,7 +102,9 @@ input[type=text] {
 .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
   background: transparent;
 }
-
+.mrg-top-50{
+  margin-top: 50px;
+}
 .mrg-top-40 {
   margin-top: 40px;
 }
@@ -127,17 +129,39 @@ input[type=text] {
   margin-bottom: 15px;
 }
 
+.mrg-bot-10{
+  margin-bottom: 10px;
+}
+
+.mrg-left-10 {
+  margin-left: 10px;
+}
+
+.mrg-left-20 {
+  margin-left: 16px;
+}
+
 .mrg-left-40 {
   margin-left: 40px;
+}
+
+.mrg-left-60{
+  margin-left: 60px;
+}
+
+.mrg-right-10{
+  margin-right: 10px;
 }
 
 .mrg-right-20 {
   margin-right: 20px;
 }
 
-.mrg-left-20 {
-  margin-left: 16px;
+.mrg-right-60{
+  margin-right: 60px;
 }
+
+
 
 .inline-block {
   display: inline-block;
@@ -198,6 +222,11 @@ h1, h2, h3, h4, h5 {
   font-size: 16px;
   display: inline-block;
   font-weight: 700;
+}
+
+a .header-img {
+  height: 30px;
+  width: auto;
 }
 
 .navlinkstyles a {
@@ -412,7 +441,7 @@ and (max-width:499px){
 }
 
 
-/* LOADING PAGE ANIMATION
+/* LOADING PAGE
 ===================================================== */
 
 .loading {
@@ -428,6 +457,14 @@ animation:spin 2s linear infinite;
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
+
+.lobby-stop{
+  padding: 5px 15px;
+}
+
+.loading-content{
+  margin-top: 8%;
+}
 
 /* EDIT PROFILE PAGE
 =====================================================*/
@@ -464,6 +501,21 @@ select {
   margin-bottom: 20px;
 }
 
+.dob-li {
+  width: 228px;
+}
+
+.dob-1 {
+  width: 74px;
+}
+
+.dob-select {
+  width: 32%;
+}
+
+.bio-border{
+  border:0;
+}
 
 /* PLAYER PROFILE PAGE
 ===================================================== */
@@ -487,9 +539,15 @@ select {
   margin-bottom: 15px;
 }
 
+.player-flag{
+  margin-top: -4px;
+}
+
 /* PLAYERS PAGE
 ===================================================== */
-
+.players-container{
+  padding-bottom: 50px;
+}
 .page-header h2 {
   font-size: 19px;
   font-weight: 700;
@@ -553,6 +611,42 @@ select {
   transition: 0.1s;
 }
 
+@media screen and (max-width: 1000px) {
+  .filter-toggle {
+    margin-left: 0;
+    margin-top: 5px;
+    display:block;
+  }
+  }
+
+/* PLAYER SUMMARY CARD
+=====================================================*/
+
+.player-sum-img{
+  width:182px;
+  height:182px;
+  background-position: center;
+}
+
+.player-sum-flag{
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  margin-top: -4px;
+}
+
+/* PLAYER SUMMARY CARD MINI
+=====================================================*/
+
+.player-imgS{
+  padding: 0;
+}
+
+.player-mini-nick{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
 
 /* TEAM PROFILE PAGE
 =====================================================*/
@@ -562,12 +656,24 @@ select {
   height: 200px;
 }
 
+.team-header {
+  margin-bottom: 10px;
+}
+
 .team-profile-container h2 {
   font-weight: 700;
 }
 
 .team-profile-container p {
   color: #888;
+}
+
+.member:hover {
+  color: #888;
+}
+
+.team-profile-container .team-bio {
+  color: #FFF;
 }
 
 .team-info {
@@ -626,7 +732,15 @@ select {
   border-bottom: 1px solid #d72919;
 }
 
- .comment-header {
+.applied-to-team{
+  margin-left: -140px;
+}
+
+.leave-team-button{
+  margin-top: 10px;
+}
+
+.comment-header {
   margin-bottom: 10px;
 }
 
@@ -641,11 +755,26 @@ select {
   margin-right: 25px;
 }
 
+@media screen and (max-width: 775px) {
+  .team-info, .apply-to-team, .applied-to-team, .manage-team, .applicants {
+    margin-left: 0px;
+  }
+  }
+
 /* Edit team
 ==================================================== */
 
+.sub-title{
+color: red
+}
+
 .edit-team {
   margin-bottom: 75px;
+}
+
+.edit-form{
+border-bottom: 1px solid #d72919;
+padding-bottom: 30px;
 }
 
 /* Teams
@@ -654,6 +783,14 @@ select {
 .team-container .filter-toggle {
     margin-left: 834px;
 }
+
+@media screen and (max-width: 1000px) {
+  .team-container .filter-toggle {
+    margin-left: 0;
+    margin-top: 5px;
+    display:block;
+  }
+  }
 
 
 /* Team summary cards
@@ -681,11 +818,17 @@ select {
 .team-img {
   height: 220px;
   width: 234px;
+  background-position: center;
+  background-size:cover;
 }
 
 .team-card a img{
   height: 220px;
   width: 290px;
+}
+
+.team-sum-desc{
+  word-wrap: break-word;
 }
 
 .thumbnail a>img, .thumbnail>img{
@@ -757,6 +900,10 @@ select {
     text-transform: uppercase;
   }
 
+  .float-right{
+    float: right;
+  }
+
   @media only screen
   and (max-width:500px){
     .footer {
@@ -824,6 +971,19 @@ select {
   overflow: auto;
   z-index: 999;
 }
+
+.rank-input1{
+  width: 55px;
+  height: 20px;
+  margin-left: 5px;
+}
+
+.rank-input2{
+  width: 55px;
+  height: 20px;
+  margin-left: 8px;
+}
+
 
 .dropdown .rank1 {
   margin-left: 30px;
@@ -1248,4 +1408,9 @@ h2#dlg-header {
 }
 .manage-applicants::-webkit-scrollbar-corner  {
   background: transparent;
+}
+/* UNDER CONSTRUCTION
+================================================================== */
+.under-construction{
+  margin-top: 250px;
 }

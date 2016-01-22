@@ -327,12 +327,12 @@ class User{
   function updateUserSuppliedInfo(){
     $database = DB::getInstance();
     $this->born = $this->dobYear .'-'. $this->dobMonth .'-'. $this->dobDay;
-    $reCalcAge = date("Y-m-d") - $this->born;
+    $this->age = floor((time() - strtotime($this->born)) / 31556926); #calculates age of user, the numbers stands for seconds in a year
 
     $qUpdateUserSuppliedInfo = '
       UPDATE user
       SET bio                = "'.$this->bio.'",
-          age                = "'.$reCalcAge.'",
+          age                = "'.$this->age.'",
           born               = "'.$this->born.'",
           country            = "'.$this->country.'",
           rank               = "'.$this->rank.'",
@@ -379,7 +379,7 @@ class User{
   // inserts player and team id into player_applying_team table in DB
   function insertTeamRequest($teamId) {
     $database = DB::getInstance();
-    
+
     $qhaveIRequested='
       SELECT *
       FROM player_applying_team
@@ -409,8 +409,8 @@ class User{
     $database = DB::getInstance();
 
     $qIsLooking = '
-      SELECT steam_id 
-      FROM player_looking_for_lobby 
+      SELECT steam_id
+      FROM player_looking_for_lobby
       WHERE steam_id = "'.$this->steamId.'"
       LIMIT 1
     ';

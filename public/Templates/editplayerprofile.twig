@@ -30,7 +30,7 @@
 						<ul>
 						  <li class="inline-block">
               <select name="rank" type="text" id="info-select">
-						  	<option value="{{ user.rank }}">{{ user.rank }}</option>
+						  	<option value="{{ user.rank }}">Rank</option>
 						  	<option value="silver_1">SILVER 1</option>
 						  	<option value="silver_2">SILVER 2</option>
 						  	<option value="silver_3">SILVER 3</option>
@@ -53,60 +53,9 @@
             </li>
             <p class="inline-block selection-info">Choose your rank</p>
 
-						  <li style="width: 228px;" class="inline-block"> <!-- TIDIGARE name="born" -->
-                <select style="width:70px;"  name="dob_day">
-                <option value="-">-</option>
-                <option value="01">1</option>
-                <option value="02">2</option>
-                <option value="03">3</option>
-                <option value="04">4</option>
-                <option value="05">5</option>
-                <option value="06">6</option>
-                <option value="07">7</option>
-                <option value="08">8</option>
-                <option value="09">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-                <option value="13">13</option>
-                <option value="14">14</option>
-                <option value="15">15</option>
-                <option value="16">16</option>
-                <option value="17">17</option>
-                <option value="18">18</option>
-                <option value="19">19</option>
-                <option value="20">20</option>
-                <option value="21">21</option>
-                <option value="22">22</option>
-                <option value="23">23</option>
-                <option value="24">24</option>
-                <option value="25">25</option>
-                <option value="26">26</option>
-                <option value="27">27</option>
-                <option value="28">28</option>
-                <option value="29">29</option>
-                <option value="30">30</option>
-                <option value="31">31</option>
-              </select>
-
-              <select style="width:33%;"  name="dob_month" type="" class="info-select" >
-                <option value="-">-</option>
-                <option value="01">January</option>
-                <option value="02">Febuary</option>
-                <option value="03">March</option>
-                <option value="04">April</option>
-                <option value="05">May</option>
-                <option value="06">June</option>
-                <option value="07">July</option>
-                <option value="08">August</option>
-                <option value="09">September</option>
-                <option value="10">October</option>
-                <option value="11">November</option>
-                <option value="12">December</option>
-              </select>
-
-               <select style="width:33%;" name="dob_year">
-                <option value="-">-</option>
+						  <li class="inline-block dob-li">
+                <select class="dob-1" name="dob_year">
+                <option value="">YYYY</option>
                 <option value="2011">2011</option>
                 <option value="2010">2010</option>
                 <option value="2009">2009</option>
@@ -160,8 +109,60 @@
                 <option value="1961">1961</option>
                 <option value="1960">1960</option>
                 <option value="1959">1959</option>
-						  </select></li>
+              </select>
+               <!-- TIDIGARE name="born" -->
+              <select name="dob_month" type="" class="info-select dob-select" >
+                <option value="">MM</option>
+                <option value="01">January</option>
+                <option value="02">Febuary</option>
+                <option value="03">March</option>
+                <option value="04">April</option>
+                <option value="05">May</option>
+                <option value="06">June</option>
+                <option value="07">July</option>
+                <option value="08">August</option>
+                <option value="09">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+              </select>
 
+              <select class="dob-select" name="dob_day">
+                <option value="">DD</option>
+                <option value="01">1</option>
+                <option value="02">2</option>
+                <option value="03">3</option>
+                <option value="04">4</option>
+                <option value="05">5</option>
+                <option value="06">6</option>
+                <option value="07">7</option>
+                <option value="08">8</option>
+                <option value="09">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+              </select>
+
+               </li>
               <p class="inline-block selection-info">For lobby match making</p>
 
 				    	  <li class="inline-block"><select name="country" type="text">
@@ -251,8 +252,8 @@
 
   <div class="row">
 
-    <div class="col-md-offset-4 col-md-4 bio-container" style="border: 0;">
-      <h2>Bio</h2>
+    <div class="col-md-offset-4 col-md-4 bio-border">
+      <h2 class="mrg-bot-20">Bio</h2>
       <textarea rows="7" cols="75" name="bio" class="userBio">{{ user.bio }}</textarea>
       <input class="sub-btn" type="submit" value="Submit">
     </div>

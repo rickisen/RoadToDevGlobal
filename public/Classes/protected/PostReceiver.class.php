@@ -50,15 +50,17 @@ class postReceiver{
 		if (isset($_POST['team_name']) && !empty($_POST['team_name']) &&
 			isset($_POST['team_descr']) && !empty($_POST['team_descr']) &&
 			isset($_POST['team_img']) && !empty($_POST['team_img']) &&
-			isset($_POST['looking_for_players']) && !empty($_POST['looking_for_players']))
+			isset($_POST['looking_for_players']) && !empty($_POST['looking_for_players']) &&
+			isset($_POST['team_language']) && !empty($_POST['team_language']));
 		{
 			$team_name     = $database->real_escape_string(stripslashes($_POST['team_name']));
 			$team_descr    = $database->real_escape_string(stripslashes($_POST['team_descr']));
 			$team_img      = $database->real_escape_string(stripslashes($_POST['team_img']));
 			$team_lfp	   	 = $database->real_escape_string(stripslashes($_POST['looking_for_players']));
+			$team_lang     = $database->real_escape_string(stripslashes($_POST['team_language']));
 
 			$team = new Team('emptyObject');
-			$team->setInitProperties($_SESSION['currentUser']->steamId, $team_name, $team_descr, $team_img, $team_lfp);
+			$team->setInitProperties($_SESSION['currentUser']->steamId, $team_name, $team_descr, $team_img, $team_lfp, $team_lang);
 			$team->insertTeam();
 		}
 		header('Location: ' . '?/TeamProfile/myTeam/');
@@ -83,13 +85,18 @@ class postReceiver{
 		if ( isset($_POST['looking_for_players']) && !empty($_POST['looking_for_players']) ) {
 			$edit_lfp      			= $database->real_escape_string(stripslashes($_POST['looking_for_players']));
 		}
+
+    if ( isset($_POST['edit_team_lang']) && !empty($_POST['edit_team_lang'])){
+			$edit_team_lang 		= $database->real_escape_string(stripslashes($_POST['edit_team_lang']));
+		}
+
 		if ( isset($_POST['teamId']) && !empty($_POST['teamId'])){
 			$teamId 						= $database->real_escape_string(stripslashes($_POST['teamId']));
 		}
 
 		$team = new Team($teamId);
 		if($_SESSION['currentUser']->steamId == $team->creator){
-			$team->setProperties($_SESSION['currentUser']->inTeam, $_SESSION['currentUser']->steamId, $edit_team_name, $edit_team_descr, $edit_team_img, $edit_lfp);
+			$team->setProperties($_SESSION['currentUser']->inTeam, $_SESSION['currentUser']->steamId, $edit_team_name, $edit_team_descr, $edit_team_img, $edit_lfp, $edit_team_lang);
 			$team->updateTeamInfo();
 		}
 
@@ -109,27 +116,27 @@ class postReceiver{
     header('Location: ' . '?/TeamProfile/Team/'. $teamId);
 	}
 
-	// receives the team id value from "Apply to team" button and cleans it 
+	// receives the team id value from "Apply to team" button and cleans it
 	static function receiveTeamRequest(){
 		$database = DB::getInstance();
 
 		if (isset($_POST['teamId']) && !empty($_POST['teamId'])){
 			$teamId = $database->real_escape_string(stripslashes($_POST['teamId']));
-			
+
 			$_SESSION['currentUser']->insertTeamRequest($teamId);
 		}
 	}
 
-  static function kickPlayerFromTeam(){
+  static function removeUserFromTeam(){
     $database = DB::getInstance();
 
-    if(isset($_POST['kick_player']) && !empty($_POST['kick_player']) && isset($_POST['teamId']) && !empty($_POST['teamId'])){
-      $kickPlayer = $database->real_escape_string(stripslashes($_POST['kick_player']));
+    if(isset($_POST['remove_user']) && !empty($_POST['remove_user']) && isset($_POST['teamId']) && !empty($_POST['teamId'])){
+      $removeUser = $database->real_escape_string(stripslashes($_POST['remove_user']));
       $teamId 	  = $database->real_escape_string(stripslashes($_POST['teamId']));
 
 	  	$team = new Team($teamId);
-	  	if($_SESSION['currentUser']->steamId == $team->creator) 
-	  		$team->removePlayerFromTeam($kickPlayer);      
+	  	if($_SESSION['currentUser']->steamId == $team->creator || $_SESSION['currentUser']->inTeam == $team->id)
+	  		$team->removePlayerFromTeam($removeUser);
     }
   }
 
@@ -141,7 +148,7 @@ class postReceiver{
  			$teamId  = $database->real_escape_string(stripslashes($_POST['teamId']));
 
 			$team = new Team($teamId);
-	  	if($_SESSION['currentUser']->steamId == $team->creator) 
+	  	if($_SESSION['currentUser']->steamId == $team->creator)
 	  		$team->acceptApplicant($steamId);
  		}
   }
@@ -152,9 +159,9 @@ class postReceiver{
   	if(isset($_POST['applicant']) && !empty($_POST['applicant']) && isset($_POST['teamId']) && !empty($_POST['teamId'])){
  			$steamId = $database->real_escape_string(stripslashes($_POST['applicant']));
  			$teamId  = $database->real_escape_string(stripslashes($_POST['teamId']));
-			
+
 			$team = new Team($teamId);
-	  	if($_SESSION['currentUser']->steamId == $team->creator) 
+	  	if($_SESSION['currentUser']->steamId == $team->creator)
 	  		$team->removeApplicant($steamId);
  		}
   }
