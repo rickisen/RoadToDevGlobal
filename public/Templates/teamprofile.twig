@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row mrg-top-40 team-profile-container">
-    <div class="col-md-offset-2 col-xs-12 col-md-2 center">
+    <div class="col-xs-offset-0 col-md-offset-2 col-xs-12 col-sm-2 center">
       <div class="team-profile-img" style="background-image:url({{ team.img }});background-position: center; background-size:cover;" alt=""></div>
     </div>
 
@@ -20,10 +20,18 @@
       <p>
         Looking for members: &nbsp; {{ team.lookingForPlayers }}
       </p>
+
+      {% if currentUser.inTeam == team.id %}
+        <form method="post">
+          <input type="hidden" name="postHandler" value="removeUserFromTeam">
+          <input type="hidden" name="teamId" value="{{currentUser.inTeam}}">
+          <button type="submit" class="sub-btn leave-team-button" name="remove_user" value="{{currentUser.steamId}}">Leave team</button>
+        </form>
+      {% endif %}
     </div>
 
     {% if currentUser.steamId == team.creator %}
-      <div class="col-md-offset-1 col-xs-2">
+      <div class="col-md-offset-1 col-xs-12 col-sm-2">
         <a class="manage-team" href="?/TeamProfile/editTeam">Manage team</a><br><br>
         {% if team.applicants|length > 0 %}
           <p class="applicants">You've <b style="color: #FFF;">{{ team.applicants|length }}</b> applicant(s).</p>
@@ -37,7 +45,7 @@
           {% set inApplicants = TRUE %}
         {% endif %}
       {% endfor %}
-      <div class="col-md-offset-1 col-xs-12 col-md-2">
+      <div class="col-md-offset-1 col-xs-12 col-sm-2">
         {% if inApplicants %}
           <p class="applied-to-team"> You've applied to this team!</p>
           <!--Add a form which deletes the application-->

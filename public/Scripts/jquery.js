@@ -3,7 +3,7 @@ $(document).ready(function(){
 
   $(".menu-opener").click(function(){
     $(".menu").animate();
-});
+  });
 
   // FILTER BUTTON ON PLAYERS.TWIG
   $(".filter-toggle").click(function(){
@@ -18,11 +18,9 @@ $(document).ready(function(){
   // LANDING PAGE FILTER DROPDOWNS
 
   // DP 1
-  // DP 1
   $(".dp1 dt a").on('click', function() {
   $(".dp1 dd ul").slideToggle('fast');
   });
-
 
   $(".dp1 dd ul li a").on('click', function() {
   $(".d1 dd ul").hide();
@@ -49,10 +47,7 @@ $(document).ready(function(){
   if ($('li input:checked').length == 0){
     $(".hida1").show();
   }
-
   });
-
-
 
   // DP 2
   $(".dp2 dt a").on('click', function() {
@@ -117,7 +112,6 @@ $(document).ready(function(){
   if ($('li input:checked').length == 0){
     $(".hida3").show();
   }
-
   });
 
   function getSelectedValue(id) {
@@ -148,5 +142,4 @@ $(document).ready(function(){
     ce.prepend(sg);
     //if(ce.children("p").length>6) ce.children("p").first().remove();
   }
-
-  });
+});

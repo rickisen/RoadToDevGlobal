@@ -127,16 +127,16 @@ class postReceiver{
 		}
 	}
 
-  static function kickPlayerFromTeam(){
+  static function removeUserFromTeam(){
     $database = DB::getInstance();
 
-    if(isset($_POST['kick_player']) && !empty($_POST['kick_player']) && isset($_POST['teamId']) && !empty($_POST['teamId'])){
-      $kickPlayer = $database->real_escape_string(stripslashes($_POST['kick_player']));
+    if(isset($_POST['remove_user']) && !empty($_POST['remove_user']) && isset($_POST['teamId']) && !empty($_POST['teamId'])){
+      $removeUser = $database->real_escape_string(stripslashes($_POST['remove_user']));
       $teamId 	  = $database->real_escape_string(stripslashes($_POST['teamId']));
 
 	  	$team = new Team($teamId);
-	  	if($_SESSION['currentUser']->steamId == $team->creator)
-	  		$team->removePlayerFromTeam($kickPlayer);
+	  	if($_SESSION['currentUser']->steamId == $team->creator || $_SESSION['currentUser']->inTeam == $team->id)
+	  		$team->removePlayerFromTeam($removeUser);
     }
   }
 

@@ -1,19 +1,19 @@
 <!-- Players Card -->
 <a href="?/Profile/displayuser/{{ user.steamId }}">
-  <div style="background-image:url({{ user.imageL }});width:182px;height:182px;background-position: center;" alt=""></div>
+  <div style="background-image:url({{ user.imageL }});" class="player-sum-img" alt=""></div>
 </a>
 <h3>
     <a href="?/Profile/displayuser/{{ user.steamId }}"> {{ user.nickname }}</a>
 </h3>
 
-    <img class="rankimg center" src="{{ user.rankImg }}" style="margin-bottom: 10px;">
+    <img class="rankimg center mrg-bot-10" src="{{ user.rankImg }}">
   <p>
     {% if user.country != empty %}
       {{ user.country }}
-      <img src="{{ user.countryFlag }}" style="width: 20px; height: 20px; margin-left: 10px; margin-top: -4px;">
+      <img src="{{ user.countryFlag }}" class="player-sum-flag">
       {% else %}
       UNKNOWN
-      <img src="http://s2.postimg.org/byyu3kh11/United_Nations.png" style="width: 20px; height: 20px; margin-left: 10px; margin-top: -4px;">
+      <img src="http://s2.postimg.org/byyu3kh11/United_Nations.png" class="player-sum-flag">
     {% endif %}
     <br>
   {% if user.isPrivateAcc == TRUE %}
