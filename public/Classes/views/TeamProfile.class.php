@@ -7,6 +7,10 @@ class TeamProfile{
 	static function myTeam() {
 		$database = DB::getInstance();
 
+		if($_SESSION['currentUser']->inTeam == 0){
+			header('Location: ' . '?/Teams/viewTeams');
+		}
+
 		$qGetTeamFromId = '
 		SELECT team.id
 		FROM team

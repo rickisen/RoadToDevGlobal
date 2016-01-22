@@ -59,6 +59,8 @@ class User{
   function __get($val){
     if ($val == 'isLookingForLobby'){
       return $this->getIsLookingForLobby();
+    }elseif($val == 'inTeam'){
+      return $this->getTeam();
     }
     return $this->$val;
   }
@@ -67,8 +69,65 @@ class User{
     $this->isInALobby = $val ;
   }
 
+  function getTeam(){
+    $database = DB::getInstance();
+
+    if(!isset($this->inTeam)){
+      $qGetTeam = '
+        SELECT in_team
+        FROM user
+        WHERE steam_id = '.$this->steamId.'
+      ';
+
+      $result = $database->query($qGetTeam);
+      if($result->num_rows > 0)
+       $this->inTeam = $result->fetch_assoc()['in_team'];
+    } 
+    return $this->inTeam;
+  }
+
   function setTeam($teamId){
-    $this->inTeam = $teamId ;
+    $database = DB::getInstance();
+
+    if($teamId == 0){
+      // Query to update the currentuser so that he is in this team
+      $qUpdateUsersTeamStatus = '
+        UPDATE user
+        SET in_team = NULL
+        WHERE steam_id = '.$this->steamId.'
+      ';
+
+      $database->query($qUpdateUsersTeamStatus);
+      if ($database->error) {
+        echo "something went wrong when removing a user from a team: ".$database->error;
+      }
+    }else{
+      // Query to update the currentuser so that he is in this team
+      $qUpdateUsersTeamStatus = '
+        UPDATE user
+        SET in_team = '.$teamId.'
+        WHERE steam_id = '.$this->steamId.'
+      ';
+
+      $database->query($qUpdateUsersTeamStatus);
+      if ($database->error) {
+        echo "something went wrong when adding a user into a team: ".$database->error;
+      }
+    } 
+
+    $qGetTeam = '
+      SELECT in_team
+      FROM user
+      WHERE steam_id = '.$this->steamId.'
+    ';
+
+    $result = $database->query($qGetTeam);
+    if($result->num_rows > 0)
+     $this->inTeam = $result->fetch_assoc()['in_team'];
+
+    if ($database->error) {
+        echo "something went wrong when adding a user into a team: ".$database->error;
+    }
   }
 
   // function __set($prop, $val){

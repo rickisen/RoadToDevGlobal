@@ -137,6 +137,8 @@ class postReceiver{
 	  	$team = new Team($teamId);
 	  	if($_SESSION['currentUser']->steamId == $team->creator || $_SESSION['currentUser']->inTeam == $team->id)
 	  		$team->removePlayerFromTeam($removeUser);
+	  	if($removeUser == $_SESSION['currentUser']->steamId)
+	  		$_SESSION['currentUser']->setTeam(0);
     }
   }
 
