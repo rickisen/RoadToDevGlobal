@@ -11,6 +11,7 @@ class Team {
   $img,
   $lookingForPlayers,
   $language,
+  $countryFlag,
   $comments,
 
   //team members
@@ -45,10 +46,12 @@ class Team {
     if($teamId == 'emptyObject') return;
 
     $qGetTeamFromId = '
-    SELECT team.*
+    SELECT team.*, flag_img.image
     FROM team
-        WHERE team.id = '.$teamId.'
-        LIMIT 1
+      LEFT join flag_img
+        ON team.language = flag_img.country
+    WHERE team.id = '.$teamId.'
+    LIMIT 1
     ';
 
     // should hold one row if succesfull,
@@ -64,6 +67,7 @@ class Team {
       $this->img               = $row['img'];
       $this->lookingForPlayers = $row['looking_for_players']; /*not set in DB*/
       $this->language          = $row['language'];
+      $this->countryFlag       = $row['image'];
     }
 
     $this->downloadComments();

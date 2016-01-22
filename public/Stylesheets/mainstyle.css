@@ -218,7 +218,7 @@ h1, h2, h3, h4, h5 {
   font-weight: 700;
 }
 
-.header-img{
+a .header-img {
   height: 30px;
   width: auto;
 }
@@ -876,14 +876,14 @@ color: red
 }
 
 .rank-input1{
-  width: 55px; 
-  height: 20px; 
+  width: 55px;
+  height: 20px;
   margin-left: 5px;
 }
 
 .rank-input2{
-  width: 55px; 
-  height: 20px; 
+  width: 55px;
+  height: 20px;
   margin-left: 8px;
 }
 

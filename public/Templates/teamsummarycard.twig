@@ -2,7 +2,7 @@
   <!-- <img src="{{ team.img }}"></a> -->
   <div class="team-img" style="background-image:url({{ team.img }});background-position: center; background-size:cover;" alt=""></div>
     <a href="?/TeamProfile/Team/{{ team.id }}" class="inline-block"><h3>{{ team.name }}</h3></a>
-    <img class="flag" src="http://s13.postimg.org/tfl8ks43n/Sweden.png">
+    <img class="flag" src="{{ team.countryFlag }}">
     <p style="word-wrap: break-word;"> {{ team.descr }}<br>
       <a href="?/TeamProfile/Team/{{ team.id }}" class="more-info">More Info</a>
       <p class="number-of-members">Members: {{ team.members|length }}</p>

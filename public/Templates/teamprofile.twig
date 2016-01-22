@@ -5,7 +5,7 @@
     </div>
 
     <div class="col-md-4 team-info">
-      <h2>{{ team.name }}</h2>
+      <h2>{{ team.name }}</h2><img src="{{ team.countryFlag }}">
       <br>
       <p>
         Members:
@@ -44,9 +44,9 @@
           <form action="?/TeamProfile/Team/{{ team.id }}" method="post">
             <input type="hidden" name="postHandler" value="receiveTeamRequest">
             <button type="submit" class="apply-to-team" name="teamId" value="{{ team.id }}">Apply to team</button>
-          </form>         
+          </form>
         {% endif %}
-      </div>      
+      </div>
     {% endif %}
   </div><!--END ROW-->
 
