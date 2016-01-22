@@ -600,12 +600,24 @@ select {
   height: 200px;
 }
 
+.team-header {
+  margin-bottom: 10px;
+}
+
 .team-profile-container h2 {
   font-weight: 700;
 }
 
 .team-profile-container p {
   color: #888;
+}
+
+.member:hover {
+  color: #888;
+}
+
+.team-profile-container .team-bio {
+  color: #FFF;
 }
 
 .team-info {
