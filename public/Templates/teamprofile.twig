@@ -5,16 +5,17 @@
     </div>
 
     <div class="col-md-4 team-info">
+      <div class="team-header">
       <h2>{{ team.name }}</h2><img src="{{ team.countryFlag }}">
-      <br>
+      </div>
       <p>
-        Members:
+        Members: &nbsp;
         {% for member in team.members %}
-          &nbsp; <a href="?/Profile/displayuser/{{ member.steamId }}"> {{member.nickname}} &nbsp; </a>
+          <a href="?/Profile/displayuser/{{ member.steamId }}" class="member"> <u>{{member.nickname}}</u></a>
         {% endfor %}
       </p>
-      <p>
-        Team bio: &nbsp; {{ team.descr }}
+      <p class="">
+        Team bio: &nbsp; <span class="team-bio">{{ team.descr }}</span>
       </p>
       <p>
         Looking for members: &nbsp; {{ team.lookingForPlayers }}
