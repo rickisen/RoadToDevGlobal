@@ -664,6 +664,10 @@ select {
   border-bottom: 1px solid #d72919;
 }
 
+.applied-to-team{
+  margin-left: -140px;
+}
+
  .comment-header {
   margin-bottom: 10px;
 }
