@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row mrg-top-40 team-profile-container">
-    <div class="col-md-offset-2 col-md-2 center">
+    <div class="col-md-offset-2 col-xs-12 col-md-2 center">
       <div class="team-profile-img" style="background-image:url({{ team.img }});background-position: center; background-size:cover;" alt=""></div>
     </div>
 
-    <div class="col-md-4 team-info">
+    <div class="col-xs-8 col-xs-12 col-sm-4 team-info">
       <div class="team-header">
       <h2>{{ team.name }}</h2><img src="{{ team.countryFlag }}">
       </div>
@@ -23,7 +23,7 @@
     </div>
 
     {% if currentUser.steamId == team.creator %}
-      <div class="col-md-offset-1 col-md-2">
+      <div class="col-md-offset-1 col-xs-2">
         <a class="manage-team" href="?/TeamProfile/editTeam">Manage team</a><br><br>
         {% if team.applicants|length > 0 %}
           <p class="applicants">You've <b style="color: #FFF;">{{ team.applicants|length }}</b> applicant(s).</p>
@@ -37,7 +37,7 @@
           {% set inApplicants = TRUE %}
         {% endif %}
       {% endfor %}
-      <div class="col-md-offset-1 col-md-2">
+      <div class="col-md-offset-1 col-xs-12 col-md-2">
         {% if inApplicants %}
           <p class="applied-to-team"> You've applied to this team!</p>
           <!--Add a form which deletes the application-->
@@ -52,7 +52,7 @@
   </div><!--END ROW-->
 
   <div class="row">
-    <div class="col-md-offset-2 col-md-8 mrg-top-40">
+    <div class="col-md-offset-2 col-xs-8 mrg-top-40">
       <h3 class="comment-header bold">Post on team wall</h3>
       {% if currentUser %}
       <form action="/index.php?" method="post">
@@ -72,7 +72,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-offset-2 col-md-8 mrg-top-40">
+    <div class="col-md-offset-2 col-xs-8 mrg-top-40">
       {% for comment in team.comments %}
         <p class="inline-block"><a href="?/Profile/displayuser/{{ comment.author }}"><u> {{ comment.nick }} </u> </a> </p>
         <img class="rankimg-small" src="{{ comment.rank }}">
