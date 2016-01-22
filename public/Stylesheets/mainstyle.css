@@ -611,6 +611,14 @@ select {
   transition: 0.1s;
 }
 
+@media screen and (max-width: 1000px) {
+  .filter-toggle {
+    margin-left: 0;
+    margin-top: 5px;
+    display:block;
+  }
+  }
+
 /* PLAYER SUMMARY CARD
 =====================================================*/
 
@@ -775,6 +783,14 @@ padding-bottom: 30px;
 .team-container .filter-toggle {
     margin-left: 834px;
 }
+
+@media screen and (max-width: 1000px) {
+  .team-container .filter-toggle {
+    margin-left: 0;
+    margin-top: 5px;
+    display:block;
+  }
+  }
 
 
 /* Team summary cards
