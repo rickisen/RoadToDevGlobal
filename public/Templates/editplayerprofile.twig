@@ -53,8 +53,8 @@
             </li>
             <p class="inline-block selection-info">Choose your rank</p>
 
-						  <li style="width: 228px;" class="inline-block"> <!-- TIDIGARE name="born" -->
-                <select style="width:70px;"  name="dob_day">
+						  <li class="inline-block dob-li"> <!-- TIDIGARE name="born" -->
+                <select class="dob-day" name="dob_day">
                 <option value="{{ user.dobDay }}">{{ user.dobDay }}</option>
                 <option value="01">1</option>
                 <option value="02">2</option>
@@ -89,7 +89,7 @@
                 <option value="31">31</option>
               </select>
 
-              <select style="width:33%;"  name="dob_month" type="" class="info-select" >
+              <select name="dob_month" type="" class="info-select dob-select" >
                 <option value="{{ user.dobMonth }}">{{ user.dobMonth }}</option>
                 <option value="01">January</option>
                 <option value="02">Febuary</option>
@@ -105,7 +105,7 @@
                 <option value="12">December</option>
               </select>
 
-               <select style="width:33%;" name="dob_year">
+               <select class="dob-select" name="dob_year">
                 <option value="{{ user.dobYear }}">{{ user.dobYear }}</option>
                 <option value="2011">2011</option>
                 <option value="2010">2010</option>
@@ -251,8 +251,8 @@
 
   <div class="row">
 
-    <div class="col-md-offset-4 col-md-4 bio-container" style="border: 0;">
-      <h2>Bio</h2>
+    <div class="col-md-offset-4 col-md-4 bio-border">
+      <h2 class="mrg-bot-20">Bio</h2>
       <textarea rows="7" cols="75" name="bio" class="userBio">{{ user.bio }}</textarea>
       <input class="sub-btn" type="submit" value="Submit">
     </div>
