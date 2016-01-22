@@ -379,7 +379,7 @@ class User{
   // inserts player and team id into player_applying_team table in DB
   function insertTeamRequest($teamId) {
     $database = DB::getInstance();
-    
+
     $qhaveIRequested='
       SELECT *
       FROM player_applying_team
@@ -409,8 +409,8 @@ class User{
     $database = DB::getInstance();
 
     $qIsLooking = '
-      SELECT steam_id 
-      FROM player_looking_for_lobby 
+      SELECT steam_id
+      FROM player_looking_for_lobby
       WHERE steam_id = "'.$this->steamId.'"
       LIMIT 1
     ';
