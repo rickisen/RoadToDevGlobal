@@ -10,11 +10,11 @@
        </div>
    </div>
 
-	 {% if parameters is defined and parameters.rank is defined or parameters.language is defined or parameters.nick is defined or parameters.hours is defined %}
-	 <div style="display:inline-block;" class="row show-filter mrg-top-35 mrg-bot-35">
-{% else %}
+	{% if parameters is defined and parameters.rank is defined or parameters.language is defined or parameters.nick is defined or parameters.hours is defined %}
+	 <div style="display:block;" class="row mrg-top-35 mrg-bot-35">
+  {% else %}
 	 <div class="row show-filter mrg-top-35 mrg-bot-35">
-{% endif %}
+  {% endif %}
        <form action="" method="get" >
 				<!-- aperently need, action attribute in form broken -->
 				<input type="hidden" name="Players/filterUsers" >
