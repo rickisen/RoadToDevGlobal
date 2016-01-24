@@ -54,7 +54,17 @@ class User{
   private $languages = array();
 
   function __isset($val){
-    return isset($this->$val);
+    if ($val == 'isLookingForLobby'){
+      $this->getIsLookingForLobby();
+      return isset($this->isLookingForLobby);
+    }elseif($val == 'isInALobby'){
+      $this->getIsInALobby();
+      return isset($this->isInALobby);
+    }elseif($val == 'inTeam'){
+      $this->getTeam();
+      return isset($this->inTeam);
+    }
+    return $this->$val;
   }
 
   function __get($val){
@@ -88,7 +98,7 @@ class User{
     return $this->inTeam;
   }
 
-  function setTeam($teamId){
+  function changeTeam($teamId){
     $database = DB::getInstance();
 
     if($teamId == 0){
@@ -124,8 +134,9 @@ class User{
     ';
 
     $result = $database->query($qGetTeam);
-    if($result->num_rows > 0)
+    if($result->num_rows > 0){
      $this->inTeam = $result->fetch_assoc()['in_team'];
+    }
 
     if ($database->error) {
         echo "something went wrong when adding a user into a team: ".$database->error;
@@ -439,11 +450,13 @@ class User{
     }
   }
 
-  // inserts player and team id into player_applying_team table in DB
+  // inserts player and team id into player_applying_team table if he is not already in this team or if hes not already applying
   function insertTeamRequest($teamId) {
     $database = DB::getInstance();
+    $alreadySentApplication = TRUE;
+    $alreadyInTeam = TRUE;
 
-    $qhaveIRequested='
+    $qhaveIRequested = '
       SELECT *
       FROM player_applying_team
       WHERE team_id = '.$teamId.'
@@ -452,7 +465,18 @@ class User{
 
     $result = $database->query($qhaveIRequested);
 
-    if($result->num_rows < 1){
+    if($result->num_rows == 0) $alreadySentApplication = FALSE;
+
+    $qIsAlreadyInTeam ='
+      SELECT in_team
+      FROM user
+      WHERE steam_id = '.$this->steamId.'
+    ';
+
+    $result = $database->query($qIsAlreadyInTeam);
+    if($result->fetch_assoc()['in_team'] != $teamId) $alreadyInTeam = FALSE;
+
+    if(!$alreadySentApplication && !$alreadyInTeam){
 
       $qSendTeamApply ='
         INSERT INTO player_applying_team (steam_id, team_id)

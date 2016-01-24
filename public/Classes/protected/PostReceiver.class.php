@@ -129,6 +129,8 @@ class postReceiver{
 
 			$_SESSION['currentUser']->insertTeamRequest($teamId);
 		}
+
+    header('Location: ' . '?/TeamProfile/Team/'. $teamId);
 	}
 
   static function removeUserFromTeam(){
@@ -142,7 +144,7 @@ class postReceiver{
 	  	if($_SESSION['currentUser']->steamId == $team->creator || $_SESSION['currentUser']->inTeam == $team->id)
 	  		$team->removePlayerFromTeam($removeUser);
 	  	if($removeUser == $_SESSION['currentUser']->steamId)
-	  		$_SESSION['currentUser']->setTeam(0);
+	  		$_SESSION['currentUser']->changeTeam(0);
     }
   }
 
@@ -157,6 +159,8 @@ class postReceiver{
 	  	if($_SESSION['currentUser']->steamId == $team->creator)
 	  		$team->acceptApplicant($steamId);
  		}
+
+    header('Location: ' . '?/TeamProfile/editTeam/');
   }
 
   static function denyApplicant(){
@@ -170,6 +174,8 @@ class postReceiver{
 	  	if($_SESSION['currentUser']->steamId == $team->creator)
 	  		$team->removeApplicant($steamId);
  		}
+
+    header('Location: ' . '?/TeamProfile/editTeam/');
   }
 
   static function logout(){

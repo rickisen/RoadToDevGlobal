@@ -124,7 +124,7 @@ class Team {
 
     $this->id = $database->insert_id;
 
-    $_SESSION['currentUser']->setTeam($this->id);    
+    $_SESSION['currentUser']->changeTeam($this->id);    
   }
 
   function updateTeamInfo(){
