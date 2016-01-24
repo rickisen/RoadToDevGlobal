@@ -22,8 +22,9 @@
 	      				<li class="option-title">Rank:</li>
 	      				<li class="option-title">Born:</li>
 	      				<li class="option-title">From:</li>
-	      				<li class="option-title" title="Primary">Language:</li> <!--another solution?-->
-	      				<li class="option-title" title="Secondary">Language:</li> <!--another solution?-->
+	      				<li class="option-title" title="Primary">Pri Language:</li> <!--another solution?-->
+	      				<li class="option-title" title="Secondary">Sec Language:</li> <!--another solution?-->
+								<li class="option-title" title="region">Region</li> <!--another solution?-->
 	      			</ul>
 	      		</div>
 	    		<div class="col-md-9">
@@ -240,6 +241,29 @@
                     <option value="Ukrainian" type="checkbox">Ukrainian</option>
 				    	  </select></li>
                 <p class="inline-block selection-info">Second language for filtering</p>
+								
+	    	 					<li class="inline-block"><select name="region" type="text">
+		    	  				<option value="{{user.region}}" type="checkbox">Region</option>
+                    <option value="1" type="checkbox">EU West</option>
+                    <option value="2" type="checkbox">Scandinavia</option>
+                    <option value="3" type="checkbox">EU East</option>
+                    <option value="4" type="checkbox">Eu East2</option>
+                    <option value="5" type="checkbox">Russia</option>
+                    <option value="6" type="checkbox">Dubai</option>
+                    <option value="7" type="checkbox">Africa</option>
+                    <option value="8" type="checkbox">India</option>
+                    <option value="9" type="checkbox">Asia</option>
+                    <option value="10" type="checkbox">Asia2</option>
+                    <option value="11" type="checkbox">HongKong</option>
+                    <option value="12" type="checkbox">Japan</option>
+                    <option value="13" type="checkbox">Australia</option>
+                    <option value="14" type="checkbox">US West</option>
+                    <option value="15" type="checkbox">US East</option>
+                    <option value="16" type="checkbox">US SW</option>
+                    <option value="17" type="checkbox">US SE</option>
+                    <option value="18" type="checkbox">Brazil</option>
+				    	  </select></li>
+                <p class="inline-block selection-info">Only used for calculating ping</p>
 						</ul>
 			  	</div>
 		    </div>

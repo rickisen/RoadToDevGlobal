@@ -39,6 +39,10 @@ class postReceiver{
 			$_SESSION['currentUser']->secLang = $database->real_escape_string(stripslashes($_POST['secondary_language']));
 		}
 
+		if( isset($_POST['region']) && !empty($_POST['region']) ){
+			$_SESSION['currentUser']->region = $database->real_escape_string(stripslashes($_POST['region']));
+		}
+
 		$_SESSION['currentUser']->updateUserSuppliedInfo();
 		header('Location: ' . '?/Profile/displayUser/'.$_SESSION['currentUser']->steamId);
 	}

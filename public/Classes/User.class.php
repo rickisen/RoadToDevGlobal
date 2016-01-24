@@ -14,7 +14,8 @@ class User{
     $dobYear,
     $country,
     $priLang,
-    $secLang;
+    $secLang,
+    $region;
 
   private
 
@@ -186,6 +187,7 @@ class User{
       $this->rankImg         = $row['img'];
       $this->priLang         = $row['primary_language'];
       $this->secLang         = $row['secondary_language'];
+      $this->region          = $row['region'];
       $this->inTeam          = $row['in_team'];
       $this->countryFlag     = $row['image'];
 
@@ -397,6 +399,7 @@ class User{
           rank               = "'.$this->rank.'",
           primary_language   = "'.$this->priLang.'",
           secondary_language = "'.$this->secLang.'",
+          region             = "'.$this->region.'",
           age_group          = "'.$this->getAgeGroup().'"
       WHERE steam_id         = "'.$this->steamId.'";
     ';
