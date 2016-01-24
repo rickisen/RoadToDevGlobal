@@ -98,56 +98,6 @@ class User{
     return $this->inTeam;
   }
 
-  function changeTeam($teamId){
-    $database = DB::getInstance();
-
-    if($teamId == 0){
-      // Query to update the currentuser so that he is in this team
-      $qUpdateUsersTeamStatus = '
-        UPDATE user
-        SET in_team = NULL
-        WHERE steam_id = '.$this->steamId.'
-      ';
-
-      $database->query($qUpdateUsersTeamStatus);
-      if ($database->error) {
-        echo "something went wrong when removing a user from a team: ".$database->error;
-      }
-    }else{
-      // Query to update the currentuser so that he is in this team
-      $qUpdateUsersTeamStatus = '
-        UPDATE user
-        SET in_team = '.$teamId.'
-        WHERE steam_id = '.$this->steamId.'
-      ';
-
-      $database->query($qUpdateUsersTeamStatus);
-      if ($database->error) {
-        echo "something went wrong when adding a user into a team: ".$database->error;
-      }
-    } 
-
-    $qGetTeam = '
-      SELECT in_team
-      FROM user
-      WHERE steam_id = '.$this->steamId.'
-    ';
-
-    $result = $database->query($qGetTeam);
-    if($result->num_rows > 0){
-     $this->inTeam = $result->fetch_assoc()['in_team'];
-    }
-
-    if ($database->error) {
-        echo "something went wrong when adding a user into a team: ".$database->error;
-    }
-  }
-
-  // function __set($prop, $val){
-  //   if($prop == 'rank' || $prop == 'bio' || $prop == 'age')
-  //     $this->$prop = $val;
-  // }
-
   function __construct( $steamId ){
     $database = DB::getInstance();
 
@@ -449,7 +399,51 @@ class User{
         break;
     }
   }
+  // updates a users in_team (removing or adding) status
+  function changeTeam($teamId){
+    $database = DB::getInstance();
 
+    if($teamId == 0){
+      // Query to remove a user from a team, set its in_team value to NULL
+      $qUpdateUsersTeamStatus = '
+        UPDATE user
+        SET in_team = NULL
+        WHERE steam_id = '.$this->steamId.'
+      ';
+
+      $database->query($qUpdateUsersTeamStatus);
+      if ($database->error) {
+        echo "something went wrong when removing a user from a team: ".$database->error;
+      }
+    }else{
+      // Query to update a users team
+      $qUpdateUsersTeamStatus = '
+        UPDATE user
+        SET in_team = '.$teamId.'
+        WHERE steam_id = '.$this->steamId.'
+      ';
+
+      $database->query($qUpdateUsersTeamStatus);
+      if ($database->error) {
+        echo "something went wrong when adding a user into a team: ".$database->error;
+      }
+    } 
+
+    $qGetTeam = '
+      SELECT in_team
+      FROM user
+      WHERE steam_id = '.$this->steamId.'
+    ';
+
+    $result = $database->query($qGetTeam);
+    if($result->num_rows > 0){
+     $this->inTeam = $result->fetch_assoc()['in_team'];
+    }
+
+    if ($database->error) {
+        echo "something went wrong when adding a user into a team: ".$database->error;
+    }
+  }
   // inserts player and team id into player_applying_team table if he is not already in this team or if hes not already applying
   function insertTeamRequest($teamId) {
     $database = DB::getInstance();
