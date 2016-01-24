@@ -60,6 +60,8 @@ class User{
   function __get($val){
     if ($val == 'isLookingForLobby'){
       return $this->getIsLookingForLobby();
+    }elseif($val == 'isInALobby'){
+      return $this->getIsInALobby();
     }elseif($val == 'inTeam'){
       return $this->getTeam();
     }
@@ -73,17 +75,16 @@ class User{
   function getTeam(){
     $database = DB::getInstance();
 
-    if(!isset($this->inTeam)){
-      $qGetTeam = '
-        SELECT in_team
-        FROM user
-        WHERE steam_id = '.$this->steamId.'
-      ';
+    $qGetTeam = '
+      SELECT in_team
+      FROM user
+      WHERE steam_id = '.$this->steamId.'
+    ';
 
-      $result = $database->query($qGetTeam);
-      if($result->num_rows > 0)
-       $this->inTeam = $result->fetch_assoc()['in_team'];
-    } 
+    $result = $database->query($qGetTeam);
+    if($result->num_rows > 0)
+     $this->inTeam = $result->fetch_assoc()['in_team'];
+
     return $this->inTeam;
   }
 
@@ -467,6 +468,29 @@ class User{
     }
   }
 
+  function getIsInALobby(){
+    $database = DB::getInstance();
+
+    $qIsInALobby = '
+      SELECT steam_id
+      FROM lobby
+      WHERE steam_id = "'.$this->steamId.'"
+      LIMIT 1
+    ';
+
+    $result = $database->query($qIsInALobby);
+    if ($result->num_rows == 1){
+      $this->isInALobby == TRUE;
+      return TRUE;
+    }elseif ($error = $database->error){
+      $this->isInALobby == FALSE;
+      echo "something went wrong when trying to see if a user is in a lobby $error";
+    }
+
+    $this->isInALobby == FALSE;
+    return FALSE;
+  }
+
   function getIsLookingForLobby(){
     $database = DB::getInstance();
 
@@ -486,6 +510,7 @@ class User{
       echo "something went wrong when trying to see if a user is in a lobby $error";
     }
 
+    $this->isLookingForLobby == FALSE;
     return FALSE;
   }
 }
