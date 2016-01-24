@@ -6,20 +6,24 @@
 
     <div class="col-xs-8 col-xs-12 col-sm-4 team-info">
       <div class="team-header">
-      <h2>{{ team.name }}</h2><img src="{{ team.countryFlag }}">
+        <h2>{{ team.name }}</h2><img src="{{ team.countryFlag }}">
       </div>
+
       <p>
         Members: &nbsp;
         {% for member in team.members %}
           <a href="?/Profile/displayuser/{{ member.steamId }}" class="member"> <u>{{member.nickname}}</u></a>
         {% endfor %}
       </p>
+
       <p class="">
         Team bio: &nbsp; <span class="team-bio">{{ team.descr }}</span>
       </p>
+
       <p>
         Looking for members: &nbsp; {{ team.lookingForPlayers }}
       </p>
+
     </div>
 
     {% set inApplicants = FALSE %}
@@ -86,7 +90,7 @@
   <div class="row">
     <div class="col-md-offset-2 col-xs-8 mrg-top-40">
       {% for comment in team.comments %}
-        <p class="inline-block"><a href="?/Profile/displayuser/{{ comment.author }}"><u> {{ comment.nick }} </u> </a> </p>
+        <p class="inline-block"><a href="?/Profile/displayuser/{{ comment.author }}"><u>{{ comment.nick }} </u></a></p>
         <img class="rankimg-small" src="{{ comment.rank }}">
         <img class="flag-small" src="{{ comment.country }}">
         <p class="inline-block date-stamp"> {{ comment.date }} </p>
