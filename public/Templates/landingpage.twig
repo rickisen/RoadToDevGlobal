@@ -6,11 +6,12 @@
     </p>
     <h1 class="landing-page-title">MATCHMAKING <br> BETTER THAN EVER</h1>
     <p class="landing-info-text">
-We aim to make matchmaking fun again! By filtering on several personal preferences like language and age (+ rank), you are more likely to end up with people that you actually will enjoy playing with.</p>
+      We aim to make matchmaking fun again! By filtering on several personal preferences like language and age (+ rank), you are more likely to end up with people that you actually will enjoy playing with.</p>
 
   </div>
 </div>
 
+{% if not currentUser %}
 <div class="row">
   <div class="col-md-offset-1 col-md-2 landing-page-select mrg-right-10">
     <dl class="dropdown dp1">
@@ -156,12 +157,12 @@ We aim to make matchmaking fun again! By filtering on several personal preferenc
       </dl>
     </div>
   </div>
-
+  {% endif %}
   <div class="row">
     <div class="col-md-offset-1 col-md-6 landingpage-select">
         <!-- TWIG IF TILL FUNKTION -->
         {% if currentUser %}
-            <a href="/?/LobbyLoader/addUserToPlfl"><button type="button" class="playnow-btn"><h1>FIND PLAYERS</h1></button></a>
+            <a href="/?/LobbyLoader/addUserToPlfl"><button type="button" class="playnow-btn"><h1>FIND ACTIVE LOBBY</h1></button></a>
         {% else %}
             <a href="/?/UnderConstruction/viewConstruction"><button type="button" class="playnow-btn"><h1>FIND PLAYERS</h1></button></a>
         {% endif %}
