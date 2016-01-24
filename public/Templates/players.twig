@@ -10,12 +10,21 @@
        </div>
    </div>
 
-   <div class="row show-filter mrg-top-35 mrg-bot-35">
-         <form method="post" action="?/Players/filterUsers">
+	 {% if parameters is defined and parameters.rank is defined or parameters.language is defined or parameters.nick is defined or parameters.hours is defined %}
+	 <div style="display:inline-block;" class="row show-filter mrg-top-35 mrg-bot-35">
+{% else %}
+	 <div class="row show-filter mrg-top-35 mrg-bot-35">
+{% endif %}
+       <form action="" method="get" >
+				<!-- aperently need, action attribute in form broken -->
+				<input type="hidden" name="Players/filterUsers" >
 
          <div class="col-xs-12 col-sm-2">
             <select name="language">
-              <option value="" type="checkbox">Language</option>
+				      {% if parameters.language is defined %}
+							  <option value="{{parameters.language}}" type="checkbox">{{parameters.language}}</option>
+              {% endif %}
+							<option value="" type="checkbox">Language</option>
               <option value="Swedish" type="checkbox">Swedish</option>
               <option value="English" type="checkbox">English</option>
               <option value="German" type="checkbox">German</option>
@@ -38,6 +47,9 @@
 
           <div class="col-xs-12 col-sm-2">
             <select name="rank">
+				      {% if parameters.rank is defined  %}
+							  <option value="{{parameters.rank}}" type="checkbox">{{parameters.rank}}</option>
+              {% endif %}
               <option value="" type="checkbox">Rank</option>
               <option value="silver_1" type="checkbox">SILVER I</option>
               <option value="silver_2" type="checkbox">SILVER II</option>
@@ -62,6 +74,9 @@
 
           <div class="col-xs-12 col-sm-2">
             <select name="hours">
+				      {% if parameters.hours is defined   %}
+							  <option value="{{parameters.hours}}" type="checkbox">{{parameters.hours}}</option>
+              {% endif %}
               <option value="" type="checkbox">Hours played</option>
               <option value="100"  type="checkbox">100+</option>
               <option value="300"  type="checkbox">300+</option>
@@ -71,7 +86,11 @@
           </div>
           <!-- Search form for players nick -->
           <div class="col-xs-12 col-sm-2">
-            <input type="text" name="nick" placeholder="Enter player nick here...">
+							{% if parameters.nick is defined %}
+							  <input type="text" name="nick" value="{{parameters.nick}}">
+							{% else %}
+                <input type="text" name="nick" placeholder="Enter player nick here...">
+              {% endif %}
           </div>
 
           <div class="col-xs-2">
@@ -96,13 +115,33 @@
 
 <div class="row">
     <div class="col-xs-12 ">
-{% if lastOffset > 0 %}
-				 <a href="?/Players/offsetLastFilter/{{lastOffset - 1}}" class="bold"> < Prev </a>
+
+{% if parameters is defined and parameters.offset > 0 %}
+				<form method="get" action="">
+								<input type="hidden" name="Players/filterUsers" >
+								<input type="hidden" name="language" value="{{parameters.language}}"> 
+								<input type="hidden" name="rank" value="{{parameters.rank}}"> 
+								<input type="hidden" name="hours" value="{{parameters.hours}}"> 
+								<input type="hidden" name="nick" value="{{parameters.nick}}"> 
+
+								<input type="hidden" name="offset" value="{{ parameters.offset - 25 }}"> 
+								<input class="bold nextButton "type="submit" value="< Prev">
+				</form>
 {% endif %}
 
 {% if users|length > 24 %}
-				 <a class="pull-right bold" href="?/Players/offsetLastFilter/{{lastOffset + 1}}"> Next > </a>
+				<form method="get" action="">
+								<input type="hidden" name="Players/filterUsers" >
+								<input type="hidden" name="language" value="{{parameters.language}}"> 
+								<input type="hidden" name="rank" value="{{parameters.rank}}"> 
+								<input type="hidden" name="hours" value="{{parameters.hours}}"> 
+								<input type="hidden" name="nick" value="{{parameters.nick}}"> 
+
+								<input type="hidden" name="offset" value="{{ parameters.offset + 25 }}"> 
+								<input class="bold nextButton pull-right" type="submit" value="Next >">
+				</form>
 {% endif %}
+
     </div>
 </div>
 <!-- /.row -->
