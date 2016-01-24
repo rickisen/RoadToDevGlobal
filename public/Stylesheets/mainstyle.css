@@ -441,7 +441,7 @@ and (max-width:499px){
 }
 
 
-/* LOADING PAGE 
+/* LOADING PAGE
 ===================================================== */
 
 .loading {
@@ -611,6 +611,14 @@ select {
   transition: 0.1s;
 }
 
+@media screen and (max-width: 1000px) {
+  .filter-toggle {
+    margin-left: 0;
+    margin-top: 5px;
+    display:block;
+  }
+  }
+
 /* PLAYER SUMMARY CARD
 =====================================================*/
 
@@ -621,9 +629,9 @@ select {
 }
 
 .player-sum-flag{
-  width: 20px; 
-  height: 20px; 
-  margin-left: 10px; 
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
   margin-top: -4px;
 }
 
@@ -635,8 +643,8 @@ select {
 }
 
 .player-mini-nick{
-  white-space: nowrap; 
-  text-overflow: ellipsis; 
+  white-space: nowrap;
+  text-overflow: ellipsis;
   overflow: hidden;
 }
 
@@ -728,7 +736,11 @@ select {
   margin-left: -140px;
 }
 
- .comment-header {
+.leave-team-button{
+  margin-top: 10px;
+}
+
+.comment-header {
   margin-bottom: 10px;
 }
 
@@ -743,6 +755,12 @@ select {
   margin-right: 25px;
 }
 
+@media screen and (max-width: 775px) {
+  .team-info, .apply-to-team, .applied-to-team, .manage-team, .applicants {
+    margin-left: 0px;
+  }
+  }
+
 /* Edit team
 ==================================================== */
 
@@ -755,7 +773,7 @@ color: red
 }
 
 .edit-form{
-border-bottom: 1px solid #d72919; 
+border-bottom: 1px solid #d72919;
 padding-bottom: 30px;
 }
 
@@ -765,6 +783,14 @@ padding-bottom: 30px;
 .team-container .filter-toggle {
     margin-left: 834px;
 }
+
+@media screen and (max-width: 1000px) {
+  .team-container .filter-toggle {
+    margin-left: 0;
+    margin-top: 5px;
+    display:block;
+  }
+  }
 
 
 /* Team summary cards
@@ -792,7 +818,7 @@ padding-bottom: 30px;
 .team-img {
   height: 220px;
   width: 234px;
-  background-position: center; 
+  background-position: center;
   background-size:cover;
 }
 
