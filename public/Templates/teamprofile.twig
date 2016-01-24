@@ -43,8 +43,7 @@
         <!--Add a form which deletes the application-->
       </div>
 
-    {% elseif currentUser.inTeam != team.id %}
-      
+    {% elseif currentUser and currentUser.inTeam != team.id %}
       <div class="col-md-offset-1 col-xs-12 col-sm-2">
         <form action="?/TeamProfile/Team/{{ team.id }}" method="post">
           <input type="hidden" name="postHandler" value="receiveTeamRequest">
