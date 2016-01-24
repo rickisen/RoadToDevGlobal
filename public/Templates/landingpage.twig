@@ -1,173 +1,184 @@
 <div class="landing-page-container">
-<div class="row">
-  <div class="col-md-offset-1 col-md-8 landing-page-text">
-    <p class="beta-text">
-    ALPHA VERSION
-    </p>
-    <h1 class="landing-page-title">MATCHMAKING <br> BETTER THAN EVER</h1>
-    <p class="landing-info-text">
-      We aim to make matchmaking fun again! By filtering on several personal preferences like language and age (+ rank), you are more likely to end up with people that you actually will enjoy playing with.</p>
+  <div class="row">
+    <div class="col-md-offset-1 col-md-8 landing-page-text">
+      <p class="beta-text">
+      ALPHA VERSION
+      </p>
+      <h1 class="landing-page-title">MATCHMAKING <br> BETTER THAN EVER</h1>
+      <p class="landing-info-text">
+        We aim to make matchmaking fun again! By filtering on several personal preferences like language and age (+ rank), you are more likely to end up with people that you actually will enjoy playing with.</p>
+    </div>
+  </div><!--END ROW-->
 
-  </div>
-</div>
-
-{% if not currentUser %}
-<div class="row">
-  <div class="col-md-offset-1 col-md-2 landing-page-select mrg-right-10">
-    <dl class="dropdown dp1">
+  {% if not currentUser %}
+  <div class="row">
+    <div class="col-md-offset-1 col-md-2 landing-page-select mrg-right-10">
+      <dl class="dropdown dp1">
         <dt>
-        <a href="#">
-          <span class="hida1">LANGUAGE <img class="mrg-left-10" src="http://s13.postimg.org/uxb6t4x7n/arrow.png"></span>
-          <p class="multiSel1"></p>
-        </a>
-        </dt>
-
-        <dd>
-            <div class="mutliSelect1 select-left-mid">
-                <ul class="pref-lang1">
-                    <li>
-                        <input type="checkbox" value="English" /> English</li>
-                    <li>
-                        <input type="checkbox" value="Swedish" /> Swedish</li>
-                    <li>
-                        <input type="checkbox" value="Danish" /> Danish</li>
-                    <li>
-                        <input type="checkbox" value="German" /> German</li>
-                    <li>
-                        <input type="checkbox" value="French" /> French</li>
-                    <li>
-                        <input type="checkbox" value="Norwegian" /> Norwegian</li>
-                        </ul>
-
-                      <ul class="pref-lang2">
-                    <li>
-                        <input type="checkbox" value="Polish" /> Polish</li>
-                    <li>
-                        <input type="checkbox" value="Turkish" /> Turkish</li>
-                    <li>
-                        <input type="checkbox" value="Chinese" /> Chinese</li>
-                    <li>
-                        <input type="checkbox" value="Finnish" /> Finnish</li>
-                    <li>
-                        <input type="checkbox" value="Spanish" /> Spanish</li>
-                    <li>
-                        <input type="checkbox" value="Russian" /> Russian</li>
-                      </ul>
-
-                      <ul class="pref-lang3">
-                    <li>
-                        <input type="checkbox" value="Thai" /> Thai</li>
-                    <li>
-                        <input type="checkbox" value="Japanese" /> Japanese</li>
-                    <li>
-                        <input type="checkbox" value="Romanian" /> Romanian</li>
-                    <li>
-                        <input type="checkbox" value="Italian" /> Italian</li>
-                    <li>
-                        <input type="checkbox" value="Ukrainian" /> Ukrainian</li>
-                    <li>
-                        <input type="checkbox" value="Portuguese" /> Portuguese</li>
-
-                </ul>
-            </div>
-        </dd>
-    </dl>
-  </div>
-
-
-  <div class="col-md-2 landingpage-select mrg-left-20">
-    <dl class="dropdown dp2">
-        <dt>
-        <a href="#">
-          <span class="hida2">RANK <img class="mrg-left-10" src="http://s13.postimg.org/uxb6t4x7n/arrow.png"></span>
-          <p class="multiSel2"></p>
-        </a>
-        </dt>
-
-        <dd>
-            <div class="mutliSelect2 select-left-mid">
-                <ul class="rank1">
-                    <li>
-                        <input type="checkbox" value="MG2" /> <span><img src="http://s28.postimg.org/f4pdznib1/mg2.png" class="rank-input1"></span></li>
-                    <li>
-                        <input type="checkbox" value="MG1" /> <span><img src="http://s1.postimg.org/863728x8f/mg1.png" class="rank-input1"></span></li>
-                    <li>
-                        <input type="checkbox" value="GN4" /> <span><img src="http://s13.postimg.org/ecagltug7/GN4.png" class="rank-input1"></span></li>
-                    <li>
-                        <input type="checkbox" value="GN3" /> <span><img src="http://s13.postimg.org/jdhun71wn/GN3.png" class="rank-input1"></span></li>
-                    <li>
-                        <input type="checkbox" value="GN2" /> <span><img src="http://s10.postimg.org/mk5v6lpvt/GN2.png" class="rank-input1"></span></li>
-                    <li>
-                        <input type="checkbox" value="GN1" /> <span><img src="http://s7.postimg.org/v734usakr/GN1.png" class="rank-input1"></span></li>
-                </ul>
-                <ul class="rank2">
-                    <li>
-                        <input type="checkbox" value="GE" /><span><img src="http://s22.postimg.org/4eiardx8x/image.png" class="rank-input2"></span></li>
-                    <li>
-                        <input type="checkbox" value="SMFC" /><span><img src="http://s9.postimg.org/eu769ua6n/SMFC.png" class="rank-input2"></span></li>
-                    <li>
-                        <input type="checkbox" value="LEM" /> <span><img src="http://s23.postimg.org/npxi9uol7/LEM.png" class="rank-input1"></span></li>
-                    <li>
-                        <input type="checkbox" value="LE" /> <span><img src="http://s2.postimg.org/5016j734p/image.png" class="rank-input1"></span></li>
-                    <li>
-                        <input type="checkbox" value="DMG" /> <span><img src="http://s16.postimg.org/o3betagh1/dmg.png" class="rank-input1"></span></li>
-                    <li>
-                        <input type="checkbox" value="MGE" /> <span><img src="http://s17.postimg.org/gpr5jjyzz/mge.png" class="rank-input1"></span></li>
-                </ul>
-                <ul class="rank3">
-                    <li>
-                        <input type="checkbox" value="SEM" /><span><img src="http://s17.postimg.org/w7yqizsfz/image.png" class="rank-input2"></span></li>
-                    <li>
-                        <input type="checkbox" value="SE" /><span><img src="http://s17.postimg.org/sc8vqmjsv/image.png" class="rank-input2"></span></li>
-                    <li>
-                        <input type="checkbox" value="S4" /> <span><img src="http://s8.postimg.org/hvv5id2np/image.png" class="rank-input2"></span></li>
-                    <li>
-                        <input type="checkbox" value="S3" /> <span><img src="http://s28.postimg.org/x5zai2ie5/image.png" class="rank-input1"></span></li>
-                    <li>
-                        <input type="checkbox" value="S2" /> <span><img src="http://s13.postimg.org/d21iyve2f/image.png" class="rank-input1"></span></li>
-                    <li>
-                        <input type="checkbox" value="S1" /> <span><img src="http://s3.postimg.org/5z7msz3tv/image.png" class="rank-input1"></span></li>
-                </ul>
-            </div>
-        </dd>
-    </dl>
-  </div>
-
-    <div class="col-md-2 landingpage-select">
-      <dl class="dropdown dp3">
-          <dt>
           <a href="#">
-            <span class="hida3">PLAYING <img class="mrg-left-10" src="http://s13.postimg.org/uxb6t4x7n/arrow.png"></span>
-            <p class="multiSel3"></p>
+            <span class="hida1">LANGUAGE <img class="mrg-left-10" src="http://s13.postimg.org/uxb6t4x7n/arrow.png"></span>
+            <p class="multiSel1"></p>
           </a>
+        </dt>
+
+        <dd>
+          <div class="mutliSelect1 select-left-mid">
+            <ul class="pref-lang1">
+              <li> <input type="checkbox" value="English" /> English </li>
+              <li> <input type="checkbox" value="Swedish" /> Swedish </li>
+              <li> <input type="checkbox" value="Danish" /> Danish </li>
+              <li> <input type="checkbox" value="German" /> German </li>
+              <li> <input type="checkbox" value="French" /> French </li>
+              <li> <input type="checkbox" value="Norwegian" /> Norwegian </li>
+            </ul>
+
+            <ul class="pref-lang2">
+              <li> <input type="checkbox" value="Polish" /> Polish </li>
+              <li> <input type="checkbox" value="Turkish" /> Turkish </li>
+              <li> <input type="checkbox" value="Chinese" /> Chinese </li>
+              <li> <input type="checkbox" value="Finnish" /> Finnish </li>
+              <li> <input type="checkbox" value="Spanish" /> Spanish </li>
+              <li> <input type="checkbox" value="Russian" /> Russian </li>
+            </ul>
+
+            <ul class="pref-lang3">
+              <li> <input type="checkbox" value="Thai" /> Thai </li>
+              <li> <input type="checkbox" value="Japanese" /> Japanese </li>
+              <li> <input type="checkbox" value="Romanian" /> Romanian </li>
+              <li> <input type="checkbox" value="Italian" /> Italian </li>
+              <li> <input type="checkbox" value="Ukrainian" /> Ukrainian </li>
+              <li> <input type="checkbox" value="Portuguese" /> Portuguese </li>
+            </ul>
+          </div>
+        </dd>
+      </dl>
+    </div>
+
+
+      <div class="col-md-2 landingpage-select mrg-left-20">
+        <dl class="dropdown dp2">
+          <dt>
+            <a href="#">
+              <span class="hida2">RANK <img class="mrg-left-10" src="http://s13.postimg.org/uxb6t4x7n/arrow.png"></span>
+              <p class="multiSel2"></p>
+            </a>
+          </dt>
+          <dd>
+            <div class="mutliSelect2 select-left-mid">
+              <ul class="rank1">
+                <li> 
+                  <input type="checkbox" value="MG2" /> <span><img src="http://s28.postimg.org/f4pdznib1/mg2.png" class="rank-input1"></span>
+                </li>
+
+                <li>
+                    <input type="checkbox" value="MG1" /> <span><img src="http://s1.postimg.org/863728x8f/mg1.png" class="rank-input1"></span>
+                </li>
+
+                <li>
+                    <input type="checkbox" value="GN4" /> <span><img src="http://s13.postimg.org/ecagltug7/GN4.png" class="rank-input1"></span>
+                </li>
+
+                <li>
+                    <input type="checkbox" value="GN3" /> <span><img src="http://s13.postimg.org/jdhun71wn/GN3.png" class="rank-input1"></span>
+                </li>
+
+                <li>
+                    <input type="checkbox" value="GN2" /> <span><img src="http://s10.postimg.org/mk5v6lpvt/GN2.png" class="rank-input1"></span>
+                </li>
+
+                <li>
+                    <input type="checkbox" value="GN1" /> <span><img src="http://s7.postimg.org/v734usakr/GN1.png" class="rank-input1"></span>
+                </li>
+              </ul>
+
+              <ul class="rank2">
+                <li>
+                    <input type="checkbox" value="GE" /><span><img src="http://s22.postimg.org/4eiardx8x/image.png" class="rank-input2"></span>
+                </li>
+
+                <li>
+                    <input type="checkbox" value="SMFC" /><span><img src="http://s9.postimg.org/eu769ua6n/SMFC.png" class="rank-input2"></span>
+                </li>
+
+                <li>
+                    <input type="checkbox" value="LEM" /> <span><img src="http://s23.postimg.org/npxi9uol7/LEM.png" class="rank-input1"></span>
+                </li>
+
+                <li>
+                    <input type="checkbox" value="LE" /> <span><img src="http://s2.postimg.org/5016j734p/image.png" class="rank-input1"></span>
+                </li>
+
+                <li>
+                    <input type="checkbox" value="DMG" /> <span><img src="http://s16.postimg.org/o3betagh1/dmg.png" class="rank-input1"></span>
+                </li>
+
+                <li>
+                    <input type="checkbox" value="MGE" /> <span><img src="http://s17.postimg.org/gpr5jjyzz/mge.png" class="rank-input1"></span>
+                </li>
+              </ul>
+
+              <ul class="rank3">
+                <li>
+                    <input type="checkbox" value="SEM" /><span><img src="http://s17.postimg.org/w7yqizsfz/image.png" class="rank-input2"></span>
+                </li>
+
+                <li>
+                    <input type="checkbox" value="SE" /><span><img src="http://s17.postimg.org/sc8vqmjsv/image.png" class="rank-input2"></span>
+                </li>
+
+                <li>
+                    <input type="checkbox" value="S4" /> <span><img src="http://s8.postimg.org/hvv5id2np/image.png" class="rank-input2"></span>
+                </li>
+
+                <li>
+                    <input type="checkbox" value="S3" /> <span><img src="http://s28.postimg.org/x5zai2ie5/image.png" class="rank-input1"></span>
+                </li>
+
+                <li>
+                    <input type="checkbox" value="S2" /> <span><img src="http://s13.postimg.org/d21iyve2f/image.png" class="rank-input1"></span>
+                </li>
+
+                <li>
+                    <input type="checkbox" value="S1" /> <span><img src="http://s3.postimg.org/5z7msz3tv/image.png" class="rank-input1"></span>
+                </li>
+              </ul>
+            </div>
+          </dd>
+        </dl>
+      </div>
+
+      <div class="col-md-2 landingpage-select">
+        <dl class="dropdown dp3">
+          <dt>
+            <a href="#">
+              <span class="hida3">PLAYING <img class="mrg-left-10" src="http://s13.postimg.org/uxb6t4x7n/arrow.png"></span>
+              <p class="multiSel3"></p>
+            </a>
           </dt>
 
           <dd>
-              <div class="mutliSelect3 select-right">
-                  <ul class="ambition">
-                      <li>
-                          <input type="checkbox" value="MM" /> Matchmaking</li>
-                      <li>
-                          <input type="checkbox" value="Faceit" /> Faceit</li>
-                      <li>
-                          <input type="checkbox" value="ESEA" /> ESEA</li>
-                  </ul>
-              </div>
+            <div class="mutliSelect3 select-right">
+              <ul class="ambition">
+                <li> <input type="checkbox" value="MM" /> Matchmaking </li>
+                <li> <input type="checkbox" value="Faceit" /> Faceit </li>
+                <li> <input type="checkbox" value="ESEA" /> ESEA </li>
+              </ul>
+            </div>
           </dd>
-      </dl>
-    </div>
-  </div>
+        </dl>
+      </div>
+  </div><!--END ROW-->
+
   {% endif %}
   <div class="row">
     <div class="col-md-offset-1 col-md-6 landingpage-select">
-        <!-- TWIG IF TILL FUNKTION -->
-        {% if currentUser %}
-            <a href="/?/LobbyLoader/addUserToPlfl"><button type="button" class="playnow-btn"><h1>FIND ACTIVE LOBBY</h1></button></a>
-        {% else %}
-            <a href="/?/UnderConstruction/viewConstruction"><button type="button" class="playnow-btn"><h1>FIND PLAYERS</h1></button></a>
-        {% endif %}
+      {% if currentUser %}
+        <a href="/?/LobbyLoader/addUserToPlfl"><button type="button" class="playnow-btn"><h1>FIND ACTIVE LOBBY</h1></button></a>
+      {% else %}
+        <a href="/?/UnderConstruction/viewConstruction"><button type="button" class="playnow-btn"><h1>FIND PLAYERS</h1></button></a>
+      {% endif %}
     </div>
-  </div>
+  </div><!--END ROW-->
 
 </div>
 
