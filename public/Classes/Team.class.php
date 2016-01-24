@@ -124,19 +124,7 @@ class Team {
 
     $this->id = $database->insert_id;
 
-    $_SESSION['currentUser']->setTeam($this->id);
-
-    // Query to update the currentuser so that he is in this team
-    $qUpdateUsersTeamStatus = '
-      UPDATE user
-      SET in_team = '.$this->id.'
-      WHERE steam_id = '.$_SESSION['currentUser']->steamId.'
-    ';
-
-    $database->query($qUpdateUsersTeamStatus);
-    if ($database->error) {
-      echo "something went wrong when adding a user into a team: ".$database->error;
-    }
+    $_SESSION['currentUser']->changeTeam($this->id);    
   }
 
   function updateTeamInfo(){

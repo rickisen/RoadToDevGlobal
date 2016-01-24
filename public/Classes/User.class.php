@@ -14,7 +14,8 @@ class User{
     $dobYear,
     $country,
     $priLang,
-    $secLang;
+    $secLang,
+    $region;
 
   private
 
@@ -53,12 +54,26 @@ class User{
   private $languages = array();
 
   function __isset($val){
-    return isset($this->$val);
+    if ($val == 'isLookingForLobby'){
+      $this->getIsLookingForLobby();
+      return isset($this->isLookingForLobby);
+    }elseif($val == 'isInALobby'){
+      $this->getIsInALobby();
+      return isset($this->isInALobby);
+    }elseif($val == 'inTeam'){
+      $this->getTeam();
+      return isset($this->inTeam);
+    }
+    return $this->$val;
   }
 
   function __get($val){
     if ($val == 'isLookingForLobby'){
       return $this->getIsLookingForLobby();
+    }elseif($val == 'isInALobby'){
+      return $this->getIsInALobby();
+    }elseif($val == 'inTeam'){
+      return $this->getTeam();
     }
     return $this->$val;
   }
@@ -67,14 +82,21 @@ class User{
     $this->isInALobby = $val ;
   }
 
-  function setTeam($teamId){
-    $this->inTeam = $teamId ;
-  }
+  function getTeam(){
+    $database = DB::getInstance();
 
-  // function __set($prop, $val){
-  //   if($prop == 'rank' || $prop == 'bio' || $prop == 'age')
-  //     $this->$prop = $val;
-  // }
+    $qGetTeam = '
+      SELECT in_team
+      FROM user
+      WHERE steam_id = '.$this->steamId.'
+    ';
+
+    $result = $database->query($qGetTeam);
+    if($result->num_rows > 0)
+     $this->inTeam = $result->fetch_assoc()['in_team'];
+
+    return $this->inTeam;
+  }
 
   function __construct( $steamId ){
     $database = DB::getInstance();
@@ -127,6 +149,7 @@ class User{
       $this->rankImg         = $row['img'];
       $this->priLang         = $row['primary_language'];
       $this->secLang         = $row['secondary_language'];
+      $this->region          = $row['region'];
       $this->inTeam          = $row['in_team'];
       $this->countryFlag     = $row['image'];
 
@@ -338,6 +361,7 @@ class User{
           rank               = "'.$this->rank.'",
           primary_language   = "'.$this->priLang.'",
           secondary_language = "'.$this->secLang.'",
+          region             = "'.$this->region.'",
           age_group          = "'.$this->getAgeGroup().'"
       WHERE steam_id         = "'.$this->steamId.'";
     ';
@@ -375,12 +399,58 @@ class User{
         break;
     }
   }
-
-  // inserts player and team id into player_applying_team table in DB
-  function insertTeamRequest($teamId) {
+  // updates a users in_team (removing or adding) status
+  function changeTeam($teamId){
     $database = DB::getInstance();
 
-    $qhaveIRequested='
+    if($teamId == 0){
+      // Query to remove a user from a team, set its in_team value to NULL
+      $qUpdateUsersTeamStatus = '
+        UPDATE user
+        SET in_team = NULL
+        WHERE steam_id = '.$this->steamId.'
+      ';
+
+      $database->query($qUpdateUsersTeamStatus);
+      if ($database->error) {
+        echo "something went wrong when removing a user from a team: ".$database->error;
+      }
+    }else{
+      // Query to update a users team
+      $qUpdateUsersTeamStatus = '
+        UPDATE user
+        SET in_team = '.$teamId.'
+        WHERE steam_id = '.$this->steamId.'
+      ';
+
+      $database->query($qUpdateUsersTeamStatus);
+      if ($database->error) {
+        echo "something went wrong when adding a user into a team: ".$database->error;
+      }
+    } 
+
+    $qGetTeam = '
+      SELECT in_team
+      FROM user
+      WHERE steam_id = '.$this->steamId.'
+    ';
+
+    $result = $database->query($qGetTeam);
+    if($result->num_rows > 0){
+     $this->inTeam = $result->fetch_assoc()['in_team'];
+    }
+
+    if ($database->error) {
+        echo "something went wrong when adding a user into a team: ".$database->error;
+    }
+  }
+  // inserts player and team id into player_applying_team table if he is not already in this team or if hes not already applying
+  function insertTeamRequest($teamId) {
+    $database = DB::getInstance();
+    $alreadySentApplication = TRUE;
+    $alreadyInTeam = TRUE;
+
+    $qhaveIRequested = '
       SELECT *
       FROM player_applying_team
       WHERE team_id = '.$teamId.'
@@ -389,7 +459,18 @@ class User{
 
     $result = $database->query($qhaveIRequested);
 
-    if($result->num_rows < 1){
+    if($result->num_rows == 0) $alreadySentApplication = FALSE;
+
+    $qIsAlreadyInTeam ='
+      SELECT in_team
+      FROM user
+      WHERE steam_id = '.$this->steamId.'
+    ';
+
+    $result = $database->query($qIsAlreadyInTeam);
+    if($result->fetch_assoc()['in_team'] != $teamId) $alreadyInTeam = FALSE;
+
+    if(!$alreadySentApplication && !$alreadyInTeam){
 
       $qSendTeamApply ='
         INSERT INTO player_applying_team (steam_id, team_id)
@@ -403,6 +484,29 @@ class User{
       echo "Something went wrong when trying to insert an team apply: $error";
       return FALSE;
     }
+  }
+
+  function getIsInALobby(){
+    $database = DB::getInstance();
+
+    $qIsInALobby = '
+      SELECT steam_id
+      FROM lobby
+      WHERE steam_id = "'.$this->steamId.'"
+      LIMIT 1
+    ';
+
+    $result = $database->query($qIsInALobby);
+    if ($result->num_rows == 1){
+      $this->isInALobby == TRUE;
+      return TRUE;
+    }elseif ($error = $database->error){
+      $this->isInALobby == FALSE;
+      echo "something went wrong when trying to see if a user is in a lobby $error";
+    }
+
+    $this->isInALobby == FALSE;
+    return FALSE;
   }
 
   function getIsLookingForLobby(){
@@ -424,6 +528,7 @@ class User{
       echo "something went wrong when trying to see if a user is in a lobby $error";
     }
 
+    $this->isLookingForLobby == FALSE;
     return FALSE;
   }
 }

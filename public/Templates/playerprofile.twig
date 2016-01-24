@@ -37,13 +37,13 @@
 
         <div class="col-xs-6 col-md-6">
           <ul>
-            <li>Rating: </li>
-            <li>TA Games: </li>
-  	        <li>Team: <a href="?/TeamProfile/Team/{{team.id}}">
+					  <li>Primary Language: {{user.priLang}}</li>
+					  <li>Secondary Language: {{user.secLang}}</li>
+  	        <li>Team: 
             {% if user.inTeam %}
-            {{ team.name }}
+								<a href="?/TeamProfile/Team/{{team.id}}"> {{ team.name }} </a>
             {% endif %}
-            </a></li>
+            </li>
           </ul>
         </div>
 

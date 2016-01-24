@@ -6,29 +6,32 @@
 
     <div class="col-xs-8 col-xs-12 col-sm-4 team-info">
       <div class="team-header">
-      <h2>{{ team.name }}</h2><img src="{{ team.countryFlag }}">
+        <h2>{{ team.name }}</h2><img src="{{ team.countryFlag }}">
       </div>
+
       <p>
         Members: &nbsp;
         {% for member in team.members %}
           <a href="?/Profile/displayuser/{{ member.steamId }}" class="member"> <u>{{member.nickname}}</u></a>
         {% endfor %}
       </p>
+
       <p class="">
         Team bio: &nbsp; <span class="team-bio">{{ team.descr }}</span>
       </p>
+
       <p>
         Looking for members: &nbsp; {{ team.lookingForPlayers }}
       </p>
 
-      {% if currentUser.inTeam == team.id %}
-        <form method="post">
-          <input type="hidden" name="postHandler" value="removeUserFromTeam">
-          <input type="hidden" name="teamId" value="{{currentUser.inTeam}}">
-          <button type="submit" class="sub-btn leave-team-button" name="remove_user" value="{{currentUser.steamId}}">Leave team</button>
-        </form>
-      {% endif %}
     </div>
+
+    {% set inApplicants = FALSE %}
+    {% for applicant in team.applicants %}
+      {% if applicant.steamId == currentUser.steamId %}
+        {% set inApplicants = TRUE %}
+      {% endif %}
+    {% endfor %}
 
     {% if currentUser.steamId == team.creator %}
       <div class="col-md-offset-1 col-xs-12 col-sm-2">
@@ -38,24 +41,29 @@
         {% endif %}
       </div>
 
-    {% elseif currentUser %}
-      {% set inApplicants = FALSE %}
-      {% for applicant in team.applicants %}
-        {% if applicant.steamId == currentUser.steamId %}
-          {% set inApplicants = TRUE %}
-        {% endif %}
-      {% endfor %}
+    {% elseif inApplicants and currentUser.inTeam != team.id %}
       <div class="col-md-offset-1 col-xs-12 col-sm-2">
-        {% if inApplicants %}
-          <p class="applied-to-team"> You've applied to this team!</p>
-          <!--Add a form which deletes the application-->
-        {% else %}
-          <form action="?/TeamProfile/Team/{{ team.id }}" method="post">
-            <input type="hidden" name="postHandler" value="receiveTeamRequest">
-            <button type="submit" class="apply-to-team" name="teamId" value="{{ team.id }}">Apply to team</button>
-          </form>
-        {% endif %}
+        <p class="applied-to-team"> You've applied to this team!</p>
+        <!--Add a form which deletes the application-->
       </div>
+
+    {% elseif currentUser and currentUser.inTeam != team.id %}
+      <div class="col-md-offset-1 col-xs-12 col-sm-2">
+        <form action="?/TeamProfile/Team/{{ team.id }}" method="post">
+          <input type="hidden" name="postHandler" value="receiveTeamRequest">
+          <button type="submit" class="apply-to-team" name="teamId" value="{{ team.id }}">Apply to team</button>
+        </form>
+      </div>
+
+    {% elseif currentUser.steamId != team.creator and currentUser.inTeam == team.id %}
+      <div class="col-md-offset-1 col-xs-12 col-sm-2">
+        <form method="post">
+          <input type="hidden" name="postHandler" value="removeUserFromTeam">
+          <input type="hidden" name="teamId" value="{{currentUser.inTeam}}">
+          <button type="submit" class="apply-to-team leave-team-button" name="remove_user" value="{{currentUser.steamId}}">Leave team</button>
+        </form>
+      </div>
+           
     {% endif %}
   </div><!--END ROW-->
 
@@ -82,7 +90,7 @@
   <div class="row">
     <div class="col-md-offset-2 col-xs-8 mrg-top-40">
       {% for comment in team.comments %}
-        <p class="inline-block"><a href="?/Profile/displayuser/{{ comment.author }}"><u> {{ comment.nick }} </u> </a> </p>
+        <p class="inline-block"><a href="?/Profile/displayuser/{{ comment.author }}"><u>{{ comment.nick }} </u></a></p>
         <img class="rankimg-small" src="{{ comment.rank }}">
         <img class="flag-small" src="{{ comment.country }}">
         <p class="inline-block date-stamp"> {{ comment.date }} </p>

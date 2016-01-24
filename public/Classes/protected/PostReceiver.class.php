@@ -5,6 +5,7 @@ class postReceiver{
 	private function __clone(){}
 
 	static function profileUpdate(){
+
 		$database = DB::getInstance();
 
 		if( isset($_POST['rank']) && !empty($_POST['rank']) ){
@@ -37,6 +38,10 @@ class postReceiver{
 
 		if( isset($_POST['secondary_language']) && !empty($_POST['secondary_language']) ){
 			$_SESSION['currentUser']->secLang = $database->real_escape_string(stripslashes($_POST['secondary_language']));
+		}
+
+		if( isset($_POST['region']) && !empty($_POST['region']) ){
+			$_SESSION['currentUser']->region = $database->real_escape_string(stripslashes($_POST['region']));
 		}
 
 		$_SESSION['currentUser']->updateUserSuppliedInfo();
@@ -95,6 +100,7 @@ class postReceiver{
 		}
 
 		$team = new Team($teamId);
+    // only lets the creator (team leader) to edit team info
 		if($_SESSION['currentUser']->steamId == $team->creator){
 			$team->setProperties($_SESSION['currentUser']->inTeam, $_SESSION['currentUser']->steamId, $edit_team_name, $edit_team_descr, $edit_team_img, $edit_lfp, $edit_team_lang);
 			$team->updateTeamInfo();
@@ -116,7 +122,6 @@ class postReceiver{
     header('Location: ' . '?/TeamProfile/Team/'. $teamId);
 	}
 
-	// receives the team id value from "Apply to team" button and cleans it
 	static function receiveTeamRequest(){
 		$database = DB::getInstance();
 
@@ -125,6 +130,8 @@ class postReceiver{
 
 			$_SESSION['currentUser']->insertTeamRequest($teamId);
 		}
+
+    header('Location: ' . '?/TeamProfile/Team/'. $teamId);
 	}
 
   static function removeUserFromTeam(){
@@ -135,8 +142,11 @@ class postReceiver{
       $teamId 	  = $database->real_escape_string(stripslashes($_POST['teamId']));
 
 	  	$team = new Team($teamId);
+      // only makes it possible for the team creator (leader) or the user himself to get removed from the team
 	  	if($_SESSION['currentUser']->steamId == $team->creator || $_SESSION['currentUser']->inTeam == $team->id)
 	  		$team->removePlayerFromTeam($removeUser);
+	  	if($removeUser == $_SESSION['currentUser']->steamId)
+	  		$_SESSION['currentUser']->changeTeam(0); #
     }
   }
 
@@ -148,9 +158,12 @@ class postReceiver{
  			$teamId  = $database->real_escape_string(stripslashes($_POST['teamId']));
 
 			$team = new Team($teamId);
+      // only the team creator can accept applicants
 	  	if($_SESSION['currentUser']->steamId == $team->creator)
 	  		$team->acceptApplicant($steamId);
  		}
+
+    header('Location: ' . '?/TeamProfile/editTeam/');
   }
 
   static function denyApplicant(){
@@ -161,9 +174,12 @@ class postReceiver{
  			$teamId  = $database->real_escape_string(stripslashes($_POST['teamId']));
 
 			$team = new Team($teamId);
+      // only the team creator can deny applicants
 	  	if($_SESSION['currentUser']->steamId == $team->creator)
 	  		$team->removeApplicant($steamId);
  		}
+
+    header('Location: ' . '?/TeamProfile/editTeam/');
   }
 
   static function logout(){

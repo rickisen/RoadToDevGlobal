@@ -4,6 +4,7 @@ class Players{
   private function __construct(){}
   private function __clone(){}
 
+  // might be worth removing
   static function viewUserProfiles(){
     $database = DB::getInstance();
     $users = array();
@@ -33,91 +34,77 @@ class Players{
 
   static function filterUsers(){
     $database = DB::getInstance();
-
-    $clauses = array();
-    if(empty($_POST['language']) && empty($_POST['rank']) && empty($_POST['hours']) && empty($_POST['nick']) ){
-      return self::viewUserProfiles();
-    }
-
-    if( isset($_POST['language']) && !empty($_POST['language']) ){
-      $languageClause  = ' primary_language = "';
-      $languageClause .= $database->real_escape_string(stripslashes($_POST['language']));
-      $languageClause .= '"';
-      $languageClause .= ' OR ';
-      $languageClause .= ' secondary_language = "';
-      $languageClause .= $database->real_escape_string(stripslashes($_POST['language']));
-      $languageClause .= '"';
-      $clauses[] = $languageClause;
-    }
-
-    if( isset($_POST['rank']) && !empty($_POST['rank']) ){
-      $rankClause  = ' rank = "';
-      $rankClause .= $database->real_escape_string(stripslashes($_POST['rank']));
-      $rankClause .= '"';
-      $clauses[] = $rankClause;
-    }
-
-    if( isset($_POST['hours']) && !empty($_POST['hours']) ){
-      $hoursClause  = ' hours_played > ';
-      $hoursClause .= $database->real_escape_string(stripslashes($_POST['hours']));
-      $clauses[] = $hoursClause;
-    }
-
-    if( isset($_POST['nick']) && !empty($_POST['nick']) ){
-      $nickClause = ' LOWER(nickname) LIKE LOWER("%';
-      $nickClause .= $database->real_escape_string(stripslashes($_POST['nick']));
-      $nickClause .= '%")';
-      $clauses[] = $nickClause;
-    }
-
-    $finalClause = ' WHERE ';
-
-    for ($i = 0; $i != count($clauses); $i++) {
-      // If we are not on the first clause, prefix an "AND" .
-      if($i != 0){
-        $finalClause .= ' AND ';
-      }
-      $finalClause .= $clauses[$i];
-    }
-
-    $users = array();
-
-    $qGetFilteredUsers = '
-      SELECT steam_id FROM user
-      '. $finalClause .'
-      LIMIT 25
+    $qBaseQuery = '
+      SELECT * FROM user 
     ';
 
-    // save this query so that we can offset it later
-    $_SESSION['LastFilterQuery'] = $qGetFilteredUsers;
+    $fullQuery = '';
+    $offsetClause = '';
+    $qClauses = array();
+    $parameters = array(); // saved so we can prefill the inputs in twig later
 
-    if( $result = $database->query($qGetFilteredUsers)){
+    if( isset($_GET['language']) && !empty($_GET['language']) ){
+      $language = $database->real_escape_string(stripslashes($_GET['language']));
+      $prilang = ' ( primary_language = "'.$language.'" '." OR ";
+      $seclang = '   secondary_language = "'.$language.'" ) '."\n";
+
+      $qClauses[] = $prilang.$seclang;
+      $parameters['language'] = $language;
+    }
+
+    if( isset($_GET['rank']) && !empty($_GET['rank']) ){
+      $rank = $database->real_escape_string(stripslashes($_GET['rank']));
+      $qClauses[] = ' rank = "'.$rank.'" '."\n";
+      $parameters['rank'] = $rank;
+    }
+
+    if( isset($_GET['hours']) && !empty($_GET['hours']) ){
+      $hours = $database->real_escape_string(stripslashes($_GET['hours']));
+      $qClauses[] = " hours_played >= $hours \n";
+      $parameters['hours'] = $hours;
+    }
+
+    if( isset($_GET['nick']) && !empty($_GET['nick']) ){
+      $nick = $database->real_escape_string(stripslashes($_GET['nick']));
+      $qClauses[] = ' lower(nickname) LIKE lower("%'.$nick.'%") '."\n";
+      $parameters['nick'] = $nick;
+    }
+
+    if( isset($_GET['offset']) && !empty($_GET['offset']) ){
+      $offset = $database->real_escape_string(stripslashes($_GET['offset']));
+      $offsetClause = " OFFSET $offset \n";
+      $parameters['offset'] = $offset;
+    }
+
+    // dont include the word "were" in the query unless we have clauses
+    if (count($qClauses) > 0 ){
+      $qWhereClause = ' WHERE ';
+    } else {
+      $qWhereClause = '';
+    }
+
+    // construct the where clause
+    for ($i = 0 ; $i != count($qClauses) ; $i++){
+      $qWhereClause .= $qClauses[$i] ;
+
+      // if we are not on the last clause add an "and" inbetween
+      if ($i != count($qClauses) - 1 )
+        $qWhereClause .= ' AND ';
+    }
+
+    // stitch together the query
+    $fullQuery .= $qBaseQuery."\n".$qWhereClause."\n ORDER BY register_date LIMIT 25 "."\n".$offsetClause;
+
+    $users = array();
+    if( $result = $database->query($fullQuery) ){
       while ($row = $result->fetch_assoc()) {
         $users[] = new user($row['steam_id']);
       }
     } else {
-      echo "failed to get users from db".$database->error;
-    }
-    return ['loadview' => 'players', 'users' => $users, 'lastOffset' => 0 ];
-  }
-
-  static function offsetLastFilter($offset){
-    $database = DB::getInstance();
-    $users = array();
-    if (count($offset) > 0 )
-      $offset = 25 * $database->real_escape_string(stripslashes($offset[0]));
-    else
-      $offset = 0;
-
-    $qGetFilteredUsersOffset = $_SESSION['LastFilterQuery'].' OFFSET '.$offset;
-
-    if( $result = $database->query($qGetFilteredUsersOffset)){
-      while ($row = $result->fetch_assoc())
-        $users[] = new user($row['steam_id']);
-    } else {
       echo "failed to get users from db ".$database->error;
     }
 
-    return ['loadview' => 'players', 'users' => $users, 'lastOffset' => $offset / 25];
+    return ['loadview' => 'players', 'users' => $users, 'parameters' => $parameters];
   }
+
 }
