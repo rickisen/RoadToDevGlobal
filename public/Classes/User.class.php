@@ -8,6 +8,7 @@ class User{
 
   public
     // user specified
+    $bio,
     $rank,
     $dobDay,
     $dobMonth,
