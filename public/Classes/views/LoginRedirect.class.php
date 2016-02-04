@@ -7,7 +7,7 @@ class LoginRedirect{
 	public static function steamLogin(){
 
 		if(!isset($_SESSION['steamId'])) {
-			$openid = new LightOpenID('http://devglobal.xjb.se/?/LoginRedirect/steamLogin');
+			$openid = new LightOpenID('http://devglobal.mooo.com/?/LoginRedirect/steamLogin');
 			if(!$openid->mode && isset($_GET['login'])) {
 			    $openid->identity = 'http://steamcommunity.com/openid/?l=english';    // This is forcing english because it has a weird habit of selecting a random language otherwise
 			    header('Location: ' . $openid->authUrl());
